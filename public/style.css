@@ -1,3 +1,66 @@
 body{
-    background-color: aqua;
+    background-color:white
+}
+.logo {
+    position: absolute;
+width: 192px;
+height: 67px;
+left: 32px;
+top: 19px;
+}
+.welcome{
+    position: absolute;
+width: 270px;
+height: 48px;
+left: 461px;
+top: 97px;
+
+font-family: 'Inter';
+font-style: italic;
+font-weight: 500;
+font-size: 40px;
+line-height: 48px;
+text-align: center;
+
+color: #0500FF;
+}
+.welcome1{
+    position: absolute;
+width: 289px;
+height: 48px;
+left: 576px;
+top: 145px;
+font-family: 'Inter';
+font-style: italic;
+font-weight: 500;
+font-size: 40px;
+line-height: 48px;
+text-align: center;
+color: #FFC700;
+}
+
+.but1{
+    font-size: 20px;
+    border-radius: 25px;
+  margin-left: 1261px;
+  margin-top:19px;
+  position: absolute;
+  background: #C4C4C4;
+}
+.but2{
+    background-color: #C4C4C4;
+    margin-left: 1161px;
+    margin-top:25px;
+    border-radius: 25px;
+    
+}
+
+.line1{
+position: absolute;
+width: 1540px;
+height: 0px;
+left: -10px;
+top: 253px;
+border: 1px solid #000000;
+transform: rotate(-0.08deg);
 }
