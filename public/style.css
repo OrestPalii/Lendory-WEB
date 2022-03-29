@@ -1,66 +1,46 @@
 body{
-    background-color:white
+   padding: 0;
+   margin: 0;
+   color: 000;
+   font-size:15px;
 }
-.logo {
-    position: absolute;
-width: 192px;
-height: 67px;
-left: 32px;
-top: 19px;
+.header{
+  background-color: black;
+ 
 }
-.welcome{
-    position: absolute;
-width: 270px;
-height: 48px;
-left: 461px;
-top: 97px;
-
-font-family: 'Inter';
-font-style: italic;
-font-weight: 500;
-font-size: 40px;
-line-height: 48px;
-text-align: center;
-
-color: #0500FF;
+.logo{
+    padding-top: 20px;
+    margin-right: 300px;
+    margin-left: -70px;
 }
-.welcome1{
-    position: absolute;
-width: 289px;
-height: 48px;
-left: 576px;
-top: 145px;
-font-family: 'Inter';
-font-style: italic;
-font-weight: 500;
-font-size: 40px;
-line-height: 48px;
-text-align: center;
-color: #FFC700;
+ul,li{
+    display: block;
+}
+.container{
+    width: 1200px;
+    margin:0 auto; 
+}
+.nav{
+    display:flex ;
+    align-items: center;
 }
 
-.but1{
-    font-size: 20px;
-    border-radius: 25px;
-  margin-left: 1261px;
-  margin-top:19px;
-  position: absolute;
-  background: #C4C4C4;
+header a{
+    color:#7D6BC5;
 }
-.but2{
-    background-color: #C4C4C4;
-    margin-left: 1161px;
-    margin-top:25px;
-    border-radius: 25px;
-    
+.menu{
+    display: flex;
+}
+.menu li a{
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.1cm;  
+}
+.menu li{
+    margin-right: 45px;
+}
+.menu li a:hover{
+  color: #fff;
+  text-decoration: underline;
 }
 
-.line1{
-position: absolute;
-width: 1540px;
-height: 0px;
-left: -10px;
-top: 253px;
-border: 1px solid #000000;
-transform: rotate(-0.08deg);
-}
