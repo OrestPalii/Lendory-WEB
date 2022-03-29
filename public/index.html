@@ -84,8 +84,9 @@
   var selBtn = document.getElementById("Selbtn");
   var updBtn = document.getElementById("Updbtn");
   var delBtn = document.getElementById("Delbtn");
-  var advnum = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+  var advnum;
   function InsertData(){
+    advnum = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
     set(ref(db, "advertisement/"+ advnum),{
         area: parseInt(areabox.value),
         currency: curbox.value,
