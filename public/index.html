@@ -6,16 +6,118 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lendory</title>
   <link rel="stylesheet" href="style.css">
-  
+  <style>
+    label{display: inline-block; width:80px}
+    input,select{width: 120px;}
+  </style>
 </head>
 <body>
-    <h1>Welcome sdfdsfdsfdfs</h1>
-    <h1>TEr</h1>
-    <h1>iop</h1>
-    <h2>dsfdsfdsffds</h2>
-    <h1>890</h1>
-    <h1>99</h1>
-    <h1>09</h1>
-    <h1>jort</h1>
+
+  <label>Area</label> <input id="areabox" type="number"><br><br>
+  
+  <label>Currency</label>
+  <select id="Curbox">
+    <option value="₴"></option>
+    <option value="$"></option>
+    <option value="€"></option>
+    <option value="£"></option>
+  </select><br><br>
+ <label>Description</label><input id='descripbox' type="text"><br><br>
+ <label>Floor</label><input id='floorNumbox' type="number"><br><br>
+ <label>Location</label><input id='locbox' type="text"><br><br>
+ <label>Name</label><input id='namebox' type="text"><br><br>
+ <label>Number of rooms</label><input id="numofRoomsbox" type="number"><br><br>
+ <label>Price</label><input id="pricebox" type="number"><br><br>
+ <label>Volunteering</label>
+ <select id="volbox">
+  <option value="true"></option>
+  <option value="false"></option>
+</select><br><br>
+
+ <hr>
+
+
+ <button id="Insbtn">Insert</button>
+ <button id="Selbtn">Select</button>
+ <button id="Updbtn">Update</button>
+ <button id="Delbtn">Delete</button>
+  
+
+ <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
+    authDomain: "lendory-b5d8b.firebaseapp.com",
+    databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
+    projectId: "lendory-b5d8b",
+    storageBucket: "lendory-b5d8b.appspot.com",
+    messagingSenderId: "759222136421",
+    appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+  import {getDatabase, ref, set, child, update, remove}
+  from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"
+  const db = getDatabase();
+
+  
+  //var NumofAdv = document.getElementById("AdvertisementNum");
+  var area = document.getElementById("areabox");
+  var curbox = document.getElementById("Curbox")
+  var description = document.getElementById("descripbox");
+  var floor = document.getElementById("floorNumbox");
+  var location = document.getElementById("locbox");
+  var name = document.getElementById("namebox");
+  var numofrooms = document.getElementById("numofRoomsbox");
+  var price = document.getElementById("pricebox");
+  var volunteering = document.getElementById("volbox");
+
+  
+  var insBtn = document.getElementById("Insbtn");
+  var selBtn = document.getElementById("Selbtn");
+  var updBtn = document.getElementById("Updbtn");
+  var delBtn = document.getElementById("Delbtn");
+  var advnum = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+  function InsertData(){
+    set(ref(db, "advertisement/"+ advnum),{
+        area: parseInt(areabox.value),
+        currency: curbox.value,
+        description: descripbox.value,
+        floor: parseInt(floorNumbox.value),
+        location: locbox.value,
+        name: namebox.value,
+        numberOfRooms: parseInt(numofRoomsbox.value),
+        price: parseInt(pricebox.value),
+        volunteering: Boolean(volbox.value)
+    })
+    .then(()=>{
+      alert("Data stored succesfully"); 
+      set(ref(db, "advertisement/"+ advnum  + "/creator/"),{
+      name: namebox.value,
+      phoneNumber: areabox.value
+    })
+    set(ref(db, "advertisement/"+ advnum  + "/images/"),{
+      0: namebox.value,
+      1: areabox.value,
+      2: areabox.value,
+      3: areabox.value,
+      4: areabox.value
+    })
+  })
+
+  .catch((error)=>{
+    alert("unsuccessful, error"+error)
+  });
+}
+insBtn.addEventListener('click', InsertData);
+</script>
+
 </body>
 </html>
