@@ -1,46 +1,41 @@
 body{
-   padding: 0;
-   margin: 0;
-   color: 000;
-   font-size:15px;
+    margin: 0;
+    padding: 0;  
+    background: url(origin.jpg) no-repeat;
+    background-size: cover;
 }
 .header{
   background-color: black;
- 
+   padding-top:10vh;
+   
 }
 .logo{
-    padding-top: 20px;
-    margin-right: 300px;
-    margin-left: -70px;
-}
-ul,li{
-    display: block;
-}
-.container{
-    width: 1200px;
-    margin:0 auto; 
-}
-.nav{
-    display:flex ;
-    align-items: center;
-}
+    position: absolute;
+    height: 50px;
+    width: 150px;
+    left:30px;
+    top:30px;
+    
 
-header a{
-    color:#7D6BC5;
 }
 .menu{
-    display: flex;
+position: absolute;
+top: 10px;
+display:flex ;
+right: 100px;
+}
+
+ul,li{
+    display: block;
 }
 .menu li a{
     text-transform: uppercase;
     text-decoration: none;
-    letter-spacing: 0.1cm;  
-}
-.menu li{
+    letter-spacing: 0.1cm; 
     margin-right: 45px;
+    color:#ffffff; 
 }
+    
 .menu li a:hover{
   color: #fff;
-  text-decoration: underline;
 }
-
