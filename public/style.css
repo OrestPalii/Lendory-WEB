@@ -1,14 +1,17 @@
+
+       /* Опис хедера */
 .header{
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     width: 100%;
-    position: absolute;
+    position: fixed;
     top: 0;
     left:0;
     right: 0;
     background-color: black;
     z-index: 1000;  
 }
+
 
 .header_inner{
     display: flex;
@@ -34,18 +37,22 @@
 }
 .container{ 
     width: 100%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     align-items: center; 
 }
+ 
+           /* головна фотка */
 .intro{
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
     height: 90vh;
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/black%26white.jpg?alt=media&token=9e1ff291-ce45-47f6-b3eb-0174c15bc2e0) no-repeat;
-     background-size: cover;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/background1.JPG?alt=media&token=847e7284-f205-4b70-965a-e8b61c888119) no-repeat;
+   
+    -webkit-background-size: cover;
+    background-size: cover;
 }
 .intro_inner{
     width: 100%;
@@ -56,12 +63,14 @@
 
 .advert{            /*опис кнопки додати оголошення*/
     margin-top: 70px;
+    margin-bottom: 70px;
      display: block;
      margin-left: auto;
      margin-right: auto;
      width: 261px;
      height: 60px;
-     font-family: 'Poppins';
+     font-family: 'Poppins', sans-serif;
+     font-weight: 700;
        font-style: normal;
        letter-spacing: 0.2em;
        font-size: 25px;
@@ -85,8 +94,8 @@
          transform: translateY(0);
      }
      40% {
-         transform: translateY(-20px);
-         transform: translateY(-20px);
+         transform: translateY(-10px);
+         transform: translateY(-10px);
      }
      80% {
          transform: translateY(-10px);
@@ -98,16 +107,9 @@
      animation: jump 1s;
  }
 
- .main{
-    display: flex;
-    width: 100%;
-    height: 90vh;
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/background.png?alt=media&token=63374c06-6430-4525-aace-e6f930457b27) no-repeat;
-     background-size: cover;
-
- }
+          /* Опис поля пошуку */
  .searchbar{
-    
+   
     margin-bottom: auto;
     margin-top: auto;
     height: 60px;
@@ -137,7 +139,6 @@
     .searchbar:hover > .search_icon{
     background: white;
     color: #e74c3c;
-
     }
 
     .search_icon{
@@ -151,3 +152,74 @@
     color:white;
     text-decoration:none;
     }
+
+
+    .main{
+        display: flex;
+        width: 100%;
+        height: 100vh;
+        background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/background.png?alt=media&token=63374c06-6430-4525-aace-e6f930457b27) no-repeat;
+         background-size: cover;
+    
+     }
+
+
+
+
+   /* __________ADVERT.HTML__________ */
+
+   .advert_{
+       margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20em;
+   }
+
+.input_{
+    
+    display: flex;
+    flex-flow: column wrap;
+    width: 40px;  
+    display: inline; 
+        
+}
+ h2{
+     padding: 10px 10px;
+     color: #FFFFFF;
+     margin: 3px ;
+     background: url("file:///C:/Users/roman/Downloads/Rectangle%2029.svg") no-repeat;
+     width: 700px;
+     border-radius: 20px;  
+     padding-left: 15px; 
+     font-family: 'Poppins', sans-serif; 
+     font-size: 19px;
+     letter-spacing: 0.05em;
+ }
+ #img1{
+     height: 20px;
+     width: 20px;
+ }
+ #s{
+    background-color: #cd88db;
+     border-radius: 15px;
+     border: 0;
+     font-size: 20px;
+     color: #fff;
+     padding: 2px 2px;
+    position: absolute;
+ }
+input{
+    width: 280px;
+    border: 0;
+    margin-top: 6px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.2em;
+}
+:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
+
