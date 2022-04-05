@@ -10,6 +10,7 @@
 </head>
 <body>
   <label>Area</label> <input id="areabox" type="number"><br><br>
+  <label>Floor</label><input id='floorNumbox' type="number"><br><br>
   <button id="Insbtn">Insert</button>
  <button id="Selbtn">Select</button>
 
@@ -38,14 +39,20 @@
   const db = getDatabase();
   
   var area = document.getElementById("areabox");
+  var floor = document.getElementById("floorNumbox");
   var insBtn = document.getElementById("Insbtn");
   var selBtn = document.getElementById("Selbtn");
+  var advnum;
   
-  let advtest1 = new Advtest(0, 13);
+  let advtest1 = new Advtest(0, 0);
   function InsertData(){
-    
-    set(ref(db, "advertisementtest/"+ "/test1/"),{
-        uau: advtest1,
+    advnum = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+    advtest1.setarea(areabox.value);
+    advtest1.setfloor(floorNumbox.value);
+    set(ref(db, "advertisementtest/"+ "/test1/" + advnum),{
+      area: advtest1.getarea(),
+      floor: advtest1.getfloor()
+
     })
     .then(()=>{
       alert("Data stored succesfully"); 
@@ -59,10 +66,12 @@
 
 function SelectData(){
   const dbref = ref(db);
-  get(child(dbref, "advertisementtest/"+ "/test1/uau/")).then((snapshot)=>{
+  get(child(dbref, "advertisementtest/"+ "/test1/797423157/advtest1/")).then((snapshot)=>{
       if(snapshot.exists()){
         advtest1.setarea(snapshot.val().area);
+        advtest1.setfloor(snapshot.val().floor);
         areabox.value = advtest1.getarea();
+        floorNumbox.value = advtest1.getfloor();
       }
       else{
         alert("No data found");

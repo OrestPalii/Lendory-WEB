@@ -1,12 +1,12 @@
-class Advtest{
-    constructor(area, floor){
-        this.area = area;
-        this.floor = floor;
+class Images{
+    constructor(imgarray=[]){
+        this.imgarray = imgarray
     }
-    setarea(newArea){
-        this.area=newArea;
-    }
-    getarea(){
-        return this.area;
-    }
+    area(){
+        for (let i = 0; i <= imgtest.imgarray.lenght; i++){
+                     alert('test')
+             }
+}
+
+     
 }

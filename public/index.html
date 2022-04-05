@@ -10,7 +10,7 @@
     label{display: inline-block; width:80px}
     input,select{width: 120px;}
   </style>
-  <script src="code.js"></script>
+  <script src="adv.js"></script>
 </head>
 <body>
 <!--------------------------------------------------Parametrs of advertisement---------->
@@ -34,8 +34,9 @@
   <option value="false"></option>
 </select><br><br>
 <label>Name</label><input id='creatnamebox' type="text"><br><br>
-<label>Phonenumber</label><input id='phonebox' type="number"><br><br>
-<label>Advertisement number</label><input id="numOfadvbox" type="number"><br><br>
+<label>Phonenumber</label><input id='phonebox' type="text"><br><br>
+<!--<label>Advertisement number</label><input id="numOfadvbox" type="number"><br><br>-->
+
   
  <hr>
 
@@ -43,6 +44,16 @@
  <button id="Selbtn">Select</button>
  <button id="Updbtn">Update</button>
  <button id="Delbtn">Delete</button><br><br><br><br>
+<img id="myimg1">
+<img id="myimg2">
+<img id="myimg3">
+<img id="myimg4">
+<img id="myimg5"><br>
+<button id="selbtn1">Select Image</button>
+<button id="selbtn2">Select Image</button>
+<button id="selbtn3">Select Image</button>
+<button id="selbtn4">Select Image</button>
+<button id="selbtn5">Select Image</button>
 
 <!--------------------------------------------------JavaScript functions and libraries---------->
 <script scr="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
@@ -67,7 +78,8 @@
   const app = initializeApp(firebaseConfig);
   import {getDatabase, ref, get, set, child, update, remove}
   from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"
-  
+  import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} 
+            from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js"
   const db = getDatabase();
   
   //-------------------------------------------Variables
@@ -80,7 +92,7 @@
   var numofrooms = document.getElementById("numofRoomsbox");
   var price = document.getElementById("pricebox");
   var volunteering = document.getElementById("volbox");
-  var creatname = document.getElementById("creatnamepbox");
+  var creatname = document.getElementById("creatnamebox");
   var phonenumber = document.getElementById("phonebox");
   var numOfadv = document.getElementById('numOfadvbox')
   
@@ -92,29 +104,40 @@
   var advnum;
 
   
-  
+  let adv = new Advertisement(0, "₴", "lorem", 0, "lorem", "lorem", 0, 0, false, "Lorem", 0);
 
   //-----------------------------------------------------functions
   function InsertData(){
     advnum = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
-    numOfadvbox.value = advnum;
+    adv.setarea(areabox.value);
+    adv.setcurrency(Curbox.value);
+    adv.setdescription(descripbox.value);
+    adv.setfloor(floorNumbox.value);
+    adv.setlocation(locbox.value);
+    adv.setname(nameStbox.value);
+    adv.setnumberOfRooms(numofRoomsbox.value);
+    adv.setprice(pricebox.value);
+    adv.setvolunteering(volbox.value);
     
     set(ref(db, "advertisement/"+ advnum),{
-        area: parseInt(areabox.value),
-        currency: curbox.value,
-        description: descripbox.value,
-        floor: parseInt(floorNumbox.value),
-        location: locbox.value,
-        name: nameStbox.value,
-        numberOfRooms: parseInt(numofRoomsbox.value),
-        price: parseInt(pricebox.value),
-        volunteering: Boolean(volbox.value)
+        area: parseInt(adv.getarea()),
+        currency: adv.getcurrency(),
+        description: adv.getdescription(),
+        floor: parseInt(adv.getfloor()),
+        location: adv.getlocation(),
+        name: adv.getname(),
+        numberOfRooms: parseInt(adv.getnumberOfRooms()),
+        price: parseInt(adv.getprice()),
+
+        volunteering: Boolean(adv.getvolunteering())  
     })
     .then(()=>{
-      alert("Data stored succesfully"); 
+      alert("Data stored succesfully");
+      adv.setcrname(creatnamebox.value);
+      adv.setphoneNumber(phonebox.value); 
       set(ref(db, "advertisement/"+ advnum  + "/creator/"),{
-      name: creatnamebox.value,
-      phoneNumber: phonebox.value
+      name: adv.getcrname(),
+      phoneNumber: adv.getphoneNumber()
     })
   })
   .catch((error)=>{
@@ -125,23 +148,33 @@
 function SelectData(){
   
   const dbref = ref(db);
-  get(child(dbref, "advertisement/"+ numOfadvbox.value)).then((snapshot)=>{
+  get(child(dbref, "advertisement/52831441/")).then((snapshot)=>{
       if(snapshot.exists()){
-        
-        
-        areabox.value = snapshot.val().area;
-        curbox.value = snapshot.val().currency;
-        descripbox.value = snapshot.val().description;
-        floorNumbox.value = snapshot.val().floor;
-        locbox.value = snapshot.val().location;
-        nameStbox.value = snapshot.val().name;
-       
-        numofRoomsbox.value = snapshot.val().numberOfRooms;
-        pricebox.value = snapshot.val().price;
-        volbox.value = snapshot.val().volunteering;
-        get(child(dbref, "advertisement/"+ numOfadvbox.value + "/creator/")).then((snapshot)=>{
-          creatnamebox.value = snapshot.val().name;
-          phonebox.value = snapshot.val().phoneNumber;
+        adv.setarea(snapshot.val().area);
+        adv.setcurrency(snapshot.val().currency);
+        adv.setdescription(snapshot.val().description);
+        adv.setfloor(snapshot.val().floor);
+        adv.setlocation(snapshot.val().location);
+        adv.setname(snapshot.val().name);
+        adv.setnumberOfRooms(snapshot.val().numberOfRooms);
+        adv.setprice(snapshot.val().price);
+        adv.setvolunteering(snapshot.val().volunteering);
+
+        areabox.value = adv.getarea(),
+        Curbox.value =  adv.getcurrency(),
+        descripbox.value = adv.getdescription(),
+        floorNumbox.value =  adv.getfloor(),
+        locbox.value = adv.getlocation(),
+        nameStbox.value = adv.getname(),
+        numofRoomsbox.value = adv.getnumberOfRooms(),
+        pricebox.value = adv.getprice(),
+        volbox.value = adv.getvolunteering();
+
+        get(child(dbref, "advertisement/52831441/creator/")).then((snapshot)=>{
+          adv.setcrname(snapshot.val().name);
+          adv.setphoneNumber(snapshot.val().phoneNumber);
+          creatnamebox.value = adv.getcrname(),
+          phonebox.value = adv.getphoneNumber()
         })
       }
       else{

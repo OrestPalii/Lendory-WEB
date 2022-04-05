@@ -6,13 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image</title>
    <link rel="stylesheet" href="style.css">
+   <script src="test.js"></script>
 </head>
 <body>
-    <label>Image name</label><input type="text" id="namebox"><label id="extlab"></label><br><br>
-        <img id="myimg"><label id="upprogress"></label> <br><br>
-        <button id="selbtn">Select Image</button>
+    <!-- <label>Image name</label><input type="text" id="namebox"><label id="extlab"></label><br><br> -->
+        <img id="myimg"> <br><br>
+        <button id="selbtn">Select Image</button><br><br>
+        <img id="myimg"> <br><br>
+        <button id="selbtn">Select Image</button><br><br>
+
+
         <button id="upbtn">Upload Image</button>
-        <button id="downbtn" >Retrieve Image</button>
+        <!-- <button id="downbtn" >Retrieve Image</button> -->
 
         <script type="module">
          
@@ -29,18 +34,29 @@
             };
           
             const app = initializeApp(firebaseConfig);
+            
+            import {getDatabase, ref, get, set, child, update, remove}
+            from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"
             import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} 
             from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js"
+            const db = getDatabase();
             var files = [];
             var reader = new FileReader();
+            let imgtest = new Images(["a"]);
+            imgtest.imgarray.pop();
+            
+           
+
+
+
 
             var namebox = document.getElementById("namebox");
-            var extlab = document.getElementById("extlab");
+            //var extlab = document.getElementById("extlab");
             var myimg = document.getElementById("myimg");
-            var proglab = document.getElementById("upprogress");
+            // var proglab = document.getElementById("upprogress");
             var SelBtn = document.getElementById("selbtn");
             var UpBtn = document.getElementById("upbtn");
-            var DownBtn = document.getElementById("downbtn");
+            // var DownBtn = document.getElementById("downbtn");
 
             var input = document.createElement('input');
             input.type = 'file';
@@ -48,10 +64,10 @@
             input.onchange = e =>{
                 files = e.target.files;
 
-                var extention = GetFileExt(files[0]);
-                var name = GetFileName(files[0]);
-                namebox.value = name;
-                extlab.innerHTML = extention;
+                // var extention = GetFileExt(files[0]);
+                // var name = GetFileName(files[0]);
+                // namebox.value = name;
+                // extlab.innerHTML = extention;
 
                 reader.readAsDataURL(files[0]);
             }
@@ -64,23 +80,28 @@
                 input.click();
             }
 
-            function GetFileExt(file){
-                var temp = file.name.split('.');
-                var ext = temp.slice(temp.lenght-1,temp.lenght);
-                return '.' + ext[0];
-            }
+            // function GetFileExt(file){
+            //     var temp = file.name.split('.');
+            //     var ext = temp.slice(temp.lenght-1,temp.lenght);
+            //     return '.' + ext[0];
+            // }
 
-            function GetFileName(file){
-                var temp = file.name.split('.');
-                var fname = temp.slice(0,-1).join('.');
-                return fname;
-            }
+            // function GetFileName(file){
+            //     var temp = file.name.split('.');
+            //     var fname = temp.slice(0,-1).join('.');
+            //     return fname;
+            // }
 
             async function UploadProcess(){
                 var ImgToUpload = files[0];
 
-                var ImgName = namebox.value + extlab.innerHTML;
-
+                var ImgName = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+                imgtest.imgarray.push(ImgName);
+                //alert(imgtest.imgarray[0]);
+                imgtest.imgarray.push("1");
+                imgtest.imgarray.push("2");
+                imgtest.imgarray.push("3");
+                
                 const metaData = {
                     contentType: ImgToUpload.type
                 }
@@ -89,7 +110,7 @@
                 const UploadTask = uploadBytesResumable(stroageRef, ImgToUpload, metaData);
                 UploadTask.on('state-changed', (snapshot)=>{
                     var progess = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
-                    proglab.innerHTML = "Upload " + progess + "%";   
+                    //proglab.innerHTML = "Upload " + progess + "%";   
                 },
                     (error)=>{
                         alert("error: image not uploaded!");
@@ -100,6 +121,20 @@
                         });
                     }
                 );
+                
+                        set(ref(db, "advertisement/images/"+ advnum),{
+                            0: imgtest.imgarray[0],
+                            1: imgtest.imgarray[1],
+                            2: imgtest.imgarray[2],
+                            3: imgtest.imgarray[3]
+                        })
+                        .then(()=>{
+                        alert("Data stored succesfully");
+                        
+                    })
+                    .catch((error)=>{
+                        alert("unsuccessful, error"+error)
+                    });
             }
             UpBtn.onclick = UploadProcess;
 
