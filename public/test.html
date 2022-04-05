@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="test.js"></script>
+</head>
+<body>
+  <label>Area</label> <input id="areabox" type="number"><br><br>
+  <button id="Insbtn">Insert</button>
+ <button id="Selbtn">Select</button>
+
+
+  <script scr="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+<script scr="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js"></script>
+<script scr="https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"></script>
+<script scr="https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js"></script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+  // -------------------------------- web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
+    authDomain: "lendory-b5d8b.firebaseapp.com",
+    databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
+    projectId: "lendory-b5d8b",
+    storageBucket: "lendory-b5d8b.appspot.com",
+    messagingSenderId: "759222136421",
+    appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
+  };
+  // --------------------------------------------Initializing Firebase
+  const app = initializeApp(firebaseConfig);
+  import {getDatabase, ref, get, set, child, update, remove}
+  from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"
+  
+  const db = getDatabase();
+  
+  var area = document.getElementById("areabox");
+  var insBtn = document.getElementById("Insbtn");
+  var selBtn = document.getElementById("Selbtn");
+  
+  let advtest1 = new Advtest(78);
+  function InsertData(){
+    
+    set(ref(db, "advertisementtest/"+ "/test1/"),{
+        area: parseInt(areabox.value),
+        
+    })
+    .then(()=>{
+      alert("Data stored succesfully"); 
+      
+  })
+  .catch((error)=>{
+    alert("unsuccessful, error"+error)
+  });
+  //advtest1.area(areabox.value);
+}
+
+function SelectData(){
+  
+  const dbref = ref(db);
+  get(child(dbref, "advertisementtest/"+ "/test1/")).then((snapshot)=>{
+      if(snapshot.exists()){
+
+        areabox.value = advtest1.area;
+      }
+      else{
+        alert("No data found");
+      }
+  }).catch((error)=>{
+    alert("unsuccessful, error"+error);
+  });
+}
+insBtn.addEventListener('click', InsertData);
+selBtn.addEventListener('click', SelectData);
+  </script>
+  
+</body>
+</html>

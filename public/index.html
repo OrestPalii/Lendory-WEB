@@ -10,11 +10,11 @@
     label{display: inline-block; width:80px}
     input,select{width: 120px;}
   </style>
+  <script src="code.js"></script>
 </head>
 <body>
-
+<!--------------------------------------------------Parametrs of advertisement---------->
   <label>Area</label> <input id="areabox" type="number"><br><br>
-  
   <label>Currency</label>
   <select id="Curbox">
     <option value="₴"></option>
@@ -25,7 +25,7 @@
  <label>Description</label><input id='descripbox' type="text"><br><br>
  <label>Floor</label><input id='floorNumbox' type="number"><br><br>
  <label>Location</label><input id='locbox' type="text"><br><br>
- <label>Name</label><input id='namebox' type="text"><br><br>
+ <label>Name</label><input id='nameStbox' type="text"><br><br>
  <label>Number of rooms</label><input id="numofRoomsbox" type="number"><br><br>
  <label>Price</label><input id="pricebox" type="number"><br><br>
  <label>Volunteering</label>
@@ -33,23 +33,27 @@
   <option value="true"></option>
   <option value="false"></option>
 </select><br><br>
-
+<label>Name</label><input id='creatnamebox' type="text"><br><br>
+<label>Phonenumber</label><input id='phonebox' type="number"><br><br>
+<label>Advertisement number</label><input id="numOfadvbox" type="number"><br><br>
+  
  <hr>
-
 
  <button id="Insbtn">Insert</button>
  <button id="Selbtn">Select</button>
  <button id="Updbtn">Update</button>
- <button id="Delbtn">Delete</button>
-  
+ <button id="Delbtn">Delete</button><br><br><br><br>
+
+<!--------------------------------------------------JavaScript functions and libraries---------->
+<script scr="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+<script scr="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js"></script>
+<script scr="https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"></script>
+<script scr="https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js"></script>
 
  <script type="module">
-  // Import the functions you need from the SDKs you need
+  // ------------------------------Importing the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
-
-  // Your web app's Firebase configuration
+  // -------------------------------- web app's Firebase configuration
   const firebaseConfig = {
     apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
     authDomain: "lendory-b5d8b.firebaseapp.com",
@@ -59,41 +63,49 @@
     messagingSenderId: "759222136421",
     appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
   };
-
-  // Initialize Firebase
+  // --------------------------------------------Initializing Firebase
   const app = initializeApp(firebaseConfig);
-
-  import {getDatabase, ref, set, child, update, remove}
+  import {getDatabase, ref, get, set, child, update, remove}
   from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"
-  const db = getDatabase();
-
   
-  //var NumofAdv = document.getElementById("AdvertisementNum");
+  const db = getDatabase();
+  
+  //-------------------------------------------Variables
   var area = document.getElementById("areabox");
   var curbox = document.getElementById("Curbox")
   var description = document.getElementById("descripbox");
   var floor = document.getElementById("floorNumbox");
   var location = document.getElementById("locbox");
-  var name = document.getElementById("namebox");
+  var name = document.getElementById("nameStbox");
   var numofrooms = document.getElementById("numofRoomsbox");
   var price = document.getElementById("pricebox");
   var volunteering = document.getElementById("volbox");
-
+  var creatname = document.getElementById("creatnamepbox");
+  var phonenumber = document.getElementById("phonebox");
+  var numOfadv = document.getElementById('numOfadvbox')
   
+
   var insBtn = document.getElementById("Insbtn");
   var selBtn = document.getElementById("Selbtn");
   var updBtn = document.getElementById("Updbtn");
   var delBtn = document.getElementById("Delbtn");
   var advnum;
+
+  
+  
+
+  //-----------------------------------------------------functions
   function InsertData(){
     advnum = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+    numOfadvbox.value = advnum;
+    
     set(ref(db, "advertisement/"+ advnum),{
         area: parseInt(areabox.value),
         currency: curbox.value,
         description: descripbox.value,
         floor: parseInt(floorNumbox.value),
         location: locbox.value,
-        name: namebox.value,
+        name: nameStbox.value,
         numberOfRooms: parseInt(numofRoomsbox.value),
         price: parseInt(pricebox.value),
         volunteering: Boolean(volbox.value)
@@ -101,23 +113,83 @@
     .then(()=>{
       alert("Data stored succesfully"); 
       set(ref(db, "advertisement/"+ advnum  + "/creator/"),{
-      name: namebox.value,
-      phoneNumber: areabox.value
-    })
-    set(ref(db, "advertisement/"+ advnum  + "/images/"),{
-      0: namebox.value,
-      1: areabox.value,
-      2: areabox.value,
-      3: areabox.value,
-      4: areabox.value
+      name: creatnamebox.value,
+      phoneNumber: phonebox.value
     })
   })
-
   .catch((error)=>{
     alert("unsuccessful, error"+error)
   });
 }
+
+function SelectData(){
+  
+  const dbref = ref(db);
+  get(child(dbref, "advertisement/"+ numOfadvbox.value)).then((snapshot)=>{
+      if(snapshot.exists()){
+        
+        
+        areabox.value = snapshot.val().area;
+        curbox.value = snapshot.val().currency;
+        descripbox.value = snapshot.val().description;
+        floorNumbox.value = snapshot.val().floor;
+        locbox.value = snapshot.val().location;
+        nameStbox.value = snapshot.val().name;
+       
+        numofRoomsbox.value = snapshot.val().numberOfRooms;
+        pricebox.value = snapshot.val().price;
+        volbox.value = snapshot.val().volunteering;
+        get(child(dbref, "advertisement/"+ numOfadvbox.value + "/creator/")).then((snapshot)=>{
+          creatnamebox.value = snapshot.val().name;
+          phonebox.value = snapshot.val().phoneNumber;
+        })
+      }
+      else{
+        alert("No data found");
+      }
+  }).catch((error)=>{
+    alert("unsuccessful, error"+error);
+  });
+}
+
+function UpdateData(){
+  update(ref(db, "advertisement/"+ numOfadvbox.value),{
+        area: parseInt(areabox.value),
+        currency: curbox.value,
+        description: descripbox.value,
+        floor: parseInt(floorNumbox.value),
+        location: locbox.value,
+        name: nameStbox.value,
+        numberOfRooms: parseInt(numofRoomsbox.value),
+        price: parseInt(pricebox.value),
+        volunteering: Boolean(volbox.value)
+    })
+    .then(()=>{
+      alert("Data update succesfully"); 
+      update(ref(db, "advertisement/"+ numOfadvbox.value  + "/creator/"),{
+      name: creatnamebox.value,
+      phoneNumber: phonebox.value
+    })
+  })
+  .catch((error)=>{
+    alert("unsuccessful, error"+error)
+  });
+}
+function DeleteData(){
+  remove(ref(db, "advertisement/"+ numOfadvbox.value))
+    .then(()=>{
+      alert("Data removed succesfully"); 
+      
+  })
+  .catch((error)=>{
+    alert("unsuccessful, error"+error)
+  });
+}
+
 insBtn.addEventListener('click', InsertData);
+selBtn.addEventListener('click', SelectData); 
+updBtn.addEventListener('click', UpdateData);
+delBtn.addEventListener('click', DeleteData);
 </script>
 
 </body>
