@@ -1,11 +1,12 @@
 class Advtest{
-    constructor(area){
+    constructor(area, floor){
         this.area = area;
+        this.floor = floor;
     }
-    set area(newArea){
+    setarea(newArea){
         this.area=newArea;
     }
-    get area(){
+    getarea(){
         return this.area;
     }
 }

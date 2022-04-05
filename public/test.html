@@ -41,12 +41,11 @@
   var insBtn = document.getElementById("Insbtn");
   var selBtn = document.getElementById("Selbtn");
   
-  let advtest1 = new Advtest(78);
+  let advtest1 = new Advtest(0, 13);
   function InsertData(){
     
     set(ref(db, "advertisementtest/"+ "/test1/"),{
-        area: parseInt(areabox.value),
-        
+        uau: advtest1,
     })
     .then(()=>{
       alert("Data stored succesfully"); 
@@ -59,12 +58,11 @@
 }
 
 function SelectData(){
-  
   const dbref = ref(db);
-  get(child(dbref, "advertisementtest/"+ "/test1/")).then((snapshot)=>{
+  get(child(dbref, "advertisementtest/"+ "/test1/uau/")).then((snapshot)=>{
       if(snapshot.exists()){
-
-        areabox.value = advtest1.area;
+        advtest1.setarea(snapshot.val().area);
+        areabox.value = advtest1.getarea();
       }
       else{
         alert("No data found");
