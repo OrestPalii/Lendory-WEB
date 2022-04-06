@@ -1,5 +1,4 @@
-
-       /* Опис хедера */
+             /* Опис хедера */
 .header{
     padding-top: 5px;
     padding-bottom: 5px;
@@ -9,20 +8,15 @@
     left:0;
     right: 0;
     background-color: black;
-    z-index: 1000;  
-}
-
-
+     z-index: 1000;  
+ }  
 .header_inner{
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-.nav{
-    font-size: 18px;
-  
-}
+ }
 .nav a{
+    font-size: 18px;
     vertical-align: top;
     display: inline-block;
     text-decoration: none;
@@ -39,17 +33,15 @@
     max-width: 1400px;
     margin: 0 auto;
     align-items: center; 
-}
- 
-           /* головна фотка */
+ }   
+               /* головна фотка */
 .intro{
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
     height: 100vh;
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/background1.JPG?alt=media&token=847e7284-f205-4b70-965a-e8b61c888119) no-repeat;
-   
+     background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/background1.JPG?alt=media&token=847e7284-f205-4b70-965a-e8b61c888119) no-repeat;  
     -webkit-background-size: cover;
     background-size: cover;
 }
@@ -57,136 +49,153 @@
     width: 100%;
     max-width: 880px;
     margin: 0 auto;
-}
-
-
+}   
 .advert{            /*опис кнопки додати оголошення*/
     margin-top: 70px;
-   
     margin-bottom: 70px;
-     display: block;
-     margin-left: auto;
-     margin-right: auto;
-     width: 260px;
-     height: 85spx;
-     font-family: 'Poppins', sans-serif;
-     font-weight: 700;
-       font-style: normal;
-       letter-spacing: 0.2em;
-       font-size: 25px;
-      
-       border-radius: 15px;
-       border: none;   
-       background-image: linear-gradient(to right, #7d6bc5, #7d6bc5, #7a6daf, #cf89db);    
-     
-    }
- .advert a{
-     text-decoration: none;
-     color: aliceblue;
- }
- .advert a:hover{
-    text-decoration: none;
-    color: aliceblue;
-
- }
- @keyframes jump {          /*анімація підстрибування*/ 
-     0%, 20%, 60%, 100% {
-         transform: translateY(0);
-         transform: translateY(0);
-     }
-     40% {
-         transform: translateY(-10px);
-         transform: translateY(-10px);
-     }
-     80% {
-         transform: translateY(-10px);
-         transform: translateY(-10px);
-     }
- }
- 
- button:hover {  /* тут я викликаю цю анімацію*/
-     animation: jump 1s;
- }
-
-          /* Опис поля пошуку */
- .searchbar{
-   
-    margin-bottom: auto;
-    margin-top: auto;
-    height: 60px;
-    background-color:#bfb2f4;
-    border-radius: 30px;
-    padding: 10px;
-    }
-
-    .search_input{
-    color: white;
-    border: 0;
-    outline: 0;
-    background: none;
-    width: 0;
-    caret-color:transparent;
-    line-height: 40px;
-    transition: width 0.4s linear;
-    }
-
-    .searchbar:hover > .search_input{
-    padding: 0 10px;
-    width: 350px;
-    caret-color:red;
-    transition: width 0.4s linear;
-    }
-
-    .searchbar:hover > .search_icon{
-    background: white;
-    color: #e74c3c;
-    }
-
-    .search_icon{
-    height: 40px;
-    width: 40px;
-    float: right;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    color:white;
-    text-decoration:none;
-    }
-
-
-    .main{
-        display: flex;
-        width: 100%;
-        height: 100vh;
-        background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/background.png?alt=media&token=63374c06-6430-4525-aace-e6f930457b27) no-repeat;
-         background-size: cover;
-    
-     }
-
-
-
-
-   /* __________ADVERT.HTML__________ */
-
-   
-       
-   
-   .advert_{
-       margin-top: 100px;
+    display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 20em;
-   
-   }
-
-.input_{
+    width: 260px;
+    height: 85spx;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: 0.2em;
+    font-size: 25px;         
+    border-radius: 15px;
+    border: none;   
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6) no-repeat;
+    background-size: cover;
+ }
+.advert a{
+    text-decoration: none;
+    color: aliceblue;
+}
+.advert a:hover{
+    text-decoration: none;
+    color: aliceblue;
     
+}
+     @keyframes jump {          /*анімація підстрибування*/ 
+         0%, 20%, 60%, 100% {
+             transform: translateY(0);
+             transform: translateY(0);
+         }
+         40% {
+             transform: translateY(-10px);
+             transform: translateY(-10px);
+         }
+         80% {
+             transform: translateY(-10px);
+             transform: translateY(-10px);
+         }
+     }
+     
+button:hover {  /* тут я викликаю цю анімацію*/
+    animation: jump 1s;
+ }
+.main{
+    width: 100%;
+    height: 100vh;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/background.png?alt=media&token=63374c06-6430-4525-aace-e6f930457b27) no-repeat;
+    background-size: cover;      
+}
+.input-container{           
+    padding-top: 50px;
+    width: 300px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+    }
+.input-field{
+    color: #7a6daf;  
+    padding: 10px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+} 
+.input-field:focus {
+    border: 2px solid dodgerblue;
+ }
+.mainphoto_{
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    width: 490px;
+    height: 542px;
+  
+    
+}
+#photo_{
+    float: right;
+    border-radius: 30px;
+    width: 490.17px;
+    height: 316.57px;
+    position: relative;
+    z-index: 1000;
+}
+.desc{
+    position: relative;
+    text-align: center;
+    margin-top: -65px;
+    width: 490px;
+    height: 222.41px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    z-index:1 ;
+}
+.pre_description{
+    text-align: center;
+    margin-left: 20px;
+    padding: 10px;
+    margin-top: 45px;
+    border-radius: 30px;
+    width: 152.18px;
+    height: 147.09px;
+    float: left;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6) no-repeat;
+    background-size: cover; 
+}
+.description{
+    margin-top: -30px;
+    position: relative;
+    text-align: center;
+    padding-top: 60px;
+    float: right;
+    color: #fff;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6) no-repeat;
+    background-size: cover;
+    width: 276.73px;
+    height: 252.41px;
+    border-radius: 20px;
+    z-index: 1;
+}
+#g{
+    margin-left: -25px;
+    color:#CF89DB;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.1em;
+}
+          /* __________ADVERT.HTML__________ */
+
+#advert{
+    background-color: #9993b0;
+}
+.advert_{
+    padding-right: 300px;
+    float: right;
+    margin-top: 100px;
+    margin-left: auto;      
+    margin-right: auto;
+    width: 20em;   
+}
+.input_{ 
     display: flex;
     flex-flow: column wrap;
     width: 40px;  
-    display: inline; 
-        
+    display: inline;      
 }
  h2{
      padding: 10px 10px;
@@ -205,9 +214,11 @@
      height: 20px;
      width: 20px;
  }
- #s{
+ #s{                                
+     margin-top: -5px;
+     margin-left: 310px;
     background-color: #cd88db;
-     border-radius: 15px;
+     border-radius: 30px;
      border: 0;
      font-size: 20px;
      color: #fff;
@@ -215,23 +226,20 @@
     position: absolute;  
  }
  #f{
-     width: 280px;
+    border-radius: 30px;
+     width: 290px;
      border: 0px;
      font-family: 'Poppins', sans-serif;
-    letter-spacing: 0.2em;
     font-size: 20px;
-    
-   
  }
 input{
+    border-radius: 15px;
     width: 280px;
     border: 0;
-    margin-top: 6px;
+    margin: 6px;
     font-size: 20px;
     letter-spacing: 2px;
-    font-family: 'Poppins', sans-serif;
-    letter-spacing: 0.2em;
-     
+    font-family: 'Poppins', sans-serif;  
 }
 :active, :hover, :focus {
     outline: 0;
@@ -239,12 +247,10 @@ input{
 }
 ::placeholder{
     padding: 5px;
-    font-size: 20px;
+    font-size: 17px;
     font-family: 'Poppins', sans-serif;
     letter-spacing: 0.2em;
 }
-
-
 textarea{
     overflow: auto;
     background-size: 100% 1.5em;
@@ -256,7 +262,8 @@ textarea{
     border-radius: 10px;
 }
 .create{
-    margin-left: 220px;
+    margin-top: 6px;
+    margin-left: 120px;
     background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6) no-repeat;
     background-size: cover;
     border: none;
@@ -268,24 +275,53 @@ textarea{
     letter-spacing: 0.05em;
     color: #fff;  
 }
-.addphoto img{
-    width: 100px;
-    height: 100px;
-    border: 1 solid;
+.addpphoto{
+    margin-left: 190px;
+    margin-top: 100px;
+    float: left;
+    width: 500px;
+    height: 1000px;   
 }
-
-
-
-
-
-/* __________SIGNIN__________ */
+#first{
+    margin-top: 10px;
+    margin-left: 109px;
+    width: 240.81px;
+    height: 154.52px;
+}
+#second{
+    margin-top: 10px;
+    margin-left: 52px;
+    width: 196px;
+    height: 150px;
+}
+#third{
+    margin-top: 10px;
+    margin-left: 109px;
+    width: 240.81px;
+    height: 154.52px;
+}
+#fifth{
+    margin-top: 10px;
+    margin-left: 19px;
+    width: 159px;
+    height: 132px;
+}
+#add{ 
+    background-color: #7d6bc5;
+    border-radius: 20px;
+    color: aliceblue;
+    width: 29.24px;
+    height: 28.28px;
+    font-size: 20px; 
+    border: none;
+}
+              /* __________SIGNIN__________ */
 
 .sign_{
     background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/back2%201.png?alt=media&token=81dcaae8-8248-4f32-9ce2-327247beac56) no-repeat;
     background-size: cover;
 }
 .register{
-
     opacity: 0.7;
     border-radius: 40px;
     padding: 30px 30px;
@@ -295,10 +331,8 @@ textarea{
     margin-right: auto;
     width: 25em;
     height: 14em;
-
 }
-#lab1{
-   
+#lab1{ 
     margin-right: 38px;
     color: #fff;
     font-size: 20px;
@@ -312,13 +346,11 @@ textarea{
     font-family: 'Poppins', sans-serif;
     letter-spacing: 0.2em;
 }
-#r{           
-    
+#r{              
     margin-top: 15px;
     width: 305.63px;
     height: 38.64px;
-    border-radius: 32px;
-    
+    border-radius: 32px;   
 }
 .login_{
     display: flex;
@@ -339,6 +371,5 @@ textarea{
     height: 40px;
     border-radius:32px ;
     margin-left: 120px;
-  
-    
+   
 }
