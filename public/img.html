@@ -10,11 +10,16 @@
 </head>
 <body>
     <!-- <label>Image name</label><input type="text" id="namebox"><label id="extlab"></label><br><br> -->
-        <img id="myimg"> <br><br>
-        <button id="selbtn">Select Image</button><br><br>
-        <img id="myimg"> <br><br>
-        <button id="selbtn">Select Image</button><br><br>
-
+        <img id="myimg1" src="trans.png"> <br><br>
+        <button id="selbtn1">Select Image</button><br><br>
+        <img id="myimg2" src="trans.png"> <br><br>
+        <button id="selbtn2" >Select Image</button><br><br>
+        <img id="myimg3" src="trans.png"> <br><br>
+        <button id="selbtn3">Select Image</button><br><br>
+        <img id="myimg4" src="trans.png"> <br><br>
+        <button id="selbtn4">Select Image</button><br><br>
+        <img id="myimg5" src="trans.png"> <br><br>
+        <button id="selbtn5">Select Image</button><br><br>
 
         <button id="upbtn">Upload Image</button>
         <!-- <button id="downbtn" >Retrieve Image</button> -->
@@ -40,103 +45,119 @@
             import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} 
             from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js"
             const db = getDatabase();
-            var files = [];
-            var reader = new FileReader();
+            var files1 = [];
+            var files2 = [];
+            var reader1 = new FileReader();
+            var reader2 = new FileReader();
             let imgtest = new Images(["a"]);
             imgtest.imgarray.pop();
             
-           
+            var myimg1 = document.getElementById("myimg1");
+            var SelBtn1 = document.getElementById("selbtn1");
 
+            var myimg2 = document.getElementById("myimg2");
+            var SelBtn2 = document.getElementById("selbtn2");
 
+            var myimg3 = document.getElementById("myimg3");
+            var SelBtn3 = document.getElementById("sel1btn3");
 
+            var myimg4 = document.getElementById("myimg4");
+            var SelBtn4 = document.getElementById("sel1btn4");
 
-            var namebox = document.getElementById("namebox");
-            //var extlab = document.getElementById("extlab");
-            var myimg = document.getElementById("myimg");
-            // var proglab = document.getElementById("upprogress");
-            var SelBtn = document.getElementById("selbtn");
+            var myimg5 = document.getElementById("myimg5");
+            var SelBtn5 = document.getElementById("sel1btn5");
+
             var UpBtn = document.getElementById("upbtn");
-            // var DownBtn = document.getElementById("downbtn");
+            
 
-            var input = document.createElement('input');
-            input.type = 'file';
+            var input1 = document.createElement('input');
+            input1.type = 'file';
+            var input2 = document.createElement('input');
+            input2.type = 'file';
 
-            input.onchange = e =>{
-                files = e.target.files;
-
-                // var extention = GetFileExt(files[0]);
-                // var name = GetFileName(files[0]);
-                // namebox.value = name;
-                // extlab.innerHTML = extention;
-
-                reader.readAsDataURL(files[0]);
+            input1.onchange = e =>{
+                files1 = e.target.files;
+                reader1.readAsDataURL(files1[0]);
+                
             }
 
-            reader.onload = function(){
-                myimg.src = reader.result;    
+            reader1.onload = function(){
+                myimg1.src = reader1.result;    
+            }
+                
+            SelBtn1.onclick = function(){
+                input1.click();
+            }
+//-----------------
+            input2.onchange = e =>{
+                files2 = e.target.files;
+                reader2.readAsDataURL(files2[0]);
             }
 
-            SelBtn.onclick = function(){
-                input.click();
+            reader2.onload = function(){
+                myimg2.src = reader2.result;    
             }
 
-            // function GetFileExt(file){
-            //     var temp = file.name.split('.');
-            //     var ext = temp.slice(temp.lenght-1,temp.lenght);
-            //     return '.' + ext[0];
-            // }
-
-            // function GetFileName(file){
-            //     var temp = file.name.split('.');
-            //     var fname = temp.slice(0,-1).join('.');
-            //     return fname;
-            // }
+            SelBtn2.onclick = function(){
+                input2.click();
+            }
 
             async function UploadProcess(){
-                var ImgToUpload = files[0];
+                var ImgToUpload1 = files1[0];
+                var ImgToUpload2 = files2[0];
 
-                var ImgName = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
-                imgtest.imgarray.push(ImgName);
-                //alert(imgtest.imgarray[0]);
-                imgtest.imgarray.push("1");
-                imgtest.imgarray.push("2");
-                imgtest.imgarray.push("3");
+                var ImgName1 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+                var ImgName2 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+                var ImgName3 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+                var ImgName4 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+                var ImgName5 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
                 
-                const metaData = {
-                    contentType: ImgToUpload.type
-                }
+                imgtest.imgarray.push(ImgName1);
+                imgtest.imgarray.push(ImgName2);
+                imgtest.imgarray.push(ImgName3);
+                imgtest.imgarray.push(ImgName4);
+                imgtest.imgarray.push(ImgName5);
+                
+                
+                set(ref(db, "advertisementtest/Image/"),{
+                    0: imgtest.imgarray[0],
+                    1: imgtest.imgarray[1],
+                    2: imgtest.imgarray[2],
+                    3: imgtest.imgarray[3],
+                    4: imgtest.imgarray[4]
+
+                })
+                .then(()=>{
+                
+            })
+            .catch((error)=>{
+                alert("unsuccessful, error"+error)
+            });
                 const storage = getStorage();
-                const stroageRef = sRef(storage, "Images/"+ImgName);
-                const UploadTask = uploadBytesResumable(stroageRef, ImgToUpload, metaData);
-                UploadTask.on('state-changed', (snapshot)=>{
+                const storageRef1 = sRef(storage, "Images/"+ImgName1);  
+                const storageRef2 = sRef(storage, "Images/"+ImgName2);          
+                const metaData1 = {
+                    contentType: ImgToUpload1.type
+                }
+                const metaData2 = {
+                    contentType: ImgToUpload2.type
+                }
+                const UploadTask1 = uploadBytesResumable(storageRef1, ImgToUpload1, metaData1);
+                const UploadTask2 = uploadBytesResumable(storageRef2, ImgToUpload2, metaData2);
+                /*UploadTask.on('state-changed', (snapshot)=>{
                     var progess = (snapshot.bytesTransferred / snapshot.totalBytes)*100;
-                    //proglab.innerHTML = "Upload " + progess + "%";   
+                      
                 },
                     (error)=>{
                         alert("error: image not uploaded!");
-                    },
-                    ()=>{
-                        getDownloadURL(UploadTask.snapshot.ref).then((downloadURL)=>{
-                            console.log(downloadURL);
-                        });
                     }
-                );
+                );*/
                 
-                        set(ref(db, "advertisement/images/"+ advnum),{
-                            0: imgtest.imgarray[0],
-                            1: imgtest.imgarray[1],
-                            2: imgtest.imgarray[2],
-                            3: imgtest.imgarray[3]
-                        })
-                        .then(()=>{
-                        alert("Data stored succesfully");
                         
-                    })
-                    .catch((error)=>{
-                        alert("unsuccessful, error"+error)
-                    });
             }
             UpBtn.onclick = UploadProcess;
+
+            
 
           </script>
 </body>

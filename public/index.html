@@ -15,6 +15,7 @@
 <body>
 <!--------------------------------------------------Parametrs of advertisement---------->
   <label>Area</label> <input id="areabox" type="number"><br><br>
+
   <label>Currency</label>
   <select id="Curbox">
     <option value="₴"></option>
@@ -22,38 +23,40 @@
     <option value="€"></option>
     <option value="£"></option>
   </select><br><br>
+  
  <label>Description</label><input id='descripbox' type="text"><br><br>
  <label>Floor</label><input id='floorNumbox' type="number"><br><br>
  <label>Location</label><input id='locbox' type="text"><br><br>
  <label>Name</label><input id='nameStbox' type="text"><br><br>
  <label>Number of rooms</label><input id="numofRoomsbox" type="number"><br><br>
  <label>Price</label><input id="pricebox" type="number"><br><br>
+
  <label>Volunteering</label>
  <select id="volbox">
   <option value="true"></option>
   <option value="false"></option>
 </select><br><br>
+
 <label>Name</label><input id='creatnamebox' type="text"><br><br>
 <label>Phonenumber</label><input id='phonebox' type="text"><br><br>
-<!--<label>Advertisement number</label><input id="numOfadvbox" type="number"><br><br>-->
 
-  
  <hr>
 
  <button id="Insbtn">Insert</button>
  <button id="Selbtn">Select</button>
  <button id="Updbtn">Update</button>
  <button id="Delbtn">Delete</button><br><br><br><br>
-<img id="myimg1">
-<img id="myimg2">
-<img id="myimg3">
-<img id="myimg4">
-<img id="myimg5"><br>
-<button id="selbtn1">Select Image</button>
-<button id="selbtn2">Select Image</button>
-<button id="selbtn3">Select Image</button>
-<button id="selbtn4">Select Image</button>
-<button id="selbtn5">Select Image</button>
+
+ <img id="myimg1" src="trans.png"> <br><br>
+  <button id="selbtn1">Select Image</button><br><br>
+  <img id="myimg2" src="trans.png"> <br><br>
+  <button id="selbtn2" >Select Image</button><br><br>
+  <img id="myimg3" src="trans.png"> <br><br>
+  <button id="selbtn3">Select Image</button><br><br>
+  <img id="myimg4" src="trans.png"> <br><br>
+  <button id="selbtn4">Select Image</button><br><br>
+  <img id="myimg5" src="trans.png"> <br><br>
+  <button id="selbtn5">Select Image</button><br><br>
 
 <!--------------------------------------------------JavaScript functions and libraries---------->
 <script scr="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
@@ -103,8 +106,114 @@
   var delBtn = document.getElementById("Delbtn");
   var advnum;
 
+  var files1 = ["trans.png"];
+  var files2 = ["trans.png"];
+  var files3 = ["trans.png"];
+  var files4 = ["trans.png"];
+  var files5 = ["trans.png"];
+
+  var reader1 = new FileReader();
+  var reader2 = new FileReader();
+  var reader3 = new FileReader();
+  var reader4 = new FileReader();
+  var reader5 = new FileReader();
+
+  var myimg1 = document.getElementById("myimg1");
+  var SelBtn1 = document.getElementById("selbtn1");
+
+  var myimg2 = document.getElementById("myimg2");
+  var SelBtn2 = document.getElementById("selbtn2");
+
+  var myimg3 = document.getElementById("myimg3");
+  var SelBtn3 = document.getElementById("selbtn3");
+
+  var myimg4 = document.getElementById("myimg4");
+  var SelBtn4 = document.getElementById("selbtn4");
+
+  var myimg5 = document.getElementById("myimg5");
+  var SelBtn5 = document.getElementById("selbtn5");
+
   
-  let adv = new Advertisement(0, "₴", "lorem", 0, "lorem", "lorem", 0, 0, false, "Lorem", 0);
+  let adv = new Advertisement(0, "₴", "lorem", 0, "lorem", "lorem", 0, 0, false, "Lorem", 0, ["a"]);
+  adv.imgarray.pop();
+
+  var input1 = document.createElement('input');
+  input1.type = 'file';
+  var input2 = document.createElement('input');
+  input2.type = 'file';
+  var input3 = document.createElement('input');
+  input3.type = 'file';
+  var input4 = document.createElement('input');
+  input4.type = 'file';
+  var input5 = document.createElement('input');
+  input5.type = 'file';
+
+  //----------------------------------Image selection
+  input1.onchange = e =>{
+  files1 = e.target.files;
+  reader1.readAsDataURL(files1[0]);
+  
+}
+
+reader1.onload = function(){
+  myimg1.src = reader1.result;    
+}
+  
+SelBtn1.onclick = function(){
+  input1.click();
+}
+//-----------------
+input2.onchange = e =>{
+  files2 = e.target.files;
+  reader2.readAsDataURL(files2[0]);
+}
+
+reader2.onload = function(){
+  myimg2.src = reader2.result;    
+}
+
+SelBtn2.onclick = function(){
+  input2.click();
+}
+//--------
+input3.onchange = e =>{
+  files3 = e.target.files;
+  reader3.readAsDataURL(files3[0]);
+}
+
+reader3.onload = function(){
+  myimg3.src = reader3.result;    
+}
+
+SelBtn3.onclick = function(){
+  input3.click();
+}
+//-----------
+input4.onchange = e =>{
+  files4 = e.target.files;
+  reader4.readAsDataURL(files4[0]);
+}
+
+reader4.onload = function(){
+  myimg4.src = reader4.result;    
+}
+
+SelBtn4.onclick = function(){
+  input4.click();
+}
+//--------
+input5.onchange = e =>{
+  files5 = e.target.files;
+  reader5.readAsDataURL(files5[0]);
+}
+
+reader5.onload = function(){
+  myimg5.src = reader5.result;    
+}
+
+SelBtn5.onclick = function(){
+  input5.click();
+}
 
   //-----------------------------------------------------functions
   function InsertData(){
@@ -118,6 +227,54 @@
     adv.setnumberOfRooms(numofRoomsbox.value);
     adv.setprice(pricebox.value);
     adv.setvolunteering(volbox.value);
+    var ImgToUpload1 = files1[0];
+    var ImgToUpload2 = files2[0];
+    var ImgToUpload3 = files3[0];
+    var ImgToUpload4 = files4[0];
+    var ImgToUpload5 = files5[0];
+    var ImgName1 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+    var ImgName2 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+    var ImgName3 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+    var ImgName4 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+    var ImgName5 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+    adv.imgarray.push(ImgName1);
+    adv.imgarray.push(ImgName2);
+    adv.imgarray.push(ImgName3);
+    adv.imgarray.push(ImgName4);
+    adv.imgarray.push(ImgName5);
+    const storage = getStorage();
+    const storageRef1 = sRef(storage, "Images/"+ImgName1);  
+    const storageRef2 = sRef(storage, "Images/"+ImgName2); 
+    const storageRef3 = sRef(storage, "Images/"+ImgName3); 
+    const storageRef4 = sRef(storage, "Images/"+ImgName4); 
+    const storageRef5 = sRef(storage, "Images/"+ImgName5); 
+
+    const metaData1 = {
+        contentType: ImgToUpload1.type
+    }
+
+    const metaData2 = {
+        contentType: ImgToUpload2.type
+    }
+
+    const metaData3 = {
+        contentType: ImgToUpload3.type
+    }
+
+    const metaData4 = {
+        contentType: ImgToUpload4.type
+    }
+
+    const metaData5 = {
+        contentType: ImgToUpload5.type
+    }
+
+    const UploadTask1 = uploadBytesResumable(storageRef1, ImgToUpload1, metaData1);
+    const UploadTask2 = uploadBytesResumable(storageRef2, ImgToUpload2, metaData2);
+    const UploadTask3 = uploadBytesResumable(storageRef3, ImgToUpload3, metaData3);
+    const UploadTask4 = uploadBytesResumable(storageRef4, ImgToUpload4, metaData4);
+    const UploadTask5 = uploadBytesResumable(storageRef5, ImgToUpload5, metaData5);
+      
     
     set(ref(db, "advertisement/"+ advnum),{
         area: parseInt(adv.getarea()),
@@ -128,7 +285,6 @@
         name: adv.getname(),
         numberOfRooms: parseInt(adv.getnumberOfRooms()),
         price: parseInt(adv.getprice()),
-
         volunteering: Boolean(adv.getvolunteering())  
     })
     .then(()=>{
@@ -139,90 +295,101 @@
       name: adv.getcrname(),
       phoneNumber: adv.getphoneNumber()
     })
+    set(ref(db, "advertisement/" + advnum +"/images/"),{
+        0: adv.imgarray[0],
+        1: adv.imgarray[1],
+        2: adv.imgarray[2],
+        3: adv.imgarray[3],
+        4: adv.imgarray[4]
+      })
   })
   .catch((error)=>{
     alert("unsuccessful, error"+error)
   });
 }
 
-function SelectData(){
+
+
+// function SelectData(){
   
-  const dbref = ref(db);
-  get(child(dbref, "advertisement/52831441/")).then((snapshot)=>{
-      if(snapshot.exists()){
-        adv.setarea(snapshot.val().area);
-        adv.setcurrency(snapshot.val().currency);
-        adv.setdescription(snapshot.val().description);
-        adv.setfloor(snapshot.val().floor);
-        adv.setlocation(snapshot.val().location);
-        adv.setname(snapshot.val().name);
-        adv.setnumberOfRooms(snapshot.val().numberOfRooms);
-        adv.setprice(snapshot.val().price);
-        adv.setvolunteering(snapshot.val().volunteering);
+//   const dbref = ref(db);
+//   get(child(dbref, "advertisement/52831441/")).then((snapshot)=>{
+//       if(snapshot.exists()){
+//         adv.setarea(snapshot.val().area);
+//         adv.setcurrency(snapshot.val().currency);
+//         adv.setdescription(snapshot.val().description);
+//         adv.setfloor(snapshot.val().floor);
+//         adv.setlocation(snapshot.val().location);
+//         adv.setname(snapshot.val().name);
+//         adv.setnumberOfRooms(snapshot.val().numberOfRooms);
+//         adv.setprice(snapshot.val().price);
+//         adv.setvolunteering(snapshot.val().volunteering);
 
-        areabox.value = adv.getarea(),
-        Curbox.value =  adv.getcurrency(),
-        descripbox.value = adv.getdescription(),
-        floorNumbox.value =  adv.getfloor(),
-        locbox.value = adv.getlocation(),
-        nameStbox.value = adv.getname(),
-        numofRoomsbox.value = adv.getnumberOfRooms(),
-        pricebox.value = adv.getprice(),
-        volbox.value = adv.getvolunteering();
+//         areabox.value = adv.getarea(),
+//         Curbox.value =  adv.getcurrency(),
+//         descripbox.value = adv.getdescription(),
+//         floorNumbox.value =  adv.getfloor(),
+//         locbox.value = adv.getlocation(),
+//         nameStbox.value = adv.getname(),
+//         numofRoomsbox.value = adv.getnumberOfRooms(),
+//         pricebox.value = adv.getprice(),
+//         volbox.value = adv.getvolunteering();
 
-        get(child(dbref, "advertisement/52831441/creator/")).then((snapshot)=>{
-          adv.setcrname(snapshot.val().name);
-          adv.setphoneNumber(snapshot.val().phoneNumber);
-          creatnamebox.value = adv.getcrname(),
-          phonebox.value = adv.getphoneNumber()
-        })
-      }
-      else{
-        alert("No data found");
-      }
-  }).catch((error)=>{
-    alert("unsuccessful, error"+error);
-  });
-}
+//         get(child(dbref, "advertisement/52831441/creator/")).then((snapshot)=>{
+//           adv.setcrname(snapshot.val().name);
+//           adv.setphoneNumber(snapshot.val().phoneNumber);
+//           creatnamebox.value = adv.getcrname(),
+//           phonebox.value = adv.getphoneNumber()
+//         })
+//       }
+//       else{
+//         alert("No data found");
+//       }
+//   }).catch((error)=>{
+//     alert("unsuccessful, error"+error);
+//   });
+// }
 
-function UpdateData(){
-  update(ref(db, "advertisement/"+ numOfadvbox.value),{
-        area: parseInt(areabox.value),
-        currency: curbox.value,
-        description: descripbox.value,
-        floor: parseInt(floorNumbox.value),
-        location: locbox.value,
-        name: nameStbox.value,
-        numberOfRooms: parseInt(numofRoomsbox.value),
-        price: parseInt(pricebox.value),
-        volunteering: Boolean(volbox.value)
-    })
-    .then(()=>{
-      alert("Data update succesfully"); 
-      update(ref(db, "advertisement/"+ numOfadvbox.value  + "/creator/"),{
-      name: creatnamebox.value,
-      phoneNumber: phonebox.value
-    })
-  })
-  .catch((error)=>{
-    alert("unsuccessful, error"+error)
-  });
-}
-function DeleteData(){
-  remove(ref(db, "advertisement/"+ numOfadvbox.value))
-    .then(()=>{
-      alert("Data removed succesfully"); 
+// function UpdateData(){
+//   update(ref(db, "advertisement/"+ numOfadvbox.value),{
+//         area: parseInt(areabox.value),
+//         currency: curbox.value,
+//         description: descripbox.value,
+//         floor: parseInt(floorNumbox.value),
+//         location: locbox.value,
+//         name: nameStbox.value,
+//         numberOfRooms: parseInt(numofRoomsbox.value),
+//         price: parseInt(pricebox.value),
+//         volunteering: Boolean(volbox.value)
+//     })
+//     .then(()=>{
+//       alert("Data update succesfully"); 
+//       update(ref(db, "advertisement/"+ numOfadvbox.value  + "/creator/"),{
+//       name: creatnamebox.value,
+//       phoneNumber: phonebox.value
+//     })
+//   })
+//   .catch((error)=>{
+//     alert("unsuccessful, error"+error)
+//   });
+// }
+// function DeleteData(){
+//   remove(ref(db, "advertisement/"+ numOfadvbox.value))
+//     .then(()=>{
+//       alert("Data removed succesfully"); 
       
-  })
-  .catch((error)=>{
-    alert("unsuccessful, error"+error)
-  });
-}
+//   })
+//   .catch((error)=>{
+//     alert("unsuccessful, error"+error)
+//   });
+// }
+
+
 
 insBtn.addEventListener('click', InsertData);
-selBtn.addEventListener('click', SelectData); 
-updBtn.addEventListener('click', UpdateData);
-delBtn.addEventListener('click', DeleteData);
+// selBtn.addEventListener('click', SelectData); 
+// updBtn.addEventListener('click', UpdateData);
+// delBtn.addEventListener('click', DeleteData);
 </script>
 
 </body>

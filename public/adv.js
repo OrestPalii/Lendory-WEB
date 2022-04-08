@@ -1,5 +1,5 @@
 class Advertisement{
-    constructor(area, currency, description, floor, location, name, numberOfRooms, price, volunteering, crname, phoneNumber) {
+    constructor(area, currency, description, floor, location, name, numberOfRooms, price, volunteering, crname, phoneNumber, imgarray=[]) {
        this.area = area;
        this.currency = currency;
        this.description = description;
@@ -11,6 +11,7 @@ class Advertisement{
        this.volunteering = volunteering; 
        this.crname = crname; 
        this.phoneNumber = phoneNumber; 
+       this.imgarray = imgarray;
    }
    setarea(newArea){
     this.area=newArea;
