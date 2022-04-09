@@ -24,8 +24,10 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
         name: name,
         numberOfRooms: rooms,
         price: rent,
-        volunteering: vol
+        volunteering: vol   
+         
     })
+    
 }  
 arr = []; 
 var adv;
