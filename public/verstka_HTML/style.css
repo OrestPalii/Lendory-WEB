@@ -21,8 +21,8 @@
     margin-left: 100px;
  
 }
- .nav{
-     margin-right: 100px;
+.nav{
+    margin-right: 100px;
  }
 .nav a{
     font-size: 18px;
@@ -32,57 +32,69 @@
     color: azure;
     margin: 0 30px;
     transition: color 0.2s linear;
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Poppins', sans-serif;
 }
+
 .nav a:hover{
     color:#7a6daf;
 }
 .sideblock{
     padding-top: 20px;
     margin-top: 157px;
-    margin-right: -59px;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/Rectangle%201.png?alt=media&token=2008e9a5-67de-4d44-8cfd-d3aa365aae7b) no-repeat;
+    background-size:cover ;
     float: right;
     text-align: center;
     width: 763px;
-    height: 300px;
-    background-color: #fff;
-    border-radius: 70px; 
-    opacity: 0.7; 
+    height: 400px;
 }
 #r{
+    text-transform: uppercase;
     font-weight: 300;
-    font-size: 30px;
+    font-size: 32px;
     line-height: 45px;
     letter-spacing: 0.2em;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     color: #A3BBD8;
 }
-.lend_descrr{
-    
+.lend_descr{
     margin-left: auto;
     margin-right: auto;
     width: 405px;
     height: 200px;
+    text-align: left;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 300;
     font-size: 20px;
     line-height: 30px;
     letter-spacing: 0.1em;
-
-color: #9485D8;
+    color: #9485D8;
+}
+#but_advert{
+    margin-top: 20px;
+    padding: 5px 10px;
+    border: none;
+    background: #9485D8;
+}
+#but_advert a{
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+   
 }
   
                /* головна фотка */
 .intro{
- 
     flex-direction: column;
     justify-content: center;
     width: 100%;
     height: 100vh;
-     background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/3.jpg?alt=media&token=854bd151-65f8-4f01-9a5f-517a3d106447) no-repeat;  
+     background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/3.jpg?alt=media&token=4f90121d-2462-4760-866b-c472606e3d41) no-repeat;  
     -webkit-background-size: cover;
     background-size: cover;
+   
 }
  
 
@@ -110,23 +122,6 @@ button:hover {  /* тут я викликаю цю анімацію*/
     background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/background.png?alt=media&token=63374c06-6430-4525-aace-e6f930457b27) no-repeat;
     background-size: cover;      
 }
-.input-container{           
-    padding-top: 50px;
-    width: 300px;
-    height: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 100px;
-    }
-.input-field{
-    color: #7a6daf;  
-    padding: 10px 10px;
-    border-radius: 20px;
-    font-size: 14px;
-} 
-.input-field:focus {
-    border: 2px solid dodgerblue;
- }
  .recomandation{
      display: flex;
  }
@@ -197,7 +192,6 @@ button:hover {  /* тут я викликаю цю анімацію*/
     font-weight: 500;
     font-size: 19px;
     letter-spacing: 0.1em;
-
 }
           /* __________ADVERT.HTML__________ */
 
@@ -269,7 +263,7 @@ input{
 }
 ::placeholder{
     padding: 5px;
-    font-size: 17px;
+    font-size: 14px;
     font-family: 'Poppins', sans-serif;
     letter-spacing: 0.2em;
 }
