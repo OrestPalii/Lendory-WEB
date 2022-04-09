@@ -14,20 +14,36 @@ var firebaseConfig = {
 
 function setdata(name, description, location, floor, rooms, area, rent, currency, vol){
     var numb = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
-    firebase.database().ref("/").child("advertisement/" + numb + "/").update({
-        area: area,
-        currency: currency,
-        description: description,
-        floor: floor,
-        hashnumber: numb,
-        location: location,
-        name: name,
-        numberOfRooms: rooms,
-        price: rent,
-        volunteering: vol   
-         
-    })
-    
+    if(vol == 1){vol = true;}
+    else{vol = false;}
+    var isempty = false;
+    if(name == ""){isempty = true}
+    if(description == ""){isempty = true}
+    if(location == ""){isempty = true}
+    if(floor == ""){isempty = true}
+    if(rooms == ""){isempty = true}
+    if(area == ""){isempty = true}
+    if(rent == ""){isempty = true}
+    if(!isempty){
+        firebase.database().ref("/").child("advertisement/" + numb + "/").update({
+            area: area,
+            currency: currency,
+            description: description,
+            floor: floor,
+            hashnumber: numb,
+            location: location,
+            name: name,
+            numberOfRooms: rooms,
+            price: rent,
+            volunteering: vol    
+        })
+        firebase.database().ref("/").child("advertisement/" + numb + "/creator/").update({
+            name:"No12",
+            phoneNumber:"+380966782978"
+        })
+    }else{
+        alert("Заповніть всі поля!");
+    }
 }  
 arr = []; 
 var adv;
