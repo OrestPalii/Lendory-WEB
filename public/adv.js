@@ -101,4 +101,8 @@ class Advertisement{
         return this.phoneNumber;
     }
 
+    Alertfun(){
+        alert("Я даун");
+    }
+
 }

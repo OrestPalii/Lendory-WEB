@@ -86,20 +86,7 @@
   const db = getDatabase();
   
   //-------------------------------------------Variables
-  var area = document.getElementById("areabox");
-  var curbox = document.getElementById("Curbox")
-  var description = document.getElementById("descripbox");
-  var floor = document.getElementById("floorNumbox");
-  var location = document.getElementById("locbox");
-  var name = document.getElementById("nameStbox");
-  var numofrooms = document.getElementById("numofRoomsbox");
-  var price = document.getElementById("pricebox");
-  var volunteering = document.getElementById("volbox");
-  var creatname = document.getElementById("creatnamebox");
-  var phonenumber = document.getElementById("phonebox");
-  var numOfadv = document.getElementById('numOfadvbox')
-  
-
+ 
   var insBtn = document.getElementById("Insbtn");
   var selBtn = document.getElementById("Selbtn");
   var updBtn = document.getElementById("Updbtn");
@@ -386,7 +373,7 @@ SelBtn5.onclick = function(){
 
 
 
-insBtn.addEventListener('click', InsertData);
+insBtn.addEventListener('click', adv.Alertfun);
 // selBtn.addEventListener('click', SelectData); 
 // updBtn.addEventListener('click', UpdateData);
 // delBtn.addEventListener('click', DeleteData);

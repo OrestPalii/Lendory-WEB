@@ -12,7 +12,7 @@
   <label>Area</label> <input id="areabox" type="number"><br><br>
   <label>Floor</label><input id='floorNumbox' type="number"><br><br>
   <button id="Insbtn">Insert</button>
- <button id="Selbtn">Select</button>
+ 
 
 
   <script scr="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
@@ -38,50 +38,10 @@
   
   const db = getDatabase();
   
-  var area = document.getElementById("areabox");
-  var floor = document.getElementById("floorNumbox");
+  var test = new Server();
   var insBtn = document.getElementById("Insbtn");
-  var selBtn = document.getElementById("Selbtn");
-  var advnum;
-  
-  let advtest1 = new Advtest(0, 0);
-  function InsertData(){
-    advnum = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
-    advtest1.setarea(areabox.value);
-    advtest1.setfloor(floorNumbox.value);
-    set(ref(db, "advertisementtest/"+ "/test1/" + advnum),{
-      area: advtest1.getarea(),
-      floor: advtest1.getfloor()
+insBtn.addEventListener('click', test.Alertfun);
 
-    })
-    .then(()=>{
-      alert("Data stored succesfully"); 
-      
-  })
-  .catch((error)=>{
-    alert("unsuccessful, error"+error)
-  });
-  //advtest1.area(areabox.value);
-}
-
-function SelectData(){
-  const dbref = ref(db);
-  get(child(dbref, "advertisementtest/"+ "/test1/797423157/advtest1/")).then((snapshot)=>{
-      if(snapshot.exists()){
-        advtest1.setarea(snapshot.val().area);
-        advtest1.setfloor(snapshot.val().floor);
-        areabox.value = advtest1.getarea();
-        floorNumbox.value = advtest1.getfloor();
-      }
-      else{
-        alert("No data found");
-      }
-  }).catch((error)=>{
-    alert("unsuccessful, error"+error);
-  });
-}
-insBtn.addEventListener('click', InsertData);
-selBtn.addEventListener('click', SelectData);
   </script>
   
 </body>
