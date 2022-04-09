@@ -6,6 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADVERT</title>
     <link rel="stylesheet" href="style.css">
+
+    <!--firebase-->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+
+    <!--bootsrap-->
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <script src="codejs/serverlogic.js"></script>
 </head>
 <body id="advert">
     <header class="header">
@@ -88,7 +101,7 @@
                                                 <textarea name="" id="" cols="43" rows="7" placeholder="Additional information"></textarea>
                                             </div>  
                                                 
-                                            <button class="create">Cтворити</button>                                   
+                                            <button class="create", id="create", onclick="setdata('sdfdsfdsfdsfdsf')">Cтворити</button>                                   
              </section>
 </body>
 </html>

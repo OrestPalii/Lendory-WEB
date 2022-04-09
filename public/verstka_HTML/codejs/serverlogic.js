@@ -12,9 +12,19 @@ var firebaseConfig = {
   var score = 25;
 
 
-function save(scoring){
-    firebase.database().ref("/").child("score/").update({
-        score: scoring
+function setdata(name, description, location, floor, rooms, area, rent, currency, vol){
+    var numb = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+    firebase.database().ref("/").child("advertisement/" + numb + "/").update({
+        area: area,
+        currency: currency,
+        description: description,
+        floor: floor,
+        hashnumber: numb,
+        location: location,
+        name: name,
+        numberOfRooms: rooms,
+        price: rent,
+        volunteering: vol
     })
 }  
 arr = []; 

@@ -114,7 +114,7 @@
      }
      
 button:hover {  /* тут я викликаю цю анімацію*/
-    animation: jump 1s;
+    /* animation: jump 1s; */
  }
 .main{
     width: 100%;
