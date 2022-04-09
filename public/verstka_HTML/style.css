@@ -1,0 +1,391 @@
+             /* Опис хедера */
+.header{
+   padding: 5px 0px;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left:0;
+    right: 0;
+    background-color: black;
+    z-index: 1000; 
+ 
+ } 
+.header_inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header_logo{
+    margin-left: 100px;
+ 
+}
+.nav{
+    margin-right: 100px;
+ }
+.nav a{
+    font-size: 18px;
+    vertical-align: top;
+    display: inline-block;
+    text-decoration: none;
+    color: azure;
+    margin: 0 30px;
+    transition: color 0.2s linear;
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav a:hover{
+    color:#7a6daf;
+}
+.sideblock{
+    padding-top: 20px;
+    margin-top: 157px;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/Rectangle%201.png?alt=media&token=2008e9a5-67de-4d44-8cfd-d3aa365aae7b) no-repeat;
+    background-size:cover ;
+    float: right;
+    text-align: center;
+    width: 763px;
+    height: 400px;
+}
+#r{
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 45px;
+    letter-spacing: 0.2em;
+    margin-bottom: 20px;
+    color: #A3BBD8;
+}
+.lend_descr{
+    margin-left: auto;
+    margin-right: auto;
+    width: 405px;
+    height: 200px;
+    text-align: left;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0.1em;
+    color: #9485D8;
+}
+#but_advert{
+    margin-top: 20px;
+    padding: 5px 10px;
+    border: none;
+    background: #9485D8;
+}
+#but_advert a{
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+   
+}
+  
+               /* головна фотка */
+.intro{
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+     background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/3.jpg?alt=media&token=4f90121d-2462-4760-866b-c472606e3d41) no-repeat;  
+    -webkit-background-size: cover;
+    background-size: cover;
+   
+}
+ 
+
+     @keyframes jump {          /*анімація підстрибування*/ 
+         0%, 20%, 60%, 100% {
+             transform: translateY(0);
+             transform: translateY(0);
+         }
+         40% {
+             transform: translateY(-10px);
+             transform: translateY(-10px);
+         }
+         80% {
+             transform: translateY(-10px);
+             transform: translateY(-10px);
+         }
+     }
+     
+button:hover {  /* тут я викликаю цю анімацію*/
+    animation: jump 1s;
+ }
+.main{
+    width: 100%;
+    height: 100vh;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/background.png?alt=media&token=63374c06-6430-4525-aace-e6f930457b27) no-repeat;
+    background-size: cover;      
+}
+ .recomandation{
+     display: flex;
+ }
+.mainphoto_{
+    margin-top: 50px;
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    width: 420px;
+    height: 542px;  
+}
+#photo_{
+    float: right;
+    border-radius: 30px;
+    width: 420.17px;
+    height: 326.57px;
+    position: relative;
+    z-index: 1000;
+}
+.desc{
+    position: relative;
+    text-align: center;
+    margin-top: -89px;
+    width: 420px;
+    height: 222.41px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 35px;
+    z-index:1 ;
+}
+.pre_description{
+    text-align: center;
+    margin-left: 28px;
+    padding: 10px;
+    margin-top: 65px;
+    border-radius: 30px;
+    width: 122.18px;
+    height: 117.09px;
+    float: left;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6) no-repeat;
+    background-size: cover; 
+}
+.description{
+    text-align: left;
+    position: relative;
+    padding-top: 70px;
+    padding-left: 15px;
+    float: right;
+    color: #fff;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6) no-repeat;
+    background-size: cover;
+    width: 240.73px;
+    height: 222.41px;
+    border-radius: 35px;
+    z-index: 1;
+}
+#count_photo{ 
+    position: relative;
+    margin-top: 10px;
+    font-size: 50px;
+    color: #fff;
+    z-index: 200;
+}
+#p{
+    padding-left: 5px;
+    text-transform: uppercase;
+    margin-top: 170px;
+    color: #CF89DB;
+    font-weight: 500;
+    font-size: 19px;
+    letter-spacing: 0.1em;
+}
+          /* __________ADVERT.HTML__________ */
+
+#advert{
+    background-color: #9993b0;
+}
+.advert_{
+    padding-right: 300px;
+    float: right;
+    margin-top: 100px;
+    margin-left: auto;      
+    margin-right: auto;
+    width: 20em;   
+}
+.input_{ 
+    display: flex;
+    flex-flow: column wrap;
+    width: 40px;  
+    display: inline;      
+}
+ h2{
+     padding: 10px 10px;
+     color: #FFFFFF;
+     margin: 3px ;
+     background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6) no-repeat;
+     background-size: cover;
+     width: 320px;
+     border-radius: 20px;  
+     padding-left: 15px; 
+     font-family: 'Poppins', sans-serif; 
+     font-size: 19px;
+     letter-spacing: 0.05em;
+ }
+ #img1{
+     height: 20px;
+     width: 20px;
+ }
+ #s{                                
+     margin-top: -5px;
+     margin-left: 310px;
+    background-color: #cd88db;
+     border-radius: 30px;
+     border: 0;
+     font-size: 20px;
+     color: #fff;
+     padding: 2px 2px;
+    position: absolute;  
+ }
+ #f{
+     margin: 3px;
+    border-radius: 30px;
+     width: 290px;
+     border: 0px;
+     font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+ }
+input{
+    border-radius: 15px;
+    width: 280px;
+    border: 0;
+    margin: 6px;
+    font-size: 20px;
+    letter-spacing: 2px;
+    font-family: 'Poppins', sans-serif;  
+}
+:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
+::placeholder{
+    padding: 5px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.2em;
+}
+textarea{
+    padding: 5px;
+    overflow: auto;
+    background-size: 100% 1.5em;
+    text-indent: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    resize: vertical;
+    border-color: #7a6daf;
+    border-radius: 10px;
+}
+.create{
+    margin-top: 6px;
+    margin-left: 120px;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6) no-repeat;
+    background-size: cover;
+    border: none;
+    border-radius: 20px;
+    width: 120px;
+    height: 46.2px;
+    font-family: 'Poppins', sans-serif; 
+    font-size: 19px;
+    letter-spacing: 0.05em;
+    color: #fff;  
+}
+.addpphoto{
+    margin-left: 190px;
+    margin-top: 100px;
+    float: left;
+    width: 500px;
+    height: 1000px;   
+}
+#first{
+    margin-top: 10px;
+    margin-left: 109px;
+    width: 240.81px;
+    height: 154.52px;
+}
+#second{
+    margin-top: 10px;
+    margin-left: 52px;
+    width: 196px;
+    height: 150px;
+}
+#third{
+    margin-top: 10px;
+    margin-left: 109px;
+    width: 240.81px;
+    height: 154.52px;
+}
+#fifth{
+    margin-top: 10px;
+    margin-left: 19px;
+    width: 159px;
+    height: 132px;
+}
+#add{ 
+    background-color: #7d6bc5;
+    border-radius: 20px;
+    color: aliceblue;
+    width: 29.24px;
+    height: 28.28px;
+    font-size: 20px; 
+    border: none;
+}
+              /* __________SIGNIN__________ */
+
+.sign_{
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/back2%201.png?alt=media&token=81dcaae8-8248-4f32-9ce2-327247beac56) no-repeat;
+    background-size: cover;
+}
+.register{
+    opacity: 0.7;
+    border-radius: 40px;
+    padding: 30px 30px;
+    background-color: #7d6bc5;
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25em;
+    height: 14em;
+}
+#lab1{ 
+    margin-right: 38px;
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.2em;
+}
+#lab2{
+    margin-right: 12px;
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.2em;
+}
+#r{              
+    margin-top: 15px;
+    width: 305.63px;
+    height: 38.64px;
+    border-radius: 32px;   
+}
+.login_{
+    display: flex;
+    align-items: center;
+}
+.password{
+    display: flex;
+    align-items: center;
+}
+.signIn{
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.2em;
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #7a6daf;
+    width: 140px;
+    height: 40px;
+    border-radius:32px ;
+    margin-left: 120px;
+}
