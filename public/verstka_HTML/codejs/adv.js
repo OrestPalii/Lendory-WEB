@@ -100,9 +100,11 @@ class Advertisement{
     getphoneNumber(){
         return this.phoneNumber;
     }
+}
 
-    
-
-    
-
+class Account{
+    constructor(phoneNumber, password){
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+    }
 }

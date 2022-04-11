@@ -317,6 +317,12 @@ textarea{
     width: 240.81px;
     height: 154.52px;
 }
+#fourth{
+    margin-top: 10px;
+    margin-left: 19px;
+    width: 159px;
+    height: 132px;
+}
 #fifth{
     margin-top: 10px;
     margin-left: 19px;
@@ -377,7 +383,7 @@ textarea{
     display: flex;
     align-items: center;
 }
-.signIn{
+#signIn{
     font-family: 'Poppins', sans-serif;
     letter-spacing: 0.2em;
     margin-top: 30px;
@@ -385,6 +391,19 @@ textarea{
     font-weight: 600;
     color: #7a6daf;
     width: 140px;
+    height: 40px;
+    border-radius:32px ;
+    margin-left: 120px;
+}
+
+#signUp{
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.2em;
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #7a6daf;
+    width: 250px;
     height: 40px;
     border-radius:32px ;
     margin-left: 120px;
