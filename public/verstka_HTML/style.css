@@ -38,6 +38,35 @@
 .nav a:hover{
     color:#7a6daf;
 }
+.text-field__group {
+    display: flex;
+}
+        /* поле пошуку*/
+.text-field__btn {
+    width: 36px;
+    height: 36px;
+    color: #fff;
+    background-color:  #9485D8;
+    border: 1px solid #9485D8;
+    border-radius: 20px;
+    transition: background-color .15s ease-in-out;
+}
+.text-field__group .text-field__input {
+    margin-bottom: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    position: relative;
+    z-index: 2;
+}
+.text-field__group .text-field__btn {
+    margin-bottom: 5px;
+    position: relative;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right-width: 0;
+}
 .sideblock{
     padding-top: 20px;
     margin-top: 157px;
@@ -48,19 +77,49 @@
     width: 763px;
     height: 400px;
 }
-#r{
+#lendory_text{
     text-transform: uppercase;
     font-weight: 300;
     font-size: 32px;
     line-height: 45px;
     letter-spacing: 0.2em;
+    margin-top: 15px;
     margin-bottom: 20px;
     color: #A3BBD8;
+    animation-duration: 3s; 
+    animation-name: slidein;
+}
+#about_lend{
+    margin: 2px;
+    animation-duration: 3s; 
+    animation-name: slidein;
+}
+@keyframes slidein 
+{
+    from {
+    margin-left: 100%;
+    width: 300%;
+    }
+    to {
+    margin-left: 0%;
+    width: 100%;
+    }
+}
+@keyframes slidein1 
+{
+    from {
+    margin-left: 100%;
+    width: 300%;
+    }
+    to {
+    margin-left: 0%;
+    width: 49.5%;
+    }
 }
 .lend_descr{
     margin-left: auto;
     margin-right: auto;
-    width: 405px;
+    width: 500px;
     height: 200px;
     text-align: left;
     font-family: 'Poppins';
@@ -72,17 +131,20 @@
     color: #9485D8;
 }
 #but_advert{
+    animation-duration: 3s;
+    animation-name: slidein1;
     margin-top: 20px;
-    padding: 5px 10px;
+    padding: 10px 10px;
     border: none;
     background: #9485D8;
+    border-radius: 30px;
 }
 #but_advert a{
     text-decoration: none;
     color: #fff;
+    font-size: 25px;
     letter-spacing: 0.1em;
-    font-weight: 500;
-   
+    font-weight: 500; 
 }
   
                /* головна фотка */
@@ -114,7 +176,12 @@
      }
      
 button:hover {  /* тут я викликаю цю анімацію*/
-    animation: jump 1s;
+    /* animation: jump 1s; */
+ }
+ button:active{
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    transform: translateY(3px);
+    transform: translateX(2px);
  }
 .main{
     width: 100%;
@@ -229,33 +296,33 @@ button:hover {  /* тут я викликаю цю анімацію*/
      height: 20px;
      width: 20px;
  }
- #s{                                
-     margin-top: -5px;
-     margin-left: 310px;
+ #currency{                                
+    margin-top: 6px;
+    margin-left: 10px;
     background-color: #cd88db;
-     border-radius: 30px;
-     border: 0;
-     font-size: 20px;
-     color: #fff;
-     padding: 2px 2px;
-    position: absolute;  
- }
- #f{
-     margin: 3px;
     border-radius: 30px;
-     width: 290px;
-     border: 0px;
-     font-family: 'Poppins', sans-serif;
+    border: 0;
     font-size: 20px;
- }
+    color: #fff;
+    padding: 2px 2px;
+    position: absolute;  
+}
+#option{
+    margin: 7px;
+    border-radius: 30px;
+    width: 290px;
+    border: 0px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+}
 input{
     border-radius: 15px;
+    padding-left: 10px;
     width: 280px;
     border: 0;
     margin: 6px;
-    font-size: 20px;
-    letter-spacing: 2px;
-    font-family: 'Poppins', sans-serif;  
+    font-size: 18px;
+     
 }
 :active, :hover, :focus {
     outline: 0;
@@ -263,7 +330,7 @@ input{
 }
 ::placeholder{
     padding: 5px;
-    font-size: 14px;
+    font-size: 18px;
     font-family: 'Poppins', sans-serif;
     letter-spacing: 0.2em;
 }
@@ -316,6 +383,12 @@ textarea{
     margin-left: 109px;
     width: 240.81px;
     height: 154.52px;
+}
+#fourth{
+    margin-top: 10px;
+    margin-left: 19px;
+    width: 159px;
+    height: 132px;
 }
 #fifth{
     margin-top: 10px;
@@ -377,7 +450,7 @@ textarea{
     display: flex;
     align-items: center;
 }
-.signIn{
+#signIn{
     font-family: 'Poppins', sans-serif;
     letter-spacing: 0.2em;
     margin-top: 30px;
@@ -385,6 +458,19 @@ textarea{
     font-weight: 600;
     color: #7a6daf;
     width: 140px;
+    height: 40px;
+    border-radius:32px ;
+    margin-left: 120px;
+}
+
+#signUp{
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 0.2em;
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #7a6daf;
+    width: 250px;
     height: 40px;
     border-radius:32px ;
     margin-left: 120px;

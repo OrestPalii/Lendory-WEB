@@ -6,6 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADVERT</title>
     <link rel="stylesheet" href="style.css">
+
+    <!--firebase-->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
+    <script scr="https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+
+    <!--bootsrap-->
+    <link href="https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap" rel="stylesheet"><meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <script src="codejs/serverlogic.js"></script>
 </head>
 <body id="advert">
     <header class="header">
@@ -19,22 +33,23 @@
     <section class="addpphoto">
         <p>Мінімальний розмір одного фото — 640x480 пікселів (до 8 мегабайт). Формати: jpeg, jpg, png. Головне фото повинне бути у горизонтальній орієнтації та найбільш вдалим — це перше, що побачать покупці. </p>
             <div>
-                <img id="first"src="C:\Users\roman\Downloads\image 1.png" alt="">
-                <button id="add">+</button>
+                <img id="first" src="C:\Users\roman\Downloads\image 1.png" alt="" >
+                
+                <button id="add" onclick="first_img_upload()">+</button>
             </div>
                 <div>
-                    <img id="second" src="C:\Users\roman\Downloads\image 1.png" alt="">
-                    <button id="add">+</button>
+                    <img id="second" src="C:\Users\roman\Downloads\image 1.png" alt="" >
+                    <button id="add" onclick="second_img_upload()">+</button>
                 </div>
                     <div>                 
                         <img id="third" src="C:\Users\roman\Downloads\image 1.png" alt="">
-                        <button id="add">+</button>
+                        <button id="add" onclick="third_img_upload()">+</button>
                     </div>
                         <div>
+                            <img id="fourth" src="C:\Users\roman\Downloads\image 1.png" alt="">
+                            <button id="add" onclick="fourth_img_upload()">+</button>
                             <img id="fifth" src="C:\Users\roman\Downloads\image 1.png" alt="">
-                            <button id="add">+</button>
-                            <img id="fifth" src="C:\Users\roman\Downloads\image 1.png" alt="">
-                            <button id="add">+</button>
+                            <button id="add" onclick="fifth_img_upload()">+</button>
                         </div>
                         <p>Добавте 3 та більше фотографій .  Добавте всі 5 фотографій для найкращого заповнення</p>
     </section>
@@ -42,33 +57,32 @@
         <section class="advert_">    
             <div>
                 <h2>Назва oголошення</h2>
-                <img id="img1" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/level-up-free-icon-font.png?alt=media&token=55a3fed2-f547-4e5e-8ca7-26ecfc9759cb" alt=""> <input type="text" name="name" id="" placeholder="Ім'я..." >
+             <input type="text" name="name" id="name_box" placeholder="Ім'я..." >
             </div>
                 <div>
                     <h2>Місто,вулиця,номер будинка</h2>
                     <div class="input_">
-                        <img id="img1" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/level-up-free-icon-font.png?alt=media&token=55a3fed2-f547-4e5e-8ca7-26ecfc9759cb" alt="">    <input type="text" name="name" id="" placeholder="Місто...">
-                        <img id="img1" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/level-up-free-icon-font.png?alt=media&token=55a3fed2-f547-4e5e-8ca7-26ecfc9759cb" alt="">    <input type="text" name="name" id="" placeholder="Вулиця...">
-                        <img id="img1" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/level-up-free-icon-font.png?alt=media&token=55a3fed2-f547-4e5e-8ca7-26ecfc9759cb" alt="">    <input type="text" name="name" id="" placeholder="Номер будинку...">
+                        <input type="text" name="name" id="location_box" placeholder="Місто...">
+                        
                 </div>
                 </div>
                         <div >
                             <h2>Поверх, к-сть кімнат</h2>                       
                                 <div class="input_">
-                                    <img id="img1" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/level-up-free-icon-font.png?alt=media&token=55a3fed2-f547-4e5e-8ca7-26ecfc9759cb" alt="">  <input type="number" name="name" min="0" id="" placeholder="Поверх...">
-                                    <img id="img1" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/level-up-free-icon-font.png?alt=media&token=55a3fed2-f547-4e5e-8ca7-26ecfc9759cb" alt="">     <input type="number" name="name" min="0" id="" placeholder="Кількіть кімнат..."> 
+                                   <input type="number" name="name" min="0" id="floor_box" placeholder="Поверх...">
+                                 <input type="number" name="name" min="0" id="rooms_box" placeholder="Кількіть кімнат..."> 
                             </div>
                         </div>
                         <div >
                             <h2>Загальна площа</h2>
                             <div class="input_">
-                                <img id="img1" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/level-up-free-icon-font.png?alt=media&token=55a3fed2-f547-4e5e-8ca7-26ecfc9759cb" alt="">     <input type="number" min="0" name="name" id="" placeholder="Площа..."> 
+                                  <input type="number" min="0" name="name" id="area_box" placeholder="Площа..."> 
                         </div>
                         </div>
                                 <div >  
                                     <h2>Орендна плата</h2>
-                                    <img id="img1" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/level-up-free-icon-font.png?alt=media&token=55a3fed2-f547-4e5e-8ca7-26ecfc9759cb" alt=""> <input type="number" name="name" id="" placeholder="Орендна плата..."> 
-                                    <select name="currency" id="s">
+                                  <input type="number" name="name" id="rent_box" placeholder="Орендна плата..."> 
+                                    <select name="currency" id="currency">
                                         <option value="$">$</option>
                                         <option value="€">€</option>
                                         <option value="₴">₴</option>
@@ -77,18 +91,108 @@
                                 </div>
                                     <div>
                                         <h2>Житло для біженців</h2>
-                                        <img id="img1" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/level-up-free-icon-font.png?alt=media&token=55a3fed2-f547-4e5e-8ca7-26ecfc9759cb" alt="">
-                                            <select name="yes|no" id="f" >
-                                            <option value="YES">Так</option>
-                                            <option value="NO">Ні</option>
+                                    
+                                            <select name="yes|no" id="option" >
+                                            <option value=1>Так</option>
+                                            <option value=0>Ні</option>
                                             </select>
                                     </div>
                                             <div>
                                                 <h2>Додаткова інформація</h2>
-                                                <textarea name="" id="" cols="43" rows="7" placeholder="Additional information"></textarea>
+                                                <textarea name="" id="description_box" cols="43" rows="7" placeholder="Additional information"></textarea>
                                             </div>  
                                                 
-                                            <button class="create">Cтворити</button>                                   
+                                            <button class="create", id="create">Cтворити</button>   
+                                                                          
              </section>
+             
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
+authDomain: "lendory-b5d8b.firebaseapp.com",
+databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
+projectId: "lendory-b5d8b",
+storageBucket: "lendory-b5d8b.appspot.com",
+messagingSenderId: "759222136421",
+appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
+};
+
+const app = initializeApp(firebaseConfig);
+
+import {getDatabase, ref, get, set, child, update, remove}
+    from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} 
+    from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
+
+var createimg  = document.getElementById("create");
+
+function create_adv(){
+
+    var ImgToUpload1 = files1[0];
+    var ImgToUpload2 = files2[0];
+    var ImgToUpload3 = files3[0];
+    var ImgToUpload4 = files4[0];
+    var ImgToUpload5 = files5[0];
+    var imgarray = [];
+
+    //creating images numbers
+    var ImgName1 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+    var ImgName2 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+    var ImgName3 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+    var ImgName4 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+    var ImgName5 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+    imgarray.push(ImgName1, ImgName2, ImgName3, ImgName4, ImgName5);
+
+    //creating storage links for images
+    const storage = getStorage();
+    const storageRef1 = sRef(storage, "Images/"+ImgName1);  
+    const storageRef2 = sRef(storage, "Images/"+ImgName2); 
+    const storageRef3 = sRef(storage, "Images/"+ImgName3); 
+    const storageRef4 = sRef(storage, "Images/"+ImgName4); 
+    const storageRef5 = sRef(storage, "Images/"+ImgName5);
+
+    //variables that contain images types
+    const metaData1 = {
+
+    contentType: ImgToUpload1.type
+    }
+
+    const metaData2 = {
+
+    contentType: ImgToUpload2.type
+    }
+
+    const metaData3 = {
+
+    contentType: ImgToUpload3.type
+    }
+
+    const metaData4 = {
+
+    contentType: ImgToUpload4.type
+    }
+
+    const metaData5 = {
+
+    contentType: ImgToUpload5.type
+    }
+
+    //Uploading images to storage
+    const UploadTask1 = uploadBytesResumable(storageRef1, ImgToUpload1, metaData1);
+    const UploadTask2 = uploadBytesResumable(storageRef2, ImgToUpload2, metaData2);
+    const UploadTask3 = uploadBytesResumable(storageRef3, ImgToUpload3, metaData3);
+    const UploadTask4 = uploadBytesResumable(storageRef4, ImgToUpload4, metaData4);
+    const UploadTask5 = uploadBytesResumable(storageRef5, ImgToUpload5, metaData5);
+
+    setdata(name_box.value, description_box.value, location_box.value, floor_box.value,
+        rooms_box.value, area_box.value, rent_box.value, currency.value, option.value, imgarray);
+
+}
+createimg.onclick = create_adv;
+</script>
+            
 </body>
 </html>
