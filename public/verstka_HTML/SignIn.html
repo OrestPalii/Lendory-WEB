@@ -69,34 +69,35 @@
         const submit = document.getElementById('signIn');
 
         function AuthenticateUser(){
-            
-            const  dbRef = ref(db);
-            get(child(dbRef, "profiles/" + phoneNumber.value)).then((snapshot)=>{
+           
+            const  dbref = ref(db);
+            get(child(dbref, "profiles/" + phoneNumber.value)).then((snapshot)=>{
                 if(snapshot.exists()){
-                    let dbpass = decPass(snapshot.val().password);
-                    if(dbpass == pass.value){
+                    let dbpass = snapshot.val().password;
+                    if(dbpass == password.value){
                         login(snapshot.val());
                     }
                     else{
-                        alert("Користувача з таким номер телефону не існує");
+                        alert("Неправильний номер телефону чи пароль");
                     }
+                    
                 }
                 else{
-                    alert("Неправильний номер телефону чи пароль");
+                    alert("Користувача з таким номером телефону не існує");
                 }
             });
-            alert("w");
+            
         }
 
         function login(user){
             let keepLoggedIn = document.getElementById('customSwitch1').checked;
             if(!keepLoggedIn){
-                sessionStorage.selItem('user', JSON.stringify(user));
+                sessionStorage.setItem('user', JSON.stringify(user));
                 window.location="index.html";
             }
             else{
-                localStorage.selItem('keepLoggedIn', 'yes');
-                localStorage.selItem('user', JSON.stringify(user));
+                localStorage.setItem('keepLoggedIn', 'yes');
+                localStorage.setItem('user', JSON.stringify(user));
                 window.location="index.html";
             }
         }
