@@ -52,6 +52,10 @@
     transition: background-color .15s ease-in-out;
 }
 .text-field__group .text-field__input {
+<<<<<<< Updated upstream
+=======
+    height: 36px;
+>>>>>>> Stashed changes
     margin-bottom: 5px;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
@@ -67,7 +71,12 @@
     border-bottom-right-radius: 0;
     border-right-width: 0;
 }
+<<<<<<< Updated upstream
 .sideblock{
+=======
+ /* боковий блок з інформацією */
+ .sideblock{
+>>>>>>> Stashed changes
     padding-top: 20px;
     margin-top: 157px;
     background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/Rectangle%201.png?alt=media&token=2008e9a5-67de-4d44-8cfd-d3aa365aae7b) no-repeat;
@@ -182,7 +191,11 @@ button:hover {  /* тут я викликаю цю анімацію*/
     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     transform: translateY(3px);
     transform: translateX(2px);
+<<<<<<< Updated upstream
  }
+=======
+}
+>>>>>>> Stashed changes
 .main{
     width: 100%;
     height: 100vh;
@@ -296,8 +309,13 @@ button:hover {  /* тут я викликаю цю анімацію*/
      height: 20px;
      width: 20px;
  }
+<<<<<<< Updated upstream
  #currency{                                
     margin-top: 6px;
+=======
+ #s{                                
+    margin-top: 8px;
+>>>>>>> Stashed changes
     margin-left: 10px;
     background-color: #cd88db;
     border-radius: 30px;
@@ -305,6 +323,7 @@ button:hover {  /* тут я викликаю цю анімацію*/
     font-size: 20px;
     color: #fff;
     padding: 2px 2px;
+<<<<<<< Updated upstream
     position: absolute;  
 }
 #option{
@@ -318,11 +337,32 @@ button:hover {  /* тут я викликаю цю анімацію*/
 input{
     border-radius: 15px;
     padding-left: 10px;
+=======
+    position: absolute;   
+ }
+ #f{
+     margin: 3px;
+     border-radius: 30px;
+     width: 290px;
+     border: 0px;
+     font-family: 'Poppins', sans-serif;
+     font-size: 20px;
+ }
+input{
+    border-radius: 15px;
+    padding-left: 10px;
+    height: 30px;
+>>>>>>> Stashed changes
     width: 280px;
     border: 0;
     margin: 6px;
     font-size: 18px;
+<<<<<<< Updated upstream
      
+=======
+    letter-spacing: 2px;
+    font-family: 'Poppins', sans-serif;  
+>>>>>>> Stashed changes
 }
 :active, :hover, :focus {
     outline: 0;
@@ -330,7 +370,11 @@ input{
 }
 ::placeholder{
     padding: 5px;
+<<<<<<< Updated upstream
     font-size: 18px;
+=======
+    font-size: 16px;
+>>>>>>> Stashed changes
     font-family: 'Poppins', sans-serif;
     letter-spacing: 0.2em;
 }
