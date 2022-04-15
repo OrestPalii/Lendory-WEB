@@ -17,7 +17,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-    <script src="codejs/serverlogic.js"></script>
+    <script src="serverlogic.js"></script>
 </head>
 <body class="sign_">
     <header class="header">
@@ -44,57 +44,74 @@
                           <button id="signUp">Зареєструватись</button>
 
        </div>
-       <script type="module">
-        // ------------------------------Importing the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-        // -------------------------------- web app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
-          authDomain: "lendory-b5d8b.firebaseapp.com",
-          databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
-          projectId: "lendory-b5d8b",
-          storageBucket: "lendory-b5d8b.appspot.com",
-          messagingSenderId: "759222136421",
-          appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
-        };
-        // --------------------------------------------Initializing Firebase
-        const app = initializeApp(firebaseConfig);
-        import {getDatabase, ref, get, set, child, update, remove}
+
+
+<script type="module">
+
+// ------------------------------Importing the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+// -------------------------------- web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
+        authDomain: "lendory-b5d8b.firebaseapp.com",
+        databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
+        projectId: "lendory-b5d8b",
+        storageBucket: "lendory-b5d8b.appspot.com",
+        messagingSenderId: "759222136421",
+        appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
+    };
+// --------------------------------------------Initializing Firebase
+    const app = initializeApp(firebaseConfig);
+    import {getDatabase, ref, get, set, child, update, remove}
         from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"
-        
-        const db = getDatabase();
 
-        const name = document.getElementById('r');
-        const phoneNumber = document.getElementById('telnumbox');
-        const password = document.getElementById('passbox');
-        const submit = document.getElementById('signUp');
+    const db = getDatabase();
 
-        function RegisterUser(){
-            
-            const  dbRef = ref(db);
-            get(child(dbRef, "profiles/" + phoneNumber.value)).then((snapshot)=>{
-                if(snapshot.exists()){
-                    alert("Акаунт за таким номером телефону вже існує");
-                }
-                else{
-                    set(ref(db, "profiles/" + phoneNumber.value),
-                    {
-                        name: name.value,
-                        password: password.value,
-                        phonenumber: phoneNumber.value
-                    })
-                    .then(()=>{
-                        alert("user added successfully");
-                        window.location = "SignIn.html";
-                    })
-                    .catch((error)=>{
-                        alert("error" + error);
-                    })
-                    
-                }
-            });
-        }
-        submit.addEventListener('click', RegisterUser);
-    </script>
+    const name = document.getElementById('r');
+    const phoneNumber = document.getElementById('telnumbox');
+    const password = document.getElementById('passbox');
+    const submit = document.getElementById('signUp');
+
+    function RegisterUser(){
+
+        const  dbRef = ref(db);
+        get(child(dbRef, "profiles/" + phoneNumber.value)).then((snapshot)=>{
+            if(snapshot.exists()){
+                alert("Акаунт за таким номером телефону вже існує");
+            }
+
+            else{
+            set(ref(db, "profiles/" + phoneNumber.value),
+            {
+                    name: name.value,
+                    password: password.value,
+                    phonenumber: phoneNumber.value
+            })
+
+            set(ref(db, "profiles/" + phoneNumber.value + "/created"),
+            {
+                0: "ThisHashCodeWillNeverBeUsedto"       
+            })
+
+            set(ref(db, "profiles/" + phoneNumber.value + "/liked"),
+            {
+                0: "ThisHashCodeWillNeverBeUsedto"       
+            })
+
+            .then(()=>{
+                    alert("user added successfully");
+                    window.location = "SignIn.html";
+            })
+            .catch((error)=>{
+                alert("error" + error);
+            })
+
+            }
+        });
+    }
+    submit.addEventListener('click', RegisterUser);
+
+</script>
+
 </body>
 </html>

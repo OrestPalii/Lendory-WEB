@@ -16,7 +16,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-    <script src="codejs/serverlogic.js"></script>
+    <script src="serverlogic.js"></script>
 </head>
 <body class="sign_">
     <header class="header">
@@ -43,51 +43,51 @@
                           <button id="signIn">Увійти</button>
        </div>
 
-       <script type="module">
-        // ------------------------------Importing the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-        // -------------------------------- web app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
-          authDomain: "lendory-b5d8b.firebaseapp.com",
-          databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
-          projectId: "lendory-b5d8b",
-          storageBucket: "lendory-b5d8b.appspot.com",
-          messagingSenderId: "759222136421",
-          appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
-        };
-        // --------------------------------------------Initializing Firebase
-        const app = initializeApp(firebaseConfig);
-        import {getDatabase, ref, get, set, child, update, remove}
+<script type="module">
+    
+// ------------------------------Importing the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+// -------------------------------- web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
+        authDomain: "lendory-b5d8b.firebaseapp.com",
+        databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
+        projectId: "lendory-b5d8b",
+        storageBucket: "lendory-b5d8b.appspot.com",
+        messagingSenderId: "759222136421",
+        appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
+    };
+// --------------------------------------------Initializing Firebase
+    const app = initializeApp(firebaseConfig);
+    import {getDatabase, ref, get, set, child, update, remove}
         from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"
-        
-        const db = getDatabase();
 
-        
-        const phoneNumber = document.getElementById('telnumbox');
-        const password = document.getElementById('passbox');
-        const submit = document.getElementById('signIn');
+    const db = getDatabase();
 
-        function AuthenticateUser(){
-           
-            const  dbref = ref(db);
-            get(child(dbref, "profiles/" + phoneNumber.value)).then((snapshot)=>{
-                if(snapshot.exists()){
-                    let dbpass = snapshot.val().password;
+
+    const phoneNumber = document.getElementById('telnumbox');
+    const password = document.getElementById('passbox');
+    const submit = document.getElementById('signIn');
+
+    function AuthenticateUser(){
+
+        const  dbref = ref(db);
+        get(child(dbref, "profiles/" + phoneNumber.value)).then((snapshot)=>{
+            if(snapshot.exists()){
+                let dbpass = snapshot.val().password;
                     if(dbpass == password.value){
                         login(snapshot.val());
-                    }
+                    }           
                     else{
                         alert("Неправильний номер телефону чи пароль");
                     }
-                    
-                }
-                else{
-                    alert("Користувача з таким номером телефону не існує");
-                }
-            });
-            
-        }
+            }
+
+            else{
+                alert("Користувача з таким номером телефону не існує");
+            }
+        });
+    }
 
         function login(user){
             let keepLoggedIn = document.getElementById('customSwitch1').checked;
@@ -95,13 +95,16 @@
                 sessionStorage.setItem('user', JSON.stringify(user));
                 window.location="index.html";
             }
+
             else{
                 localStorage.setItem('keepLoggedIn', 'yes');
                 localStorage.setItem('user', JSON.stringify(user));
                 window.location="index.html";
             }
         }
-        submit.addEventListener('click', AuthenticateUser)
-    </script>
+    submit.addEventListener('click', AuthenticateUser)
+
+</script>
+
 </body>
 </html>

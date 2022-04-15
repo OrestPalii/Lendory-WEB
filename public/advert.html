@@ -19,7 +19,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-    <script src="codejs/serverlogic.js"></script>
+    <script src="serverlogic.js"></script>
+    <script src="sign_in_out_logic.js"></script>
 </head>
 <body id="advert">
     <header class="header">
@@ -127,7 +128,7 @@ import {getDatabase, ref, get, set, child, update, remove}
 import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} 
     from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
 
-var createimg  = document.getElementById("create");
+var create  = document.getElementById("create");
 
 function create_adv(){
 
@@ -191,7 +192,9 @@ function create_adv(){
         rooms_box.value, area_box.value, rent_box.value, s.value, f.value, imgarray);
 
 }
-createimg.onclick = create_adv;
+create.onclick = create_adv;
+
+window.onload = advert_page_loading;
 </script>
             
 </body>
