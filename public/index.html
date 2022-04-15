@@ -12,6 +12,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet">    
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="serverlogic.js"></script>
+  <script src="sign_in_out_logic.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
@@ -31,7 +33,8 @@
                         <a href="about.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/AboutUs.png?alt=media&token=a62d422a-1be4-4ca9-9dd4-810e39cb1c1b" alt=""> Про нас</a>
                         <a href="Services.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/services.png?alt=media&token=e0da6157-7b8a-41bf-80dd-b03d8baa75fe" alt=""> Підтримка</a>
                         <a href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/support.png?alt=media&token=e4d6e42f-7ae2-4ee0-8233-54b43ccaee41" alt=""> Послуги</a>
-                        <a href="SignIn.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/sign-in-alt-free-icon-font%202.png?alt=media&token=37d4a899-06eb-418d-8bb0-f4d9a9a34681" alt=""> Увійти</a>
+                        <a id='userlink' href="">Username </a>
+                        <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/sign-in-alt-free-icon-font%202.png?alt=media&token=37d4a899-06eb-418d-8bb0-f4d9a9a34681" alt=""> Вийти</a>
                     </nav>
     </div>
 </header>
@@ -45,7 +48,7 @@
               <p id="about_lend">Lorem ipsum dolor sit.</p>
               <p id="about_lend">Lorem ipsum dolor sit amet consectetur.</p>
               <p id="about_lend">Lorem ipsum dolor sit.</p>
-               <button id="but_advert"><a href="advert.html">Нове оголошення</a></button>
+               <button id="but_advert" onclick="adv_create_user_check()">Нове оголошення</button>
             </div>
       </div> 
 </div> 
@@ -70,68 +73,11 @@
             </div>
      </div>
                 
-     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
     
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a id='userlink' class="nav-link" href="">Username </a>
-            </li>
-
-            <li class="nav-item active">
-              <a id = 'signoutlink' class="nav-link" href="#">Sign Out </a>
-            </li>
-
-            </li>
-          </ul>        
-        </form>
-      </div>
-    </nav>
-    <h3 id="hh"></h3>
     <script>
       let userlink = document.getElementById('userlink');
       let signoutlink = document.getElementById('signoutlink');
-      let header = document.getElementById('hh');
-      var currentUser = null;
-
-      function getUsername(){
-        let keepLoggedIn = localStorage.getItem("keepLoggedIn");
-
-        if(keepLoggedIn == "yes"){
-          currentUser = JSON.parse(localStorage.getItem('user'));
-        }
-
-        else{
-          currentUser = JSON.parse(sessionStorage.getItem('user'));
-        }
-      }
+      
 
       function Signout(){
           sessionStorage.removeItem('user');
@@ -143,27 +89,26 @@
       window.onload = function(){
         getUsername();
         if(currentUser == null){
-          userlink.innerText="Увійти";
-          userlink.classList.replace("nav-link","btn")
-          userlink.classList.add("btn-primary");
-          userlink.href = "SignIn.html";
+          userlink.innerText="Створити акаунт";
+          // userlink.classList.replace("nav-link","btn")
+          // userlink.classList.add("btn-primary");
+          userlink.href = "SignUp.html";
 
-          signoutlink.innerText="Створити новий акаунт";
-          signoutlink.classList.replace("nav-link","btn")
-          signoutlink.classList.add("btn-primary");
-          signoutlink.href = "SignUp.html";
+          signoutlink.innerText="Увійти";
+          // signoutlink.classList.replace("nav-link","btn")
+          // signoutlink.classList.add("btn-primary");
+          signoutlink.href = "SignIn.html";
         }
 
         else{
-          userlink.innerText= currentUser.name;
-          header.innerText = "ХУЙ" + currentUser.name;
-          userlink.classList.replace("nav-link","btn")
-          userlink.classList.add("btn-primary");
+          userlink.innerText= "Мій профіль";
+          // userlink.classList.replace("nav-link","btn")
+          // userlink.classList.add("btn-primary");
           userlink.href = "#";
 
           signoutlink.innerText="Вийти";
-          signoutlink.classList.replace("nav-link","btn")
-          signoutlink.classList.add("btn-primary");
+          // signoutlink.classList.replace("nav-link","btn")
+          // signoutlink.classList.add("btn-primary");
           signoutlink.href = "javascript:Signout()";
         }
       }

@@ -118,7 +118,7 @@
     }
     to {
     margin-left: 0%;
-    width: 50%;
+    width: 49.5%;
     }
 }
 .lend_descr{
@@ -145,14 +145,12 @@
     border: none;
     background: #9485D8;
     border-radius: 30px;
-}
-#but_advert a{
-    text-decoration: none;
     color: #fff;
     font-size: 25px;
     letter-spacing: 0.1em;
     font-weight: 500; 
 }
+
   
                /* головна фотка */
 .intro{
@@ -263,6 +261,11 @@
     font-size: 19px;
     letter-spacing: 0.1em;
 }
+#tbody1{
+    display: grid;
+    
+    grid-template-columns: auto auto auto;
+  }
           /* __________ADVERT.HTML__________ */
 
 #advert{
@@ -289,7 +292,7 @@
      font-size: 19px;
      letter-spacing: 0.05em;
  }
- #s{                                
+ #currency{                                
     margin-top: 8px;
     margin-left: 10px;
     background-color: #cd88db;
@@ -300,7 +303,7 @@
     padding: 2px 2px;
     position: absolute;   
  }
- #f{
+ #option{
      margin: 3px;
      border-radius: 30px;
      width: 290px;
@@ -345,12 +348,6 @@ textarea{
     border-color: #7a6daf;
     border-radius: 10px;
 }
-
-  
-  
-
-
-
 .create{
     margin-top: 6px;
     margin-left: 115px;

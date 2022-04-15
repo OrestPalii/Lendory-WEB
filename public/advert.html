@@ -18,7 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+    <script src="sign_in_out_logic.js"></script>
     <script src="serverlogic.js"></script>
 </head>
 <body id="advert">
@@ -51,7 +51,7 @@
                     <div class="description_box">
                         <h2 class="title" >Додаткова інформація</h2>
                         <textarea name="" id="description_box" cols="44" rows="7" placeholder="Additional information"></textarea>
-                        <button class="create", id="create">Cтворити</button> 
+                        <button class="create" id="create">Cтворити</button> 
                     </div>  
                     
     </section>
@@ -68,20 +68,16 @@
                                 <input type="number" min="0" name="name" id="area_box" placeholder="Площа..."> 
                                     <h2 class="title" >Орендна плата за місяць</h2>
                                     <input type="number" name="name" id="rent_box" placeholder="Орендна плата..."> 
-                                    <select name="currency" id="s">
+                                    <select name="currency" id="currency">
                                         <option value="$">₴</option>
                                         <option value="€">€</option>
                                         <option value="₴">$</option>
-                                    </select>  
-                                                        
+                                    </select>          
                                            <h2 class="title" >Житло для біженців</h2>
-                                           <select name="yes|no" id="f" >                                           
+                                           <select name="yes|no" id="option" >                                           
                                              <option value=1>Так</option>
                                               <option value=0>Ні</option>
-                                              </select>
-                                    
-                                            
-                                                              
+                                              </select>                                                                          
              </section>
             
              
@@ -106,72 +102,75 @@ import {getDatabase, ref, get, set, child, update, remove}
 import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} 
     from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
 
-var createimg  = document.getElementById("create");
-
+var create  = document.getElementById("create");
 function create_adv(){
+    var isempty = false;
+    if(name_box.value == ""){isempty = true}
+    if(description_box.value == ""){isempty = true}
+    if(location_box.value == ""){isempty = true}
+    if(floor_box.value == ""){isempty = true}
+    if(rooms_box.value == ""){isempty = true}
+    if(area_box.value == ""){isempty = true}
+    if(rent_box.value == ""){isempty = true}
 
-    var ImgToUpload1 = files1[0];
-    var ImgToUpload2 = files2[0];
-    var ImgToUpload3 = files3[0];
-    var ImgToUpload4 = files4[0];
-    var ImgToUpload5 = files5[0];
-    var imgarray = [];
+    if(!isempty){
+var ImgToUpload2 = files2[0];
+var ImgToUpload3 = files3[0];
+var ImgToUpload4 = files4[0];
+var ImgToUpload5 = files5[0];
+var imgarray = [];
 
-    //creating images numbers
-    var ImgName1 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
-    var ImgName2 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
-    var ImgName3 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
-    var ImgName4 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
-    var ImgName5 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
-    imgarray.push(ImgName1, ImgName2, ImgName3, ImgName4, ImgName5);
+//creating images numbers
+var ImgName2 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+var ImgName3 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+var ImgName4 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+var ImgName5 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+imgarray.push(ImgName2, ImgName3, ImgName4, ImgName5);
 
-    //creating storage links for images
-    const storage = getStorage();
-    const storageRef1 = sRef(storage, "Images/"+ImgName1);  
-    const storageRef2 = sRef(storage, "Images/"+ImgName2); 
-    const storageRef3 = sRef(storage, "Images/"+ImgName3); 
-    const storageRef4 = sRef(storage, "Images/"+ImgName4); 
-    const storageRef5 = sRef(storage, "Images/"+ImgName5);
+//creating storage links for images
+const storage = getStorage(); 
+const storageRef2 = sRef(storage, "Images/"+ImgName2); 
+const storageRef3 = sRef(storage, "Images/"+ImgName3); 
+const storageRef4 = sRef(storage, "Images/"+ImgName4); 
+const storageRef5 = sRef(storage, "Images/"+ImgName5);
 
-    //variables that contain images types
-    const metaData1 = {
+//variables that contain images types
+const metaData2 = {
 
-    contentType: ImgToUpload1.type
-    }
+contentType: ImgToUpload2.type
+}
 
-    const metaData2 = {
+const metaData3 = {
 
-    contentType: ImgToUpload2.type
-    }
+contentType: ImgToUpload3.type
+}
 
-    const metaData3 = {
+const metaData4 = {
 
-    contentType: ImgToUpload3.type
-    }
+contentType: ImgToUpload4.type
+}
 
-    const metaData4 = {
+const metaData5 = {
 
-    contentType: ImgToUpload4.type
-    }
+contentType: ImgToUpload5.type
+}
 
-    const metaData5 = {
+//Uploading images to storage
+const UploadTask2 = uploadBytesResumable(storageRef2, ImgToUpload2, metaData2);
+const UploadTask3 = uploadBytesResumable(storageRef3, ImgToUpload3, metaData3);
+const UploadTask4 = uploadBytesResumable(storageRef4, ImgToUpload4, metaData4);
+const UploadTask5 = uploadBytesResumable(storageRef5, ImgToUpload5, metaData5);
 
-    contentType: ImgToUpload5.type
-    }
-
-    //Uploading images to storage
-    const UploadTask1 = uploadBytesResumable(storageRef1, ImgToUpload1, metaData1);
-    const UploadTask2 = uploadBytesResumable(storageRef2, ImgToUpload2, metaData2);
-    const UploadTask3 = uploadBytesResumable(storageRef3, ImgToUpload3, metaData3);
-    const UploadTask4 = uploadBytesResumable(storageRef4, ImgToUpload4, metaData4);
-    const UploadTask5 = uploadBytesResumable(storageRef5, ImgToUpload5, metaData5);
-
-    setdata(name_box.value, description_box.value, location_box.value, floor_box.value,
-        rooms_box.value, area_box.value, rent_box.value, currency.value, option.value, imgarray);
+setdata(name_box.value, description_box.value, location_box.value, floor_box.value,
+    rooms_box.value, area_box.value, rent_box.value, currency.value, option.value, imgarray);
 
 }
-createimg.onclick = create_adv;
+else{
+    alert("Заповніть всі поля!");
+}
+}
+create.onclick = create_adv;
+window.onload = advert_page_loading;
 </script>
-            
 </body>
 </html>
