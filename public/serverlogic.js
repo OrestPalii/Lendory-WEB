@@ -108,8 +108,8 @@ function fifth_img_upload(){
 }
 
 //data inserting function
-function setdata(name, description, location, floor, rooms, area, rent, currency, vol, imgarray=[]){
-    var numb = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1); //advertisement hashnumber
+function setdata(name, description, location, floor, rooms, area, rent, currency, vol, numb){
+   
     
     if(vol == 1){vol = true;}
     else{vol = false;}
@@ -133,12 +133,12 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
         })
 
         //inserting images numbers
-        firebase.database().ref("/").child("advertisementtest/" + numb + "/images/").update({
-            0: imgarray[0],
-            1: imgarray[1],
-            2: imgarray[2],
-            3: imgarray[3],
-        })
+        // firebase.database().ref("/").child("advertisementtest/" + numb + "/images/").update({
+        //     0: imgarray[0],
+        //     1: imgarray[1],
+        //     2: imgarray[2],
+        //     3: imgarray[3],
+        // })
 
         //fields cleaning
          name_box.value ='';

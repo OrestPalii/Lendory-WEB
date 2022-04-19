@@ -36,3 +36,9 @@ function adv_create_user_check(){
       }
       
       }
+      function Signout(){
+        sessionStorage.removeItem('user');
+        localStorage.removeItem('user');
+        localStorage.removeItem('keepLoggedIn');
+        window.location = 'index.html'
+    }

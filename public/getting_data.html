@@ -16,26 +16,36 @@
     <script type="module">
         var tbody = document.getElementById("tbody1");
         
-        function AddItemToTable(name, loc, descript){
+        function AddItemToTable(name, loc, descript, img_num){
             let trow = document.createElement("div");
+            let image = document.createElement("img");
             let td1 = document.createElement("p");
             let td2 = document.createElement("p");
             let td3 = document.createElement("p");
 
             trow.setAttribute(
                 'style',
-                'background-color: blue; width: 200px; height: 200px; margin: 20px; margin-left: 100px;'
+                'background-color: grey; width: 200px; height: 200px; margin: 20px; margin-left: 100px;'
             )
+
+            image.setAttribute(
+                'style',
+                'width: 100px; height: 100px'
+            )
+
+
 
             td1.innerHTML = name;
             td2.innerHTML = loc;
             td3.innerHTML = descript;
+            image.src = img_num;
 
             
-            
+            trow.appendChild(image);
             trow.appendChild(td1);
             trow.appendChild(td2);
             trow.appendChild(td3);
+            
 
             tbody.appendChild(trow);
             
@@ -44,7 +54,7 @@
         function AddAllItemsToTable(TheAdvertisement){
             tbody.innerHTML="";
             TheAdvertisement.forEach(element => {
-                AddItemToTable(element.name, element.location, element.description);
+                AddItemToTable(element.name, element.location, element.description, element.images[0]);
                 
             });
         }
