@@ -1,6 +1,6 @@
              /* Опис хедера */
 .header{
-   padding: 5px 0px;
+    padding: 5px 0px;
     justify-content: center;
     text-align: center;
     width: 100%;
@@ -10,7 +10,6 @@
     right: 0;
     background-color: black;
     z-index: 1000; 
- 
  } 
 .header_inner{
     display: flex;
@@ -18,26 +17,53 @@
     align-items: center;
 }
 .header_logo{
-    margin-left: 100px;
- 
+    margin-left: 100px; 
 }
 .nav{
     margin-right: 100px;
- }
+}
 .nav a{
     font-size: 18px;
     vertical-align: top;
     display: inline-block;
     text-decoration: none;
     color: azure;
-    margin: 0 30px;
+    margin: 0 20px;
     transition: color 0.2s linear;
     font-family: 'Poppins', sans-serif;
 }
-
 .nav a:hover{
     color:#7a6daf;
+    text-decoration: none;
 }
+.text-field__group {
+    display: flex;
+    position: relative;
+}
+        /* поле пошуку*/
+.text-field__btn {
+    width: 56px;
+    height: 36px;
+    color: #fff;
+    background-color:  #9485D8;
+    border: none;
+    border-radius: 20px;
+    transition: background-color .15s ease-in-out;
+    z-index: 10;
+}
+.text-field__group .text-field__input {
+    border:none;
+    width: 300px;
+    height: 36px;
+    margin-bottom: 5px;
+    border-radius: 20px;
+    margin-left: -40px;
+    position: relative;
+    z-index: 2;
+    padding-left: 45px;
+}
+
+ /* боковий блок з інформацією */
 .sideblock{
     padding-top: 20px;
     margin-top: 157px;
@@ -48,19 +74,56 @@
     width: 763px;
     height: 400px;
 }
-#r{
+#lendory_text{
     text-transform: uppercase;
     font-weight: 300;
     font-size: 32px;
     line-height: 45px;
     letter-spacing: 0.2em;
+    margin-top: 15px;
     margin-bottom: 20px;
     color: #A3BBD8;
+    animation-duration: 3s; 
+    animation-name: slidein;  
+}
+#lendory_text:before{
+    content: "01";
+    margin-right: 10px;
+    font-size: 82px;
+    color: #9484D8;  
+}
+#about_lend{
+    margin: 2px;
+    animation-duration: 3s; 
+    animation-name: slidein;
+   
+}
+@keyframes slidein 
+{
+    from {
+    margin-left: 100%;
+    width: 300%;
+    }
+    to {
+    margin-left: 0%;
+    width: 100%;
+    }
+}
+@keyframes slidein1 
+{
+    from {
+    margin-left: 100%;
+    width: 300%;
+    }
+    to {
+    margin-left: 0%;
+    width: 49.5%;
+    }
 }
 .lend_descr{
     margin-left: auto;
     margin-right: auto;
-    width: 405px;
+    width: 500px;
     height: 200px;
     text-align: left;
     font-family: 'Poppins';
@@ -72,19 +135,21 @@
     color: #9485D8;
 }
 #but_advert{
+    font-family: 'Poppins';
+    font-style: normal;
+    animation-duration: 3s;
+    animation-name: slidein1;
     margin-top: 20px;
-    padding: 5px 10px;
+    padding: 10px 10px;
     border: none;
     background: #9485D8;
-}
-#but_advert a{
-    text-decoration: none;
+    border-radius: 30px;
     color: #fff;
+    font-size: 25px;
     letter-spacing: 0.1em;
-    font-weight: 500;
-   
-}
-  
+    font-weight: 500; 
+    
+} 
                /* головна фотка */
 .intro{
     flex-direction: column;
@@ -93,11 +158,9 @@
     height: 100vh;
      background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/3.jpg?alt=media&token=4f90121d-2462-4760-866b-c472606e3d41) no-repeat;  
     -webkit-background-size: cover;
-    background-size: cover;
-   
+    background-size: cover; 
+    object-fit: contain;
 }
- 
-
      @keyframes jump {          /*анімація підстрибування*/ 
          0%, 20%, 60%, 100% {
              transform: translateY(0);
@@ -113,19 +176,21 @@
          }
      }
      
-button:hover {  /* тут я викликаю цю анімацію*/
-    /* animation: jump 1s; */
- }
-.main{
+ button:active{
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    transform: scale(0.9);  
+}
+.main_block{
     width: 100%;
     height: 100vh;
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/background.png?alt=media&token=63374c06-6430-4525-aace-e6f930457b27) no-repeat;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/grad2.jpeg?alt=media&token=e0ba0d74-e4eb-42d8-a0c2-2db967462fe4) no-repeat;
     background-size: cover;      
 }
- .recomandation{
-     display: flex;
- }
-.mainphoto_{
+ .recomandation_block{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+.ad_main_photo{
     margin-top: 50px;
     display: grid;
     margin-left: auto;
@@ -133,37 +198,66 @@ button:hover {  /* тут я викликаю цю анімацію*/
     width: 420px;
     height: 542px;  
 }
-#photo_{
+#main_photo{
     float: right;
     border-radius: 30px;
     width: 420.17px;
     height: 326.57px;
     position: relative;
-    z-index: 1000;
+    object-fit: cover;
+    z-index: 10;
 }
-.desc{
+#like_btn{
+    box-sizing: border-box;
+    font-size: 50px;
+    position: absolute;
+    z-index: 22;
+    margin-left: 370px;
+    margin-top: 260px;
+    color: #fff;
+    transform: rotate(90deg);  
+    cursor: pointer;   
+}
+
+
+
+
+
+.description_block{
     position: relative;
     text-align: center;
     margin-top: -89px;
     width: 420px;
-    height: 222.41px;
+    height: 232.41px;
     background-color: rgb(255, 255, 255);
     border-radius: 35px;
     z-index:1 ;
 }
-.pre_description{
+.left_description{
     text-align: center;
     margin-left: 28px;
     padding: 10px;
     margin-top: 65px;
-    border-radius: 30px;
+    float: left;
+    position: relative;
+}
+#other_photo{
+    margin-left: -9px;
+    margin-top: 2px;
     width: 122.18px;
     height: 117.09px;
-    float: left;
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6) no-repeat;
-    background-size: cover; 
+    object-fit: cover;
+    border-radius: 20px;
+    filter: grayscale(100%);
 }
-.description{
+#count_photo{ 
+    position: absolute;
+    margin-top: -125px;
+    margin-left: 8px;
+    font-size: 80px;
+    color: #fff;  
+}
+.right_description{
     text-align: left;
     position: relative;
     padding-top: 70px;
@@ -173,46 +267,33 @@ button:hover {  /* тут я викликаю цю анімацію*/
     background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6) no-repeat;
     background-size: cover;
     width: 240.73px;
-    height: 222.41px;
+    height: 232.41px;
     border-radius: 35px;
     z-index: 1;
 }
-#count_photo{ 
-    position: relative;
-    margin-top: 10px;
-    font-size: 50px;
-    color: #fff;
-    z-index: 200;
-}
-#p{
+#learn_more{
     padding-left: 5px;
     text-transform: uppercase;
-    margin-top: 170px;
+    margin-top: 140px;
     color: #CF89DB;
     font-weight: 500;
     font-size: 19px;
     letter-spacing: 0.1em;
 }
-          /* __________ADVERT.HTML__________ */
+       /* __________ADVERT.HTML__________ */
 
 #advert{
-    background-color: #9993b0;
+    background-color: #ead8eb;
 }
 .advert_{
-    padding-right: 300px;
+    padding-right: 370px;
     float: right;
-    margin-top: 100px;
+    margin-top: 90px;
     margin-left: auto;      
     margin-right: auto;
     width: 20em;   
 }
-.input_{ 
-    display: flex;
-    flex-flow: column wrap;
-    width: 40px;  
-    display: inline;      
-}
- h2{
+.title{
      padding: 10px 10px;
      color: #FFFFFF;
      margin: 3px ;
@@ -224,38 +305,42 @@ button:hover {  /* тут я викликаю цю анімацію*/
      font-family: 'Poppins', sans-serif; 
      font-size: 19px;
      letter-spacing: 0.05em;
- }
- #img1{
-     height: 20px;
-     width: 20px;
- }
- #s{                                
-     margin-top: -5px;
-     margin-left: 310px;
+}
+ #currency{                                
+    margin-top: 8px;
+    margin-left: 10px;
     background-color: #cd88db;
-     border-radius: 30px;
-     border: 0;
-     font-size: 20px;
-     color: #fff;
-     padding: 2px 2px;
-    position: absolute;  
- }
- #f{
-     margin: 3px;
     border-radius: 30px;
+    border: 0;
+    font-size: 20px;
+    color: #fff;
+    padding: 2px 2px;
+    position: absolute; 
+   
+ }
+ #option{
+     margin: 3px;
+     border-radius: 30px;
      width: 290px;
+     height: 30px;
      border: 0px;
      font-family: 'Poppins', sans-serif;
-    font-size: 20px;
+     font-size: 20px;
+     border: 1px solid;  
+     border-color: #7a6daf;
  }
-input{
+.advert_ input{
     border-radius: 15px;
+    padding-left: 10px;
+    height: 30px;
     width: 280px;
     border: 0;
     margin: 6px;
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: 2px;
-    font-family: 'Poppins', sans-serif;  
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid;  
+    border-color: #7a6daf;  
 }
 :active, :hover, :focus {
     outline: 0;
@@ -263,7 +348,7 @@ input{
 }
 ::placeholder{
     padding: 5px;
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Poppins', sans-serif;
     letter-spacing: 0.2em;
 }
@@ -280,7 +365,7 @@ textarea{
 }
 .create{
     margin-top: 6px;
-    margin-left: 120px;
+    margin-left: 115px;
     background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6) no-repeat;
     background-size: cover;
     border: none;
@@ -293,41 +378,31 @@ textarea{
     color: #fff;  
 }
 .addpphoto{
-    margin-left: 190px;
-    margin-top: 100px;
+    margin-left: 280px;
+    margin-top: 90px;
     float: left;
     width: 500px;
-    height: 1000px;   
+    height: 1000px;    
 }
-#first{
-    margin-top: 10px;
-    margin-left: 109px;
-    width: 240.81px;
-    height: 154.52px;
+._photo{
+    border-radius: 20px;
+    width: 220px;
+    height: 140px;
+    margin: 10px;
+    object-fit: cover;
 }
-#second{
-    margin-top: 10px;
-    margin-left: 52px;
-    width: 196px;
-    height: 150px;
+._photo:hover{
+    transform: translateY(5px);
+    transform: translateX(5px);
+    transition: .4s ease;
+    width: 210px;
+    height: 130px;
 }
-#third{
-    margin-top: 10px;
-    margin-left: 109px;
-    width: 240.81px;
-    height: 154.52px;
+.description_box{
+    margin-left: 70px;
 }
-#fourth{
-    margin-top: 10px;
-    margin-left: 19px;
-    width: 159px;
-    height: 132px;
-}
-#fifth{
-    margin-top: 10px;
-    margin-left: 19px;
-    width: 159px;
-    height: 132px;
+#pic{
+    margin-left: 71px;
 }
 #add{ 
     background-color: #7d6bc5;
@@ -344,68 +419,279 @@ textarea{
     background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/back2%201.png?alt=media&token=81dcaae8-8248-4f32-9ce2-327247beac56) no-repeat;
     background-size: cover;
 }
-.register{
-    opacity: 0.7;
-    border-radius: 40px;
+.register_form{   
+    border-radius: 75px;
     padding: 30px 30px;
-    background-color: #7d6bc5;
-    margin-top: 200px;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/grad2.jpeg?alt=media&token=e0ba0d74-e4eb-42d8-a0c2-2db967462fe4) no-repeat;
+    background-size: cover;
+    margin-top: 150px;
     margin-left: auto;
     margin-right: auto;
-    width: 25em;
-    height: 14em;
+    width: 492px;
+    height: 542px;   
 }
-#lab1{ 
-    margin-right: 38px;
+.img_circle{
+    margin-top: -100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 160px;
+    height: 160px;
+    background-color: #FFFFFF;
+    border-radius: 100px;
+}
+.img_circle img{
+    width: 80px;
+    height: 80px;
+    margin-top: 38px;
+    margin-left: 40px;
+    
+}
+.SignIn_field{
+    margin-top: 30px;
+    display: flex;
+    position: relative;
+   justify-content: center;
+}
+.SignIn_field a{
+    text-decoration: none;
+    color: #9484D8;
+}
+.SignIn_field a:hover{
+    text-decoration: none;
+    color: #9484D8;
+}
+#sign_btn{
+    width: 136px;
+    height: 39px;   
+    background: #9484D8;
+    border-radius: 20px; 
+    border: none;
+    z-index: 5;
+    color: #FFFFFF;
+    letter-spacing: 0.05em;
+}
+#reg_btn{
+    width: 220px;
+    height: 39px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    border: none;
+    margin-left: -30px;
+    padding-left: 30px;
+    z-index: 3;
+    color: #9484D8;
+    letter-spacing: 0.05em;
+}
+.input_field{
+    margin-left: auto;
+    margin-right: auto;
+    width: 440px;
+    height: 37px;
+    border-radius: 20px;
+    border: none;
+    padding-left: 10px;
+}
+.label_field{
+    margin-top: 10px;
+    font-size: 25px;
     color: #fff;
-    font-size: 20px;
-    font-family: 'Poppins', sans-serif;
     letter-spacing: 0.2em;
 }
-#lab2{
-    margin-right: 12px;
-    color: #fff;
-    font-size: 20px;
+.custom-control-label{
+    color: #FFFFFF;
+    letter-spacing: 0.1em;
+    font-size: 17px;
+    margin-top: 30px;   
+}
+.signin_btn_block{
+    display: grid;
+    justify-content: center;
+}
+#signIn_button{ 
     font-family: 'Poppins', sans-serif;
-    letter-spacing: 0.2em;
-}
-#r{              
-    margin-top: 15px;
-    width: 305.63px;
-    height: 38.64px;
-    border-radius: 32px;   
-}
-.login_{
-    display: flex;
-    align-items: center;
-}
-.password{
-    display: flex;
-    align-items: center;
-}
-#signIn{
-    font-family: 'Poppins', sans-serif;
+    border: none;
     letter-spacing: 0.2em;
     margin-top: 30px;
     font-size: 20px;
-    font-weight: 600;
-    color: #7a6daf;
+    color: #9485D8;
     width: 140px;
     height: 40px;
-    border-radius:32px ;
-    margin-left: 120px;
+    border-radius:32px ;   
+}
+.signin_btn_block a{
+    margin-top: 10px;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 18px;
+    margin-left: 5px;
+}
+.signin_btn_block a:hover{
+    color: #7a6daf;
+    text-decoration: none;
+    font-weight: 600;
 }
 
-#signUp{
+      /* ______________SIGNUP_________________ */
+#signUP_btn{
+    width: 136px;
+    height: 39px;   
+    color: #9484D8;
+    border-radius: 20px; 
+    border: none;
+    z-index: 5;
+    background: #FFFFFF;
+    letter-spacing: 0.05em;
+    z-index: 1;
+}
+#regUP_btn{
+    width: 220px;
+    height: 39px;
+    color: #FFFFFF;
+    border-radius: 20px;
+    border: none;
+    margin-left: -30px;
+    padding-left: 15px;
+    z-index: 3;
+    background: #9484D8;
+    letter-spacing: 0.05em;
+    z-index: 10;
+}
+#signUp_button{ 
     font-family: 'Poppins', sans-serif;
-    letter-spacing: 0.2em;
+    border: none;
+    letter-spacing: 0.05em;
     margin-top: 30px;
     font-size: 20px;
-    font-weight: 600;
-    color: #7a6daf;
-    width: 250px;
+    color: #9485D8;
+    width: 262px;
     height: 40px;
-    border-radius:32px ;
-    margin-left: 120px;
+    border-radius:32px ;   
 }
+#label_field_signup{
+    
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#link{
+    margin-left: 55px;
+}
+
+     /* _______ADVERTREVIEW__________ */
+
+.container_review{
+    left: 0;
+    margin-top: 150px;
+    width: 100%;
+    height: 500px;
+    background-color: #A9AEE6;
+    border-radius: 60px;
+    overflow:auto;
+}
+.main_photo_review_block{
+    float: right;  
+}
+.review_main{
+    margin-top: 50px;
+    margin-left: 40px;
+    margin-right: 50px;
+    width: 450px;
+    height: 400px;
+    border-radius: 35px;
+    object-fit: cover
+}
+
+.other_photo_review_block{
+    float: right; 
+    display: grid;  
+}
+.review_other{
+    margin-top: 37px;
+    width: 150px;
+    height: 120px;
+    border-radius: 20px;
+    object-fit: cover;
+
+}
+.text_review_block{
+    padding-top: 25px;
+    margin-left: 50px;
+}
+/* _________Profile____ */
+
+.profile_block{
+    margin-top: 150px;
+    width: 100%;
+    height: 60vh;
+    background-color: #A9AEE6;
+    border-radius: 60px;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/grad2.jpeg?alt=media&token=e0ba0d74-e4eb-42d8-a0c2-2db967462fe4) no-repeat;
+    background-size: cover;
+}
+.left_block{
+    float: left;
+    margin-left: 100px;
+    display: grid;
+}
+.right_block{
+    margin-top: -200px;
+    float: right;
+    margin-right: 100px;
+    display: grid;
+}
+.your_info_block{
+    margin-left: auto;
+    margin-right: auto;
+    width:200px;
+    height: 200px;   
+}
+.your_info_block img{
+    object-fit: cover;
+    margin-top: 30px;
+    width:200px ;
+    height: 200px;
+    border-radius: 100px;
+    filter: drop-shadow(0px 4px 4px #FFFFFF);
+    
+    margin-bottom: 30px;
+}
+.prof_title{
+    margin-top: 40px;
+    box-sizing: border-box;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 6px 1px #9485D8;
+    border-radius: 24px;
+    width: 334px;
+    height: 50px;
+    color: #7d6bc5;
+    text-align: center;
+    padding-top: 10px;
+    margin-bottom: 0px;
+}
+.prof_label{
+    font-size: 26px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;    
+}
+.prof_label1{
+    margin-left: 7px;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;   
+}
+.prof_btn{
+    margin-top: 10px;
+    background: none;
+    border: none;
+    font-weight: 300;
+    font-size: 29px;
+    line-height: 44px;
+    text-align: center;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+}
+
+
+
 

@@ -15,13 +15,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script src="serverlogic.js"></script>
 </head>
 <body class="sign_">
     <header class="header">
-
         <div class="header_inner">
           <a href="index.html">
               <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/logo.svg?alt=media&token=a9fbf102-4b28-46d6-bb6d-9469be5a4cc7" alt="">                    
@@ -30,101 +29,92 @@
                           <a href="about.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/AboutUs.png?alt=media&token=a62d422a-1be4-4ca9-9dd4-810e39cb1c1b" alt=""> Про нас</a>
                           <a href="Services.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/services.png?alt=media&token=e0da6157-7b8a-41bf-80dd-b03d8baa75fe" alt=""> Підтримка</a>
                           <a href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/support.png?alt=media&token=e4d6e42f-7ae2-4ee0-8233-54b43ccaee41" alt=""> Послуги</a>
-                          
+                          <a href="SignIn.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/sign-in-alt-free-icon-font%202.png?alt=media&token=37d4a899-06eb-418d-8bb0-f4d9a9a34681" alt=""> Увійти</a>
                       </nav>
        </div>
     </header>
        <div id="reg_form" class="register_form">
         <div class="img_circle">
             <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/user.png?alt=media&token=7512fa8e-7cd4-49a6-91e9-fbe68a0588db" alt="">                                                                                         
-
         </div>
-  </header>
-  
-       <div class="register">
-           <div class="TelNumber_">
-                <label  id="lab1" for="">Номер телефону</label>
-                <input type="tel" name="" id="telnumbox" placeholder="Номер телефону....">
-           </div>
-                <div class="login_">
-                            <label  id="lab1" for="">Логін</label>
-                            <input type="tel" name="" id="r" placeholder="Логін....">
+                <div class="SignIn_field">
+                    <button id="signUP_btn"><a href="SignIn.html">Увійти</a></button>
+                    <button id="regUP_btn">Зареєструватись</button>
                 </div>
-                    <div class="password">
-                        <label id="lab2" for="">Пароль</label>
-                        <input type="password" name="" id="passbox" placeholder="Пароль...." >
+                <label class="label_field" id="label_field_signup" for=" ">Прізвище Ім'я</label>
+                <input class="input_field" type="tel" name="" id="namebox" >  
+                <label class="label_field" id="label_field_signup" for="">Номер телефону</label>
+                <input class="input_field" type="tel" name="" id="telnumbox">
+                <label class="label_field" id="label_field_signup" for="">Пароль</label>                   
+                <input class="input_field" type="password" name="" id="passbox"  >
+
+                
+                    <div class="signin_btn_block">
+                        <button id="signUp_button">Зареєструватись</button>
+                        <a id="link"href="SignIn.html">Уже маєте акаунт?</a>
                     </div>
-                          <button id="signUp">Зареєструватись</button>
-
-       </div>
-
-
-<script type="module">
-
-// ------------------------------Importing the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-// -------------------------------- web app's Firebase configuration
-    const firebaseConfig = {
-        apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
-        authDomain: "lendory-b5d8b.firebaseapp.com",
-        databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
-        projectId: "lendory-b5d8b",
-        storageBucket: "lendory-b5d8b.appspot.com",
-        messagingSenderId: "759222136421",
-        appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
-    };
-// --------------------------------------------Initializing Firebase
-    const app = initializeApp(firebaseConfig);
-    import {getDatabase, ref, get, set, child, update, remove}
+                    
+   </div>
+       <script type="module">
+        // ------------------------------Importing the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+        // -------------------------------- web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
+          authDomain: "lendory-b5d8b.firebaseapp.com",
+          databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
+          projectId: "lendory-b5d8b",
+          storageBucket: "lendory-b5d8b.appspot.com",
+          messagingSenderId: "759222136421",
+          appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
+        };
+        // --------------------------------------------Initializing Firebase
+        const app = initializeApp(firebaseConfig);
+        import {getDatabase, ref, get, set, child, update, remove}
         from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"
+        
+        const db = getDatabase();
 
-    const db = getDatabase();
+        const name = document.getElementById('namebox');
+        const phoneNumber = document.getElementById('telnumbox');
+        const password = document.getElementById('passbox');
+        const submit = document.getElementById('signUp_button');
 
-    const name = document.getElementById('r');
-    const phoneNumber = document.getElementById('telnumbox');
-    const password = document.getElementById('passbox');
-    const submit = document.getElementById('signUp');
+        function RegisterUser(){
+            
+            const  dbRef = ref(db);
+            get(child(dbRef, "profiles/" + phoneNumber.value)).then((snapshot)=>{
+                if(snapshot.exists()){
+                    alert("Акаунт за таким номером телефону вже існує");
+                }
+                else{
+                    set(ref(db, "profiles/" + phoneNumber.value),
+                    {
+                        name: name.value,
+                        password: password.value,
+                        phonenumber: phoneNumber.value
+                    })
+                    set(ref(db, "profiles/" + phoneNumber.value + "/created"),
+                    {
+                        0: "ThisHashCodeWillNeverBeUsedto"       
+                    })
 
-    function RegisterUser(){
-
-        const  dbRef = ref(db);
-        get(child(dbRef, "profiles/" + phoneNumber.value)).then((snapshot)=>{
-            if(snapshot.exists()){
-                alert("Акаунт за таким номером телефону вже існує");
-            }
-
-            else{
-            set(ref(db, "profiles/" + phoneNumber.value),
-            {
-                    name: name.value,
-                    password: password.value,
-                    phonenumber: phoneNumber.value
-            })
-
-            set(ref(db, "profiles/" + phoneNumber.value + "/created"),
-            {
-                0: "ThisHashCodeWillNeverBeUsedto"       
-            })
-
-            set(ref(db, "profiles/" + phoneNumber.value + "/liked"),
-            {
-                0: "ThisHashCodeWillNeverBeUsedto"       
-            })
-
-            .then(()=>{
-                    alert("user added successfully");
-                    window.location = "SignIn.html";
-            })
-            .catch((error)=>{
-                alert("error" + error);
-            })
-
-            }
-        });
-    }
-    submit.addEventListener('click', RegisterUser);
-
-</script>
-
+                    set(ref(db, "profiles/" + phoneNumber.value + "/liked"),
+                    {
+                        0: "ThisHashCodeWillNeverBeUsedto"       
+                    })
+                    .then(()=>{
+                        alert("user added successfully");
+                        window.location = "SignIn.html";
+                    })
+                    .catch((error)=>{
+                        alert("error" + error);
+                    })
+                    
+                }
+            });
+        }
+        submit.addEventListener('click', RegisterUser);
+    </script>
 </body>
 </html>

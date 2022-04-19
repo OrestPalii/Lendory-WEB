@@ -20,7 +20,6 @@
 </head>
 <body class="sign_">
     <header class="header">
-
     <div class="header_inner">
       <a href="index.html">
           <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/logo.svg?alt=media&token=a9fbf102-4b28-46d6-bb6d-9469be5a4cc7" alt="">                    
@@ -29,7 +28,7 @@
                       <a href="about.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/AboutUs.png?alt=media&token=a62d422a-1be4-4ca9-9dd4-810e39cb1c1b" alt=""> Про нас</a>
                       <a href="Services.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/services.png?alt=media&token=e0da6157-7b8a-41bf-80dd-b03d8baa75fe" alt=""> Підтримка</a>
                       <a href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/support.png?alt=media&token=e4d6e42f-7ae2-4ee0-8233-54b43ccaee41" alt=""> Послуги</a>
-                      
+                      <a href="SignIn.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/sign-in-alt-free-icon-font%202.png?alt=media&token=37d4a899-06eb-418d-8bb0-f4d9a9a34681" alt=""> Увійти</a>
                   </nav>
    </div>
 </header>
@@ -37,89 +36,87 @@
        <div class="register_form">
             <div class="img_circle">
                 <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/user.png?alt=media&token=7512fa8e-7cd4-49a6-91e9-fbe68a0588db" alt="">                                                                                         
-
             </div>
-        </div>
-  </header>
-  
-       <div class="register">
-                <div class="login_">
-                            <label  id="lab1" for="">Номер телефону</label>
-                            <input type="tel" name="" id="telnumbox" placeholder="Номер телефону....">
-                </div>
-                    <div class="password">
-                        <label id="lab2" for="">Пароль</label>
-                        <input type="password" name="" id="passbox" placeholder="Пароль...." >
+                    <div class="SignIn_field">
+                        <button id="sign_btn">Увійти</button>
+                        <button id="reg_btn"><a href="SignUp.html">Зареєструватись</a></button>
                     </div>
+ 
+                    <label class="label_field" for=" ">Номер телефону</label>
+                    <input class="input_field" type="tel" name="" id="telnumbox" >  
+                    <label class="label_field" for="">Пароль</label>                   
+                    <input class="input_field" type="password" name="" id="passbox"  >
+    
                     <div class="custom-control custom-switch">
                         <input type="checkbox" class="custom-control-input" id="customSwitch1">
-                        <label class="custom-control-label" for="customSwitch1">Keep me logged in</label>
-                      </div>
-                          <button id="signIn">Увійти</button>
+                        <label class="custom-control-label" for="customSwitch1">Запам'ятати мене</label>
+                    </div>
+                        <div class="signin_btn_block">
+                            <button id="signIn_button">Увійти</button>
+                            <a href="#">Забули пароль?</a>
+                        </div>
+                        
        </div>
 
-<script type="module">
-    
-// ------------------------------Importing the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-// -------------------------------- web app's Firebase configuration
-    const firebaseConfig = {
-        apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
-        authDomain: "lendory-b5d8b.firebaseapp.com",
-        databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
-        projectId: "lendory-b5d8b",
-        storageBucket: "lendory-b5d8b.appspot.com",
-        messagingSenderId: "759222136421",
-        appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
-    };
-// --------------------------------------------Initializing Firebase
-    const app = initializeApp(firebaseConfig);
-    import {getDatabase, ref, get, set, child, update, remove}
+       <script type="module">
+        // ------------------------------Importing the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+        // -------------------------------- web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
+          authDomain: "lendory-b5d8b.firebaseapp.com",
+          databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
+          projectId: "lendory-b5d8b",
+          storageBucket: "lendory-b5d8b.appspot.com",
+          messagingSenderId: "759222136421",
+          appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
+        };
+        // --------------------------------------------Initializing Firebase
+        const app = initializeApp(firebaseConfig);
+        import {getDatabase, ref, get, set, child, update, remove}
         from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"
+        
+        const db = getDatabase();
 
-    const db = getDatabase();
+        
+        const phoneNumber = document.getElementById('telnumbox');
+        const password = document.getElementById('passbox');
+        const submit = document.getElementById('signIn_button');
 
+        function AuthenticateUser(){
 
-    const phoneNumber = document.getElementById('telnumbox');
-    const password = document.getElementById('passbox');
-    const submit = document.getElementById('signIn');
-
-    function AuthenticateUser(){
-
-        const  dbref = ref(db);
-        get(child(dbref, "profiles/" + phoneNumber.value)).then((snapshot)=>{
-            if(snapshot.exists()){
-                let dbpass = snapshot.val().password;
-                    if(dbpass == password.value){
-                        login(snapshot.val());
-                    }           
-                    else{
-                        alert("Неправильний номер телефону чи пароль");
+                const  dbref = ref(db);
+                get(child(dbref, "profiles/" + phoneNumber.value)).then((snapshot)=>{
+                    if(snapshot.exists()){
+                        let dbpass = snapshot.val().password;
+                            if(dbpass == password.value){
+                                login(snapshot.val());
+                            }           
+                            else{
+                                alert("Неправильний номер телефону чи пароль");
+                            }
                     }
-            }
 
-            else{
-                alert("Користувача з таким номером телефону не існує");
-            }
-        });
-    }
+                    else{
+                        alert("Користувача з таким номером телефону не існує");
+                    }
+                });
+                }
 
-        function login(user){
-            let keepLoggedIn = document.getElementById('customSwitch1').checked;
-            if(!keepLoggedIn){
-                sessionStorage.setItem('user', JSON.stringify(user));
-                window.location="index.html";
-            }
+                function login(user){
+                    let keepLoggedIn = document.getElementById('customSwitch1').checked;
+                    if(!keepLoggedIn){
+                        sessionStorage.setItem('user', JSON.stringify(user));
+                        window.location="index.html";
+                    }
 
-            else{
-                localStorage.setItem('keepLoggedIn', 'yes');
-                localStorage.setItem('user', JSON.stringify(user));
-                window.location="index.html";
-            }
-        }
-    submit.addEventListener('click', AuthenticateUser)
-
-</script>
-
+                    else{
+                        localStorage.setItem('keepLoggedIn', 'yes');
+                        localStorage.setItem('user', JSON.stringify(user));
+                        window.location="index.html";
+                    }
+                }
+                submit.addEventListener('click', AuthenticateUser)
+    </script>
 </body>
 </html>
