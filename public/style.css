@@ -30,7 +30,7 @@
     color: azure;
     margin: 0 20px;
     transition: color 0.2s linear;
-    font-family: 'Poppins', sans-serif;
+
 }
 .nav a:hover{
     color:#7a6daf;
@@ -73,6 +73,7 @@
     text-align: center;
     width: 763px;
     height: 400px;
+    
 }
 #lendory_text{
     text-transform: uppercase;
@@ -83,7 +84,7 @@
     margin-top: 15px;
     margin-bottom: 20px;
     color: #A3BBD8;
-    animation-duration: 3s; 
+    animation-duration: 2s; 
     animation-name: slidein;  
 }
 #lendory_text:before{
@@ -94,7 +95,7 @@
 }
 #about_lend{
     margin: 2px;
-    animation-duration: 3s; 
+    animation-duration: 2s; 
     animation-name: slidein;
    
 }
@@ -117,7 +118,7 @@
     }
     to {
     margin-left: 0%;
-    width: 49.5%;
+    width: 48%;
     }
 }
 .lend_descr{
@@ -126,8 +127,6 @@
     width: 500px;
     height: 200px;
     text-align: left;
-    font-family: 'Poppins';
-    font-style: normal;
     font-weight: 300;
     font-size: 20px;
     line-height: 30px;
@@ -135,9 +134,7 @@
     color: #9485D8;
 }
 #but_advert{
-    font-family: 'Poppins';
-    font-style: normal;
-    animation-duration: 3s;
+    animation-duration: 2s;
     animation-name: slidein1;
     margin-top: 20px;
     padding: 10px 10px;
@@ -145,7 +142,7 @@
     background: #9485D8;
     border-radius: 30px;
     color: #fff;
-    font-size: 25px;
+    font-size: 22px;
     letter-spacing: 0.1em;
     font-weight: 500; 
     
@@ -286,7 +283,7 @@
     background-color: #ead8eb;
 }
 .advert_{
-    padding-right: 370px;
+    padding-right: 650px;
     float: right;
     margin-top: 90px;
     margin-left: auto;      
@@ -306,17 +303,16 @@
      font-size: 19px;
      letter-spacing: 0.05em;
 }
- #currency{                                
-    margin-top: 8px;
-    margin-left: 10px;
+ #currency{   
+     margin-left: 300px;     
+     margin-top: -38px;                        
     background-color: #cd88db;
     border-radius: 30px;
     border: 0;
     font-size: 20px;
     color: #fff;
     padding: 2px 2px;
-    position: absolute; 
-   
+    position: absolute;   
  }
  #option{
      margin: 3px;
@@ -324,7 +320,6 @@
      width: 290px;
      height: 30px;
      border: 0px;
-     font-family: 'Poppins', sans-serif;
      font-size: 20px;
      border: 1px solid;  
      border-color: #7a6daf;
@@ -338,7 +333,6 @@
     margin: 6px;
     font-size: 18px;
     letter-spacing: 2px;
-    font-family: 'Poppins', sans-serif;
     border: 1px solid;  
     border-color: #7a6daf;  
 }
@@ -349,7 +343,6 @@
 ::placeholder{
     padding: 5px;
     font-size: 16px;
-    font-family: 'Poppins', sans-serif;
     letter-spacing: 0.2em;
 }
 textarea{
@@ -365,14 +358,13 @@ textarea{
 }
 .create{
     margin-top: 6px;
-    margin-left: 115px;
+    margin-left: 100px;
     background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6) no-repeat;
     background-size: cover;
     border: none;
     border-radius: 20px;
     width: 120px;
     height: 46.2px;
-    font-family: 'Poppins', sans-serif; 
     font-size: 19px;
     letter-spacing: 0.05em;
     color: #fff;  
@@ -508,7 +500,6 @@ textarea{
     justify-content: center;
 }
 #signIn_button{ 
-    font-family: 'Poppins', sans-serif;
     border: none;
     letter-spacing: 0.2em;
     margin-top: 30px;
@@ -557,7 +548,6 @@ textarea{
     z-index: 10;
 }
 #signUp_button{ 
-    font-family: 'Poppins', sans-serif;
     border: none;
     letter-spacing: 0.05em;
     margin-top: 30px;
@@ -579,11 +569,12 @@ textarea{
      /* _______ADVERTREVIEW__________ */
 
 .container_review{
+    margin-top: 90px;
     left: 0;
-    margin-top: 150px;
     width: 100%;
-    height: 500px;
-    background-color: #A9AEE6;
+    height: 80vh;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/grad2.jpeg?alt=media&token=e0ba0d74-e4eb-42d8-a0c2-2db967462fe4) no-repeat;
+    background-size: cover;
     border-radius: 60px;
     overflow:auto;
 }
@@ -599,7 +590,6 @@ textarea{
     border-radius: 35px;
     object-fit: cover
 }
-
 .other_photo_review_block{
     float: right; 
     display: grid;  
@@ -610,12 +600,78 @@ textarea{
     height: 120px;
     border-radius: 20px;
     object-fit: cover;
-
 }
 .text_review_block{
-    padding-top: 25px;
-    margin-left: 50px;
+    color: #fff;
+    padding-top: 20px;
+    margin-left: 50px;    
 }
+.name_price{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#name{
+    padding-top: 10px;
+    width: 100%;   
+    margin-bottom: 35px;
+}
+#price{
+    font-size: 20px;
+}
+
+.location span{
+    font-size: 20px;
+    margin-right: 10px;
+    color:#7d6bc5;
+    font-weight: 300; 
+    background-color: #fff;
+    border-radius: 10PX;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#loc{
+    font-size: 15px;
+}
+
+.info_block{
+    margin-left: 105px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    color: #7d6bc5;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 60%;
+    margin-bottom: 20px;
+}
+.info_{
+    display: grid;
+}
+.info_block img{
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    margin-right: 20px;
+    border: 2px solid #9485D8;
+    object-fit: cover;
+}
+.info_block span{
+    margin-top: 10px;
+    margin-right: 30px;
+    font-size: 18px;
+}
+.description{
+    width: 40%;
+    margin-top: 40px;
+}
+
+
 /* _________Profile____ */
 
 .profile_block{
