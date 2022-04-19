@@ -32,8 +32,8 @@
                     <nav class="nav">
                         <a href="about.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/AboutUs.png?alt=media&token=a62d422a-1be4-4ca9-9dd4-810e39cb1c1b" alt=""> Про нас</a>
                         <a href="Services.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/services.png?alt=media&token=e0da6157-7b8a-41bf-80dd-b03d8baa75fe" alt=""> Підтримка</a>
-                        <a href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/support.png?alt=media&token=e4d6e42f-7ae2-4ee0-8233-54b43ccaee41" alt=""> Послуги</a>
-                        <a id='userlink' href="">Username </a>
+                        <a href="advert.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/document-free-icon-font%201.png?alt=media&token=a05f066e-4bea-4bf8-b798-e7affff9eb31" alt=""> Оголошення</a>
+                        <a id='userlink' href="profile.html"><img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/user-free-icon-font%20(1)%201.png?alt=media&token=c967e8f1-bb4f-4092-b242-70654ee0e544" alt=""> Username </a>
                         <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/sign-in-alt-free-icon-font%202.png?alt=media&token=37d4a899-06eb-418d-8bb0-f4d9a9a34681" alt=""> Вийти</a>
                     </nav>
     </div>
@@ -54,26 +54,42 @@
 </div> 
 
                  <!-- опис головної частини з оголошенями та інформацією -->
-     <div class="main">         
-          <div class="recomandation">
-              <div class="mainphoto_">
-                  <img id="photo_" src="C:\Users\roman\Downloads\11111.jpg" alt="">
-                            <div class="desc">
-                                <div class="pre_description">
-                                  <p id="count_photo">+4</p>  
+     <section class="main_block">         
+          <div class="recomandation_block">
+              <div class="ad_main_photo">
+                  <a href="advertreview.html"><img id="main_photo" src="C:\Users\roman\Downloads\11111.jpg" alt=""></a>
+                     <span id="like_btn" onclick="change_bnt()">❥</span>  
+                      
+                            <div class="description_block">
+                                <div class="left_description">                       
+                                  <img id="other_photo" src="C:\Users\roman\Downloads\11111.jpg" alt="">         
+                                  <p id="count_photo">+3</p>                                 
                                 </div>
-                                      <div class="description">
+                                      <div class="right_description">
                                               <h3>Продам єнота</h3>
                                               <h6>Жовква,вул Миру,36</h6>
-                                              <h6>100$</h6>                                   
+                                              <h6>100$</h6>                                    
                                       </div>
-                                      <p id="p">Learn more</p>
+                                      <p id="learn_more">Більше</p>
                             </div> 
-                </div>                
+                </div> 
+                   
+                            
             </div>
-     </div>
-                
-    
+     </section>
+     <section class="main_block"> 
+     
+      
+
+     
+     </section>
+     <script>
+      function change_bnt() {
+          document.getElementById("like_btn").style.color = "#7d6bc5";
+         
+      }
+      </script>   
+     
     <script>
       let userlink = document.getElementById('userlink');
       let signoutlink = document.getElementById('signoutlink');
@@ -89,26 +105,16 @@
       window.onload = function(){
         getUsername();
         if(currentUser == null){
-          userlink.innerText="Створити акаунт";
-          // userlink.classList.replace("nav-link","btn")
-          // userlink.classList.add("btn-primary");
+          userlink.innerText="Створити акаунт";        
           userlink.href = "SignUp.html";
-
-          signoutlink.innerText="Увійти";
-          // signoutlink.classList.replace("nav-link","btn")
-          // signoutlink.classList.add("btn-primary");
+          signoutlink.innerText="Увійти";       
           signoutlink.href = "SignIn.html";
         }
 
         else{
-          userlink.innerText= "Мій профіль";
-          // userlink.classList.replace("nav-link","btn")
-          // userlink.classList.add("btn-primary");
-          userlink.href = "#";
-
-          signoutlink.innerText="Вийти";
-          // signoutlink.classList.replace("nav-link","btn")
-          // signoutlink.classList.add("btn-primary");
+          userlink.innerText= "Мій профіль";        
+          userlink.href = "profile.html";
+          signoutlink.innerText="Вийти";         
           signoutlink.href = "javascript:Signout()";
         }
       }
