@@ -8,53 +8,105 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="getting_body" >
+    
     <div id="tbody1">
         
     </div>
-
+    <script>
+        
+    </script>
     <script type="module">
         var tbody = document.getElementById("tbody1");
         
-        function AddItemToTable(name, loc, descript, img_num){
-            let trow = document.createElement("div");
+        
+        function AddItemToTable(name, loc, descript, img_num, hashnumber){
+            let big_div = document.createElement("div");
+            let left_description = document.createElement("div");
+            let right_description = document.createElement("div");
             let image = document.createElement("img");
+            let other_image = document.createElement("img");
+            let other_image_back = document.createElement("img");
+            let count_photo = document.createElement("p");
             let td1 = document.createElement("p");
             let td2 = document.createElement("p");
             let td3 = document.createElement("p");
+            let more = document.createElement("a");
 
-            trow.setAttribute(
+
+
+            big_div.setAttribute(
                 'style',
-                'background-color: grey; width: 200px; height: 200px; margin: 20px; margin-left: 100px;'
+                'position: relative; text-align: center; margin-top: 30px; margin-left: 30px; width: 400px; height: 453px; background-color: rgb(255, 255, 255); border-radius: 35px; z-index:1;'
+            )
+
+            left_description.setAttribute(
+                'style', 
+                'text-align: center; margin-left: 28px; padding: 10px; margin-top: 10px; float: left; position: relative;'
+            )
+
+            right_description.setAttribute(
+                'style', 
+                'text-align: left; margin-top: -55px; position: relative;padding-top: 70px;padding-left: 15px;float: right;color: #fff;background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6) no-repeat;background-size: cover;width: 230.73px;height: 232.41px;border-radius: 35px;z-index: 1;'
             )
 
             image.setAttribute(
                 'style',
-                'width: 100px; height: 100px'
+                'float: right;border-radius: 30px;width: 400.17px;height: 276.57px;position: relative;object-fit: cover;z-index: 10; '
             )
 
+            other_image.setAttribute(
+                'style',
+                'margin-left: -15px;margin-top: 2px; width: 122.18px;height: 117.09px;object-fit: cover;border-radius: 20px;filter: grayscale(100%);'
+            )
 
+            other_image_back.setAttribute(
+                'style',
+                'margin-left: -122px;margin-top: 2px; width: 122.18px;height: 117.09px;object-fit: cover;border-radius: 20px; background-color:black; opacity: 0.5'
+            )
 
+            count_photo.setAttribute(
+                'style',
+                'position: absolute;margin-top: -125px;margin-left: 8px;font-size: 80px;color: #fff;  '
+            )
+
+            more.setAttribute(
+                'style',
+                'padding-left: 5px;text-transform: uppercase;margin-bottom: 140px; color: #CF89DB;font-weight: 500;font-size: 19px;letter-spacing: 0.1em;  '
+            )
+
+            
             td1.innerHTML = name;
             td2.innerHTML = loc;
             td3.innerHTML = descript;
+            count_photo.innerHTML = '+3'
+            more.innerHTML = 'Більше'
             image.src = img_num;
 
-            
-            trow.appendChild(image);
-            trow.appendChild(td1);
-            trow.appendChild(td2);
-            trow.appendChild(td3);
-            
+            other_image.src = "wert.jfif"
+            more.href = 'advertreview.html#' + hashnumber; 
 
-            tbody.appendChild(trow);
+            
+            big_div.appendChild(image);
+            left_description.appendChild(other_image);
+            left_description.appendChild(other_image_back);
+            left_description.appendChild(count_photo);
+            right_description.appendChild(td1);
+            right_description.appendChild(td2);
+            right_description.appendChild(td3);
+            big_div.appendChild(left_description);
+            big_div.appendChild(right_description);
+            big_div.appendChild(more);
+            
+            tbody.appendChild(big_div);
+            
             
         }
 
         function AddAllItemsToTable(TheAdvertisement){
             tbody.innerHTML="";
             TheAdvertisement.forEach(element => {
-                AddItemToTable(element.name, element.location, element.description, element.images[0]);
+                AddItemToTable(element.name, element.location, element.description, element.images[0], element.hashnumber);
                 
             });
         }

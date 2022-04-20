@@ -6,7 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Review</title>
     <link rel="stylesheet" href="style.css">
+    <!--firebase-->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <script src="serverlogic.js"></script>
 </head>
+
 <body>
     <header class="header">
       <div class="header_inner">
@@ -21,10 +27,20 @@
                     </nav>
      </div>
   </header>
-            <section class="review">
+         <section class="review">
                    <div class="container_review">
                        <div class="main_photo_review_block">
                            <img class="review_main" src="C:\Users\roman\Downloads\11111.jpg" alt="">
+
+                           <div class="info_about_seller">
+                                <div class="info_block">
+                                <img src="C:\Users\roman\Pictures\Фотогалерея\photo_2021-08-03_16-08-31.jpg" alt="">
+                                <div class="info_">
+                                    <span>Лешега Романdnjghfjggfhgh</span>
+                                    <span>+380987211308</span>
+                                </div>
+                                </div>
+                          </div>     
                        </div>
                        <div class="other_photo_review_block">
                             <img class="review_other" src="C:\Users\roman\Downloads\11111.jpg" alt="">
@@ -32,21 +48,37 @@
                             <img class="review_other" src="C:\Users\roman\Downloads\11111.jpg" alt="">
                        </div>
                        <div class="text_review_block">
-                           <h1 id="name_advert">Назва:Довготривала оренда 1к квартири на вул. Героїв УПА 73  </h1>
-                           <h3>Ціна:100$</h3>
-                           <h3>Локація:Львів  · район Залізничний  · Героїв УПА вулиця</h3>
-                           <h3>1 кімната  ·  7 поверх з 10
-                            Загальна площа 48 м²  ·  кухня 14 м²
-                            Без оплати комунальних платежів
-                            Стіни з цегли
-                            Індивідуальне опалення
-                            Пропозиція від посередника
-                            Вторинне житло</h3>
-                            <h3>НОмер телефона:0943949344</h3>                          
+                           <div class="name_price">
+                                <h3 id="name">Loreur facilis    ae exercitationem mollitia atque maiores culpa omnis quo possimus explicabo consectetur. </h3>
+                                 
+                          </div>
+                            <Div class="location">
+                                <span id="price"> 10000$</span>  <span>м.Кроповницький вулиця Степана Бандера будинок номер 90</span> 
+                                    <br><br>
+                                        <span id="loc">44 кв.м</span>
+                                             <span id="loc">Кімнат:4</span>
+                                                 <span id="loc">Поверх:10</span>
+                                    
+                                       
+                            </Div> 
+                           
+                                <div class="description">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio aut voluptatum quia unde nisi tenetur id, maiores, quisquam molestias ratione sit. Quo reiciendis unde magnam nam velit! Animi, tenetur sed.
+                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda corporis dolorum, architecto iusto recusandae blanditiis deleniti ut. Qui, facere tempore! Maiores explicabo voluptate, illo exercitationem cum earum? Nam, distinctio tempora.
+                                        </p>
+                                </div>   
+                                         
                        </div>
                    </div>                
             </section>
-            
-
+            <script>
+                window.onload = getURL();
+                function getURL() {
+                    var url = window.location.href;
+                    //локально з пк/ при деплої міняти силку на https://lendory-b5d8b.firebaseapp.com/advertreview.html
+                    url = url.replace("file:///C:/lendory_web/public/advertreview.html#", "");
+                    getCurrentAdv(url);
+                }
+            </script>
 </body>
 </html>
