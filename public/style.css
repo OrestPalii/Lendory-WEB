@@ -747,6 +747,11 @@
                 letter-spacing: 0.1em;
                 color: #FFFFFF;
             }
+
+            #tbody1{
+                display: grid;
+                grid-template-columns: auto auto auto;
+            }
             
             
             

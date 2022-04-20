@@ -160,6 +160,7 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
           adv = element.val();
           allAdv.push(adv);
           });
+          
       })
   }
 
