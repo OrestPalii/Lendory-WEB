@@ -18,6 +18,8 @@
 }
 .header_logo{
     margin-left: 100px; 
+    width: 203px;
+    height: 56px;
 }
 .nav{
     margin-right: 100px;
@@ -84,8 +86,7 @@
     margin-top: 15px;
     margin-bottom: 20px;
     color: #A3BBD8;
-    animation-duration: 2s; 
-    animation-name: slidein;  
+     
 }
 #lendory_text:before{
     content: "01";
@@ -95,8 +96,7 @@
 }
 #about_lend{
     margin: 2px;
-    animation-duration: 2s; 
-    animation-name: slidein;
+    
    
 }
 @keyframes slidein 
@@ -110,17 +110,7 @@
     width: 100%;
     }
 }
-@keyframes slidein1 
-{
-    from {
-    margin-left: 100%;
-    width: 300%;
-    }
-    to {
-    margin-left: 0%;
-    width: 48%;
-    }
-}
+
 .lend_descr{
     margin-left: auto;
     margin-right: auto;
@@ -134,8 +124,7 @@
     color: #9485D8;
 }
 #but_advert{
-    animation-duration: 2s;
-    animation-name: slidein1;
+    
     margin-top: 20px;
     padding: 10px 10px;
     border: none;
@@ -199,27 +188,45 @@
     float: right;
     border-radius: 30px;
     width: 420.17px;
-    height: 326.57px;
+    height: 340.57px;   
     position: relative;
     object-fit: cover;
     z-index: 10;
 }
-#like_btn{
-    box-sizing: border-box;
-    font-size: 50px;
-    position: absolute;
-    z-index: 22;
-    margin-left: 370px;
-    margin-top: 260px;
-    color: #fff;
-    transform: rotate(90deg);  
-    cursor: pointer;   
+.info_on_photo{
+    display: flex;
+    z-index: 25;
+    margin-top: -50px;
+    margin-left: 20px;
+
 }
-
-
-
-
-
+.info_on_photo label{
+    color: #7d6bc5;
+    margin-right: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 230px;
+    height: fit-content;
+    text-overflow:clip;
+    padding-left: 5px;
+    text-overflow: ellipsis; 
+    overflow: hidden; 
+    white-space: nowrap; 
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: -10px;
+}
+#price_field{
+    width: 80px;
+}
+#like_field{
+    width: 50px;
+    margin-top: -25px;
+}
+#like_btn{ 
+    width: 40px;
+    height: 40px;
+}
 .description_block{
     position: relative;
     text-align: center;
@@ -619,7 +626,6 @@ textarea{
 #price{
     font-size: 20px;
 }
-
 .location span{
     font-size: 20px;
     margin-right: 10px;
@@ -635,7 +641,6 @@ textarea{
 #loc{
     font-size: 15px;
 }
-
 .info_block{
     margin-left: 105px;
     margin-top: 10px;
@@ -669,6 +674,54 @@ textarea{
 .description{
     width: 40%;
     margin-top: 40px;
+}
+         /* Popups(перегляд фотографій) */
+.popup{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0,0.9);
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+.popup:target{
+    opacity: 1;
+    visibility: visible;
+}
+.popup:target .popup_text{
+    transform: perspective(600px) translate(0px,0%) rotateX(0deg);
+    opacity: 1;
+}
+.popup_area{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.popup_body{
+    min-height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 30px 10px;
+    transition: all 0.5s ease 0s;
+}
+.popup_text{
+    width: 50%;
+    height: 50%;
+    transition: all 0.5s ease 0s;
+    opacity: 0;
+    transform: perspective(600px) translate(0px,-100%) rotateX(45deg);
+    max-width: 800px;
+    padding: 30px; 
+}
+.popup_img{
+    width: 110%;
+    height: 110%;
+    border-radius: 25px;
 }
 
 
@@ -747,6 +800,11 @@ textarea{
     letter-spacing: 0.1em;
     color: #FFFFFF;
 }
+
+
+
+
+
 
 
 
