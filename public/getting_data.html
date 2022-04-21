@@ -29,6 +29,10 @@
             let left_description = document.createElement("div");
             let right_description = document.createElement("div");
             let image = document.createElement("img");
+            let info_on_photo =document.createElement("div")
+            let label_location=document.createElement("label")
+            let label_price=document.createElement("label")
+            let btn_like=document.createElement("label")
             let other_image = document.createElement("img");
             let other_image_back = document.createElement("img");
             let count_photo = document.createElement("p");
@@ -58,6 +62,19 @@
                 'style',
                 'float: right;border-radius: 30px;width: 400.17px;height: 276.57px;position: relative;object-fit: cover;z-index: 10; '
             )
+            // info_on_photo.setAttribute(
+            //     'style',
+            //     'display: flex;  z-index: 25; margin-left: 20px; width:400.17px; margin-top:120px;' 
+            // )
+            // label_location.setAttribute(
+            //     'style',
+            //     'z-index: 25;color: #000;margin-top:-80px; margin-right: 10px;background-color: #fff;border-radius: 10px;width:230px;height: fit-content;text-overflow:clip;padding-left: 5px;text-overflow: ellipsis; overflow: hidden;  white-space: nowrap;  padding-top: 5px;padding-bottom: 5px;margin-top: -10px;'
+            // )
+            // label_price.setAttribute(
+            //     'style',
+            //     'z-index: 25 color: #7d6bc5; margin-right: 10px;background-color: #fff;border-radius: 10px;width: 80px;height: fit-content;text-overflow:clip;padding-left: 5px;text-overflow: ellipsis; overflow: hidden;  white-space: nowrap;  padding-top: 5px;padding-bottom: 5px;margin-top: -10px;'
+            // )
+
 
             other_image.setAttribute(
                 'style',
@@ -83,6 +100,7 @@
             td1.innerHTML = name;
             td2.innerHTML = loc;
             td3.innerHTML = descript;
+            label_location.innerHTML = loc;
             count_photo.innerHTML = '+3'
             more.innerHTML = 'Більше'
             image.src = img_num;
@@ -92,6 +110,10 @@
 
             
             big_div.appendChild(image);
+            // info_on_photo.appendChild(label_location);
+            // info_on_photo.appendChild(label_price);
+            // big_div.appendChild(info_on_photo);
+            
             left_description.appendChild(other_image);
             left_description.appendChild(other_image_back);
             left_description.appendChild(count_photo);
@@ -101,16 +123,16 @@
             big_div.appendChild(left_description);
             big_div.appendChild(right_description);
             big_div.appendChild(more);
+          
             
             tbody.appendChild(big_div);
             
             
         }
 
-        function AddAllItemsToTable(){
-            getdata();
+        function AddAllItemsToTable(TheAdvertisement){
             tbody.innerHTML="";
-            allAdv.forEach(element => {
+            TheAdvertisement.forEach(element => {
 
                 AddItemToTable(element.name, element.location, element.description, element.images[0], element.hashnumber);
                 
@@ -120,36 +142,36 @@
         
 
 
-        // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
   
-        // const firebaseConfig = {
-        //     apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
-        //     authDomain: "lendory-b5d8b.firebaseapp.com",
-        //     databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
-        //     projectId: "lendory-b5d8b",
-        //     storageBucket: "lendory-b5d8b.appspot.com",
-        //     messagingSenderId: "759222136421",
-        //     appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
-        // };
+        const firebaseConfig = {
+            apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
+            authDomain: "lendory-b5d8b.firebaseapp.com",
+            databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
+            projectId: "lendory-b5d8b",
+            storageBucket: "lendory-b5d8b.appspot.com",
+            messagingSenderId: "759222136421",
+            appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
+        };
 
-        // const app = initializeApp(firebaseConfig);
+        const app = initializeApp(firebaseConfig);
 
-        // import {getDatabase, ref, child, onValue, get }
-        //     from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
-        //     const db = getDatabase();
+        import {getDatabase, ref, child, onValue, get }
+            from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+            const db = getDatabase();
 
-        // function GetAllDataOnce(){
-        //     const dbRef = ref(db);
-        //     get(child(dbRef, "advertisementtest"))
-        //     .then((snapshot)=>{
-        //         var advertisements = [];
-        //         snapshot.forEach(childSnapshot =>{
-        //             advertisements.push(childSnapshot.val());
-        //         });
-        //         AddAllItemsToTable(advertisements);
-        //     })
-        // }
-        window.onload = AddAllItemsToTable(); 
+        function GetAllDataOnce(){
+            const dbRef = ref(db);
+            get(child(dbRef, "advertisement"))
+            .then((snapshot)=>{
+                var advertisements = [];
+                snapshot.forEach(childSnapshot =>{
+                    advertisements.push(childSnapshot.val());
+                });
+                AddAllItemsToTable(advertisements);
+            })
+        }
+        window.onload = GetAllDataOnce; 
     </script>
 </body>
 </html>

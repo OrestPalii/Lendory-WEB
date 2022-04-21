@@ -11,6 +11,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
     <script src="serverlogic.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <body>
@@ -34,10 +35,10 @@
 
                            <div class="info_about_seller">
                                 <div class="info_block">
-                                <img src="C:\Users\roman\Pictures\Фотогалерея\photo_2021-08-03_16-08-31.jpg" alt="">
+                                <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/user.png?alt=media&token=c13b4e2c-a614-4f82-9149-5c45f598f771" alt="">
                                 <div class="info_">
-                                    <span>Лешега Романdnjghfjggfhgh</span>
-                                    <span>+380987211308</span>
+                                    <span id="user_name">Лешега Романdnjghfjggfhgh</span>
+                                    <span id="phoneNumber">+380987211308</span>
                                 </div>
                                 </div>
                           </div>     
@@ -55,30 +56,42 @@
                             <Div class="location">
                                 <span id="price"> 10000$</span>  <span>м.Кроповницький вулиця Степана Бандера будинок номер 90</span> 
                                     <br><br>
-                                        <span id="loc">44 кв.м</span>
-                                             <span id="loc">Кімнат:4</span>
-                                                 <span id="loc">Поверх:10</span>
+                                        <span id="area">44 кв.м</span>
+                                             <span id="numberofrooms">Кімнат:4</span>
+                                                 <span id="floor">Поверх:10</span>
                                     
                                        
                             </Div> 
                            
                                 <div class="description">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio aut voluptatum quia unde nisi tenetur id, maiores, quisquam molestias ratione sit. Quo reiciendis unde magnam nam velit! Animi, tenetur sed.
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda corporis dolorum, architecto iusto recusandae blanditiis deleniti ut. Qui, facere tempore! Maiores explicabo voluptate, illo exercitationem cum earum? Nam, distinctio tempora.
-                                        </p>
+                                        <p id="description"></p>
                                 </div>   
                                          
                        </div>
                    </div>                
             </section>
             <script>
+               
                 window.onload = getURL();
                 function getURL() {
+                    var adv_name = document.getElementById('name');
+                    var adv_price = document.getElementById('price');
+                    var adv_area = document.getElementById('area');
+                    var adv_numberofrooms=document.getElementById('numberofrooms')
+                    var adv_floor=document.getElementById('floor')
+                    var user_name=document.getElementById("user_name")
+                    var phoneNumber=document.getElementById("phoneNumber")
+                    var adv_description=document.getElementById("description")
                     var url = window.location.href;
                     //локально з пк/ при деплої міняти силку на https://lendory-b5d8b.firebaseapp.com/advertreview.html
                     url = url.replace("file:///D:/Lendory-WEB/public/advertreview.html#", "");
-                    getCurrentAdv(url);
+                    getCurrentAdv(url, adv_name,adv_price, adv_area,adv_numberofrooms,adv_floor,user_name,phoneNumber,adv_description);
+                    
+                    //get_adv_data();
                 }
+
+                
+               
             </script>
 </body>
 </html>

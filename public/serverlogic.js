@@ -110,24 +110,26 @@ function fifth_img_upload(){
 //data inserting function
 function setdata(name, description, location, floor, rooms, area, rent, currency, vol, numb){
    
-    
+  var d = new Date();
+  var millisecondsSince1970 = d.valueOf();
     if(vol == 1){vol = true;}
     else{vol = false;}
-        firebase.database().ref("/").child("advertisementtest/" + numb + "/").update({
-            area: area,
+        firebase.database().ref("/").child("advertisement/" + numb + "/").update({
+            area: parseInt(area),
             currency: currency,
             description: description,
-            floor: floor,
-            hashnumber: numb,
+            floor: parseInt(floor),
+            hashnumber: String(numb),
             location: location,
             name: name,
-            numberOfRooms: rooms,
-            price: rent,
-            volunteering: vol    
+            numberOfRooms: parseInt(rooms),
+            price: parseInt(rent),
+            volunteering: vol,
+            time:   millisecondsSince1970
         })
 
         getUsername();
-        firebase.database().ref("/").child("advertisementtest/" + numb + "/creator/").update({
+        firebase.database().ref("/").child("advertisement/" + numb + "/creator/").update({
             name: currentUser.name,
             phoneNumber: currentUser.phonenumber
         })
@@ -155,25 +157,36 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
   allAdv = []; 
   var adv;
   function getdata(){
-      firebase.database().ref("advertisementtest").on('value', function(snapshot){
+      firebase.database().ref("advertisement").on('value', function(snapshot){
         snapshot.forEach(function(element){
           adv = element.val();
           allAdv.push(adv);
           });
-          
       })
   }
 
 var currentAdv;
-function getCurrentAdv(code){
-  firebase.database().ref("advertisementtest/" + code).on('value', function(snapshot){
+function getCurrentAdv(code, adv_name,adv_price, adv_area,adv_numberofrooms, adv_floor,user_name,phoneNumber,adv_description){
+  firebase.database().ref("advertisement/" + code).on('value', function(snapshot){
     currentAdv = snapshot.val();
     if(currentAdv == null){
       window.location = "404.html";
       //alert("Такого оголошення не існує");
     }
-    else
-      alert(currentAdv.name);
+    else{
+      adv_name.innerText = currentAdv.name;
+      adv_price.innerText= "Ціна: "+ currentAdv.price + currentAdv.currency;
+      adv_area.innerText = currentAdv.area + " кв.м";
+      adv_numberofrooms.innerText="Кімнат: "+currentAdv.numberOfRooms;
+      adv_floor.innerText = "Поверх: " + currentAdv.floor;
+      user_name.innerText = currentAdv.creator.name;
+      phoneNumber.innerText=currentAdv.creator.phoneNumber;
+      adv_description.innerText=currentAdv.description;
+    }
+
+    
+
+    
   })
 }
 
