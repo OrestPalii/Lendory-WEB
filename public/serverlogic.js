@@ -152,6 +152,7 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
          option.value = '';
     } 
 
+
 // arr = []; 
 // var adv;
 // function getdata(){
@@ -163,6 +164,41 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
 //     })
 //     alert(arr[3].area);
 // }
+
+  allAdv = []; 
+  var adv;
+  function getdata(){
+      firebase.database().ref("advertisement").on('value', function(snapshot){
+        snapshot.forEach(function(element){
+          adv = element.val();
+          allAdv.push(adv);
+          });
+      })
+  }
+
+var currentAdv;
+function getCurrentAdv(code, adv_name,adv_price, adv_location, adv_area,adv_numberofrooms, adv_floor,user_name,phoneNumber,adv_description){
+  firebase.database().ref("advertisement/" + code).on('value', function(snapshot){
+    currentAdv = snapshot.val();
+    if(currentAdv == null){
+      window.location = "404.html";
+      //alert("Такого оголошення не існує");
+    }
+    else{
+      adv_name.innerText = currentAdv.name;
+      adv_price.innerText= "Ціна: "+ currentAdv.price + currentAdv.currency;
+      adv_location.innerText=currentAdv.location;
+      adv_area.innerText = currentAdv.area + " кв.м";
+      adv_numberofrooms.innerText="Кімнат: "+currentAdv.numberOfRooms;
+      adv_floor.innerText = "Поверх: " + currentAdv.floor;
+      user_name.innerText = currentAdv.creator.name;
+      phoneNumber.innerText=currentAdv.creator.phoneNumber;
+      adv_description.innerText=currentAdv.description;
+    }
+    
+  })
+}
+
 
 var currentUser = null;
 

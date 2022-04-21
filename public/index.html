@@ -16,18 +16,10 @@
   <header class="header">
     <div class="header_inner">
         <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/logo.svg?alt=media&token=026b0f3e-af29-41ed-b128-d15df5ecc4ab" alt="">
-        <div class="text-field__group">
-          <button class="text-field__btn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-              </svg>
-          </button>
-            <input class="text-field__input" type="search"  name="" placeholder="Пошук">
-      </div>
                     <nav class="nav">
                         <a href="about.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/AboutUs.png?alt=media&token=a62d422a-1be4-4ca9-9dd4-810e39cb1c1b" alt=""> Про нас</a>
                         <a href="Services.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/services.png?alt=media&token=e0da6157-7b8a-41bf-80dd-b03d8baa75fe" alt=""> Підтримка</a>
-                        <a href="advert.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/document-free-icon-font%201.png?alt=media&token=a05f066e-4bea-4bf8-b798-e7affff9eb31" alt=""> Оголошення</a>
+                        <a href="getting_data.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/document-free-icon-font%201.png?alt=media&token=a05f066e-4bea-4bf8-b798-e7affff9eb31" alt=""> Оголошення</a>
                         <a id='userlink' href="profile.html"><img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/user-free-icon-font%20(1)%201.png?alt=media&token=c967e8f1-bb4f-4092-b242-70654ee0e544" alt=""> Username </a>
                         <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/sign-in-alt-free-icon-font%202.png?alt=media&token=37d4a899-06eb-418d-8bb0-f4d9a9a34681" alt=""> Вийти</a>
                     </nav>
@@ -53,11 +45,7 @@
           <div class="recomandation_block">
               <div class="ad_main_photo">
                   <a href="advertreview.html"><img id="main_photo" src="C:\Users\roman\Downloads\11111.jpg" alt=""></a>
-                  <div class="info_on_photo">
-                  <label id="location_field">Локацfffffffff</label>
-                    <label id="price_field">Ц</label>
-                     <label id="like_field" ><img id="like_btn" src="C:\Users\roman\Downloads\Telegram Desktop\heart.png" alt=""></label>  
-                    </div>
+                     <span id="like_btn" onclick="change_bnt()">❥</span>                
                             <div class="description_block">
                                 <div class="left_description">                       
                                   <img id="other_photo" src="C:\Users\roman\Downloads\11111.jpg" alt="">         
@@ -78,7 +66,17 @@
      <section class="main_block"> 
      
      </section>
-  
+
+     <script>
+
+
+
+
+      function change_bnt() {
+          document.getElementById("like_btn").style.color = "#7d6bc5";
+         
+      }
+      </script>   
      
     <script>
       let userlink = document.getElementById('userlink');
