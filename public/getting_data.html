@@ -7,6 +7,7 @@
     <title>Parsing firebase</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
@@ -22,17 +23,34 @@
     </script>
     <script type="module">
         var tbody = document.getElementById("tbody1");
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+
+    const firebaseConfig = {
+    apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
+    authDomain: "lendory-b5d8b.firebaseapp.com",
+    databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
+    projectId: "lendory-b5d8b",
+    storageBucket: "lendory-b5d8b.appspot.com",
+    messagingSenderId: "759222136421",
+    appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
+    };
+
+    const app = initializeApp(firebaseConfig);
+
+    import {getDatabase, ref, get, set, child, update, remove}
+        from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+    import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} 
+        from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
         
-        
-        function AddItemToTable(name, loc, descript, img_num, hashnumber){
+    const db = getDatabase();
+    window.onload = GetAllDataOnce; 
+        function AddItemToTable(position, name, loc, descript, img_num, hashnumber){
             let big_div = document.createElement("div");
             let left_description = document.createElement("div");
             let right_description = document.createElement("div");
             let image = document.createElement("img");
-            let info_on_photo =document.createElement("div")
-            let label_location=document.createElement("label")
-            let label_price=document.createElement("label")
-            let btn_like=document.createElement("label")
+            let like_image_back = document.createElement("img");
+            let like_image = document.createElement("img");
             let other_image = document.createElement("img");
             let other_image_back = document.createElement("img");
             let count_photo = document.createElement("p");
@@ -45,7 +63,7 @@
 
             big_div.setAttribute(
                 'style',
-                'position: relative; text-align: center; margin-top: 30px; margin-left: 30px; width: 400px; height: 453px; background-color: rgb(255, 255, 255); border-radius: 35px; z-index:1;'
+                'position: relative; text-align: center; margin-top: 30px; margin-left: 30px; width: 400px; height: 453px; background-color: rgb(255, 255, 255); border-radius: 35px; z-index:10;'
             )
 
             left_description.setAttribute(
@@ -62,19 +80,14 @@
                 'style',
                 'float: right;border-radius: 30px;width: 400.17px;height: 276.57px;position: relative;object-fit: cover;z-index: 10; '
             )
-            // info_on_photo.setAttribute(
-            //     'style',
-            //     'display: flex;  z-index: 25; margin-left: 20px; width:400.17px; margin-top:120px;' 
-            // )
-            // label_location.setAttribute(
-            //     'style',
-            //     'z-index: 25;color: #000;margin-top:-80px; margin-right: 10px;background-color: #fff;border-radius: 10px;width:230px;height: fit-content;text-overflow:clip;padding-left: 5px;text-overflow: ellipsis; overflow: hidden;  white-space: nowrap;  padding-top: 5px;padding-bottom: 5px;margin-top: -10px;'
-            // )
-            // label_price.setAttribute(
-            //     'style',
-            //     'z-index: 25 color: #7d6bc5; margin-right: 10px;background-color: #fff;border-radius: 10px;width: 80px;height: fit-content;text-overflow:clip;padding-left: 5px;text-overflow: ellipsis; overflow: hidden;  white-space: nowrap;  padding-top: 5px;padding-bottom: 5px;margin-top: -10px;'
-            // )
-
+            like_image.setAttribute(
+                'style',
+                'right: 0; margin-top: 220px; margin-right: 16px; width: 40px;height: 40px;position: absolute;z-index: 15;'
+            )
+            like_image_back.setAttribute(
+                'style',
+                'right: 0; margin-top: 217px; border-radius: 10px; background-color: white; margin-right: 13px; width: 46px;height: 46px;position: absolute;z-index: 15;'
+            )
 
             other_image.setAttribute(
                 'style',
@@ -100,16 +113,27 @@
             td1.innerHTML = name;
             td2.innerHTML = loc;
             td3.innerHTML = descript;
-            label_location.innerHTML = loc;
             count_photo.innerHTML = '+3'
             more.innerHTML = 'Більше'
             image.src = img_num;
-
-            other_image.src = "wert.jfif"
+            
+            var flag = false;
+            for(let i = 0; i < likedByU.length; i++){
+                if(likedByU[i] == hashnumber)  
+                    flag = true;      
+            }
+            if(flag)
+                like_image.src = "liked_heart.png"
+            else
+                like_image.src = "heart.png"
             more.href = 'advertreview.html#' + hashnumber; 
 
-            
+            big_div.appendChild(like_image_back);
+            big_div.appendChild(like_image);
             big_div.appendChild(image);
+            like_image.onclick = function(){
+                addLiked(like_image, hashnumber, flag);
+            }
             // info_on_photo.appendChild(label_location);
             // info_on_photo.appendChild(label_price);
             // big_div.appendChild(info_on_photo);
@@ -123,42 +147,22 @@
             big_div.appendChild(left_description);
             big_div.appendChild(right_description);
             big_div.appendChild(more);
-          
+            
             
             tbody.appendChild(big_div);
-            
             
         }
 
         function AddAllItemsToTable(TheAdvertisement){
             tbody.innerHTML="";
+            var position = 0;
             TheAdvertisement.forEach(element => {
-
-                AddItemToTable(element.name, element.location, element.description, element.images[0], element.hashnumber);
-                
+                AddItemToTable(position, element.name, element.location, element.description, element.images[0], element.hashnumber);
+                position++;
             });
         }
 
-        
-
-
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-  
-        const firebaseConfig = {
-            apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
-            authDomain: "lendory-b5d8b.firebaseapp.com",
-            databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
-            projectId: "lendory-b5d8b",
-            storageBucket: "lendory-b5d8b.appspot.com",
-            messagingSenderId: "759222136421",
-            appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
-        };
-
-        const app = initializeApp(firebaseConfig);
-
-        import {getDatabase, ref, child, onValue, get }
-            from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
-            const db = getDatabase();
+        var likedByU = [];
 
         function GetAllDataOnce(){
             const dbRef = ref(db);
@@ -168,10 +172,42 @@
                 snapshot.forEach(childSnapshot =>{
                     advertisements.push(childSnapshot.val());
                 });
-                AddAllItemsToTable(advertisements);
+                getUsername();
+                get(child(dbRef, "profiles/" + currentUser.phonenumber + "/liked"))
+                    .then((snapshot)=>{
+                    snapshot.forEach(childSnapshot =>{
+                     likedByU.push(childSnapshot.val());
+                    });
+                    AddAllItemsToTable(advertisements); 
+                }) 
             })
+        
         }
-        window.onload = GetAllDataOnce; 
+        function addLiked(image, numb, flag){
+            getUsername();
+            const dbRef = ref(db);
+            var curpos = 1230102301230;
+            likedByU = [];
+            get(child(dbRef, "profiles/" + currentUser.phonenumber + "/liked"))
+            .then((snapshot)=>{
+                snapshot.forEach(childSnapshot =>{
+                    likedByU.push(childSnapshot.val());
+                    if(childSnapshot.val() == numb)
+                        curpos = likedByU.length-1;
+                });
+                if(curpos == 1230102301230){
+                    set(ref(db, "profiles/" + currentUser.phonenumber + "/liked/" + likedByU.length),
+                        numb   
+                    ); 
+                    image.src = "liked_heart.png";
+                }else{
+                    set(ref(db, "profiles/" + currentUser.phonenumber + "/liked/" + curpos),
+                        null   
+                    );   
+                    image.src = "heart.png";  
+                }
+            })      
+        }
     </script>
 </body>
 </html>
