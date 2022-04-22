@@ -80,7 +80,7 @@
                    </div> 
                    
                    <div id="popup" class="popup">
-                    <a href="#header" class="popup_area"></a>
+                    <a href="#"class="popup_area" id="popup_area"></a>
                     <div class="popup_body">
                                 <div class="popup_text">
                                 <a class="popup_nav_a" id='main_prev' href="#popup3"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/angle-left-free-icon-font.png?alt=media&token=fc67cbfe-ddfd-4068-bce1-14b8d830dcd3" alt=""></a>  
@@ -90,7 +90,7 @@
                     </div>              
                 </div>
                 <div id="popup1" class="popup">
-                <a href="#header" class="popup_area"></a>
+                <a href="#header" class="popup_area" id="popup_area_1"></a>
                 <div class="popup_body">
                             <div class="popup_text">
                                 <a class="popup_nav_a" id="popup_1_prev" href="#popup"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/angle-left-free-icon-font.png?alt=media&token=fc67cbfe-ddfd-4068-bce1-14b8d830dcd3" alt=""></a>
@@ -100,7 +100,7 @@
                 </div>              
             </div>
             <div id="popup2" class="popup">
-                <a href="#header" class="popup_area"></a>
+                <a href="#header" class="popup_area" id="popup_area_2"></a>
                 <div class="popup_body">
                             <div class="popup_text">
                                 <a class="popup_nav_a" id="popup_2_prev" href="#popup1"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/angle-left-free-icon-font.png?alt=media&token=fc67cbfe-ddfd-4068-bce1-14b8d830dcd3" alt=""></a>
@@ -110,7 +110,7 @@
                 </div>              
             </div>
             <div id="popup3" class="popup">
-                <a href="#header" class="popup_area"></a>
+                <a href="#header" class="popup_area" id="popup_area_3"></a>
                 <div class="popup_body">
                             <div class="popup_text">
                                 <a class="popup_nav_a" id="popup_3_prev" href="#popup2"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/angle-left-free-icon-font.png?alt=media&token=fc67cbfe-ddfd-4068-bce1-14b8d830dcd3" alt=""></a>
@@ -121,11 +121,23 @@
             </div>
             </section>
             <script>
+                var url = window.location.href;
+                //url = url.replace("https://lendory-b5d8b.firebaseapp.com/advertreview.html#", "");
+                url = url.replace("file:///D:/Lendory-WEB/public/advertreview.html#", "");
+
                let userlink = document.getElementById('userlink');
                 let signoutlink = document.getElementById('signoutlink');
                 let create_acc_img = document.getElementById('create_acc_img');
                 window.onload = getURL();
                 function getURL() {
+                    var main_back_url = document.getElementById('popup_area')
+                    var popup_area_1 = document.getElementById('popup_area_1')
+                    var popup_area_2 = document.getElementById('popup_area_2')
+                    var popup_area_3 = document.getElementById('popup_area_3')
+                    main_back_url.href = window.location.href;
+                    popup_area_1.href = window.location.href;
+                    popup_area_2.href = window.location.href;
+                    popup_area_3.href = window.location.href;
                     logged_in_check();
                     var adv_name = document.getElementById('name');
                     var adv_price = document.getElementById('price');
@@ -157,6 +169,7 @@
                     var popup_3_prev = document.getElementById('popup_3_prev')
                     var popup_3_next = document.getElementById('popup_3_next')
                     //локально з пк/ при деплої міняти силку на https://lendory-b5d8b.firebaseapp.com/advertreview.html
+                    url = url.replace("https://lendory-b5d8b.firebaseapp.com/advertreview.html#", "");
                     url = url.replace("file:///D:/Lendory-WEB/public/advertreview.html#", "");
                     getCurrentAdv(url, adv_name,adv_price, adv_area,adv_numberofrooms,adv_floor,user_name,phoneNumber,adv_description, adv_location,
                     adv_main_photo, adv_second_photo, adv_third_photo, adv_fourth_photo, popup_main, popup_1, popup_2, popup_3, main_prev, main_next,

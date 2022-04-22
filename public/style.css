@@ -596,7 +596,7 @@
                 height: 400px;
                 border-radius: 35px;
                 object-fit: cover;
-                z-index: 1;
+                position: relative;
             }
             .other_photo_review_block{
                 float: right; 
