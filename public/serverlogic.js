@@ -1,15 +1,15 @@
 //Initialising firebase
 var firebaseConfig = {
-    apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
-    authDomain: "lendory-b5d8b.firebaseapp.com",
-    databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
-    projectId: "lendory-b5d8b",
-    storageBucket: "lendory-b5d8b.appspot.com",
-    messagingSenderId: "759222136421",
-    appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
-  };
+  apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
+  authDomain: "lendory-b5d8b.firebaseapp.com",
+  databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
+  projectId: "lendory-b5d8b",
+  storageBucket: "lendory-b5d8b.appspot.com",
+  messagingSenderId: "759222136421",
+  appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
+};
 
-  firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 //Arrays for images uploading
 var files1 = [];
 var files2 = [];
@@ -108,37 +108,39 @@ function fifth_img_upload(){
 }
 
 //data inserting function
-function setdata(name, description, location, floor, rooms, area, rent, currency, vol, imgarray=[]){
-    var numb = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1); //advertisement hashnumber
-    
+function setdata(name, description, location, floor, rooms, area, rent, currency, vol, numb){
+   
+  var d = new Date();
+  var millisecondsSince1970 = d.valueOf();
     if(vol == 1){vol = true;}
     else{vol = false;}
-        firebase.database().ref("/").child("advertisementtest/" + numb + "/").update({
-            area: area,
+        firebase.database().ref("/").child("advertisement/" + numb + "/").update({
+            area: parseInt(area),
             currency: currency,
             description: description,
-            floor: floor,
-            hashnumber: numb,
+            floor: parseInt(floor),
+            hashnumber: String(numb),
             location: location,
             name: name,
-            numberOfRooms: rooms,
-            price: rent,
-            volunteering: vol    
+            numberOfRooms: parseInt(rooms),
+            price: parseInt(rent),
+            volunteering: vol,
+            time:   millisecondsSince1970
         })
 
         getUsername();
-        firebase.database().ref("/").child("advertisementtest/" + numb + "/creator/").update({
+        firebase.database().ref("/").child("advertisement/" + numb + "/creator/").update({
             name: currentUser.name,
             phoneNumber: currentUser.phonenumber
         })
 
         //inserting images numbers
-        firebase.database().ref("/").child("advertisementtest/" + numb + "/images/").update({
-            0: imgarray[0],
-            1: imgarray[1],
-            2: imgarray[2],
-            3: imgarray[3],
-        })
+        // firebase.database().ref("/").child("advertisementtest/" + numb + "/images/").update({
+        //     0: imgarray[0],
+        //     1: imgarray[1],
+        //     2: imgarray[2],
+        //     3: imgarray[3],
+        // })
 
         //fields cleaning
          name_box.value ='';
@@ -152,19 +154,6 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
          option.value = '';
     } 
 
-
-// arr = []; 
-// var adv;
-// function getdata(){
-//     firebase.database().ref("advertisement").on('value', function(snapshot){
-//         snapshot.forEach(function(element){
-//             adv = element.val();
-//             arr.push(adv);
-//         });
-//     })
-//     alert(arr[3].area);
-// }
-
   allAdv = []; 
   var adv;
   function getdata(){
@@ -177,7 +166,9 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
   }
 
 var currentAdv;
-function getCurrentAdv(code, adv_name,adv_price, adv_location, adv_area,adv_numberofrooms, adv_floor,user_name,phoneNumber,adv_description){
+function getCurrentAdv(code, adv_name,adv_price, adv_area,adv_numberofrooms, adv_floor,user_name,phoneNumber,adv_description,adv_location, 
+  adv_main_photo, adv_second_photo, adv_third_photo, adv_fourth_photo, popup_main, popup_1, popup_2, popup_3,main_prev,main_next,
+  popup_1_next, popup_2_next){
   firebase.database().ref("advertisement/" + code).on('value', function(snapshot){
     currentAdv = snapshot.val();
     if(currentAdv == null){
@@ -187,18 +178,59 @@ function getCurrentAdv(code, adv_name,adv_price, adv_location, adv_area,adv_numb
     else{
       adv_name.innerText = currentAdv.name;
       adv_price.innerText= "Ціна: "+ currentAdv.price + currentAdv.currency;
-      adv_location.innerText=currentAdv.location;
       adv_area.innerText = currentAdv.area + " кв.м";
       adv_numberofrooms.innerText="Кімнат: "+currentAdv.numberOfRooms;
       adv_floor.innerText = "Поверх: " + currentAdv.floor;
       user_name.innerText = currentAdv.creator.name;
       phoneNumber.innerText=currentAdv.creator.phoneNumber;
       adv_description.innerText=currentAdv.description;
+      adv_location.innerText = currentAdv.location;
+      adv_main_photo.src = currentAdv.images[0]
+      popup_main.src = currentAdv.images[0];
+
+      if(currentAdv.images[1]){
+          adv_second_photo.src = currentAdv.images[1]
+          popup_1.src = currentAdv.images[1]
+      }
+      else{
+        adv_second_photo.remove();
+        popup_1.remove();
+        main_next.remove();
+        main_prev.remove();
+       }
+
+      if(currentAdv.images[2]){
+        adv_third_photo.src = currentAdv.images[2]
+        popup_2.src = currentAdv.images[2]
+      }
+      else{
+      adv_third_photo.remove();
+      popup_2.remove();
+      popup_1_next.remove();
+      main_prev.remove();
+      }
+
+      if(currentAdv.images[3]){
+        adv_fourth_photo.src = currentAdv.images[3]
+        popup_3.src = currentAdv.images[3]
+      }
+      else{
+        adv_fourth_photo.remove();
+        popup_3.remove();
+        main_prev.remove();
+        popup_2_next.remove();
+      }
+
+      
+      
+      
     }
+
+    
+
     
   })
 }
-
 
 var currentUser = null;
 

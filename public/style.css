@@ -1,4 +1,4 @@
-
+             /* Опис хедера */
              .header{
                 padding: 5px 0px;
                 justify-content: center;
@@ -595,7 +595,8 @@
                 width: 450px;
                 height: 400px;
                 border-radius: 35px;
-                object-fit: cover
+                object-fit: cover;
+                position: relative;
             }
             .other_photo_review_block{
                 float: right; 
@@ -626,7 +627,7 @@
             #price{
                 font-size: 20px;
             }
-            .loc span{
+            .location span{
                 font-size: 20px;
                 margin-right: 10px;
                 color:#7d6bc5;
@@ -638,7 +639,9 @@
                 padding-top: 5px;
                 padding-bottom: 5px;
             }
-        
+            #loc{
+                font-size: 15px;
+            }
             .info_block{
                 margin-left: 105px;
                 margin-top: 10px;
@@ -674,73 +677,76 @@
                 margin-top: 40px;
             }
                      /* Popups(перегляд фотографій) */
-            .popup{
-                position: fixed;
-                width: 100%;
-                height: 100%;
-                background-color: rgb(0, 0, 0,0.9);
-                top: 0;
-                left: 0;
-                opacity: 0;
-                visibility: hidden;
-            }
-            .popup:target{
-                opacity: 1;
-                visibility: visible;
-            }
-            .popup:target .popup_text{
-                transform: perspective(600px) translate(0px,0%) rotateX(0deg);
-                opacity: 1;
-            }
-            .popup_area{
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
-            }
-            .popup_body{
-                min-height: 100%;
-                align-items: center;
-                justify-content: center;
-                display: flex;
-                padding: 30px 10px;
-                transition: all 0.5s ease 0s;
-            }
             
-            .popup_text{
-                align-items: center;
-                justify-content: center;
-                display: flex;
-                width: 50%;
-                height: 50%;
-                transition: all 0.5s ease 0s;
-                opacity: 0;
-                transform: perspective(600px) translate(-100%,0px) rotateX(45deg);
-                max-width: 800px;
-                padding: 30px; 
-            }
-            .popup_img{
-                width: 100%;
-                height: 100%;
-                border-radius: 25px;
-            }
-            .popup_nav_a{
-                font-size: 50px;
-                justify-content: center;
-            }
             
-            .popup_nav_img{
-                margin: 0px 40px;
-                width: 40px;
-                height: 50px;
-            }
-         
-            .popup_nav_img:hover{
-                padding: 5px 5px;
-                background-color: #7d6bc5;
-                border-radius: 10px;
-            }
+ .popup{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0,0.9);
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+.popup:target{
+    opacity: 1;
+    visibility: visible;
+}
+.popup:target .popup_text{
+    transform: perspective(600px) translate(0px,0%) rotateX(0deg);
+    opacity: 1;
+}
+.popup_area{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+.popup_body{
+    min-height: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    padding: 30px 10px;
+    transition: all 0.5s ease 0s;
+}
+
+.popup_text{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 50%;
+    height: 50%;
+    transition: all 0.5s ease 0s;
+    opacity: 0;
+    transform: perspective(600px) translate(-100%,0px) rotateX(45deg);
+    max-width: 800px;
+    padding: 30px; 
+}
+.popup_img{
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+}
+.popup_nav_a{
+    font-size: 50px;
+    justify-content: center;
+}
+
+.popup_nav_img{
+    margin: 0px 40px;
+    width: 40px;
+    height: 50px;
+}
+
+.popup_nav_img:hover{
+    padding: 5px 5px;
+    background-color: #7d6bc5;
+    border-radius: 10px;
+}
+            
             /* _________Profile____ */
             
             .profile_block{
@@ -818,11 +824,11 @@
             }
             
  #tbody1{
-     margin-top: 50px;
      display: grid;
      grid-template-columns: auto auto auto;
-     background-color: #180c48;
- }           
+ }       
+ 
+
             
             
             

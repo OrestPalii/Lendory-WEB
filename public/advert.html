@@ -32,8 +32,8 @@
                             <a href="about.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/AboutUs.png?alt=media&token=a62d422a-1be4-4ca9-9dd4-810e39cb1c1b" alt=""> Про нас</a>
                             <a href="Services.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/services.png?alt=media&token=e0da6157-7b8a-41bf-80dd-b03d8baa75fe" alt=""> Підтримка</a>
                             <a href="advert.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/document-free-icon-font%201.png?alt=media&token=a05f066e-4bea-4bf8-b798-e7affff9eb31" alt=""> Оголошення</a>
-                            <a id='userlink' href="profile.html"><img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/user-free-icon-font%20(1)%201.png?alt=media&token=c967e8f1-bb4f-4092-b242-70654ee0e544" alt=""> Username </a>
-                            <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/sign-in-alt-free-icon-font%202.png?alt=media&token=37d4a899-06eb-418d-8bb0-f4d9a9a34681" alt=""> Вийти</a>
+                            <a id='userlink' href="profile.html"><img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/user-free-icon-font%20(1)%201.png?alt=media&token=c967e8f1-bb4f-4092-b242-70654ee0e544" alt=""> Мій профіль </a>
+                            <a id="signoutlink" href=""> <img onclick="Signout()" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/sign-in-alt-free-icon-font%202.png?alt=media&token=37d4a899-06eb-418d-8bb0-f4d9a9a34681" alt=""> Вийти</a>
                         </nav>
         </div>
     </header>
@@ -100,6 +100,7 @@ appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
 };
 
 const app = initializeApp(firebaseConfig);
+const db = getDatabase();
 
 import {getDatabase, ref, get, set, child, update, remove}
     from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
@@ -108,6 +109,7 @@ import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL}
 
 var create  = document.getElementById("create");
 function create_adv(){
+    var numb = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1); //advertisement hashnumber
     var isempty = false;
     if(name_box.value == ""){isempty = true}
     if(description_box.value == ""){isempty = true}
@@ -118,63 +120,133 @@ function create_adv(){
     if(rent_box.value == ""){isempty = true}
 
     if(!isempty){
-var ImgToUpload2 = files2[0];
-var ImgToUpload3 = files3[0];
-var ImgToUpload4 = files4[0];
-var ImgToUpload5 = files5[0];
+
 var imgarray = [];
+const storage = getStorage();
 
-//creating images numbers
-var ImgName2 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
-var ImgName3 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
-var ImgName4 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
-var ImgName5 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
-imgarray.push(ImgName2, ImgName3, ImgName4, ImgName5);
+if(!files2.length==0){
+    var ImgToUpload2 = files2[0];
+    var ImgName2 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+    const storageRef2 = sRef(storage, "Images/"+ImgName2);
+    const metaData2 = {
 
-//creating storage links for images
-const storage = getStorage(); 
-const storageRef2 = sRef(storage, "Images/"+ImgName2); 
-const storageRef3 = sRef(storage, "Images/"+ImgName3); 
-const storageRef4 = sRef(storage, "Images/"+ImgName4); 
-const storageRef5 = sRef(storage, "Images/"+ImgName5);
+        contentType: ImgToUpload2.type
+    } 
+    const UploadTask2 = uploadBytesResumable(storageRef2, ImgToUpload2, metaData2);
+    UploadTask2.on('state-changed', (snapshot)=>{
 
-//variables that contain images types
-const metaData2 = {
-
-contentType: ImgToUpload2.type
+    },
+    (error)=>{
+        alert("error")
+    },
+    ()=>{
+        getDownloadURL(UploadTask2.snapshot.ref).then((downloadURL)=>{
+            firebase.database().ref("/").child("advertisement/" + numb + "/images/").update({
+                0: downloadURL
+            })
+        });
+    }
+    );
 }
 
-const metaData3 = {
+if(!files3.length==0){
+    var ImgToUpload3 = files3[0];
+    var ImgName3 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+    const storageRef3 = sRef(storage, "Images/"+ImgName3);
+    const metaData3 = {
 
-contentType: ImgToUpload3.type
+        contentType: ImgToUpload3.type
+    } 
+    const UploadTask3 = uploadBytesResumable(storageRef3, ImgToUpload3, metaData3);
+    UploadTask3.on('state-changed', (snapshot)=>{
+
+    },
+    (error)=>{
+        alert("error")
+    },
+    ()=>{
+        getDownloadURL(UploadTask3.snapshot.ref).then((downloadURL)=>{
+            firebase.database().ref("/").child("advertisement/" + numb + "/images/").update({
+                1: downloadURL
+            })
+        });
+    }
+    );
 }
 
-const metaData4 = {
+if(!files4.length==0){
+    var ImgToUpload4 = files4[0];
+    var ImgName4 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+    const storageRef4 = sRef(storage, "Images/"+ImgName4);
+    const metaData4 = {
 
-contentType: ImgToUpload4.type
+        contentType: ImgToUpload4.type
+    } 
+    const UploadTask4 = uploadBytesResumable(storageRef4, ImgToUpload4, metaData4);
+    UploadTask4.on('state-changed', (snapshot)=>{
+
+    },
+    (error)=>{
+        alert("error")
+    },
+    ()=>{
+        getDownloadURL(UploadTask4.snapshot.ref).then((downloadURL)=>{
+            firebase.database().ref("/").child("advertisement/" + numb + "/images/").update({
+                2: downloadURL
+            })
+        });
+    }
+    );
 }
 
-const metaData5 = {
+if(!files5.length==0){
+    var ImgToUpload5 = files5[0];
+    var ImgName5 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+    const storageRef5 = sRef(storage, "Images/"+ImgName5);
+    const metaData5 = {
 
-contentType: ImgToUpload5.type
+        contentType: ImgToUpload5.type
+    } 
+    const UploadTask5 = uploadBytesResumable(storageRef5, ImgToUpload5, metaData5);
+    UploadTask5.on('state-changed', (snapshot)=>{
+
+    },
+    (error)=>{
+        alert("error")
+    },
+    ()=>{
+        getDownloadURL(UploadTask5.snapshot.ref).then((downloadURL)=>{
+            firebase.database().ref("/").child("advertisement/" + numb + "/images/").update({
+                3: downloadURL
+            })
+        });
+    }
+    );
 }
-
-//Uploading images to storage
-const UploadTask2 = uploadBytesResumable(storageRef2, ImgToUpload2, metaData2);
-const UploadTask3 = uploadBytesResumable(storageRef3, ImgToUpload3, metaData3);
-const UploadTask4 = uploadBytesResumable(storageRef4, ImgToUpload4, metaData4);
-const UploadTask5 = uploadBytesResumable(storageRef5, ImgToUpload5, metaData5);
+var createdByU = [];
+getUsername();
+    const dbRef = ref(db);
+        get(child(dbRef, "profiles/" + currentUser.phonenumber + "/created"))
+            .then((snapshot)=>{
+                snapshot.forEach(childSnapshot =>{
+                        createdByU.push(childSnapshot.val());
+                });
+                set(ref(db, "profiles/" + currentUser.phonenumber + "/created/" + createdByU.length),
+                    String(numb)      
+                ); 
+    })
 
 setdata(name_box.value, description_box.value, location_box.value, floor_box.value,
-    rooms_box.value, area_box.value, rent_box.value, currency.value, option.value, imgarray);
-
+    rooms_box.value, area_box.value, rent_box.value, currency.value, option.value,  numb);
 }
+
 else{
     alert("Заповніть всі поля!");
 }
 }
 create.onclick = create_adv;
 window.onload = advert_page_loading;
+
 </script>
 </body>
 </html>

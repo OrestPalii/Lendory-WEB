@@ -34,5 +34,16 @@ function adv_create_user_check(){
       if(currentUser==null){
         window.location = "SignIn.html";
       }
+    }
+
       
-      }
+      
+        
+      
+      
+      function Signout(){
+        sessionStorage.removeItem('user');
+        localStorage.removeItem('user');
+        localStorage.removeItem('keepLoggedIn');
+        window.location = 'index.html'
+    }
