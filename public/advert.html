@@ -33,7 +33,7 @@
                             <a href="Services.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/services.png?alt=media&token=e0da6157-7b8a-41bf-80dd-b03d8baa75fe" alt=""> Підтримка</a>
                             <a href="advert.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/document-free-icon-font%201.png?alt=media&token=a05f066e-4bea-4bf8-b798-e7affff9eb31" alt=""> Оголошення</a>
                             <a id='userlink' href="profile.html"><img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/user-free-icon-font%20(1)%201.png?alt=media&token=c967e8f1-bb4f-4092-b242-70654ee0e544" alt=""> Мій профіль </a>
-                            <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/sign-in-alt-free-icon-font%202.png?alt=media&token=37d4a899-06eb-418d-8bb0-f4d9a9a34681" alt=""> Вийти</a>
+                            <a id="signoutlink" href=""> <img onclick="Signout()" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/sign-in-alt-free-icon-font%202.png?alt=media&token=37d4a899-06eb-418d-8bb0-f4d9a9a34681" alt=""> Вийти</a>
                         </nav>
         </div>
     </header>
@@ -100,13 +100,13 @@ appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
 };
 
 const app = initializeApp(firebaseConfig);
+const db = getDatabase();
 
 import {getDatabase, ref, get, set, child, update, remove}
     from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
 import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} 
     from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
-        
-const db = getDatabase();
+
 var create  = document.getElementById("create");
 function create_adv(){
     var numb = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1); //advertisement hashnumber
@@ -177,7 +177,7 @@ if(!files3.length==0){
 if(!files4.length==0){
     var ImgToUpload4 = files4[0];
     var ImgName4 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
-    const storageRef4 = sRef(storage, "Images/"+ImgName2);
+    const storageRef4 = sRef(storage, "Images/"+ImgName4);
     const metaData4 = {
 
         contentType: ImgToUpload4.type
@@ -223,7 +223,6 @@ if(!files5.length==0){
     }
     );
 }
-
 var createdByU = [];
 getUsername();
     const dbRef = ref(db);
@@ -239,8 +238,8 @@ getUsername();
 
 setdata(name_box.value, description_box.value, location_box.value, floor_box.value,
     rooms_box.value, area_box.value, rent_box.value, currency.value, option.value,  numb);
-
 }
+
 else{
     alert("Заповніть всі поля!");
 }

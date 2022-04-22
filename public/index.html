@@ -22,7 +22,7 @@
     <div class="header_inner">
         <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/logo.svg?alt=media&token=026b0f3e-af29-41ed-b128-d15df5ecc4ab" alt="">
               <div class="text-field__group">
-                    <button class="text-field__btn">
+                    <button class="text-field__btn" id="text-field__btn" onclick="get_data_page()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                         </svg>
@@ -84,6 +84,9 @@
      
      </section>
      <script>
+       function get_data_page(){
+        window.location = "getting_data.html";
+       }
       function change_bnt() {
           document.getElementById("like_btn").style.color = "#7d6bc5";
          

@@ -166,7 +166,9 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
   }
 
 var currentAdv;
-function getCurrentAdv(code, adv_name,adv_price, adv_area,adv_numberofrooms, adv_floor,user_name,phoneNumber,adv_description){
+function getCurrentAdv(code, adv_name,adv_price, adv_area,adv_numberofrooms, adv_floor,user_name,phoneNumber,adv_description,adv_location, 
+  adv_main_photo, adv_second_photo, adv_third_photo, adv_fourth_photo, popup_main, popup_1, popup_2, popup_3,main_prev,main_next,
+  popup_1_next, popup_2_next){
   firebase.database().ref("advertisement/" + code).on('value', function(snapshot){
     currentAdv = snapshot.val();
     if(currentAdv == null){
@@ -182,6 +184,46 @@ function getCurrentAdv(code, adv_name,adv_price, adv_area,adv_numberofrooms, adv
       user_name.innerText = currentAdv.creator.name;
       phoneNumber.innerText=currentAdv.creator.phoneNumber;
       adv_description.innerText=currentAdv.description;
+      adv_location.innerText = currentAdv.location;
+      adv_main_photo.src = currentAdv.images[0]
+      popup_main.src = currentAdv.images[0];
+
+      if(currentAdv.images[1]){
+          adv_second_photo.src = currentAdv.images[1]
+          popup_1.src = currentAdv.images[1]
+      }
+      else{
+        adv_second_photo.remove();
+        popup_1.remove();
+        main_next.remove();
+        main_prev.remove();
+       }
+
+      if(currentAdv.images[2]){
+        adv_third_photo.src = currentAdv.images[2]
+        popup_2.src = currentAdv.images[2]
+      }
+      else{
+      adv_third_photo.remove();
+      popup_2.remove();
+      popup_1_next.remove();
+      main_prev.remove();
+      }
+
+      if(currentAdv.images[3]){
+        adv_fourth_photo.src = currentAdv.images[3]
+        popup_3.src = currentAdv.images[3]
+      }
+      else{
+        adv_fourth_photo.remove();
+        popup_3.remove();
+        main_prev.remove();
+        popup_2_next.remove();
+      }
+
+      
+      
+      
     }
 
     
@@ -203,5 +245,3 @@ var currentUser = null;
           currentUser = JSON.parse(sessionStorage.getItem('user'));
         }
       }
-
-  
