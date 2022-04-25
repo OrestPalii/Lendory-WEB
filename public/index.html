@@ -257,8 +257,16 @@
         var randomed = [];
         function randomer(){
           for(var i = 0; i < 5; i++)
-            randomed.push(randomIntFromInterval(0,advertisements.length-1));
+            checkifalreadyhave();
           contentfiller();            
+        }
+        function checkifalreadyhave(){
+          var number = randomIntFromInterval(0,advertisements.length-1);
+            if(randomed.includes(number)){
+              checkifalreadyhave();
+            }else{
+              randomed.push(number); 
+            }
         }
         function contentfiller(){
           for(var i = 0; i < 5; i++){
