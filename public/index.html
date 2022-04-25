@@ -6,13 +6,295 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lendory</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap" rel="stylesheet">    
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="serverlogic.js"></script>
+  <script src="sign_in_out_logic.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Welcome sdfdsfdsfdfs</h1>
-    <h1>TEr</h1>
-    <h1>iop</h1>
-    <h2>dsfdsfdsffds</h2>
-    <h1>890</h1>
-    <h1>99</h1>
+ 
+                          <!-- Header(logo,search-box,navigation) -->
+  <header class="header">
+    <div class="header_inner">
+        <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">
+                <div class="text-field__group">
+                    <button class="text-field__btn" id="text-field__btn" onclick="get_data_page()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                    </button>
+                      <input class="text-field__input" type="search"  name="" placeholder="Пошук">
+                </div>
+                    <nav class="nav">
+                        <a href="about.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/AboutUs.png?alt=media&token=a62d422a-1be4-4ca9-9dd4-810e39cb1c1b" alt=""> Про нас</a>
+                        <a href="Services.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/services.png?alt=media&token=e0da6157-7b8a-41bf-80dd-b03d8baa75fe" alt=""> Підтримка</a>
+                        <a href="advert.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/document-free-icon-font%201.png?alt=media&token=a05f066e-4bea-4bf8-b798-e7affff9eb31" alt=""> Оголошення</a>
+                        <a id='userlink' href="profile.html"><img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/user-free-icon-font%20(1)%201.png?alt=media&token=c967e8f1-bb4f-4092-b242-70654ee0e544" alt=""> Username </a>
+                        <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/sign-in-alt-free-icon-font%202.png?alt=media&token=37d4a899-06eb-418d-8bb0-f4d9a9a34681" alt=""> Вийти</a>
+                    </nav>
+    </div>
+</header>
+                  <!-- right-sidebar with information -->
+     <div class="intro">
+      <div class="sideblock">
+            <div class="lend_descr">
+             <h3 id="lendory_text">Lendory</h3>
+                <p id="about_lend">Lorem ipsum dolor sit amet.</p>
+                <p id="about_lend">Lorem ipsum dolor sit.</p>
+                <p id="about_lend">Lorem ipsum dolor sit amet consectetur.</p>
+                <p id="about_lend">Lorem ipsum dolor sit.</p>
+               <button id="but_advert" onclick="adv_create_user_check()">Нове оголошення</button>
+            </div>
+      </div> 
+</div> 
+
+                   <!-- Main page -->
+<section class="main_block">   
+      <div class="slider">
+        <div class="slider__item">
+          <div class="ad_main_photo">
+            <a id="a_1" href="advertreview.html#12324241" target = '_blank'>
+              <img class="main_photo" id="main_photo_1" src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">
+            </a>
+                      <div class="description_block">
+                          <div class="left_description">                       
+                            <img class="other_photo" id="other_photo_1" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">         
+                            <p class="count_photo" id="count_photo_1">+3</p>                                 
+                          </div>
+                                <div class="right_description">
+                                        <h3 id="name1">Продам єнота</h3>
+                                        <h6 id="location1">Жовква,вул Миру,36</h6>
+                                        <h6 id="price1">100$</h6>                                    
+                                </div>
+                                <p id="learn_more">Більше</p>
+                      </div> 
+          </div> 
+        </div>
+                <div class="slider__item">
+                  <div class="ad_main_photo">
+                    <a id="a_2" href="advertreview.html#12324241" target = '_blank'>
+                      <img class="main_photo" id="main_photo_2" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">
+                    </a>
+                              <div class="description_block">
+                                  <div class="left_description">                       
+                                    <img class="other_photo" id="other_photo_2" src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">         
+                                    <p class="count_photo" id="count_photo_2" >+3</p>                                 
+                                  </div>
+                                        <div class="right_description">
+                                                <h3 id="name2">Продам свиню</h3>
+                                                <h6 id="location2">Жовква,вул Миру,36</h6>
+                                                <h6 id="price2">100$</h6>                                    
+                                        </div>
+                                        <p id="learn_more">Більше</p>
+                              </div> 
+                  </div> 
+                </div>
+                      <div class="slider__item">
+                        <div class="ad_main_photo">
+                          <a id="a_3" href="advertreview.html#12324241" target = '_blank'>
+                            <img class = "main_photo" id = "main_photo_3" src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt = "">
+                          </a>
+                                    <div class="description_block">
+                                        <div class="left_description">                       
+                                          <img class="other_photo" id="other_photo_3" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">         
+                                          <p class="count_photo" id="count_photo_3" >+3</p>                                 
+                                        </div>
+                                              <div class="right_description">
+                                                      <h3 id="name3">Продам слона</h3>
+                                                      <h6 id="location3">Жовква,вул Миру,36</h6>
+                                                      <h6 id="price3">100$</h6>                                    
+                                              </div>
+                                              <p id="learn_more">Більше</p>
+                                    </div> 
+                        </div> 
+                      </div>
+                            <div class="slider__item">
+                              <div class="ad_main_photo">
+                                <a id="a_4" href="advertreview.html#12324241" target = '_blank'>
+                                  <img class="main_photo" id="main_photo_4" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">
+                                </a>
+                                          <div class="description_block">
+                                              <div class="left_description">                       
+                                                <img class="other_photo" id="other_photo_4" src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">         
+                                                <p class="count_photo" id="count_photo_4" >+3</p>                                 
+                                              </div>
+                                                    <div class="right_description">
+                                                            <h3 id="name4">Продам корову</h3>
+                                                            <h6 id="location4">Жовква,вул Миру,36</h6>
+                                                            <h6 id="price4">100$</h6>                                    
+                                                    </div>
+                                                    <p id="learn_more">Більше</p>
+                                          </div> 
+                              </div> 
+                            </div>
+                                <div class="slider__item">
+                                  <div class="ad_main_photo">
+                                    <a id="a_5" href="advertreview.html#12324241" >
+                                      <img class="main_photo" id="main_photo_5" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">
+                                    </a>
+                                              <div class="description_block">
+                                                  <div class="left_description">                       
+                                                    <img class="other_photo" id="other_photo_5" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">         
+                                                    <p class="count_photo" id="count_photo_5">+3</p>                                 
+                                                  </div>
+                                                        <div class="right_description">
+                                                                <h3 id="name5">Продам жабу</h3>
+                                                                <h6 id="location5">Жовква,вул Миру,36</h6>
+                                                                <h6 id="price5">100$</h6>                                    
+                                                        </div>
+                                                        <p id="learn_more">Більше</p>
+                                              </div> 
+                                  </div> 
+                                </div>         
+      </div>   
+                                <!-- jQuery -->
+                                <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                                <!-- Slider Slick -->
+                                <script src="slick.min.js"></script>
+                                <!--  файл скриптiв -->
+                                <script src="script.js"></script>
+              
+                
+</section>        
+     <script>
+       function get_data_page(){
+        window.location = "getting_data.html";
+       }
+      function change_bnt() {
+          document.getElementById("like_btn").style.color = "#7d6bc5";
+         
+      }
+      </script>   
+     
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+      const firebaseConfig = {
+      apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
+      authDomain: "lendory-b5d8b.firebaseapp.com",
+      databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
+      projectId: "lendory-b5d8b",
+      storageBucket: "lendory-b5d8b.appspot.com",
+      messagingSenderId: "759222136421",
+      appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
+      };
+      const app = initializeApp(firebaseConfig);
+      import {getDatabase, ref, get, set, child, update, remove}
+        from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+      import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} 
+        from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
+      const db = getDatabase();
+
+      let userlink = document.getElementById('userlink');
+      let signoutlink = document.getElementById('signoutlink');
+      
+      function Signout(){
+          sessionStorage.removeItem('user');
+          localStorage.removeItem('user');
+          localStorage.removeItem('keepLoggedIn');
+          window.location = 'index.html'
+      }
+
+      window.onload = function(){
+        getUsername();
+        if(currentUser == null){
+          userlink.innerText="Створити акаунт";        
+          userlink.href = "SignUp.html";
+          signoutlink.innerText="Увійти";       
+          signoutlink.href = "SignIn.html";
+        }
+
+        else{
+          userlink.innerText= "Мій профіль";        
+          userlink.href = "profile.html";
+          signoutlink.innerText="Вийти";         
+          signoutlink.href = "javascript:Signout()";
+        }
+        IdBinder();
+      }
+
+
+      
+        var names=[];
+        var locations=[];
+        var prices=[];
+        var main_photos=[];
+        var next_photos=[];
+        var count_photo=[];
+        var a=[];
+        function IdBinder(){
+          for(var i = 1; i <= 5; i++){
+            a.push(document.getElementById("a_" + i));
+            names.push(document.getElementById("name" + i));  
+            locations.push(document.getElementById("location" + i));
+            prices.push(document.getElementById("price" + i));
+            main_photos.push(document.getElementById("main_photo_"+ i));
+            next_photos.push(document.getElementById("other_photo_" + i));
+            count_photo.push(document.getElementById("count_photo_" + i))
+          }
+         GetAllDataOnce();
+        }
+        var advertisements = [];
+        function GetAllDataOnce(){
+            const dbRef = ref(db);
+            get(child(dbRef, "advertisement"))
+            .then((snapshot)=>{
+                snapshot.forEach(childSnapshot =>{
+                    advertisements.push(childSnapshot.val());
+                });
+                getUsername();
+                randomer();
+            })
+        
+        }
+        var randomed = [];
+        function randomer(){
+          for(var i = 0; i < 5; i++)
+            checkifalreadyhave();
+          contentfiller();            
+        }
+        function checkifalreadyhave(){
+          var number = randomIntFromInterval(0,advertisements.length-1);
+            if(randomed.includes(number)){
+              checkifalreadyhave();
+            }else{
+              randomed.push(number); 
+            }
+        }
+        function contentfiller(){
+          for(var i = 0; i < 5; i++){
+            names[i].innerText = advertisements[randomed[i]].name;
+            locations[i].innerText = advertisements[randomed[i]].location;
+            prices[i].innerText = advertisements[randomed[i]].price + " " + advertisements[randomed[i]].currency;
+            main_photos[i].src = advertisements[randomed[i]].images[0];
+            a[i].href = "https://lendory-b5d8b.firebaseapp.com/advertreview.html#" + advertisements[randomed[i]].hashnumber;
+            if(advertisements[randomed[i]].images.length > 1)
+              next_photos[i].src = advertisements[randomed[i]].images[1];
+            else
+              next_photos[i].src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05";
+            var imgcount = advertisements[randomed[i]].images.length-1;
+            count_photo[i].innerText = "+" + imgcount;
+          }
+        }
+        function randomIntFromInterval(min, max){
+          return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+        
+
+
+    </script>
+
+       
+  
 </body>
 </html>
+
+       
+  
