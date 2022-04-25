@@ -160,14 +160,13 @@
         }
         
     button:active{
-    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     transform: scale(0.9);  
 }
 /* second page main photo */
 .main_block{
     padding-top: 100px;
     height: 100vh;
-    background-color: rgb(37, 111, 34);    
+    background-color: aquamarine;    
 }
 .ad_main_photo{
     margin-top: 50px;
@@ -177,43 +176,14 @@
     width: 420px;
     height: 542px;  
 }
-#main_photo{
+.main_photo{
     float: right;
     border-radius: 30px;
     width: 420.17px;
-    height: 340.57px;   
+    height: 280px;   
     position: relative;
     object-fit: cover;
     z-index: 10;
-}
-.info_on_photo{
-    display: flex;
-    z-index: 25;
-    margin-top: -50px;
-    margin-left: 20px;
-}
-.info_on_photo label{
-    color: #7d6bc5;
-    margin-right: 10px;
-    background-color: #fff;
-    border-radius: 10px;
-    width: 230px;
-    height: fit-content;
-    text-overflow:clip;
-    padding-left: 5px;
-    text-overflow: ellipsis; 
-    overflow: hidden; 
-    white-space: nowrap; 
-    padding-top: 5px;
-    padding-bottom: 5px;
-    margin-top: -10px;
-}
-#price_field{
-    width: 80px;
-}
-#like_field{
-    width: 50px;
-    margin-top: -25px;
 }
 #like_btn{ 
     width: 40px;
@@ -222,7 +192,7 @@
 .description_block{
     position: relative;
     text-align: center;
-    margin-top: -89px;
+    margin-top: -140px;
     width: 420px;
     height: 232.41px;
     background-color: rgb(255, 255, 255);
@@ -237,7 +207,7 @@
     float: left;
     position: relative;
 }
-#other_photo{
+.other_photo{
     margin-left: -9px;
     margin-top: 2px;
     width: 122.18px;
@@ -246,7 +216,7 @@
     border-radius: 20px;
     filter: grayscale(100%);
 }
-#count_photo{ 
+.count_photo{ 
     position: absolute;
     margin-top: -125px;
     margin-left: 8px;
@@ -406,13 +376,13 @@ textarea{
                 /* __________SIGNIN__________ */
 /* background image for SignIn and SignUp pages */
 .sign_{
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/back2%201.png?alt=media&token=81dcaae8-8248-4f32-9ce2-327247beac56) no-repeat;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fbackground_first_page.jpg?alt=media&token=78c01da2-0851-4842-a827-b73630d54d1b) no-repeat;
     background-size: cover;
 }
 .register_form{   
     border-radius: 75px;
     padding: 30px 30px;
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/grad2.jpeg?alt=media&token=e0ba0d74-e4eb-42d8-a0c2-2db967462fe4) no-repeat;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fblue_gradient_for_block.jpeg?alt=media&token=f78f9984-1773-41c4-9573-98eecc3228dc) no-repeat;
     background-size: cover;
     margin-top: 150px;
     margin-left: auto;
@@ -558,12 +528,18 @@ textarea{
 #link{
     margin-left: 55px;
 }            
-          /* _______ADVERTREVIEW__________ */    
+          /* _______ADVERTREVIEW__________ */   
+          .advertreview_body{
+              background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fbackground_for_getting_data.png?alt=media&token=89cbd9ee-0d93-4585-aa89-a399a1c68012) no-repeat;
+              background-size: cover;
+          } 
 .container_review{
-    margin-top: 90px;
+    margin-left: 20px;
+    margin-right: 30px;
+    margin-top: 120px;
     left: 0;
-    width: 100%;
-    height: 80vh;
+    width: 97%;
+    height: 60vh;
     background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fblue_gradient_for_block.jpeg?alt=media&token=f78f9984-1773-41c4-9573-98eecc3228dc) no-repeat;
     background-size: cover;
     border-radius: 60px;
@@ -575,9 +551,9 @@ textarea{
 .review_main{
     margin-top: 50px;
     margin-left: 40px;
-    margin-right: 50px;
-    width: 450px;
-    height: 400px;
+    margin-right: 40px;
+    width: 500px;
+    height: 500px;
     border-radius: 35px;
     object-fit: cover;
     z-index: 1;               
@@ -587,7 +563,7 @@ textarea{
     display: grid;  
 }
 .review_other{
-    margin-top: 37px;
+    margin-top: 23px;
     width: 150px;
     height: 120px;
     border-radius: 20px;
@@ -602,6 +578,10 @@ textarea{
      display: flex;
      justify-content: space-between;
      align-items: center;
+}
+#location{
+    flex-wrap: nowrap;
+    font-size: 19px;
 }
 #name{
     padding-top: 10px;
@@ -628,7 +608,9 @@ textarea{
      padding-bottom: 5px;
 }
 .info_about_seller{
-     margin-top: 400px;
+    float: right;
+    margin-right: 3%;
+    margin-top: 20px;
 }
 .info_block{
     margin-left: 40px;
@@ -810,7 +792,7 @@ textarea{
  
 
             
-      /* Основные стили */
+    /* SLICK-SLIDER second-page (recomamdation adverts) */
 
 /* Слайдер */
 .slick-slider{
@@ -824,6 +806,7 @@ textarea{
 .slick-track{
 	display: flex;
 	align-items: flex-start;
+    width: 100%;
 }
 
 /* Слайд */
@@ -836,11 +819,12 @@ textarea{
 .slick-slide.slick-center{}
 
 .slider {
+ 
 	position: relative;
     padding: 0px 150px;
 }
 
-@media (max-width:767px){
+@media (max-width:900px){
 	.slider {
 		padding: 0px 40px;
 	}
@@ -849,26 +833,30 @@ textarea{
 .slider .slick-arrow{
 	position: absolute;
 	top: 50%;
-	margin: -30px 0px 0px 0px;
+	margin: -40px 0px 0px 0px;
 	z-index: 100;
-	font-size: 0px;
-    height: 40px;
-    width: 50px;
-
+    font-size: 0;
+    outline: none;
+    border: none; 
+    background: none;
 }
-
-.slider .slick-arrow.slick-prev{
-	left: 0;
-	background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-left-icon-font.png?alt=media&token=ee782e1a-a6f8-4852-af41-942d3cf75ced) 0 0 no-repeat;
+.slick-prev:before {
+    content: "〈";
+    color: #7d6bc5;
+    font-size: 70px;     
+}
+.slick-next:before {
+    content: "〉";
+    color: #7d6bc5;
+    font-size: 70px;
 }
 .slider .slick-arrow.slick-next{
-	right: 0;
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-right-icon-font.png?alt=media&token=7f169940-40ba-4e9e-84e2-e50a8d6acf58) 0 0 no-repeat;
+    right: 130px;
+   
 }
 .slider .slick-arrow.slick-disabled{
-	opacity: 0.2;
+	opacity: 0.3;
 }
-
 .slider .slick-dots{
 	display: flex;
 	align-items: center;
