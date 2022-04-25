@@ -17,11 +17,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-                  <!-- опис меню,тут логотип ,та елементи посилання на інші сторінки -->
+ 
+                          <!-- Header(logo,search-box,navigation) -->
   <header class="header">
     <div class="header_inner">
-        <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/logo.svg?alt=media&token=026b0f3e-af29-41ed-b128-d15df5ecc4ab" alt="">
-              <div class="text-field__group">
+        <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">
+                <div class="text-field__group">
                     <button class="text-field__btn" id="text-field__btn" onclick="get_data_page()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
@@ -38,28 +39,26 @@
                     </nav>
     </div>
 </header>
-       <!-- Опис головної фотографії,rigth-sidebar і інформацію у ньому  -->
-
+                  <!-- right-sidebar with information -->
      <div class="intro">
       <div class="sideblock">
             <div class="lend_descr">
              <h3 id="lendory_text">Lendory</h3>
-              <p id="about_lend">Lorem ipsum dolor sit amet.</p>
-              <p id="about_lend">Lorem ipsum dolor sit.</p>
-              <p id="about_lend">Lorem ipsum dolor sit amet consectetur.</p>
-              <p id="about_lend">Lorem ipsum dolor sit.</p>
+                <p id="about_lend">Lorem ipsum dolor sit amet.</p>
+                <p id="about_lend">Lorem ipsum dolor sit.</p>
+                <p id="about_lend">Lorem ipsum dolor sit amet consectetur.</p>
+                <p id="about_lend">Lorem ipsum dolor sit.</p>
                <button id="but_advert" onclick="adv_create_user_check()">Нове оголошення</button>
             </div>
       </div> 
 </div> 
 
-                 <!-- опис головної частини з оголошенями та інформацією -->
-     <section class="main_block">         
-          <div class="recomandation_block">
-              <div class="ad_main_photo">
+                   <!-- Main page -->
+     <section class="main_block">   
+      <div class="slider">
+              <div class="slider__item ">
+                <div class="ad_main_photo">
                   <a href="advertreview.html#12324241"><img id="main_photo" src="C:\Users\roman\Downloads\11111.jpg" alt=""></a>
-                     <span id="like_btn" onclick="change_bnt()">❥</span>  
-                      
                             <div class="description_block">
                                 <div class="left_description">                       
                                   <img id="other_photo" src="C:\Users\roman\Downloads\11111.jpg" alt="">         
@@ -73,16 +72,95 @@
                                       <p id="learn_more">Більше</p>
                             </div> 
                 </div> 
-                   
-                            
-            </div>
-     </section>
-     <section class="main_block"> 
-     
-      
+              </div>
+              <div class="slider__item ">
+                <div class="ad_main_photo">
+                  <a href="advertreview.html#12324241"><img id="main_photo" src="C:\Users\roman\Downloads\11111.jpg" alt=""></a>
+                            <div class="description_block">
+                                <div class="left_description">                       
+                                  <img id="other_photo" src="C:\Users\roman\Downloads\11111.jpg" alt="">         
+                                  <p id="count_photo">+3</p>                                 
+                                </div>
+                                      <div class="right_description">
+                                              <h3>Продам єнота</h3>
+                                              <h6>Жовква,вул Миру,36</h6>
+                                              <h6>100$</h6>                                    
+                                      </div>
+                                      <p id="learn_more">Більше</p>
+                            </div> 
+                </div> 
+              </div>
 
-     
+              <div class="slider__item ">
+                <div class="ad_main_photo">
+                  <a href="advertreview.html#12324241"><img id="main_photo" src="C:\Users\roman\Downloads\11111.jpg" alt=""></a>
+                            <div class="description_block">
+                                <div class="left_description">                       
+                                  <img id="other_photo" src="C:\Users\roman\Downloads\11111.jpg" alt="">         
+                                  <p id="count_photo">+3</p>                                 
+                                </div>
+                                      <div class="right_description">
+                                              <h3>Продам єнота</h3>
+                                              <h6>Жовква,вул Миру,36</h6>
+                                              <h6>100$</h6>                                    
+                                      </div>
+                                      <p id="learn_more">Більше</p>
+                            </div> 
+                </div> 
+              </div>      
+              <div class="slider__item ">
+                <div class="ad_main_photo">
+                  <a href="advertreview.html#12324241"><img id="main_photo" src="C:\Users\roman\Downloads\11111.jpg" alt=""></a>
+                            <div class="description_block">
+                                <div class="left_description">                       
+                                  <img id="other_photo" src="C:\Users\roman\Downloads\11111.jpg" alt="">         
+                                  <p id="count_photo">+3</p>                                 
+                                </div>
+                                      <div class="right_description">
+                                              <h3>Продам єнота</h3>
+                                              <h6>Жовква,вул Миру,36</h6>
+                                              <h6>100$</h6>                                    
+                                      </div>
+                                      <p id="learn_more">Більше</p>
+                            </div> 
+                </div> 
+              </div>
+              <div class="slider__item ">
+                <div class="ad_main_photo">
+                  <a href="advertreview.html#12324241"><img id="main_photo" src="C:\Users\roman\Downloads\11111.jpg" alt=""></a>
+                            <div class="description_block">
+                                <div class="left_description">                       
+                                  <img id="other_photo" src="C:\Users\roman\Downloads\11111.jpg" alt="">         
+                                  <p id="count_photo">+3</p>                                 
+                                </div>
+                                      <div class="right_description">
+                                              <h3>Продам єнота</h3>
+                                              <h6>Жовква,вул Миру,36</h6>
+                                              <h6>100$</h6>                                    
+                                      </div>
+                                      <p id="learn_more">Більше</p>
+                            </div> 
+                </div> 
+              </div>
+                  	<!-- Подключаем jQuery -->
+                  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+                  <!-- Подключаем слайдер Slick -->
+                  <script src="slick.min.js"></script>
+                  <!-- Подключаем файл скриптов -->
+                  <script src="script.js"></script>
+      </div>   
+              
+                
      </section>
+            
+
+        
+
+
+
+
+
+                
      <script>
        function get_data_page(){
         window.location = "getting_data.html";

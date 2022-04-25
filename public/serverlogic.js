@@ -245,3 +245,5 @@ var currentUser = null;
           currentUser = JSON.parse(sessionStorage.getItem('user'));
         }
       }
+
+    
