@@ -165,8 +165,8 @@
 /* second page main photo */
 .main_block{
     padding-top: 100px;
-    height: 100vh;
-    background-color: aquamarine;    
+    height: 100vh; 
+    background-color: aliceblue;
 }
 .ad_main_photo{
     margin-top: 50px;
@@ -176,6 +176,24 @@
     width: 420px;
     height: 542px;  
 }
+.like_image_back{
+    height: 46px;
+    width: 46px;
+    background-color: #fff;
+    z-index: 100;
+    position: absolute;
+    margin-left: 360px;
+    bottom: 277px;
+    border-radius: 10px;
+}
+.like_image{
+    margin-left: 9px;
+    margin-top: 7px;
+    width:30px;
+    height: 30px;
+    z-index: 110;
+}
+
 .main_photo{
     float: right;
     border-radius: 30px;
@@ -185,10 +203,7 @@
     object-fit: cover;
     z-index: 10;
 }
-#like_btn{ 
-    width: 40px;
-    height: 40px;
-}
+
 .description_block{
     position: relative;
     text-align: center;
@@ -211,17 +226,27 @@
     margin-left: -9px;
     margin-top: 2px;
     width: 122.18px;
-    height: 117.09px;
+    height: 107.09px;
     object-fit: cover;
     border-radius: 20px;
     filter: grayscale(100%);
 }
 .count_photo{ 
     position: absolute;
-    margin-top: -125px;
-    margin-left: 8px;
-    font-size: 80px;
+    margin-top: -92px;
+    margin-left: 10px;
+    font-size: 50px;
     color: #fff;  
+}
+.advert_name{
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.advert_location{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
 }
 .right_description{
     text-align: left;
@@ -548,12 +573,16 @@ textarea{
 .main_photo_review_block{
     float: right;  
 }
+.recomend_for_you{
+    padding-left: 5%;
+    color: #9484D8;
+}
 .review_main{
-    margin-top: 50px;
+    margin-top: 40px;
     margin-left: 40px;
     margin-right: 40px;
-    width: 500px;
-    height: 500px;
+    width: 450px;
+    height: 370px;
     border-radius: 35px;
     object-fit: cover;
     z-index: 1;               
@@ -614,15 +643,15 @@ textarea{
 }
 .info_block{
     margin-left: 40px;
-     display: flex;
+    display: flex;
     align-items: center;
     background-color: #fff;
     color: #7d6bc5;
-    border-radius: 120px;
+    border-radius: 20px;
     padding-left: 20px;
-    width: 430px;
+    width: 300px;
     height: 20%;
-     margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 .info_{
     display: grid;
@@ -632,6 +661,7 @@ textarea{
     height: 40px;
     border-radius: 40px;
     margin-right: 20px;
+    padding: 3px 3px;
     border: 3px solid #9485D8;
     object-fit: cover;              
  }
@@ -801,6 +831,9 @@ textarea{
 /* Ограничивающая оболочка */
 .slick-list {
 	overflow: hidden;
+
+    margin-left: -12%;
+    width: 124%;
 }
 /* Лента слайдов */
 .slick-track{
@@ -819,7 +852,6 @@ textarea{
 .slick-slide.slick-center{}
 
 .slider {
- 
 	position: relative;
     padding: 0px 150px;
 }
@@ -833,7 +865,7 @@ textarea{
 .slider .slick-arrow{
 	position: absolute;
 	top: 50%;
-	margin: -40px 0px 0px 0px;
+	margin: -50px 0px 0px 0px;
 	z-index: 100;
     font-size: 0;
     outline: none;
@@ -851,7 +883,10 @@ textarea{
     font-size: 70px;
 }
 .slider .slick-arrow.slick-next{
-    right: 130px;
+    right: 0px;  
+}
+.slider .slick-arrow.slick-prev{
+    left: 0px;
    
 }
 .slider .slick-arrow.slick-disabled{
