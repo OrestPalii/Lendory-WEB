@@ -22,7 +22,7 @@ function first_img_upload(){
     var myimg1 = document.getElementById("first");
     var input1 = document.createElement('input');
     input1.type = 'file';
-    
+    input1.accept="image/jpeg,image/png,image/gif"
     input1.onchange = e =>{
       files1 = e.target.files;
       reader1.readAsDataURL(files1[0]);
@@ -40,6 +40,8 @@ function second_img_upload(){
     var myimg2 = document.getElementById("second");
     var input2 = document.createElement('input');
     input2.type = 'file';
+    input2.accept='.jpg, .jpeg, .png';
+    
     
     input2.onchange = e =>{
       files2 = e.target.files;
@@ -58,6 +60,7 @@ function third_img_upload(){
     var myimg3 = document.getElementById("third");
     var input3 = document.createElement('input');
     input3.type = 'file';
+    input3.accept='.jpg, .jpeg, .png';
     
     input3.onchange = e =>{
       files3 = e.target.files;
@@ -76,6 +79,7 @@ function fourth_img_upload(){
     var myimg4 = document.getElementById("fourth");
     var input4 = document.createElement('input');
     input4.type = 'file';
+    input4.accept='.jpg, .jpeg, .png';
     
     input4.onchange = e =>{
       files4 = e.target.files;
@@ -94,6 +98,7 @@ function fifth_img_upload(){
     var myimg5 = document.getElementById("fifth");
     var input5 = document.createElement('input');
     input5.type = 'file';
+    input5.accept='.jpg, .jpeg, .png';
     
     input5.onchange = e =>{
       files5 = e.target.files;
@@ -225,9 +230,6 @@ function getCurrentAdv(code, adv_name,adv_price, adv_area,adv_numberofrooms, adv
       
       
     }
-
-    
-
     
   })
 }
@@ -246,4 +248,48 @@ var currentUser = null;
         }
       }
 
+function getAdvInfo(code, adv_name, adv_loc, adv_floor, adv_rooms, adv_area, adv_price, adv_currency, adv_vol, adv_description, 
+  main_photo, second_photo, third_photo, fourth_photo){
+  firebase.database().ref("advertisement/" + code).on('value', function(snapshot){
+    currentAdv = snapshot.val();
+    if(currentAdv == null){
+      window.location = "404.html";
+      //alert("Такого оголошення не існує");
+    }
+    else{
+      adv_name.value = currentAdv.name;
+      adv_loc.value = currentAdv.location;
+      adv_floor.value = currentAdv.floor;
+      adv_rooms.value = currentAdv.numberOfRooms;
+      adv_area.value = currentAdv.area;
+      adv_price.value = currentAdv.price;
+      adv_currency.value = currentAdv.currency;
+      adv_vol.value = currentAdv.volunteering;
+      adv_description.value = currentAdv.description;
+      main_photo.src = currentAdv.images[0];
+      if(currentAdv.images[1]){
+        second_photo.src = currentAdv.images[1]   
+    }
+    if(currentAdv.images[2]){
+      third_photo.src = currentAdv.images[1]   
+  }
+  if(currentAdv.images[3]){
+    fourth_photo.src = currentAdv.images[1]   
+}
+
+      
+    }
     
+  })
+ } 
+ 
+ function get_user_info( user_name, user_phone){
+  getUsername();
+  //firebase.database().ref("profiles/" + phonenumber).on('value', function(snapshot){
+    
+    user_name.innerText = currentUser.name;
+    user_phone.innerText = currentUser.phonenumber;
+   
+  // })
+  
+ }

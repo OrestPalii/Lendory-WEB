@@ -25,24 +25,46 @@
   <header class="header">
     <div class="header_inner">
         <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">
-                <div class="text-field__group">
-                    <button class="text-field__btn" id="text-field__btn" onclick="get_data_page()">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                        </svg>
-                    </button>
-                      <input class="text-field__input" type="search"  name="" placeholder="Пошук">
-                </div>
+               
                     <nav class="nav">
-                        <a href="about.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/AboutUs.png?alt=media&token=a62d422a-1be4-4ca9-9dd4-810e39cb1c1b" alt=""> Про нас</a>
-                        <a href="Services.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/services.png?alt=media&token=e0da6157-7b8a-41bf-80dd-b03d8baa75fe" alt=""> Підтримка</a>
-                        <a href="advert.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/document-free-icon-font%201.png?alt=media&token=a05f066e-4bea-4bf8-b798-e7affff9eb31" alt=""> Оголошення</a>
-                        <a id='userlink' href="profile.html"><img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/user-free-icon-font%20(1)%201.png?alt=media&token=c967e8f1-bb4f-4092-b242-70654ee0e544" alt=""> Username </a>
-                        <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/sign-in-alt-free-icon-font%202.png?alt=media&token=37d4a899-06eb-418d-8bb0-f4d9a9a34681" alt=""> Вийти</a>
+                      
+                        <div class="dropdown_profile" >
+                          <a href=""  id='userlink'>Username</a>
+                            <div class="dropdown_content" id="profile_content">
+                             
+                                <div class="row" >
+                                    <div class="column" id="column_left">
+                                      <h3>Оголошення</h3>
+                                      <a href="#" id="created_btn">Мої</a>
+                                      <a href="advert.html" >Створити</a>
+                                      <a href="#" id="liked_btn">Вподобані</a>
+                                        <br>
+                                      <h3>Інше</h3>
+                                      <a href="#">Підтримка ЗСУ</a>
+                                    </div>
+                                    
+                                      <div class="column" id="column_right">
+                                        <div class="wrapper">
+                                        <div class="your_image">
+                                          <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_white.png?alt=media&token=fc7d2425-6de9-49f7-99d0-db5a31fd6b31" alt="">
+                                        </div>
+                                        <h6 id="user_name_box">Лешега Роман</h6>
+                                        <h6 id="user_phone_box">+38099872824</h6>
+                                           <button>Служба підримки</button> 
+                                           
+                                      </div>
+                                    </div>
+                                </div>
+                            </div>
+                       
+
+                        </div>
+                        <a href="getting_data.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_advert.png?alt=media&token=39c603f8-9ac7-4435-9377-ecf18f76f3f4" alt=""> Оголошення</a>
+                        <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""> Вийти</a>
                     </nav>
     </div>
 </header>
-                  <!-- right-sidebar with information -->
+                  <!-- right-sideblock with information -->
      <div class="intro">
       <div class="sideblock">
             <div class="lend_descr">
@@ -63,10 +85,11 @@
       <div>
         <h1 class="recomend_for_you">Рекомендовані оголошення для вас:</h1>
     </div> 
+
       <div class="slider">
         <div class="slider__item">
           <div class="ad_main_photo">
-            <a id="a_1"  target = '_blank'>
+             <a id="a_1"  target = '_blank'>
               <img class="main_photo" id="main_photo_1" src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">
             </a>
           
@@ -98,7 +121,7 @@
                               <div class="description_block">
                                   <div class="left_description">                       
                                     <img class="other_photo" id="other_photo_2" src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">         
-                                    <p class="count_photo" id="count_photo_2" >+3</p>                                 
+                                    <p class="count_photo" id="count_photo_2" ></p>                                 
                                   </div>
                                         <div class="right_description">
                                                 <h5  class="advert_name" id="name2"></h5>
@@ -120,7 +143,7 @@
                                     <div class="description_block">
                                         <div class="left_description">                       
                                           <img class="other_photo" id="other_photo_3" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">         
-                                          <p class="count_photo" id="count_photo_3" >+3</p>                                 
+                                          <p class="count_photo" id="count_photo_3" ></p>                                 
                                         </div>
                                               <div class="right_description">
                                                       <h5 class="advert_name" id="name3"></h5>
@@ -142,7 +165,7 @@
                                           <div class="description_block">
                                               <div class="left_description">                       
                                                 <img class="other_photo" id="other_photo_4" src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">         
-                                                <p class="count_photo" id="count_photo_4" >+3</p>                                 
+                                                <p class="count_photo" id="count_photo_4" ></p>                                 
                                               </div>
                                                     <div class="right_description">
                                                             <h5 class="advert_name" id="name4"></h5>
@@ -164,7 +187,7 @@
                                               <div class="description_block">
                                                   <div class="left_description">                       
                                                     <img class="other_photo" id="other_photo_5" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">         
-                                                    <p class="count_photo" id="count_photo_5">+3</p>                                 
+                                                    <p class="count_photo" id="count_photo_5"></p>                                 
                                                   </div>
                                                         <div class="right_description">
                                                                 <h5 class="advert_name" id="name5"></h5>
@@ -186,7 +209,7 @@
                                               <div class="description_block">
                                                   <div class="left_description">                       
                                                     <img class="other_photo" id="other_photo_6" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">         
-                                                    <p class="count_photo" id="count_photo_6">+3</p>                                 
+                                                    <p class="count_photo" id="count_photo_6"></p>                                 
                                                   </div>
                                                         <div class="right_description">
                                                                 <h5 class="advert_name" id="name6"></h5>
@@ -208,7 +231,7 @@
                                               <div class="description_block">
                                                   <div class="left_description">                       
                                                     <img class="other_photo" id="other_photo_7" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">         
-                                                    <p class="count_photo" id="count_photo_7">+3</p>                                 
+                                                    <p class="count_photo" id="count_photo_7"></p>                                 
                                                   </div>
                                                         <div class="right_description">
                                                                 <h5 class="advert_name" id="name7"></h5>
@@ -231,6 +254,7 @@
                 
 </section>        
      <script>
+       
        function get_data_page(){
         window.location = "getting_data.html";
        }
@@ -267,10 +291,17 @@
           localStorage.removeItem('keepLoggedIn');
           window.location = 'index.html'
       }
+      var profile = document.getElementById('profile_content');
+      var created_adv = document.getElementById('created_btn');
+      var liked_adv = document.getElementById('liked_btn');
 
+      let user_name = document.getElementById('user_name_box');
+      let user_phone = document.getElementById('user_phone_box');
       window.onload = function(){
+        
         getUsername();
         if(currentUser == null){
+          profile.remove();
           userlink.innerText="Створити акаунт";        
           userlink.href = "SignUp.html";
           signoutlink.innerText="Увійти";       
@@ -278,12 +309,16 @@
         }
 
         else{
+          created_adv.href = "created_adv.html";
+          liked_adv.href = "liked_adv.html";
           userlink.innerText= "Мій профіль";        
           userlink.href = "profile.html";
           signoutlink.innerText="Вийти";         
           signoutlink.href = "javascript:Signout()";
+          
         }
         IdBinder();
+        get_user_info( user_name, user_phone)
       }
 
 

@@ -23,6 +23,7 @@
 }
 .nav{
     margin-right: 100px;
+    position: relative;
 }
 .nav a{
     font-size: 18px;
@@ -37,6 +38,90 @@
     color:#7a6daf;
     text-decoration: none;
 }
+.dropdown_profile button{
+    font-size: 18px;
+    color: azure;
+    background-color: inherit;
+    border: none;
+    outline: none;
+}
+.dropdown_content{
+    display: none;
+    position: absolute;
+    width: 120%;
+    left: 0;
+    z-index: 1;
+}
+.dropdown_profile:hover .dropdown_content{
+    display: block;
+}
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    background-color: #ccc;
+    height: 275px;
+}
+.column a {
+    float: none;
+    padding-top: 5px;
+    color: #FFFFFF;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+.column h3{
+    padding-top: 10px;
+    font-size: 19px;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+    text-shadow: 0px 0px 4px rgba(255, 255, 255, 0.7);
+}
+.wrapper{
+    padding-top: 20px;
+    background-color: #7a6daf;
+    height: 90%;
+    width: 90%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+#column_left{
+    background-color: #000;
+    border-bottom-left-radius: 20px;
+}
+#column_right{
+    background-color: #000;
+    border-bottom-right-radius: 20px;
+}
+#column_right h6{
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+}
+.your_image{
+    border-radius: 50px;
+}
+.your_image img{
+    width: 70px;
+    height: 70px;
+    border-radius: 35px;
+    object-fit: cover;
+}
+.wrapper button{
+    width: 90%;
+    text-align: left;
+    font-size: 14px;
+    color: #7d6bc5;
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 .text-field__group {
     display: flex;
     position: relative;
@@ -234,7 +319,7 @@
 .count_photo{ 
     position: absolute;
     margin-top: -92px;
-    margin-left: 10px;
+    margin-left: 14px;
     font-size: 50px;
     color: #fff;  
 }
@@ -246,7 +331,6 @@
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-
 }
 .right_description{
     text-align: left;
@@ -255,7 +339,7 @@
     padding-left: 15px;
     float: right;
     color: #fff;
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6) no-repeat;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fblue_gradient_for_block.jpeg?alt=media&token=f78f9984-1773-41c4-9573-98eecc3228dc) no-repeat ;
     background-size: cover;
     width: 240.73px;
     height: 232.41px;
@@ -554,10 +638,10 @@ textarea{
     margin-left: 55px;
 }            
           /* _______ADVERTREVIEW__________ */   
-          .advertreview_body{
-              background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fbackground_for_getting_data.png?alt=media&token=89cbd9ee-0d93-4585-aa89-a399a1c68012) no-repeat;
-              background-size: cover;
-          } 
+.advertreview_body{
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fbackground_for_getting_data.png?alt=media&token=89cbd9ee-0d93-4585-aa89-a399a1c68012) no-repeat;
+    background-size: cover;
+} 
 .container_review{
     margin-left: 20px;
     margin-right: 30px;
@@ -574,7 +658,7 @@ textarea{
     float: right;  
 }
 .recomend_for_you{
-    padding-left: 5%;
+    padding-left: 3%;
     color: #9484D8;
 }
 .review_main{
@@ -621,8 +705,8 @@ textarea{
     font-size: 20px;
 }
 .description{
-    width: 40%;
-    margin-top: 40px;
+    margin-top: 30px;
+    margin-right: 5px;
 }
 .adv_information span{
     font-size: 20px;
@@ -669,6 +753,17 @@ textarea{
     margin-right: 20px;
     font-size: 18px;
 }
+.like_image_back_review_body{
+    height: 46px;
+    width: 46px;
+    background-color: #fff;
+    z-index: 100;
+    position: absolute;
+    margin-left: 420px;
+    bottom: 230px;
+    border-radius: 10px;
+}
+
             /* Popups(for review all photos)*/        
  .popup{
     position: fixed;
@@ -736,79 +831,7 @@ textarea{
     background-color: #7d6bc5;
     border-radius: 10px;
 }          
-        /* _________Profile____ */
-.profile_block{
-    margin-top: 150px;
-    width: 100%;
-    height: 60vh;
-    background-color: #A9AEE6;
-    border-radius: 60px;
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fblue_gradient_for_block.jpeg?alt=media&token=f78f9984-1773-41c4-9573-98eecc3228dc) no-repeat;
-    background-size: cover;
-}
-.left_block{
-    float: left;
-    margin-left: 100px;
-    display: grid;
-}
-.right_block{
-    margin-top: -200px;
-    float: right;
-    margin-right: 100px;
-    display: grid;
-}
-.your_info_block{
-    margin-left: auto;
-    margin-right: auto;
-    width:200px;
-    height: 200px;   
-}
-.your_info_block img{
-    object-fit: cover;
-    margin-top: 30px;
-    width:200px ;
-    height: 200px;
-    border-radius: 100px;
-    filter: drop-shadow(0px 4px 4px #FFFFFF);
-    margin-bottom: 30px;
-}
-.prof_title{
-    margin-top: 40px;
-    box-sizing: border-box;
-    background: #FFFFFF;
-    box-shadow: 0px 4px 6px 1px #9485D8;
-    border-radius: 24px;
-    width: 334px;
-    height: 50px;
-    color: #7d6bc5;
-    text-align: center;
-    padding-top: 10px;
-    margin-bottom: 0px;
-}
-.prof_label{
-    font-size: 26px;
-    text-align: center;
-    letter-spacing: 0.1em;
-    color: #FFFFFF;    
-}
-.prof_label1{
-    margin-left: 7px;
-    font-size: 20px;
-    text-align: center;
-    letter-spacing: 0.1em;
-    color: #FFFFFF;   
-}
-.prof_btn{
-    margin-top: 10px;
-    background: none;
-    border: none;
-    font-weight: 300;
-    font-size: 29px;
-    line-height: 44px;
-    text-align: center;
-    letter-spacing: 0.1em;
-    color: #FFFFFF;
-}
+    /* Body for gettingdata */
  #tbody1{
      padding-right: 50px;
      align-items: center;

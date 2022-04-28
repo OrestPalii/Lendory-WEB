@@ -53,7 +53,7 @@
                     <div class="description_box">
                         <h2 class="title" >Додаткова інформація</h2>
                         <textarea name="" id="description_box" maxlength="500" cols="40" rows="5" placeholder="Additional information"></textarea>
-                        <button class="create" id="create">Cтворити</button> 
+                        <button class="create" id="create">Зберегти зміни</button> 
                     </div>  
                     
     </section>
@@ -106,6 +106,21 @@ import {getDatabase, ref, get, set, child, update, remove}
     from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
 import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} 
     from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
+
+
+var name = document.getElementById('name_box');
+var location = document.getElementById('location_box');
+var floor = document.getElementById('floor_box');
+var rooms = document.getElementById('rooms_box');
+var area = document.getElementById('area_box');
+var rent = document.getElementById('rent_box');
+var currency = document.getElementById('currency');
+var vol = document.getElementById('option');
+var descript = document.getElementById('description_box');
+var main_photo = document.getElementById('second');
+var second_photo = document.getElementById('third');
+var third_photo = document.getElementById('fourth');
+var fourth_photo= document.getElementById('fifth');
 
 var create  = document.getElementById("create");
 function create_adv(){
@@ -223,21 +238,10 @@ if(!files5.length==0){
     }
     );
 }
-var createdByU = [];
-getUsername();
-    const dbRef = ref(db);
-        get(child(dbRef, "profiles/" + currentUser.phonenumber + "/created"))
-            .then((snapshot)=>{
-                snapshot.forEach(childSnapshot =>{
-                        createdByU.push(childSnapshot.val());
-                });
-                set(ref(db, "profiles/" + currentUser.phonenumber + "/created/" + createdByU.length),
-                    String(numb)      
-                ); 
-    })
+
 
 setdata(name_box.value, description_box.value, location_box.value, floor_box.value,
-    rooms_box.value, area_box.value, rent_box.value, currency.value, option.value,  numb);
+    rooms_box.value, area_box.value, rent_box.value, currency.value, option.value,  url);
 }
 
 else{
@@ -245,8 +249,16 @@ else{
 }
 }
 create.onclick = create_adv;
-window.onload = advert_page_loading;
+window.onload = getURL;
 
+var url = window.location.href;
+//url = url.replace("https://lendory-b5d8b.firebaseapp.com/edit_adv.html#", "");
+url = url.replace("file:///D:/Lendory-WEB/public/edit_adv.html#", "");
+function getURL(){
+    advert_page_loading();
+    getAdvInfo(url, name, location, floor, rooms, area, rent, currency, vol, descript, main_photo, second_photo, third_photo, fourth_photo);
+    
+}
 function Signout(){
         sessionStorage.removeItem('user');
         localStorage.removeItem('user');
