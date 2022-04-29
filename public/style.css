@@ -838,7 +838,7 @@ textarea{
      justify-content: center;
      margin-top: 60px;
      padding-bottom: 60px;
-     background-color: aquamarine;
+     background-color: rgb(211, 219, 216);
      display: grid;
      grid-template-columns: auto auto auto;
  }       

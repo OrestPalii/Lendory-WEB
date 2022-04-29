@@ -24,20 +24,18 @@
                           <!-- Header(logo,search-box,navigation) -->
   <header class="header">
     <div class="header_inner">
-        <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">
+        <img class="header_logo"  src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">
                
                     <nav class="nav">
-                      
                         <div class="dropdown_profile" >
-                          <a href=""  id='userlink'>Username</a>
+                          <a href="#"  id='userlink'>Username</a>
                             <div class="dropdown_content" id="profile_content">
-                             
                                 <div class="row" >
                                     <div class="column" id="column_left">
                                       <h3>Оголошення</h3>
                                       <a href="#" id="created_btn">Мої</a>
                                       <a href="advert.html" >Створити</a>
-                                      <a href="#" id="liked_btn">Вподобані</a>
+                                      <a href="" id="liked_btn">Вподобані</a>
                                         <br>
                                       <h3>Інше</h3>
                                       <a href="#">Підтримка ЗСУ</a>
@@ -48,8 +46,8 @@
                                         <div class="your_image">
                                           <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_white.png?alt=media&token=fc7d2425-6de9-49f7-99d0-db5a31fd6b31" alt="">
                                         </div>
-                                        <h6 id="user_name_box">Лешега Роман</h6>
-                                        <h6 id="user_phone_box">+38099872824</h6>
+                                        <h6 id="user_name_box"></h6>
+                                        <h6 id="user_phone_box"></h6>
                                            <button>Служба підримки</button> 
                                            
                                       </div>
@@ -96,7 +94,7 @@
             <div class="description_block">
                           <div class="left_description">                       
                             <img class="other_photo" id="other_photo_1" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">         
-                            <p class="count_photo" id="count_photo_1">+3</p>                                 
+                            <p class="count_photo" id="count_photo_1"></p>                                 
                           </div>
                                 <div class="right_description">
                                         <h5 class="advert_name" id="name1"></h5>
@@ -169,7 +167,7 @@
                                               </div>
                                                     <div class="right_description">
                                                             <h5 class="advert_name" id="name4"></h5>
-                                                            <h6 class="advert_location" id="location4">6</h6>
+                                                            <h6 class="advert_location" id="location4"></h6>
                                                             <h6 id="price4"></h6>                                    
                                                     </div>
                                                     <p id="learn_more">Більше</p>
@@ -312,7 +310,6 @@
           created_adv.href = "created_adv.html";
           liked_adv.href = "liked_adv.html";
           userlink.innerText= "Мій профіль";        
-          userlink.href = "profile.html";
           signoutlink.innerText="Вийти";         
           signoutlink.href = "javascript:Signout()";
           
