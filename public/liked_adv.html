@@ -17,42 +17,15 @@
     <header class="header">
         <div class="header_inner">
             <a href="index.html">
-                <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">                    
-             </a>      
-                          <nav class="nav">
-                            <div class="dropdown_profile" >
-                              <a href=""  id='userlink'>Username</a>
-                                <div class="dropdown_content" id="profile_content">
-                                 
-                                    <div class="row" >
-                                        <div class="column" id="column_left">
-                                          <h3>Оголошення</h3>
-                                          <a href="#" id="created_btn">Мої</a>
-                                          <a href="advert.html" >Створити</a>
-                                          <a href="" id="liked_btn">Вподобані</a>
-                                            <br>
-                                          <h3>Інше</h3>
-                                          <a href="#">Підтримка ЗСУ</a>
-                                        </div>
-                                        
-                                          <div class="column" id="column_right">
-                                            <div class="wrapper">
-                                            <div class="your_image">
-                                              <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_white.png?alt=media&token=fc7d2425-6de9-49f7-99d0-db5a31fd6b31" alt="">
-                                            </div>
-                                            <h6 id="user_name_box"></h6>
-                                            <h6 id="user_phone_box"></h6>
-                                               <button>Служба підримки</button> 
-                                               
-                                          </div>
-                                        </div>
-                                    </div>
-                                </div>
-                           
-    
-                            </div>
-                            <a href="getting_data.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_advert.png?alt=media&token=39c603f8-9ac7-4435-9377-ecf18f76f3f4" alt=""> Оголошення</a>
-                            <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""> Вийти</a>
+                <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">    
+         </a>
+                  
+                        <nav class="nav">
+                            <a href="about.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/AboutUs.png?alt=media&token=a62d422a-1be4-4ca9-9dd4-810e39cb1c1b" alt=""> Про нас</a>
+                            <a href="Services.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/services.png?alt=media&token=e0da6157-7b8a-41bf-80dd-b03d8baa75fe" alt=""> Підтримка</a>
+                            <a href="advert.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/document-free-icon-font%201.png?alt=media&token=a05f066e-4bea-4bf8-b798-e7affff9eb31" alt=""> Оголошення</a>
+                            <a id='userlink' href="profile.html"><img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/user-free-icon-font%20(1)%201.png?alt=media&token=c967e8f1-bb4f-4092-b242-70654ee0e544" alt=""> Username </a>
+                            <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/sign-in-alt-free-icon-font%202.png?alt=media&token=37d4a899-06eb-418d-8bb0-f4d9a9a34681" alt=""> Вийти</a>
                         </nav>
         </div>
     </header>
@@ -61,6 +34,9 @@
     </div>
     
    
+    <script>
+        
+    </script>
     <script type="module">
         var tbody = document.getElementById("tbody1");
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
@@ -255,11 +231,20 @@
                     snapshot.forEach(childSnapshot =>{
                      likedByU.push(childSnapshot.val());
                     });
-                    AddAllItemsToTable(advertisements, true); 
+                    var liked_advertisements = [];
+                    for(var i = 0; i < advertisements.length; i++){
+                        for(var j = 0; j < likedByU.length; j++){  
+                            if(advertisements[i].hashnumber == likedByU[j]){
+                                liked_advertisements.push(advertisements[i]);    
+                            }
+                        }
+                    }
+                    AddAllItemsToTable(liked_advertisements, true);
                 }) 
-            }
+                }
             else{
-                AddAllItemsToTable(advertisements, false);
+                //Виводити тескст що ти анлогін
+                //AddAllItemsToTable(advertisements, false);
 
             }
             })
@@ -273,9 +258,11 @@
             get(child(dbRef, "profiles/" + currentUser.phonenumber + "/liked"))
             .then((snapshot)=>{
                 snapshot.forEach(childSnapshot =>{
-                    likedByU.push(childSnapshot.val());
-                    if(childSnapshot.val() == numb)
+                    if(childSnapshot.val() == numb){
                         curpos = likedByU.length-1;
+                    }else{
+                        likedByU.push(childSnapshot.val());
+                    }
                 });
                 if(curpos == 1230102301230){
                     likedByU.push(numb);
@@ -284,8 +271,8 @@
                     ); 
                     image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliked_heart.png?alt=media&token=2dc5e75e-6dc6-4fd6-89ed-99ad95be0ba8";
                 }else{
-                    set(ref(db, "profiles/" + currentUser.phonenumber + "/liked/" + curpos),
-                        null   
+                    set(ref(db, "profiles/" + currentUser.phonenumber + "/liked/"),
+                        likedByU   
                     );   
                     image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71";  
                 }

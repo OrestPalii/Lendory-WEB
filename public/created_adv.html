@@ -18,8 +18,9 @@
         <div class="header_inner">
             <a href="index.html">
                 <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">                    
-             </a>      
-                          <nav class="nav">
+             </a>
+                        <nav class="nav">
+                          
                             <div class="dropdown_profile" >
                               <a href=""  id='userlink'>Username</a>
                                 <div class="dropdown_content" id="profile_content">
@@ -43,13 +44,10 @@
                                             <h6 id="user_name_box"></h6>
                                             <h6 id="user_phone_box"></h6>
                                                <button>Служба підримки</button> 
-                                               
                                           </div>
                                         </div>
                                     </div>
-                                </div>
-                           
-    
+                                </div>  
                             </div>
                             <a href="getting_data.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_advert.png?alt=media&token=39c603f8-9ac7-4435-9377-ecf18f76f3f4" alt=""> Оголошення</a>
                             <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""> Вийти</a>
@@ -61,6 +59,9 @@
     </div>
     
    
+    <script>
+        
+    </script>
     <script type="module">
         var tbody = document.getElementById("tbody1");
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
@@ -84,7 +85,7 @@
         
     const db = getDatabase();
     window.onload = GetAllDataOnce; 
-        function AddItemToTable(display_likes, position, name, loc, descript, img_num, other_img_num, hashnumber){
+        function AddItemToTable(position, name, loc, descript, img_num, other_img_num, hashnumber){
             let big_div = document.createElement("div");
             let left_description = document.createElement("div");
             let right_description = document.createElement("div");
@@ -96,6 +97,7 @@
             let count_photo = document.createElement("p");
             let td1 = document.createElement("p");
             let td2 = document.createElement("p");
+            let edit = document.createElement('a');
          
             let more = document.createElement("a");
             
@@ -148,6 +150,11 @@
                 'style',
                 'padding-left: 5px;text-transform: uppercase;margin-bottom: 140px; color: #CF89DB;font-weight: 500;font-size: 19px;letter-spacing: 0.1em;  '
             )
+
+            edit.setAttribute(
+                'style',
+                'padding-left: 5px;text-transform: uppercase;margin-bottom: 140px; color: #CF89DB;font-weight: 500;font-size: 19px;letter-spacing: 0.1em;  '
+            )
             
             var img_count = 0;
             get_adv_img_count(hashnumber, count_photo)
@@ -156,6 +163,7 @@
            
             
             more.innerHTML = 'Більше'
+            edit.innerHTML = 'Редагувати'
             image.src = img_num;
 
             right_description.onclick = function(){
@@ -180,28 +188,14 @@
              
             }
 
-            var flag = false;
-            for(let i = 0; i < likedByU.length; i++){
-                if(likedByU[i] == hashnumber)  
-                    flag = true;      
-            }
-            if(flag)
-                like_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliked_heart.png?alt=media&token=2dc5e75e-6dc6-4fd6-89ed-99ad95be0ba8"
-            else
-                like_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71"
+            
+            
             more.href = 'advertreview.html#' + hashnumber; 
+            edit.href = 'edit_adv.html#' + hashnumber;
             more.target='_blank';
 
             
-            if(display_likes){
-            big_div.appendChild(like_image_back);
-            big_div.appendChild(like_image);
-            }
             big_div.appendChild(image);
-
-            like_image.onclick = function(){
-                addLiked(like_image, hashnumber, flag);
-            }
             // info_on_photo.appendChild(label_location);
             // info_on_photo.appendChild(label_price);
             // big_div.appendChild(info_on_photo);
@@ -214,22 +208,23 @@
             big_div.appendChild(left_description);
             big_div.appendChild(right_description);
             big_div.appendChild(more);
+            big_div.appendChild(edit);
             
             
             tbody.appendChild(big_div);
             
         }
 
-        function AddAllItemsToTable(TheAdvertisement, display_likes){
+        function AddAllItemsToTable(TheAdvertisement){
             tbody.innerHTML="";
             var position = 0;
             TheAdvertisement.forEach(element => {
-                AddItemToTable(display_likes,position, element.name, element.location, element.description, element.images[0], element.images[1], element.hashnumber);
+                AddItemToTable(position, element.name, element.location, element.description, element.images[0], element.images[1], element.hashnumber);
                 position++;
             });
         }
 
-        var likedByU = [];
+        var createdbyU = [];
         
 
         function GetAllDataOnce(){
@@ -250,47 +245,31 @@
                 getUsername();
                 
                 if(currentUser != null){
-                get(child(dbRef, "profiles/" + currentUser.phonenumber + "/liked"))
+                get(child(dbRef, "profiles/" + currentUser.phonenumber + "/created"))
                     .then((snapshot)=>{
                     snapshot.forEach(childSnapshot =>{
-                     likedByU.push(childSnapshot.val());
+                        createdbyU.push(childSnapshot.val());
                     });
-                    AddAllItemsToTable(advertisements, true); 
+                    var created_advertisements = [];
+                    for(var i = 0; i < advertisements.length; i++){
+                        for(var j = 0; j < createdbyU.length; j++){  
+                            if(advertisements[i].hashnumber == createdbyU[j]){
+                                created_advertisements.push(advertisements[i]);    
+                            }
+                        }
+                    }
+                    AddAllItemsToTable(created_advertisements);
                 }) 
-            }
+                }
             else{
-                AddAllItemsToTable(advertisements, false);
+                //Виводити тескст що ти анлогін
+                //AddAllItemsToTable(advertisements, false);
 
             }
             })
         
         }
-        function addLiked(image, numb, flag){
-            getUsername();
-            const dbRef = ref(db);
-            var curpos = 1230102301230;
-            likedByU = [];
-            get(child(dbRef, "profiles/" + currentUser.phonenumber + "/liked"))
-            .then((snapshot)=>{
-                snapshot.forEach(childSnapshot =>{
-                    likedByU.push(childSnapshot.val());
-                    if(childSnapshot.val() == numb)
-                        curpos = likedByU.length-1;
-                });
-                if(curpos == 1230102301230){
-                    likedByU.push(numb);
-                    set(ref(db, "profiles/" + currentUser.phonenumber + "/liked/"),
-                        likedByU 
-                    ); 
-                    image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliked_heart.png?alt=media&token=2dc5e75e-6dc6-4fd6-89ed-99ad95be0ba8";
-                }else{
-                    set(ref(db, "profiles/" + currentUser.phonenumber + "/liked/" + curpos),
-                        null   
-                    );   
-                    image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71";  
-                }
-            })      
-        }
+        
 
         function get_adv_img_count(hashnumber, count_photo){
             const dbRef = ref(db);
