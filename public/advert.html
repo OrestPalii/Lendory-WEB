@@ -153,7 +153,7 @@ const storage = getStorage();
 if(!files2.length==0){
     var ImgToUpload2 = files2[0];
     var ImgName2 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
-    const storageRef2 = sRef(storage, "Images/"+ImgName2);
+    const storageRef2 = sRef(storage, "images/"+ImgName2);
     const metaData2 = {
 
         contentType: ImgToUpload2.type
