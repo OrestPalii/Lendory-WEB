@@ -12,50 +12,54 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
     <script src="serverlogic.js"></script>
+    <script src="sign_in_out_logic.js"></script>
 </head>
 <body id="getting_body" >
     <header class="header">
         <div class="header_inner">
             <a href="index.html">
-                <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">                    
-             </a>      
-                          <nav class="nav">
-                            <div class="dropdown_profile" >
-                              <a href=""  id='userlink'>Username</a>
-                                <div class="dropdown_content" id="profile_content">
-                                 
-                                    <div class="row" >
-                                        <div class="column" id="column_left">
-                                          <h3>Оголошення</h3>
-                                          <a href="#" id="created_btn">Мої</a>
-                                          <a href="advert.html" >Створити</a>
-                                          <a href="" id="liked_btn">Вподобані</a>
-                                            <br>
-                                          <h3>Інше</h3>
-                                          <a href="#">Підтримка ЗСУ</a>
+                <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">    
+            </a>
+                <div class="text-field__group">
+                    <button class="text-field__btn" id="text-field__btn" onclick="get_data_page()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                    </button>
+                    <input class="text-field__input" type="search"  name="" placeholder="Пошук">
+                </div>
+                    <nav class="nav">
+                        <div class="dropdown_profile" >
+                        <a href="#"  id='userlink'>Username</a>
+                            <div class="dropdown_content" id="profile_content">
+                                <div class="row" >
+                                    <div class="column" id="column_left">
+                                    <h3>Оголошення</h3>
+                                        <a href="#" id="created_btn">Мої</a>
+                                        <a href="advert.html" >Створити</a>
+                                        <a href="" id="liked_btn">Вподобані</a>
+                                        <br>
+                                    <h3>Інше</h3>
+                                        <a href="#">Підтримка ЗСУ</a>
+                                    </div>
+                                    <div class="column" id="column_right">
+                                        <div class="wrapper">
+                                        <div class="your_image">
+                                            <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_white.png?alt=media&token=fc7d2425-6de9-49f7-99d0-db5a31fd6b31" alt="">
                                         </div>
-                                        
-                                          <div class="column" id="column_right">
-                                            <div class="wrapper">
-                                            <div class="your_image">
-                                              <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_white.png?alt=media&token=fc7d2425-6de9-49f7-99d0-db5a31fd6b31" alt="">
-                                            </div>
                                             <h6 id="user_name_box"></h6>
                                             <h6 id="user_phone_box"></h6>
-                                               <button>Служба підримки</button> 
-                                               
-                                          </div>
-                                        </div>
+                                            <button>Служба підримки</button> 
+                                    </div>
                                     </div>
                                 </div>
-                           
-    
-                            </div>
-                            <a href="getting_data.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_advert.png?alt=media&token=39c603f8-9ac7-4435-9377-ecf18f76f3f4" alt=""> Оголошення</a>
-                            <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""> Вийти</a>
-                        </nav>
+                            </div>     
+                        </div>
+                    <a href="getting_data.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_advert.png?alt=media&token=39c603f8-9ac7-4435-9377-ecf18f76f3f4" alt=""> Оголошення</a>
+                    <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""> Вийти</a>
+                </nav>
         </div>
-    </header>
+</header>
     <div id="tbody1">
         
     </div>
@@ -307,17 +311,16 @@
         }
                 let userlink = document.getElementById('userlink');
                 let signoutlink = document.getElementById('signoutlink');
-
-                function Signout(){
-                        sessionStorage.removeItem('user');
-                        localStorage.removeItem('user');
-                        localStorage.removeItem('keepLoggedIn');
-                        window.location.reload();
-                     }
+                var profile = document.getElementById('profile_content');
+                var created_adv = document.getElementById('created_btn');
+                var liked_adv = document.getElementById('liked_btn');
+                let user_name = document.getElementById('user_name_box');
+                let user_phone = document.getElementById('user_phone_box');
 
                     function logged_in_check(){
                         getUsername();
                         if(currentUser == null){
+                        profile.remove();
                         userlink.innerHTML="Створити акаунт";        
                         userlink.href = "SignUp.html";
                         //create_acc_img.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/user-free-icon-font%20(1)%201.png?alt=media&token=c967e8f1-bb4f-4092-b242-70654ee0e544"
@@ -326,12 +329,14 @@
                         }
 
                         else{
-                        userlink.innerHTML= "Мій профіль";        
-                        userlink.href = "profile.html";
+                        created_adv.href = "created_adv.html";
+                        liked_adv.href = "liked_adv.html";
+                        userlink.innerHTML= "Мій профіль";  
+                        userlink.href = "getting_data.html";      
                         signoutlink.innerHTML="Вийти";         
                         signoutlink.href = "javascript:Signout()";
                         }
-                        
+                        get_user_info(user_name, user_phone)
                     }
     </script>
 </body>

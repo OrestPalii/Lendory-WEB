@@ -49,7 +49,7 @@
     display: none;
     position: absolute;
     width: 120%;
-    left: 0;
+    left: -50px;
     z-index: 1;
 }
 .dropdown_profile:hover .dropdown_content{
@@ -60,11 +60,11 @@
     width: 50%;
     padding: 10px;
     background-color: #ccc;
-    height: 275px;
+    height: 300px;
 }
 .column a {
     float: none;
-    padding-top: 5px;
+    padding-top: 10px;
     color: #FFFFFF;
     text-decoration: none;
     display: block;
@@ -79,7 +79,8 @@
 }
 .wrapper{
     padding-top: 20px;
-    background-color: #7a6daf;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fblue_gradient_for_block.jpeg?alt=media&token=f78f9984-1773-41c4-9573-98eecc3228dc) no-repeat;
+    background-size: cover;
     height: 90%;
     width: 90%;
     border-bottom-left-radius: 20px;
@@ -93,21 +94,25 @@
     background-color: #000;
     border-bottom-right-radius: 20px;
 }
-#column_right h6{
-    font-size: 16px;
+#column_right p{
+    font-size: 18px;
     letter-spacing: 0.1em;
     color: #FFFFFF;
+    margin-bottom: 2px;
 }
-.your_image{
-    border-radius: 50px;
+#column_right #user_phone_box{
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.75);
 }
 .your_image img{
     width: 70px;
     height: 70px;
     border-radius: 35px;
     object-fit: cover;
+    margin-bottom: 5px;
 }
 .wrapper button{
+    margin-top: 60px;
     width: 90%;
     text-align: left;
     font-size: 14px;
@@ -115,13 +120,11 @@
     background-color: #fff;
     border-radius: 10px;
 }
-
 .row:after {
     content: "";
     display: table;
     clear: both;
 }
-
 .text-field__group {
     display: flex;
     position: relative;
@@ -148,7 +151,6 @@
     z-index: 2;
     padding-left: 45px;
 }
-
     /* right-sideblock with information*/
 .sideblock{
     padding-top: 20px;
@@ -159,6 +161,8 @@
     text-align: center;
     width: 763px;
     height: 400px;   
+    min-width: 0;
+    overflow: hidden;
 }
 .lend_descr{
     margin-left: auto;
@@ -172,7 +176,7 @@
     letter-spacing: 0.1em;
     color: #9485D8;  
 }
-#lendory_text{
+.lendory_title{
     text-transform: uppercase;
     font-weight: 300;
     font-size: 32px;
@@ -183,34 +187,28 @@
     color: #A3BBD8;
           
 }
-#lendory_text:before{
+.lendory_title:before{
     content: "01";
     margin-right: 10px;
     font-size: 82px;
     color: #9484D8;  
 }
-#about_lend{
-    margin: 3px;
-    
+#about_us_title:before{
+    content: "02";  
 }
-    /* animation for Title and description
-        @keyframes slidein 
-        {
-            from {
-            margin-left: 70%;
-            width: 100%;
-            }
-            to {
-            margin-left: 0%;
-            width: 100%;
-            }
-        } */
-       
+#services_title:before{
+    content: "03";  
+}
+#about_lend{
+    margin: 3px; 
+}     
 #but_advert{   
-    margin-top: 20px;
+    margin-top: 50px;
+    margin-right: 260px;
     padding: 10px 10px;
     border: none;
-    background: #9485D8;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fblue_gradient_for_block.jpeg?alt=media&token=f78f9984-1773-41c4-9573-98eecc3228dc) no-repeat;
+    background-size: cover;
     border-radius: 30px;
     color: #fff;
     font-size: 22px;
@@ -218,6 +216,26 @@
     font-weight: 500; 
       
 } 
+/* SWIPER-SLIDER (for scroll info about us,LENDORY , etc) */
+.info-slider .swiper-button-prev:after{
+  
+    border-radius: 10px;
+    padding:0px 10px 10px 10px ;
+    background: linear-gradient(to right,#9485D8,40%,#AECCEA);
+    content: "〈";
+    color: #fff;
+    margin-top: 115px;
+
+}
+.info-slider .swiper-button-next:after{
+    border-radius: 10px;
+    padding:0px 10px 10px 10px ;
+    background: linear-gradient(to left,#9485D8,40%,#AECCEA);
+    content: "〉";
+    color: #fff;
+    margin-top: 115px;
+}
+
                 /* first page main photo */
 .intro{
     flex-direction: column;
@@ -228,6 +246,7 @@
     -webkit-background-size: cover;
     background-size: cover; 
     object-fit: contain;
+    
 }
         @keyframes jump {          /*animation jump for bnt*/ 
             0%, 20%, 60%, 100% {
@@ -244,8 +263,10 @@
             }
         }
         
-    button:active{
+button:active{
     transform: scale(0.9);  
+    outline: none;
+    border: none;
 }
 /* second page main photo */
 .main_block{
@@ -253,6 +274,85 @@
     height: 100vh; 
     background-color: aliceblue;
 }
+/* SLICK-SLIDER second-page (recomamdation adverts) */
+.slick-slider{
+    min-width: 0;
+}
+.slick-list {
+    overflow: hidden;
+    margin-left: -12%;
+    width: 124%;
+}
+.slick-track{
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+}
+.slider {
+    position: relative;
+    padding: 0px 150px;
+}
+@media (max-width:900px){
+    .slider {
+        padding: 0px 40px;
+    }
+}
+.slider .slick-arrow{
+    position: absolute;
+    top: 50%;
+    margin: -50px 0px 0px 0px;
+    z-index: 100;
+    font-size: 0;
+    outline: none;
+    border: none; 
+    background: none;
+}
+.slick-prev:before {
+    content: "〈";
+    color: #7d6bc5;
+    font-size: 70px;     
+}
+.slick-next:before {
+    content: "〉";
+    color: #7d6bc5;
+    font-size: 70px;
+}
+.slider .slick-arrow.slick-next{
+    right: 0px;  
+}
+.slider .slick-arrow.slick-prev{
+    left: 0px;  
+}
+.slider .slick-arrow.slick-disabled{
+    opacity: 0.3;
+}
+.slider .slick-dots{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slider .slick-dots li{
+    list-style: none;
+    margin: 0px 10px;
+}
+.slider .slick-dots button{
+    font-size: 0;
+    width: 15px;
+    height: 15px;
+    background-color: #7d6bc5;
+    border-radius: 50%;
+}
+.slider .slick-dots li.slick-active button{
+    background-color: transparent;
+    border: 1px solid #fff;
+}
+.slider__item {
+    padding: 0px 15px;
+    align-items: center;
+}
+.slider__item img{
+    max-width: 100%;
+}    
 .ad_main_photo{
     margin-top: 50px;
     display: grid;
@@ -278,7 +378,6 @@
     height: 30px;
     z-index: 110;
 }
-
 .main_photo{
     float: right;
     border-radius: 30px;
@@ -288,7 +387,6 @@
     object-fit: cover;
     z-index: 10;
 }
-
 .description_block{
     position: relative;
     text-align: center;
@@ -837,115 +935,11 @@ textarea{
      align-items: center;
      justify-content: center;
      margin-top: 60px;
-     padding-bottom: 60px;
+     padding-bottom: 60px; 
+     min-height: 100vh; 
      background-color: rgb(211, 219, 216);
      display: grid;
      grid-template-columns: auto auto auto;
- }       
- 
-
-            
-    /* SLICK-SLIDER second-page (recomamdation adverts) */
-
-/* Слайдер */
-.slick-slider{
-	min-width: 0;
-}
-/* Ограничивающая оболочка */
-.slick-list {
-	overflow: hidden;
-
-    margin-left: -12%;
-    width: 124%;
-}
-/* Лента слайдов */
-.slick-track{
-	display: flex;
-	align-items: flex-start;
-    width: 100%;
-}
-
-/* Слайд */
-.slick-slide{}
-/* Слайд активный */
-.slick-slide.slick-active{}
-/* Слайд основной */
-.slick-slide.slick-current{}
-/* Слайд по центру */
-.slick-slide.slick-center{}
-
-.slider {
-	position: relative;
-    padding: 0px 150px;
-}
-
-@media (max-width:900px){
-	.slider {
-		padding: 0px 40px;
-	}
-}
-
-.slider .slick-arrow{
-	position: absolute;
-	top: 50%;
-	margin: -50px 0px 0px 0px;
-	z-index: 100;
-    font-size: 0;
-    outline: none;
-    border: none; 
-    background: none;
-}
-.slick-prev:before {
-    content: "〈";
-    color: #7d6bc5;
-    font-size: 70px;     
-}
-.slick-next:before {
-    content: "〉";
-    color: #7d6bc5;
-    font-size: 70px;
-}
-.slider .slick-arrow.slick-next{
-    right: 0px;  
-}
-.slider .slick-arrow.slick-prev{
-    left: 0px;
-   
-}
-.slider .slick-arrow.slick-disabled{
-	opacity: 0.3;
-}
-.slider .slick-dots{
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-.slider .slick-dots li{
-	list-style: none;
-	margin: 0px 10px;
-}
-.slider .slick-dots button{
-	font-size: 0;
-	width: 15px;
-	height: 15px;
-	background-color: #7d6bc5;
-	border-radius: 50%;
-}
-
-.slider .slick-dots li.slick-active button{
-	background-color: transparent;
-	border: 1px solid #fff;
-}
-
-.slider__item {
-	padding: 0px 15px;
-    align-items: center;
-}
-.slider__item img{
-	max-width: 100%;
-}
-.slider__item.slick-center{
-	
-}      
-            
+ }             
+     
  
