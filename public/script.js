@@ -23,6 +23,7 @@ new Swiper('.info-slider',{
 	cubeEffect:{
 		slideShadows:false,
 		shadow:false,
+	
 	},
 	
 	

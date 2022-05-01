@@ -11,6 +11,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="serverlogic.js"></script>
     <script src="sign_in_out_logic.js"></script>
 </head>
@@ -18,40 +19,43 @@
     <header class="header">
         <div class="header_inner">
             <a href="index.html">
-                <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">    
-            </a>
-                <nav class="nav">
-                    <div class="dropdown_profile" >
-                      <a href="#"  id='userlink'>Username</a>
-                        <div class="dropdown_content" id="profile_content">
-                            <div class="row" >
-                                <div class="column" id="column_left">
-                                  <h3>Оголошення</h3>
-                                    <a href="#" id="created_btn">Мої</a>
-                                    <a href="advert.html" >Створити</a>
-                                    <a href="" id="liked_btn">Вподобані</a>
-                                    <br>
-                                  <h3>Інше</h3>
-                                    <a href="#">Підтримка ЗСУ</a>
-                                </div>
-                                  <div class="column" id="column_right">
-                                    <div class="wrapper">
-                                      <div class="your_image">
-                                        <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_white.png?alt=media&token=fc7d2425-6de9-49f7-99d0-db5a31fd6b31" alt="">
-                                      </div>
-                                        <h6 id="user_name_box"></h6>
-                                        <h6 id="user_phone_box"></h6>
-                                        <button>Служба підримки</button> 
-                                  </div>
-                                </div>
+                <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">                    
+             </a>
+                        <nav class="nav">
+                          
+                            <div class="dropdown_profile" >
+                              <a href=""  id='userlink'>Username</a>
+                                <div class="dropdown_content" id="profile_content">
+                                 
+                                    <div class="row" >
+                                        <div class="column" id="column_left">
+                                          <h3>Оголошення</h3>
+                                          <a href="#" id="created_btn">Мої</a>
+                                          <a href="advert.html" >Створити</a>
+                                          <a href="" id="liked_btn">Вподобані</a>
+                                            <br>
+                                          <h3>Інше</h3>
+                                          <a href="#">Підтримка ЗСУ</a>
+                                        </div>
+                                        
+                                          <div class="column" id="column_right">
+                                            <div class="wrapper">
+                                            <div class="your_image">
+                                              <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_white.png?alt=media&token=fc7d2425-6de9-49f7-99d0-db5a31fd6b31" alt="">
+                                            </div>
+                                            <h6 id="user_name_box"></h6>
+                                            <h6 id="user_phone_box"></h6>
+                                               <button>Служба підримки</button> 
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>  
                             </div>
-                        </div>     
-                     </div>
-                  <a href="getting_data.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_advert.png?alt=media&token=39c603f8-9ac7-4435-9377-ecf18f76f3f4" alt=""> Оголошення</a>
-                  <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""> Вийти</a>
-             </nav>
+                            <a href="getting_data.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_advert.png?alt=media&token=39c603f8-9ac7-4435-9377-ecf18f76f3f4" alt=""> Оголошення</a>
+                            <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""> Вийти</a>
+                        </nav>
         </div>
-</header>
+    </header>
     <div id="tbody1">
         
     </div>
@@ -88,6 +92,8 @@
             let left_description = document.createElement("div");
             let right_description = document.createElement("div");
             let image = document.createElement("img");
+            let delete_image_back = document.createElement("img");
+            let delete_image = document.createElement("img");
             let edit_image_back = document.createElement("img");
             let edit_image = document.createElement("img");
             let other_image = document.createElement("img");
@@ -130,6 +136,16 @@
                 'right: 0; margin-top: 217px; border-radius: 10px; background-color: white; margin-right: 13px; width: 46px;height: 46px;position: absolute;z-index: 15;'
             )
 
+            delete_image.setAttribute(
+                'style',
+                'right: 0; margin-top: 225px; margin-right: 70.6px; width: 30px;height: 30px;position: absolute;z-index: 15;'
+            )
+
+            delete_image_back.setAttribute(
+                'style',
+                'right: 0; margin-top: 217px; border-radius: 10px; background-color: white; margin-right: 63px; width: 46px;height: 46px;position: absolute;z-index: 15;'
+            )
+
             other_image.setAttribute(
                 'style',
                 'margin-left: -15px;margin-top: 2px; width: 122.18px;height: 117.09px;object-fit: cover;border-radius: 20px;filter: grayscale(100%);'
@@ -143,45 +159,64 @@
             count_photo.setAttribute(
                 'style',
                 'position: absolute;margin-top: -97px;margin-left: 10px;font-size: 50px;color: #fff;  '
-            )
-
-            
-
-            
-            
+            )   
             var img_count = 0;
             get_adv_img_count(hashnumber, count_photo)
             td1.innerHTML = name;
             td2.innerHTML = loc;
-           
-            
-            
             image.src = img_num;
-
-            
-       
-
             if(other_img_num != null){
                 other_image.src = other_img_num
             }
             else{
                 other_image.src = 'https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05';
-             
             }
-
-            
-            
-       
-            
             edit_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fedit_icon.png?alt=media&token=590838a1-1e37-4b52-88db-24ff00a552bb"
+            delete_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ftrash_icon.png?alt=media&token=80c5a10d-c1b7-4c38-82ee-8da9ff24962e"
             edit_image.onclick = function(){
-            window.location = 'edit_adv.html#' + hashnumber; 
+            window.location = 'edit_adv.html#' + hashnumber;  
+            }
+            delete_image.onclick = function(){
                 
+                var createdByU = [];
+                var createdByU_new  = []
+                const dbRef = ref(db);
+                get(child(dbRef, "profiles/" + currentUser.phonenumber + "/created"))
+                    .then((snapshot)=>{
+                        snapshot.forEach(childSnapshot =>{
+                            createdByU.push(childSnapshot.val());   
+                });
+                for(var i = 0; i < createdByU.length; i++){
+                    if(createdByU[i] != hashnumber){
+                        createdByU_new.push(createdByU[i]);
+                    }
+                }
+                set(ref(db, "profiles/" + currentUser.phonenumber + "/created/"),
+                        createdByU_new 
+                ).then(()=>{
+                        remove(ref(db, "advertisement/" + hashnumber))
+                        .then(()=>{
+                            
+                            swal({
+                                text: "Оголошення успішно видалене!",
+                                icon: "success",
+                                buttons: "Гаразд",
+                            }).then(function(){
+                                window.location.reload();
+                            });
+                        })
+                        .catch((error)=>{
+                            
+                        })          
+                });   
+            })        
             }
             
             big_div.appendChild(image);
             big_div.appendChild(edit_image_back);
             big_div.appendChild(edit_image);
+            big_div.appendChild(delete_image_back);
+            big_div.appendChild(delete_image);
             
             left_description.appendChild(other_image);
             left_description.appendChild(other_image_back);
@@ -190,12 +225,8 @@
             right_description.appendChild(td2);
             big_div.appendChild(left_description);
             big_div.appendChild(right_description);
-            
-            
-            
-            
+
             tbody.appendChild(big_div);
-            
         }
 
         function AddAllItemsToTable(TheAdvertisement){
@@ -206,27 +237,17 @@
                 position++;
             });
         }
-
         var createdbyU = [];
-        
-
         function GetAllDataOnce(){
-            logged_in_check();
-            
+            logged_in_check();          
             const dbRef = ref(db);
-            
-             
-
             get(child(dbRef, "advertisement"))
             .then((snapshot)=>{
                 var advertisements = [];
                 snapshot.forEach(childSnapshot =>{
                     advertisements.push(childSnapshot.val());
                 });
-
-            
                 getUsername();
-                
                 if(currentUser != null){
                 get(child(dbRef, "profiles/" + currentUser.phonenumber + "/created"))
                     .then((snapshot)=>{
