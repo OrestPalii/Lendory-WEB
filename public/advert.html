@@ -21,46 +21,47 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="sign_in_out_logic.js"></script>
     <script src="serverlogic.js"></script>
+    <script src="script.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link
+  rel="stylesheet"
+  href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+/>
 </head>
 <body id="advert">
     <header class="header">
         <div class="header_inner">
-            <a href="index.html">
-                <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">               
-             </a>
-                        <nav class="nav">
-                            
-                            <div class="dropdown_profile" >
-                                <a href=""  id='userlink'>Username</a>
-                                  <div class="dropdown_content" id="profile_content">
-                                   
-                                      <div class="row" >
-                                          <div class="column" id="column_left">
-                                            <h3>Оголошення</h3>
-                                            <a href="#" id="created_btn">Мої</a>
-                                            <a href="advert.html" >Створити</a>
-                                            <a href="" id="liked_btn">Вподобані</a>
-                                              <br>
-                                            <h3>Інше</h3>
-                                            <a href="#">Підтримка ЗСУ</a>
-                                          </div>
-                                          
-                                            <div class="column" id="column_right">
-                                              <div class="wrapper">
-                                              <div class="your_image">
+            <a href="index.html"> <img class="header_logo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt=""></a>      
+                <nav class="nav">
+                    <div class="dropdown_profile" >
+                        <a href=""  id='userlink'>Username</a>
+                            <div class="dropdown_content" id="profile_content">
+                                <div class="row" >
+                                    <div class="column" id="column_left">
+                                        <h3>Оголошення</h3>
+                                        <a href="#" id="created_btn">Мої</a>
+                                        <a href="advert.html" >Створити</a>
+                                        <a href="" id="liked_btn">Вподобані</a><br>
+                                        <h3>Інше</h3>
+                                        <a href="#">Підтримка ЗСУ</a>
+                                    </div>
+                                    <div class="column" id="column_right">
+                                        <div class="wrapper">
+                                            <div class="your_image">
                                                 <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_white.png?alt=media&token=fc7d2425-6de9-49f7-99d0-db5a31fd6b31" alt="">
-                                              </div>
-                                              <h6 id="user_name_box"></h6>
-                                              <h6 id="user_phone_box"></h6>
-                                                 <button>Служба підримки</button> 
                                             </div>
-                                          </div>
-                                      </div>
-                                  </div>  
-                              </div>
-                              <a href="getting_data.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_advert.png?alt=media&token=39c603f8-9ac7-4435-9377-ecf18f76f3f4" alt=""> Оголошення</a>
-                              <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""> Вийти</a>
-                        </nav>
+                                            <h6 id="user_name_box"></h6>
+                                            <h6 id="user_phone_box"></h6>
+                                            <button>Служба підримки</button> 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                <a href="getting_data.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_advert.png?alt=media&token=39c603f8-9ac7-4435-9377-ecf18f76f3f4" alt=""> Оголошення</a>
+                <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""> Вийти</a>
+            </nav>
         </div>
     </header>
    
@@ -84,220 +85,210 @@
                     
     </section>
   
-        <section class="advert_">    
-                <h2 class="title" >Назва oголошення</h2>
-                <input type="text" name="name" id="name_box" maxlength="70" placeholder="Назва..." >
-                    <h2 class="title"  >Місто,вулиця,номер будинка</h2>
-                    <input type="text" name="name" id="location_box" maxlength="70" placeholder="Розташування...">               
-                            <h2 class="title" >Поверх, к-сть кімнат</h2>                       
-                             <input type="number" name="name" min="0" max="1000" id="floor_box"  placeholder="Поверх...">
-                             <input type="number" name="name" min="0" max="100"  id="rooms_box"  placeholder="Кількіть кімнат..."> 
-                                <h2 class="title" >Загальна площа (кв.м)</h2>                           
-                                <input type="number" min="0" max="10000" name="name" id="area_box"  placeholder="Площа..."> 
-                                    <h2 class="title" >Орендна плата за місяць</h2>
-                                    <input type="number" name="name" max="10000000" id="rent_box" placeholder="Орендна плата...">                     
-                                    <select name="currency" id="currency" >
-                                        <option value="$">₴</option>
-                                        <option value="€">€</option>
-                                        <option value="₴">$</option>
-                                    </select>
-                                           <h2 class="title" >Житло для біженців</h2>
-                                           <select name="yes|no" id="option" >                                           
-                                             <option value=1>Так</option>
-                                              <option value=0>Ні</option>
-                                              </select>                                                                          
-             </section>
+    <section class="advert_">    
+            <h2 class="title" >Назва oголошення</h2>
+            <input type="text" name="name" id="name_box" maxlength="70" placeholder="Назва..." >
+                <h2 class="title"  >Місто,вулиця,номер будинка</h2>
+                <input type="text" name="name" id="location_box" maxlength="70" placeholder="Розташування...">               
+                        <h2 class="title" >Поверх, к-сть кімнат</h2>                       
+                            <input type="number" name="name" min="0" max="1000" id="floor_box"  placeholder="Поверх...">
+                            <input type="number" name="name" min="0" max="100"  id="rooms_box"  placeholder="Кількіть кімнат..."> 
+                            <h2 class="title" >Загальна площа (кв.м)</h2>                           
+                            <input type="number" min="0" max="10000" name="name" id="area_box"  placeholder="Площа..."> 
+                                <h2 class="title" >Орендна плата за місяць</h2>
+                                <input type="number" min="0" name="name" max="10000000" id="rent_box" placeholder="Орендна плата...">                     
+                                <select name="currency" id="currency" >
+                                    <option value="$">₴</option>
+                                    <option value="€">€</option>
+                                    <option value="₴">$</option>
+                                </select>
+                                        <h2 class="title" >Житло для біженців</h2>
+                                        <select name="yes|no" id="option" >                                           
+                                            <option value=1>Так</option>
+                                            <option value=0>Ні</option>
+                                            </select>                                                                          
+    </section>
+        
     
                
             
              
 <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    const firebaseConfig = {
+    apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
+    authDomain: "lendory-b5d8b.firebaseapp.com",
+    databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
+    projectId: "lendory-b5d8b",
+    storageBucket: "lendory-b5d8b.appspot.com",
+    messagingSenderId: "759222136421",
+    appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+    import {getDatabase, ref, get, set, child, update, remove}
+        from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+    import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} 
+        from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-
-const firebaseConfig = {
-apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
-authDomain: "lendory-b5d8b.firebaseapp.com",
-databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
-projectId: "lendory-b5d8b",
-storageBucket: "lendory-b5d8b.appspot.com",
-messagingSenderId: "759222136421",
-appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getDatabase();
-
-import {getDatabase, ref, get, set, child, update, remove}
-    from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
-import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} 
-    from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
-
-var create  = document.getElementById("create");
-function create_adv(){
-    var numb = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1); //advertisement hashnumber
-    var isempty = false;
-    if(name_box.value == ""){isempty = true}
-    if(description_box.value == ""){isempty = true}
-    if(location_box.value == ""){isempty = true}
-    if(floor_box.value == ""){isempty = true}
-    if(rooms_box.value == ""){isempty = true}
-    if(area_box.value == ""){isempty = true}
-    if(rent_box.value == ""){isempty = true}
-
-    if(!isempty){
-
-var imgarray = [];
-const storage = getStorage();
-
-if(!files2.length==0){
-    var ImgToUpload2 = files2[0];
-    var ImgName2 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
-    const storageRef2 = sRef(storage, "images/"+ImgName2);
-    const metaData2 = {
-
-        contentType: ImgToUpload2.type
-    } 
-    const UploadTask2 = uploadBytesResumable(storageRef2, ImgToUpload2, metaData2);
-    UploadTask2.on('state-changed', (snapshot)=>{
-
-    },
-    (error)=>{
-        alert("error")
-    },
-    ()=>{
-        getDownloadURL(UploadTask2.snapshot.ref).then((downloadURL)=>{
-            firebase.database().ref("/").child("advertisement/" + numb + "/images/").update({
-                0: downloadURL
-            })
-        });
+    var create  = document.getElementById("create");
+    function create_adv(){
+        var numb = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1); //advertisement hashnumber
+        var isempty = false;
+        if(name_box.value == ""){isempty = true}
+        if(description_box.value == ""){isempty = true}
+        if(location_box.value == ""){isempty = true}
+        if(floor_box.value == ""){isempty = true}
+        if(rooms_box.value == ""){isempty = true}
+        if(area_box.value == ""){isempty = true}
+        if(rent_box.value == ""){isempty = true}
+        if(!isempty){
+            setdata(name_box.value, description_box.value, location_box.value, floor_box.value,
+        rooms_box.value, area_box.value, rent_box.value, currency.value, option.value,  numb);
+        set(ref(db, "needToBeeApproved/" + numb + "/"),
+                numb 
+            ); 
+    var canClose = false;             
+    var imgarray = [];
+    const storage = getStorage();
+    if(!files2.length==0){
+        var ImgToUpload2 = files2[0];
+        var ImgName2 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+        const storageRef2 = sRef(storage, "images/"+ImgName2);
+        const metaData2 = {
+            contentType: ImgToUpload2.type
+        } 
+        const UploadTask2 = uploadBytesResumable(storageRef2, ImgToUpload2, metaData2);
+        UploadTask2.on('state-changed', (snapshot)=>{
+        },
+        (error)=>{
+            alert("error")
+        },
+        ()=>{
+            getDownloadURL(UploadTask2.snapshot.ref).then((downloadURL)=>{
+                firebase.database().ref("/").child("advertisement/" + numb + "/images/").update({
+                    0: downloadURL
+                }).then(()=>{
+                    canClose = true;
+                })
+            });
+        }
+        );
     }
-    );
-}
-
-if(!files3.length==0){
-    var ImgToUpload3 = files3[0];
-    var ImgName3 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
-    const storageRef3 = sRef(storage, "images/"+ImgName3);
-    const metaData3 = {
-
-        contentType: ImgToUpload3.type
-    } 
-    const UploadTask3 = uploadBytesResumable(storageRef3, ImgToUpload3, metaData3);
-    UploadTask3.on('state-changed', (snapshot)=>{
-
-    },
-    (error)=>{
-        alert("error")
-    },
-    ()=>{
-        getDownloadURL(UploadTask3.snapshot.ref).then((downloadURL)=>{
-            firebase.database().ref("/").child("advertisement/" + numb + "/images/").update({
-                1: downloadURL
-            })
-        });
+    if(!files3.length==0){
+        var ImgToUpload3 = files3[0];
+        var ImgName3 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+        const storageRef3 = sRef(storage, "images/"+ImgName3);
+        const metaData3 = {
+            contentType: ImgToUpload3.type
+        } 
+        const UploadTask3 = uploadBytesResumable(storageRef3, ImgToUpload3, metaData3);
+        UploadTask3.on('state-changed', (snapshot)=>{
+        },
+        (error)=>{
+            alert("error")
+        },
+        ()=>{
+            getDownloadURL(UploadTask3.snapshot.ref).then((downloadURL)=>{
+                firebase.database().ref("/").child("advertisement/" + numb + "/images/").update({
+                    1: downloadURL
+                })
+            });
+        }
+        );
     }
-    );
-}
-
-if(!files4.length==0){
-    var ImgToUpload4 = files4[0];
-    var ImgName4 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
-    const storageRef4 = sRef(storage, "images/"+ImgName4);
-    const metaData4 = {
-
-        contentType: ImgToUpload4.type
-    } 
-    const UploadTask4 = uploadBytesResumable(storageRef4, ImgToUpload4, metaData4);
-    UploadTask4.on('state-changed', (snapshot)=>{
-
-    },
-    (error)=>{
-        alert("error")
-    },
-    ()=>{
-        getDownloadURL(UploadTask4.snapshot.ref).then((downloadURL)=>{
-            firebase.database().ref("/").child("advertisement/" + numb + "/images/").update({
-                2: downloadURL
-            })
-        });
+    if(!files4.length==0){
+        var ImgToUpload4 = files4[0];
+        var ImgName4 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+        const storageRef4 = sRef(storage, "images/"+ImgName4);
+        const metaData4 = {
+            contentType: ImgToUpload4.type
+        } 
+        const UploadTask4 = uploadBytesResumable(storageRef4, ImgToUpload4, metaData4);
+        UploadTask4.on('state-changed', (snapshot)=>{
+        },
+        (error)=>{
+            alert("error")
+        },
+        ()=>{
+            getDownloadURL(UploadTask4.snapshot.ref).then((downloadURL)=>{
+                firebase.database().ref("/").child("advertisement/" + numb + "/images/").update({
+                    2: downloadURL
+                })
+            });
+        }
+        );
     }
-    );
-}
-
-if(!files5.length==0){
-    var ImgToUpload5 = files5[0];
-    var ImgName5 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
-    const storageRef5 = sRef(storage, "images/"+ImgName5);
-    const metaData5 = {
-
-        contentType: ImgToUpload5.type
-    } 
-    const UploadTask5 = uploadBytesResumable(storageRef5, ImgToUpload5, metaData5);
-    UploadTask5.on('state-changed', (snapshot)=>{
-
-    },
-    (error)=>{
-        alert("error")
-    },
-    ()=>{
-        getDownloadURL(UploadTask5.snapshot.ref).then((downloadURL)=>{
-            firebase.database().ref("/").child("advertisement/" + numb + "/images/").update({
-                3: downloadURL
-            })
-        });
+    if(!files5.length==0){
+        var ImgToUpload5 = files5[0];
+        var ImgName5 = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1);
+        const storageRef5 = sRef(storage, "images/"+ImgName5);
+        const metaData5 = {
+            contentType: ImgToUpload5.type
+        } 
+        const UploadTask5 = uploadBytesResumable(storageRef5, ImgToUpload5, metaData5);
+        UploadTask5.on('state-changed', (snapshot)=>{
+        },
+        (error)=>{
+            alert("error")
+        },
+        ()=>{
+            getDownloadURL(UploadTask5.snapshot.ref).then((downloadURL)=>{
+                firebase.database().ref("/").child("advertisement/" + numb + "/images/").update({
+                    3: downloadURL
+                })
+            });
+        }
+        );
     }
-    );
-}
-var createdByU = [];
-getUsername();
-    const dbRef = ref(db);
-        get(child(dbRef, "profiles/" + currentUser.phonenumber + "/created"))
-            .then((snapshot)=>{
-                snapshot.forEach(childSnapshot =>{
-                        createdByU.push(childSnapshot.val());
-                });
-                set(ref(db, "profiles/" + currentUser.phonenumber + "/created/" + createdByU.length),
-                    String(numb)      
-                ); 
-    })
-
-setdata(name_box.value, description_box.value, location_box.value, floor_box.value,
-    rooms_box.value, area_box.value, rent_box.value, currency.value, option.value,  numb);
-}
-
-else{
-    alert("Заповніть всі поля!");
-}
-}
-
-let userlink = document.getElementById('userlink');
-let signoutlink = document.getElementById('signoutlink');
-let user_name = document.getElementById('user_name_box');
-let user_phone = document.getElementById('user_phone_box');
-var created_adv = document.getElementById('created_btn');
-var liked_adv = document.getElementById('liked_btn');  
-
-
-create.onclick = create_adv;
-window.onload = logged_in_check;
-function logged_in_check(){
+    var createdByU = [];
     getUsername();
-    if(currentUser == null){
-        window.location = "SignIn.html"
+        const dbRef = ref(db);
+            get(child(dbRef, "profiles/" + currentUser.phonenumber + "/created"))
+                .then((snapshot)=>{
+                    snapshot.forEach(childSnapshot =>{
+                            createdByU.push(childSnapshot.val());
+                    });
+                    set(ref(db, "profiles/" + currentUser.phonenumber + "/created/" + createdByU.length),
+                        String(numb)      
+                    ); 
+        })
+        swal({
+          text: "Оголошення успішно створене й відправлене на перевірку. Очікуйте дзівка від адміністрації!",
+          icon: "success",
+          buttons: "Гаразд",
+      }).then(function(){
+          if(canClose)
+            window.location = 'index.html';
+          else
+            alert("Будь ласка зачекайте");  
+      });
+    }else{
+        alert("Заповніть всі поля!");
     }
-
-    else{
-    created_adv.href = "created_adv.html";
-    liked_adv.href = "liked_adv.html";
-    get_user_info( user_name, user_phone)
-    userlink.innerHTML= "Мій профіль";        
-    signoutlink.innerHTML="Вийти";         
-    signoutlink.href = "javascript:Signout()";
     }
-    
-}
-
+    let userlink = document.getElementById('userlink');
+    let signoutlink = document.getElementById('signoutlink');
+    let user_name = document.getElementById('user_name_box');
+    let user_phone = document.getElementById('user_phone_box');
+    var created_adv = document.getElementById('created_btn');
+    var liked_adv = document.getElementById('liked_btn');  
+    create.onclick = create_adv;
+    window.onload = logged_in_check;
+    function logged_in_check(){
+        getUsername();
+        if(currentUser == null){
+            window.location = "SignIn.html"
+        }
+        else{
+        created_adv.href = "created_adv.html";
+        liked_adv.href = "liked_adv.html";
+        get_user_info( user_name, user_phone)
+        userlink.innerHTML= "Мій профіль";        
+        signoutlink.innerHTML="Вийти";         
+        signoutlink.href = "javascript:Signout()";
+        }
+    }
 </script>
 </body>
 </html>
