@@ -23,7 +23,7 @@
 </head>
 <body>
   
-                          <!-- Header(logo,search-box,navigation) -->
+                          <!-- Header(logo,search-box,navigation,dropdown page profile) -->
 <header class="header">
     <div class="header_inner">
         <img class="header_logo"  src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">
@@ -47,8 +47,8 @@
                                   <div class="your_image">
                                     <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_white.png?alt=media&token=fc7d2425-6de9-49f7-99d0-db5a31fd6b31" alt="">
                                   </div>
-                                    <p id="user_name_box"></p>
-                                    <p id="user_phone_box"></p>
+                                    <h6 id="user_name_box"></h6>
+                                    <h6 id="user_phone_box"></h6>
                                     <button>Служба підримки</button> 
                               </div>
                             </div>
@@ -59,7 +59,7 @@
          </nav>
     </div>
 </header>
-                  <!-- right-sideblock with information -->
+                  <!-- right-sideblock with information , swiper-slider -->
      <div class="intro">
       <div class="sideblock">
         <div class="info-slider swiper-container">
@@ -96,12 +96,12 @@
           </div>
               <div class="swiper-button-next"></div>
               <div class="swiper-button-prev"></div>
-              <div class="swiper-pagination"></div>
+              
         </div>
         <button id="but_advert" onclick="adv_create_user_check()">Нове оголошення</button>
       </div> 
     </div> 
-                   <!-- SLIDER and all items -->
+                   <!-- SLick-slider of recommended adverts -->
 <section class="main_block">  
     <div>
         <h1 class="recomend_for_you">Рекомендовані оголошення для вас:</h1>
@@ -269,18 +269,15 @@
         <script src="slick.min.js"></script>
         <!--  файл скриптiв -->
         <script src="script.js"></script>              
-</section>        
+</section>       
      <script>
-       
        function get_data_page(){
         window.location = "getting_data.html";
        }
       function change_bnt() {
-          document.getElementById("like_btn").style.color = "#7d6bc5";
-         
+          document.getElementById("like_btn").style.color = "#7d6bc5"; 
       }
       </script>   
-     
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
       const firebaseConfig = {
@@ -298,10 +295,8 @@
       import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} 
         from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
       const db = getDatabase();
-
       let userlink = document.getElementById('userlink');
       let signoutlink = document.getElementById('signoutlink');
-      
       function Signout(){
           sessionStorage.removeItem('user');
           localStorage.removeItem('user');
@@ -310,12 +305,10 @@
       }
       var profile = document.getElementById('profile_content');
       var created_adv = document.getElementById('created_btn');
-      var liked_adv = document.getElementById('liked_btn');
-
+      var liked_adv = document.getElementById('liked_btn')
       let user_name = document.getElementById('user_name_box');
       let user_phone = document.getElementById('user_phone_box');
       window.onload = function(){
-        
         getUsername();
         if(currentUser == null){
           profile.remove();
@@ -324,21 +317,16 @@
           signoutlink.innerText="Увійти";       
           signoutlink.href = "SignIn.html";
         }
-
         else{
           created_adv.href = "created_adv.html";
           liked_adv.href = "liked_adv.html";
           userlink.innerText= "Мій профіль";        
           signoutlink.innerText="Вийти";         
           signoutlink.href = "javascript:Signout()";
-          
         }
         IdBinder();
         get_user_info( user_name, user_phone)
       }
-
-
-      
         var names=[];
         var locations=[];
         var prices=[];
@@ -382,7 +370,6 @@
                   randomer();
                 }
             })
-        
         }
         var randomed = [];
         function randomer(){
@@ -429,7 +416,6 @@
           likes[5].onclick = function(){addLiked(likes[5], advertisements[randomed[5]].hashnumber, checkifliked(5));};
           likes[6].onclick = function(){addLiked(likes[6], advertisements[randomed[6]].hashnumber, checkifliked(6));};
         }
-
         function checkifliked(position){
           var flag = false;
             for(var j = 0; j < likedByU.length; j++){
@@ -438,7 +424,6 @@
             }  
             return flag;
         }
-
         function addLiked(image, numb, flag){
             getUsername();
             const dbRef = ref(db);
@@ -467,16 +452,10 @@
                 }
             })      
         }
-
         function randomIntFromInterval(min, max){
           return Math.floor(Math.random() * (max - min + 1) + min)
         }
-
-
     </script>
-
-       
-  
 </body>
 </html>
 

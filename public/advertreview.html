@@ -20,7 +20,7 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 
-<body class="advertreview_body">
+<body id="advertreview_body">
     <header class="header">
         <div class="header_inner">
             <a href="index.html">
@@ -60,7 +60,7 @@
 </header>
 
 <section class="review">
-        <div class="container_review">
+        <div  id="container_review" >
             <div class="main_photo_review_block">
                 <a href="#popup"> 
                     <img class="review_main"  id="main_photo" alt="">
@@ -77,14 +77,15 @@
                                 <span id="price"></span>  <span id="location"></span> <br><br>
                                 <span id="area"></span>
                                 <span id="numberofrooms"></span>
-                                <span id="floor"></span>  
+                                <span id="floor"></span> 
+                                <span id="isvol"></span> 
                             </div> 
                              <div class="description"> <p id="description"></p>  </div>                                               
                     </div>
         </div> 
             <div class="info_about_seller">
                 <div class="info_block">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_image.png?alt=media&token=c6569790-89ed-48f6-853f-b5d6d34186ff" alt="">
+                    <img id="your_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_image.png?alt=media&token=c6569790-89ed-48f6-853f-b5d6d34186ff" alt="">
                         <div class="info_">
                             <span id="user_name"></span>
                             <span id="phoneNumber"></span>
@@ -133,98 +134,95 @@
             </div>              
     </div>
 </section>
-            <script>
-                var url = window.location.href;
-                //url = url.replace("https://lendory-b5d8b.firebaseapp.com/advertreview.html#", "");
-                url = url.replace("file:///D:/Lendory-WEB/public/advertreview.html#", "");
+    
+    <script>
+        var url = window.location.href;
+        //url = url.replace("https://lendory-b5d8b.firebaseapp.com/advertreview.html#", "");
+        url = url.replace("file:///D:/Lendory-WEB/public/advertreview.html#", "");
+        let userlink = document.getElementById('userlink');
+        let signoutlink = document.getElementById('signoutlink');
+        let create_acc_img = document.getElementById('create_acc_img');
+        window.onload = getURL();
+        function getURL() {
+            var main_back_url = document.getElementById('popup_area')
+            var popup_area_1 = document.getElementById('popup_area_1')
+            var popup_area_2 = document.getElementById('popup_area_2')
+            var popup_area_3 = document.getElementById('popup_area_3')
+            main_back_url.href = window.location.href;
+            popup_area_1.href = window.location.href;
+            popup_area_2.href = window.location.href;
+            popup_area_3.href = window.location.href;
+            logged_in_check();
+            var adv_name = document.getElementById('name');
+            var adv_price = document.getElementById('price');
+            var adv_area = document.getElementById('area');
+            var adv_numberofrooms=document.getElementById('numberofrooms')
+            var adv_floor=document.getElementById('floor')
+            var user_name=document.getElementById("user_name")
+            var phoneNumber=document.getElementById("phoneNumber")
+            var adv_description=document.getElementById("description")
+            var adv_location = document.getElementById('location')
+            var adv_isvol=document.getElementById('isvol');
+        
+            var url = window.location.href;
+            var adv_main_photo = document.getElementById("main_photo")
+            var adv_second_photo = document.getElementById("second_img")
+            var adv_third_photo = document.getElementById("third_img")
+            var adv_fourth_photo = document.getElementById("fourth_img")
 
-               let userlink = document.getElementById('userlink');
-                let signoutlink = document.getElementById('signoutlink');
-                let create_acc_img = document.getElementById('create_acc_img');
-                window.onload = getURL();
-                function getURL() {
-                    var main_back_url = document.getElementById('popup_area')
-                    var popup_area_1 = document.getElementById('popup_area_1')
-                    var popup_area_2 = document.getElementById('popup_area_2')
-                    var popup_area_3 = document.getElementById('popup_area_3')
-                    main_back_url.href = window.location.href;
-                    popup_area_1.href = window.location.href;
-                    popup_area_2.href = window.location.href;
-                    popup_area_3.href = window.location.href;
-                    logged_in_check();
-                    var adv_name = document.getElementById('name');
-                    var adv_price = document.getElementById('price');
-                    var adv_area = document.getElementById('area');
-                    var adv_numberofrooms=document.getElementById('numberofrooms')
-                    var adv_floor=document.getElementById('floor')
-                    var user_name=document.getElementById("user_name")
-                    var phoneNumber=document.getElementById("phoneNumber")
-                    var adv_description=document.getElementById("description")
-                    var adv_location = document.getElementById('location')
-                
-                    var url = window.location.href;
-                    var adv_main_photo = document.getElementById("main_photo")
-                    var adv_second_photo = document.getElementById("second_img")
-                    var adv_third_photo = document.getElementById("third_img")
-                    var adv_fourth_photo = document.getElementById("fourth_img")
+            var popup_main = document.getElementById('main')
+            var popup_1 = document.getElementById('popup_1')
+            var popup_2 = document.getElementById('popup_2')
+            var popup_3 = document.getElementById('popup_3')
 
-                    var popup_main = document.getElementById('main')
-                    var popup_1 = document.getElementById('popup_1')
-                    var popup_2 = document.getElementById('popup_2')
-                    var popup_3 = document.getElementById('popup_3')
+            var main_prev = document.getElementById('main_prev')
+            var main_next = document.getElementById('main_next')
+        
+            var popup_1_next = document.getElementById('popup_1_next')
+            var popup_2_next = document.getElementById('popup_2_next')
 
-                    var main_prev = document.getElementById('main_prev')
-                    var main_next = document.getElementById('main_next')
-                
-                    var popup_1_next = document.getElementById('popup_1_next')
-                    var popup_2_next = document.getElementById('popup_2_next')
-                
-                    //локально з пк/ при деплої міняти силку на https://lendory-b5d8b.firebaseapp.com/advertreview.html
-                    url = url.replace("https://lendory-b5d8b.firebaseapp.com/advertreview.html#", "");
-                    url = url.replace("file:///D:/Lendory-WEB/public/advertreview.html#", "");
-                    getCurrentAdv(url, adv_name,adv_price, adv_area,adv_numberofrooms,adv_floor,user_name,phoneNumber,adv_description, adv_location,
-                    adv_main_photo, adv_second_photo, adv_third_photo, adv_fourth_photo, popup_main, popup_1, popup_2, popup_3, main_prev, main_next,
-                     popup_1_next, popup_2_next);
-                    
-                    //get_adv_data();
-                }
-                
+            var background=document.getElementById('container_review');
+            var advertreview_body=document.getElementById('advertreview_body');
+            var your_img=document.getElementById('your_img');
+        
+            //локально з пк/ при деплої міняти силку на https://lendory-b5d8b.firebaseapp.com/advertreview.html
+            url = url.replace("https://lendory-b5d8b.firebaseapp.com/advertreview.html#", "");
+            url = url.replace("file:///D:/Lendory-WEB/public/advertreview.html#", "");
+            
+            getCurrentAdv(url, adv_name,adv_price, adv_area,adv_numberofrooms,adv_floor,user_name,phoneNumber,adv_description, adv_location,adv_isvol,
+            adv_main_photo, adv_second_photo, adv_third_photo, adv_fourth_photo, popup_main, popup_1, popup_2, popup_3, main_prev, main_next,
+                popup_1_next, popup_2_next,background,advertreview_body,your_img);     
+        }
+        var profile = document.getElementById('profile_content');
+        var created_adv = document.getElementById('created_btn');
+        var liked_adv = document.getElementById('liked_btn');
 
-                
-                var profile = document.getElementById('profile_content');
-                var created_adv = document.getElementById('created_btn');
-                var liked_adv = document.getElementById('liked_btn');
-
-                let user_name = document.getElementById('user_name_box');
-                let user_phone = document.getElementById('user_phone_box');
-                function Signout(){
-                        sessionStorage.removeItem('user');
-                        localStorage.removeItem('user');
-                        localStorage.removeItem('keepLoggedIn');
-                        window.location.reload();
-                     }
-
-                    function logged_in_check(){
-                        getUsername();
-                        if(currentUser == null){
-                        //profile.remove();
-                        userlink.innerHTML="Створити акаунт";        
-                        userlink.href = "SignUp.html";
-                        //create_acc_img.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/user-free-icon-font%20(1)%201.png?alt=media&token=c967e8f1-bb4f-4092-b242-70654ee0e544"
-                        signoutlink.innerHTML="Увійти";       
-                        signoutlink.href = "SignIn.html";
-                        }
-
-                        else{
-                        //created_adv.href = "created_adv.html";
-                        //liked_adv.href = "liked_adv.html";
-                        userlink.innerHTML= "Мій профіль";        
-                        userlink.href = "file:///D:/Lendory-WEB/public/advertreview.html#" + url;
-                        signoutlink.innerHTML="Вийти";         
-                        signoutlink.href = "javascript:Signout()";
-                        }
-                        
-                    }
-            </script>
+        let user_name = document.getElementById('user_name_box');
+        let user_phone = document.getElementById('user_phone_box');
+        function Signout(){
+            sessionStorage.removeItem('user');
+            localStorage.removeItem('user');
+            localStorage.removeItem('keepLoggedIn');
+            window.location.reload();
+            }
+            function logged_in_check(){
+                getUsername();
+                if(currentUser == null){
+                //profile.remove();
+                userlink.innerHTML="Створити акаунт";        
+                userlink.href = "SignUp.html";
+                //create_acc_img.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/user-free-icon-font%20(1)%201.png?alt=media&token=c967e8f1-bb4f-4092-b242-70654ee0e544"
+                signoutlink.innerHTML="Увійти";       
+                signoutlink.href = "SignIn.html";
+                }else{
+                //created_adv.href = "created_adv.html";
+                //liked_adv.href = "liked_adv.html";
+                userlink.innerHTML= "Мій профіль";        
+                userlink.href = "file:///D:/Lendory-WEB/public/advertreview.html#" + url;
+                signoutlink.innerHTML="Вийти";         
+                signoutlink.href = "javascript:Signout()";
+                } 
+            }
+    </script>
 </body>
 </html>

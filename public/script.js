@@ -9,23 +9,30 @@ $(document).ready(function(){
 		waitForAnimate:true,
 		autoplay:true,
 		autoplaySpeed:3000,
+		// fade: true,
 	});
 })
+
 
 new Swiper('.info-slider',{
 	navigation:{
 		nextEl:'.swiper-button-next',
 		prevEl:'.swiper-button-prev'
 	},
+	keyboard: {
+		enabled: true,
+	  },
+	  mousewheel: true,
 	simulateTouch:false,
 	speed:2000,
 	effect:'cube',
 	cubeEffect:{
 		slideShadows:false,
 		shadow:false,
+		
 	
 	},
-	
+
 	
 });
 

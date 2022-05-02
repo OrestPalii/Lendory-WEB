@@ -15,65 +15,56 @@
     <script src="sign_in_out_logic.js"></script>
 </head>
 <body id="getting_body" >
-<header class="header">
+    <header class="header">
         <div class="header_inner">
-            <a href="index.html">
-                <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">    
-            </a>
+            <a href="index.html"> <img class="header_logo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt=""></a>      
                 <nav class="nav">
                     <div class="dropdown_profile" >
-                      <a href="#"  id='userlink'>Username</a>
-                        <div class="dropdown_content" id="profile_content">
-                            <div class="row" >
-                                <div class="column" id="column_left">
-                                  <h3>Оголошення</h3>
-                                    <a href="#" id="created_btn">Мої</a>
-                                    <a href="advert.html" >Створити</a>
-                                    <a href="" id="liked_btn">Вподобані</a>
-                                    <br>
-                                  <h3>Інше</h3>
-                                    <a href="#">Підтримка ЗСУ</a>
-                                </div>
-                                  <div class="column" id="column_right">
-                                    <div class="wrapper">
-                                      <div class="your_image">
-                                        <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_white.png?alt=media&token=fc7d2425-6de9-49f7-99d0-db5a31fd6b31" alt="">
-                                      </div>
-                                        <h6 id="user_name_box"></h6>
-                                        <h6 id="user_phone_box"></h6>
-                                        <button>Служба підримки</button> 
-                                  </div>
+                        <a href=""  id='userlink'>Username</a>
+                            <div class="dropdown_content" id="profile_content">
+                                <div class="row" >
+                                    <div class="column" id="column_left">
+                                        <h3>Оголошення</h3>
+                                        <a href="#" id="created_btn">Мої</a>
+                                        <a href="advert.html" >Створити</a>
+                                        <a href="" id="liked_btn">Вподобані</a><br>
+                                        <h3>Інше</h3>
+                                        <a href="#">Підтримка ЗСУ</a>
+                                    </div>
+                                    <div class="column" id="column_right">
+                                        <div class="wrapper">
+                                            <div class="your_image">
+                                                <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_white.png?alt=media&token=fc7d2425-6de9-49f7-99d0-db5a31fd6b31" alt="">
+                                            </div>
+                                            <h6 id="user_name_box"></h6>
+                                            <h6 id="user_phone_box"></h6>
+                                            <button>Служба підримки</button> 
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>     
-                     </div>
-                  <a href="getting_data.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_advert.png?alt=media&token=39c603f8-9ac7-4435-9377-ecf18f76f3f4" alt=""> Оголошення</a>
-                  <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""> Вийти</a>
-             </nav>
+                    </div>
+                <a href="getting_data.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_advert.png?alt=media&token=39c603f8-9ac7-4435-9377-ecf18f76f3f4" alt=""> Оголошення</a>
+                <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""> Вийти</a>
+            </nav>
         </div>
-</header>
+    </header>
     <div id="tbody1">
         
     </div>
-    
-   
-    <script>
-        
-    </script>
+
     <script type="module">
         var tbody = document.getElementById("tbody1");
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-
-    const firebaseConfig = {
-    apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
-    authDomain: "lendory-b5d8b.firebaseapp.com",
-    databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
-    projectId: "lendory-b5d8b",
-    storageBucket: "lendory-b5d8b.appspot.com",
-    messagingSenderId: "759222136421",
-    appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
-    };
-
+        const firebaseConfig = {
+        apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
+        authDomain: "lendory-b5d8b.firebaseapp.com",
+        databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
+        projectId: "lendory-b5d8b",
+        storageBucket: "lendory-b5d8b.appspot.com",
+        messagingSenderId: "759222136421",
+        appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
+        };
     const app = initializeApp(firebaseConfig);
 
     import {getDatabase, ref, get, set, child, update, remove}
@@ -95,26 +86,20 @@
             let count_photo = document.createElement("p");
             let td1 = document.createElement("p");
             let td2 = document.createElement("p");
-         
             let more = document.createElement("a");
             
-
-
             big_div.setAttribute(
                 'style',
                 'position: relative; text-align: center; margin-top: 50px; margin-left: 50px; width: 400px; height: 453px; background-color: rgb(255, 255, 255); border-radius: 35px; z-index:10;'
             )
-
             left_description.setAttribute(
                 'style', 
                 'text-align: center; margin-left: 28px; padding: 10px; margin-top: 10px; float: left; position: relative;'
             )
-
             right_description.setAttribute(
                 'style', 
                 'text-align: left; margin-top: -55px; position: relative;padding-top: 70px;padding-left: 15px;float: right;color: #fff;background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6) no-repeat;background-size: cover;width: 230.73px;height: 232.41px;border-radius: 35px;z-index: 1;'
             )
-
             image.setAttribute(
                 'style',
                 'float: right;border-radius: 30px;width: 400.17px;height: 276.57px;position: relative;object-fit: cover;z-index: 10; '
@@ -127,58 +112,43 @@
                 'style',
                 'right: 0; margin-top: 217px; border-radius: 10px; background-color: white; margin-right: 13px; width: 46px;height: 46px;position: absolute;z-index: 15;'
             )
-
             other_image.setAttribute(
                 'style',
                 'margin-left: -15px;margin-top: 2px; width: 122.18px;height: 117.09px;object-fit: cover;border-radius: 20px;filter: grayscale(100%);'
             )
-
             other_image_back.setAttribute(
                 'style',
                 'margin-left: -122px;margin-top: 2px; width: 122.18px;height: 117.09px;object-fit: cover;border-radius: 20px; background-color:black; opacity: 0.5'
             )
-
             count_photo.setAttribute(
                 'style',
                 'position: absolute;margin-top: -97px;margin-left: 10px;font-size: 50px;color: #fff;  '
             )
-
             more.setAttribute(
                 'style',
                 'padding-left: 5px;text-transform: uppercase;margin-bottom: 140px; color: #CF89DB;font-weight: 500;font-size: 19px;letter-spacing: 0.1em;  '
             )
-            
             var img_count = 0;
             get_adv_img_count(hashnumber, count_photo)
             td1.innerHTML = name;
             td2.innerHTML = loc;
-           
-            
             more.innerHTML = 'Більше'
             image.src = img_num;
-
             right_description.onclick = function(){
                 window.location = 'advertreview.html#' + hashnumber; 
             }
-
             left_description.onclick = function(){
                 window.location = 'advertreview.html#' + hashnumber; 
             }
-
             image.onclick = function(){
-                window.location = 'advertreview.html#' + hashnumber; 
-                
+                window.location = 'advertreview.html#' + hashnumber;    
             }
-       
-
             if(other_img_num != null){
                 other_image.src = other_img_num
             }
             else{
                 other_image.src = 'https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05';
-             
             }
-
             var flag = false;
             for(let i = 0; i < likedByU.length; i++){
                 if(likedByU[i] == hashnumber)  
@@ -189,9 +159,7 @@
             else
                 like_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71"
             more.href = 'advertreview.html#' + hashnumber; 
-            more.target='_blank';
-
-            
+            more.target='_blank';         
             if(display_likes){
             big_div.appendChild(like_image_back);
             big_div.appendChild(like_image);
@@ -204,7 +172,6 @@
             // info_on_photo.appendChild(label_location);
             // info_on_photo.appendChild(label_price);
             // big_div.appendChild(info_on_photo);
-            
             left_description.appendChild(other_image);
             left_description.appendChild(other_image_back);
             left_description.appendChild(count_photo);
@@ -213,12 +180,8 @@
             big_div.appendChild(left_description);
             big_div.appendChild(right_description);
             big_div.appendChild(more);
-            
-            
             tbody.appendChild(big_div);
-            
         }
-
         function AddAllItemsToTable(TheAdvertisement, display_likes){
             tbody.innerHTML="";
             var position = 0;
@@ -227,16 +190,10 @@
                 position++;
             });
         }
-
         var likedByU = [];
-        
-
         function GetAllDataOnce(){
             logged_in_check();
-            
             const dbRef = ref(db);
-            
-             
 
             get(child(dbRef, "advertisement"))
             .then((snapshot)=>{
@@ -244,8 +201,6 @@
                 snapshot.forEach(childSnapshot =>{
                     advertisements.push(childSnapshot.val());
                 });
-
-            
                 getUsername();
                 
                 if(currentUser != null){
@@ -268,10 +223,8 @@
             else{
                 //Виводити тескст що ти анлогін
                 //AddAllItemsToTable(advertisements, false);
-
             }
             })
-        
         }
         function addLiked(image, numb, flag){
             getUsername();
@@ -301,7 +254,6 @@
                 }
             })      
         }
-
         function get_adv_img_count(hashnumber, count_photo){
             const dbRef = ref(db);
             get(child(dbRef, "advertisement/" + hashnumber + "/images/"))
@@ -315,30 +267,26 @@
                     count_photo.innerHTML = '+' + String(img_count-1)
                 })
         }
-                let userlink = document.getElementById('userlink');
-                let signoutlink = document.getElementById('signoutlink');
-                let user_name = document.getElementById('user_name_box');
-                let user_phone = document.getElementById('user_phone_box');
-                var created_adv = document.getElementById('created_btn');
-                var liked_adv = document.getElementById('liked_btn');   
-                
+        let userlink = document.getElementById('userlink');
+        let signoutlink = document.getElementById('signoutlink');
+        let user_name = document.getElementById('user_name_box');
+        let user_phone = document.getElementById('user_phone_box');
+        var created_adv = document.getElementById('created_btn');
+        var liked_adv = document.getElementById('liked_btn');   
 
-                    function logged_in_check(){
-                        getUsername();
-                        if(currentUser == null){
-                            window.location = "SignIn.html"
-                        }
-
-                        else{
-                        created_adv.href = "created_adv.html";
-                        liked_adv.href = "liked_adv.html";
-                        get_user_info( user_name, user_phone)
-                        userlink.innerHTML= "Мій профіль";        
-                        signoutlink.innerHTML="Вийти";         
-                        signoutlink.href = "javascript:Signout()";
-                        }
-                        
-                    }
+            function logged_in_check(){
+                getUsername();
+                if(currentUser == null){
+                    window.location = "SignIn.html"
+                }else{
+                created_adv.href = "created_adv.html";
+                liked_adv.href = "liked_adv.html";
+                get_user_info( user_name, user_phone)
+                userlink.innerHTML= "Мій профіль";        
+                signoutlink.innerHTML="Вийти";         
+                signoutlink.href = "javascript:Signout()";
+                }
+            }
     </script>
 </body>
 </html>
