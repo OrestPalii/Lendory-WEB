@@ -438,14 +438,12 @@ button:active{
     padding-left: 15px;
     float: right;
     color: #fff;
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fblue_gradient_for_block.jpeg?alt=media&token=f78f9984-1773-41c4-9573-98eecc3228dc) no-repeat ;
-    background-size: cover;
     width: 240.73px;
     height: 232.41px;
     border-radius: 35px;
     z-index: 1;
 }
-#learn_more{
+.learn_more{
     padding-left: 5px;
     text-transform: uppercase;
     margin-top: 140px;

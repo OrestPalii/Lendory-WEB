@@ -74,7 +74,7 @@
         
     const db = getDatabase();
     window.onload = GetAllDataOnce; 
-        function AddItemToTable(display_likes, position, name, loc, descript, img_num, other_img_num, hashnumber){
+        function AddItemToTable(display_likes, position, name, loc, descript, img_num, other_img_num, hashnumber, isvol){
             let big_div = document.createElement("div");
             let left_description = document.createElement("div");
             let right_description = document.createElement("div");
@@ -134,6 +134,16 @@
             td2.innerHTML = loc;
             more.innerHTML = 'Більше'
             image.src = img_num;
+            if(isvol){
+                right_description.style.background='url("https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fgreen_background.png?alt=media&token=7ce381f6-9286-4ad9-8c39-88856fcf922d") no-repeat';
+                right_description.style.backgroundSize='cover';
+                more.style.color="#60CFD2"
+            }else{
+                right_description.style.background='url("https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6") no-repeat';
+                right_description.style.backgroundSize='cover';
+                more.style.color="#9485D8"
+            }
+
             right_description.onclick = function(){
                 window.location = 'advertreview.html#' + hashnumber; 
             }
@@ -154,10 +164,17 @@
                 if(likedByU[i] == hashnumber)  
                     flag = true;      
             }
-            if(flag)
-                like_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliked_heart.png?alt=media&token=2dc5e75e-6dc6-4fd6-89ed-99ad95be0ba8"
-            else
-                like_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71"
+            if(flag){
+                if(isvol)
+                    like_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliker_heart_green.png?alt=media&token=ac11ccb7-8163-4b5d-95c9-fd44b5e90e64"
+                else
+                    like_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliked_heart.png?alt=media&token=2dc5e75e-6dc6-4fd6-89ed-99ad95be0ba8"
+            }else{
+                if(isvol)
+                    like_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart_green.png?alt=media&token=6131d4da-0a50-47b7-ad9c-28a736f0e806"
+                else
+                    like_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71"
+            }
             more.href = 'advertreview.html#' + hashnumber; 
             more.target='_blank';         
             if(display_likes){
@@ -167,7 +184,7 @@
             big_div.appendChild(image);
 
             like_image.onclick = function(){
-                addLiked(like_image, hashnumber, flag);
+                addLiked(like_image, hashnumber, flag, isvol);
             }
             // info_on_photo.appendChild(label_location);
             // info_on_photo.appendChild(label_price);
@@ -186,7 +203,7 @@
             tbody.innerHTML="";
             var position = 0;
             TheAdvertisement.forEach(element => {
-                AddItemToTable(display_likes,position, element.name, element.location, element.description, element.images[0], element.images[1], element.hashnumber);
+                AddItemToTable(display_likes,position, element.name, element.location, element.description, element.images[0], element.images[1], element.hashnumber, element.volunteering);
                 position++;
             });
         }
@@ -226,7 +243,7 @@
             }
             })
         }
-        function addLiked(image, numb, flag){
+        function addLiked(image, numb, flag, isvol){
             getUsername();
             const dbRef = ref(db);
             var curpos = 1230102301230;
@@ -245,13 +262,19 @@
                     set(ref(db, "profiles/" + currentUser.phonenumber + "/liked/"),
                         likedByU 
                     ); 
-                    image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliked_heart.png?alt=media&token=2dc5e75e-6dc6-4fd6-89ed-99ad95be0ba8";
+                    if(isvol)
+                        image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliker_heart_green.png?alt=media&token=ac11ccb7-8163-4b5d-95c9-fd44b5e90e64";
+                    else
+                        image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliked_heart.png?alt=media&token=2dc5e75e-6dc6-4fd6-89ed-99ad95be0ba8"    
                 }else{
                     set(ref(db, "profiles/" + currentUser.phonenumber + "/liked/"),
                         likedByU   
-                    );   
-                    image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71";  
-                }
+                    );  
+                    if(isvol)
+                        image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart_green.png?alt=media&token=6131d4da-0a50-47b7-ad9c-28a736f0e806"
+                    else
+                        image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71"
+                }                
             })      
         }
         function get_adv_img_count(hashnumber, count_photo){
