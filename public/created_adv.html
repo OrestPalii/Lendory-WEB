@@ -81,7 +81,7 @@
         
     const db = getDatabase();
     window.onload = GetAllDataOnce; 
-        function AddItemToTable(position, name, loc, descript, img_num, other_img_num, hashnumber){
+        function AddItemToTable(position, name, loc, descript, img_num, other_img_num, hashnumber,isvol){
             let big_div = document.createElement("div");
             let left_description = document.createElement("div");
             let right_description = document.createElement("div");
@@ -134,7 +134,7 @@
             )
             other_image_back.setAttribute(
                 'style',
-                'margin-left: -122px;margin-top: 2px; width: 122.18px;height: 117.09px;object-fit: cover;border-radius: 20px; background-color:black; opacity: 0.5'
+                'margin-left: -122px;margin-top: 2px; width: 122.18px;height: 117.09px;object-fit: cover;border-radius: 20px; background-color:black; opacity: 0.5;outline:none;'
             )
             count_photo.setAttribute(
                 'style',
@@ -145,13 +145,24 @@
             td1.innerHTML = name;
             td2.innerHTML = loc;
             image.src = img_num;
+            if(isvol){
+                right_description.style.background='url("https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fgreen_background.png?alt=media&token=7ce381f6-9286-4ad9-8c39-88856fcf922d") no-repeat';
+                right_description.style.backgroundSize='cover';
+                delete_image.src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ftrash_icon_green.png?alt=media&token=168cbca3-4249-4d18-ba33-9c69ef3be3bd";
+                edit_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fedit_icon_green.png?alt=media&token=d6ade061-02f1-4a68-8b24-f3d2a9602d89";
+            }else{
+                right_description.style.background='url("https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6") no-repeat';
+                right_description.style.backgroundSize='cover';
+                delete_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ftrash_icon.png?alt=media&token=80c5a10d-c1b7-4c38-82ee-8da9ff24962e";
+                edit_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fedit_icon.png?alt=media&token=590838a1-1e37-4b52-88db-24ff00a552bb";
+            }
             if(other_img_num != null){
                 other_image.src = other_img_num
             }else{
                 other_image.src = 'https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05';
             }
-            edit_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fedit_icon.png?alt=media&token=590838a1-1e37-4b52-88db-24ff00a552bb"
-            delete_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ftrash_icon.png?alt=media&token=80c5a10d-c1b7-4c38-82ee-8da9ff24962e"
+           
+           
             edit_image.onclick = function(){
             window.location = 'edit_adv.html#' + hashnumber;  
             }
@@ -205,7 +216,7 @@
             tbody.innerHTML="";
             var position = 0;
             TheAdvertisement.forEach(element => {
-                AddItemToTable(position, element.name, element.location, element.description, element.images[0], element.images[1], element.hashnumber);
+                AddItemToTable(position, element.name, element.location, element.description, element.images[0], element.images[1], element.hashnumber,element.volunteering);
                 position++;
             });
         }
