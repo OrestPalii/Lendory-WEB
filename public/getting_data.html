@@ -51,31 +51,49 @@
         </div>
     </header>
     <section>
-        <div class="search_box">
-            <div class="search_box_wrapper">
-                <label  id="name_label_search" for="">Назва</label>
-                <Input><div class="h_line"></div></Input>
-             </div>
-             <div class="search_box_wrapper">
-                <label id="sity_label_search" for="">Місто</label>
-                <Input><div class="h_line"></div></Input>
-             </div>
-           <div class="search_box_wrapper">
-            <label for="">Ціна</label>
-               <div class="wrap">
-                <input type="range" name="" id="">
-                <label id="price_label_search" for="">99999$</label>
-              </div>
-           </div>
-           <div class="dropdown">
-                <button onclick="myFunction()" class="search_box_btn" >Найновіші <i class="fa fa-caret-down"></i></button>
-                <div id="Dropdown" class="dropdown_btn_search">
-                    <a href="#">Найстарші</a>
-                    <a href="#">Найдешевші</a>
-                    <a href="#">Найдорожчі</a>
+        <div class="wrapper_box">
+            <div class="search_box">
+                <div class="search_box_wrapper">
+                    <label  id="name_label_search" for="">Назва</label>
+                    <Input><div class="h_line"></div></Input>
                 </div>
+                <div class="search_box_wrapper">
+                    <label id="sity_label_search" for="">Локація</label>
+                    <Input><div class="h_line"></div></Input>
+                </div>
+            <div class="search_box_wrapper"id="search_box_little_wrapper">
+                    <label id="min_price_label" for="">Від</label>
+                    <Input type="number"><div class="h_line" id="h_line_for_price"></div></Input>
+            </div>
+            <div class="search_box_wrapper" id="search_box_little_wrapper">
+                    <label id="man_price_label" for="">До</label>
+                    <Input type="number"><div class="h_line" id="h_line_for_price"></div></Input>
+            </div>
+            <div class="dropdown">
+                <button onclick="myFunction()" class="search_box_btn" >Найновіші <i class="fa fa-caret-down"></i></button>
+                    <div id="Dropdown" class="dropdown_btn_search">
+                        <a href="#">Найстарші</a>
+                        <a href="#">Найдешевші</a>
+                        <a href="#">Найдорожчі</a>
+                    </div>
+            </div>
+            
         </div>
-    </div>
+        <div class="search_box_second_row">
+            <div class="search_box_wrapper search_box_help">
+                <label id="search_box_title_label" for="">Допомога біженцям?</label>
+                <div>
+                    <input type="checkbox" class="custom-checkbox" name="" id="Yes" value="1" checked>
+                    <label for="Yes">Так</label>
+                    <input type="checkbox" class="custom-checkbox" name="" id="No" value="0" checked>
+                    <label for="No">Ні</label>
+                </div>
+               
+            </div>
+            <button class="event_btn_search_box">Очистити</button>
+            <button class="event_btn_search_box">Застосувати</button>
+        </div>
+    </div> 
     </section>
     <div id="tbody1">
         
@@ -189,13 +207,13 @@
        
 
         right_description.onclick = function(){
-            window.location = 'advertreview.html#' + hashnumber; 
+            window.open('advertreview.html#' + hashnumber,'_blank'); 
         }
         left_description.onclick = function(){
-            window.location = 'advertreview.html#' + hashnumber; 
+            window.open('advertreview.html#' + hashnumber,'_blank'); 
         }
         image.onclick = function(){
-            window.location = 'advertreview.html#' + hashnumber; 
+            window.open('advertreview.html#' + hashnumber,'_blank'); 
         }
         if(other_img_num != null){
             other_image.src = other_img_num
@@ -229,7 +247,7 @@
         }
         big_div.appendChild(image);
         like_image.onclick = function(){
-            addLiked(like_image, hashnumber, flag, );
+            addLiked(like_image, hashnumber, flag, isvol);
         }
         left_description.appendChild(other_image);
         left_description.appendChild(other_image_back);
@@ -258,7 +276,8 @@
         .then((snapshot)=>{
             var advertisements = [];
             snapshot.forEach(childSnapshot =>{
-                advertisements.push(childSnapshot.val());
+                if(childSnapshot.val().approved)
+                    advertisements.push(childSnapshot.val());
             });
 
             getUsername();
@@ -276,7 +295,7 @@
         }
         })
     }
-        function addLiked(image, numb, flag){
+    function addLiked(image, numb, flag, isvol){
             getUsername();
             const dbRef = ref(db);
             var curpos = 1230102301230;
@@ -284,23 +303,30 @@
             get(child(dbRef, "profiles/" + currentUser.phonenumber + "/liked"))
             .then((snapshot)=>{
                 snapshot.forEach(childSnapshot =>{
-                    likedByU.push(childSnapshot.val());
-                    if(childSnapshot.val() == numb)
-                        curpos = likedByU.length-1;  
+                    if(childSnapshot.val() == numb){
+                        curpos = likedByU.length-1;
+                    }else{
+                        likedByU.push(childSnapshot.val());
+                    }
                 });
                 if(curpos == 1230102301230){
                     likedByU.push(numb);
                     set(ref(db, "profiles/" + currentUser.phonenumber + "/liked/"),
                         likedByU 
                     ); 
-                    
-                    image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliked_heart.png?alt=media&token=2dc5e75e-6dc6-4fd6-89ed-99ad95be0ba8";
+                    if(isvol)
+                        image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliker_heart_green.png?alt=media&token=ac11ccb7-8163-4b5d-95c9-fd44b5e90e64";
+                    else
+                        image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliked_heart.png?alt=media&token=2dc5e75e-6dc6-4fd6-89ed-99ad95be0ba8"    
                 }else{
-                    set(ref(db, "profiles/" + currentUser.phonenumber + "/liked/" + curpos),
-                        null   
-                    );   
-                    image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71";  
-                }
+                    set(ref(db, "profiles/" + currentUser.phonenumber + "/liked/"),
+                        likedByU   
+                    );  
+                    if(isvol)
+                        image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart_green.png?alt=media&token=6131d4da-0a50-47b7-ad9c-28a736f0e806"
+                    else
+                        image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71"
+                }                
             })      
         }
         function get_adv_img_count(hashnumber, count_photo){

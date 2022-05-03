@@ -131,7 +131,8 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
             numberOfRooms: parseInt(rooms),
             price: parseInt(rent),
             volunteering: vol,
-            time:   millisecondsSince1970
+            time:   millisecondsSince1970,
+            approved: false
         })
 
         getUsername();

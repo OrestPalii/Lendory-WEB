@@ -141,6 +141,15 @@
                 'style',
                 'position: absolute;margin-top: -97px;margin-left: 10px;font-size: 50px;color: #fff;  '
             )   
+            right_description.onclick = function(){
+                window.open('advertreview.html#' + hashnumber,'_blank');  
+            }
+            left_description.onclick = function(){
+                window.open('advertreview.html#' + hashnumber,'_blank'); 
+            }
+            image.onclick = function(){
+                window.open('advertreview.html#' + hashnumber,'_blank');    
+            }
             var img_count = 0;
             get_adv_img_count(hashnumber, count_photo)
             td1.innerHTML = name;

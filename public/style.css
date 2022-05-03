@@ -94,7 +94,7 @@
 }
 .wrapper{
     padding-top: 20px;
-    background: linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234));
+    background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
     height: 90%;
     width: 90%;
     border-bottom-left-radius: 20px;
@@ -278,6 +278,11 @@ button:active{
     transform: scale(0.9);  
     outline: none;
     border: none;
+}
+button:focus{
+    border: none;
+    outline: none;
+    text-decoration: none;
 }
 
 
@@ -601,7 +606,7 @@ textarea{
 .register_form{   
     border-radius: 75px;
     padding: 30px 30px;
-    background: linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234));
+    background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
     margin-top: 150px;
     margin-left: auto;
     margin-right: auto;
@@ -943,33 +948,44 @@ textarea{
     background-color: #d2bcd6;
 }
  #tbody1{
-
      margin-top: 40px;
      align-items: center;
      justify-content: center;
      display: grid;
      grid-template-columns: auto auto auto;
- }      
+ }  
+ .wrapper_box{
+     display: block;
+     width: 100%;
+     height: 22vh;
+     background: linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234));
+     border-bottom-left-radius: 45px;
+     border-bottom-right-radius: 45px;
+}    
  .search_box{
     display: flex;
-    align-items: center;
     justify-content: space-between;
     margin-top: 60px;
     width: 100%;
     height: 10vh;
-    padding-top: 10px;
-    background: linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234));
+    padding-top: 20px;
     padding-right: 100px;
-    padding-left: 100px;
- } 
- .search_box_wrapper{
-    background: rgba(216, 216, 216, 0.51);
+    padding-left: 100px;  
+} 
+.search_box_wrapper{
+     background: rgba(216, 216, 216, 0.51);
      display: grid;
-     width: 300px;
+     width: 250px;
      height: 50px;
      border-radius: 10px;
- }  
- .search_box_wrapper input{
+ } 
+#search_box_little_wrapper{
+    width: 100px;
+} 
+#search_box_little_wrapper input{
+     width: 100px;
+}
+.search_box_wrapper input{
      background:none ;
      border: none;
      border-bottom-left-radius: 10px;
@@ -981,7 +997,18 @@ textarea{
      z-index: 5;
      font-size: 17px;
 }
-.dropdown_btn_search{
+.search_box_wrapper label{
+    color: #fff;
+    padding-left: 20px; 
+    font-size: 20px;
+    z-index: 10;
+    margin-bottom: 0px;
+}  
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.dropdown_btn_search{  /* Dropdown button "НАЙНОВІШІ" */
     display: none;
     position: absolute;
     background: rgba(216, 216, 216, 0.51);
@@ -991,11 +1018,6 @@ textarea{
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 100;
 }
-#price_label_search{
-    font-size: 23px;
-    margin-top: -15px;
-    margin-left: -7px;
-}
 .dropdown_btn_search a {
     font-size: 20px;
     color: white;
@@ -1004,28 +1026,17 @@ textarea{
     display: block;
     z-index: 100;
 }
+.dropdown_btn_search a:hover{
+    color: #7d6bc5;
+    transition: background-color .5s ease;
+}
 .dropdown {
     position: relative;
     display: inline-block;
-  }
+}
 .show{
     display:block;
-}
-.wrap{
-    display: flex;
-    margin-top: -10px;
-}
-input[type=range]{
-    -webkit-appearance: none;
-    width: 200px;
-    margin-left: 20px;
-}
- .search_box_wrapper label{
-     color: #fff;
-     padding-left: 10px; 
-     font-size: 17px;
-     z-index: 10;
- }   
+} 
 .search_box_btn{
     width: 300px;
     height: 50px;
@@ -1036,44 +1047,59 @@ input[type=range]{
     font-size: 25px;
     border-radius: 10px;
 }
-.search_box_btn:focus{
-    border: none;
-    outline: none;
-    text-decoration: none;
-}
 .search_box_btn:active{
     transform: scale(1);  
 }
-.h_line{
+.h_line{             /* horizontal line */
     margin-left: 20px;
     margin-top: -6px;
     width:85%;
     height:2px; 
     background: #fff 
 }
-  input[type=range]:focus {
-    outline: none;
-  }
-  input[type=range]::-webkit-slider-runnable-track {
-    width: 70%;
-    height: 4px;
-    cursor: pointer;
-    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-    background: #ffffff;
-    border-radius: 25px;
-    border: 0px solid #000101;
-  }
-  input[type=range]::-webkit-slider-thumb {
-    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-    border: 0px solid #000000;
-    height: 20px;
+#h_line_for_price{
+    width:60%;
+}
+#search_box_title_label{
+    margin-bottom: 5px;
+}
+.search_box_second_row{
+    margin-top: 20px;
+    float: right;
+    display: flex;
+}
+.search_box_help{
+    height: 50px;
+    margin-right: 50px;
+}
+.search_box_help label{
+    color: #fff;
+    font-size: 20px;
+    margin-top: -5px;
+    margin-left: -14px;
+}
+.search_box_help input{
+    margin-top: -5px;
     width: 20px;
+    height: 20px;
+    color: #7d6bc5;
+    margin-left: 10px;
+}
+.event_btn_search_box{
+    width: 170px;
+    height: 40px;
+    border: none;
+    outline: none;
+    margin-right: 40px;
+    background-color: white;
     border-radius: 10px;
-    background: #ffffff;
-    cursor: pointer;
-    -webkit-appearance: none;
-    margin-top: -8px;
-  }
+    color: rgb(148, 133, 216);
+    font-size: 25px;
+    text-align: center;  
+}
+
+
+
  
  
      
