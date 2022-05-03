@@ -25,6 +25,21 @@
     margin-right: 100px;
     position: relative;
 }
+#advert_icon{
+    margin-top: -5px;
+}
+#profile_icon{
+    margin-top: -2px;
+    margin-right: -15px;
+    width: 17px;
+    height: 17px;
+}
+#exit_icon{
+    width: 17px;
+    height: 17px;
+    margin-top: 6px;
+    margin-right: -15px;
+}
 .nav a{
     font-size: 18px;
     vertical-align: top;
@@ -79,8 +94,7 @@
 }
 .wrapper{
     padding-top: 20px;
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fblue_gradient_for_block.jpeg?alt=media&token=f78f9984-1773-41c4-9573-98eecc3228dc) no-repeat;
-    background-size: cover;
+    background: linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234));
     height: 90%;
     width: 90%;
     border-bottom-left-radius: 20px;
@@ -112,7 +126,7 @@
     margin-bottom: 5px;
 }
 .wrapper button{
-    margin-top: 60px;
+    margin-top: 25%;
     width: 90%;
     text-align: left;
     font-size: 14px;
@@ -208,35 +222,31 @@
     margin-right: 260px;
     padding: 10px 10px;
     border: none;
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fblue_gradient_for_block.jpeg?alt=media&token=f78f9984-1773-41c4-9573-98eecc3228dc) no-repeat;
-    background-size: cover;
+    background: linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234));
     border-radius: 30px;
     color: #fff;
     font-size: 22px;
     letter-spacing: 0.1em;
     font-weight: 500; 
-      
+    outline: none;      
 } 
 /* SWIPER-SLIDER (for scroll info about us,LENDORY , etc) */
 .info-slider .swiper-button-prev:after{
-  
     border-radius: 10px;
     padding:0px 10px 10px 10px ;
-    background: linear-gradient(to right,#9485D8,40%,#AECCEA);
+    background: linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234));
     content: "〈";
     color: #fff;
     margin-top: 115px;
-
 }
 .info-slider .swiper-button-next:after{
     border-radius: 10px;
     padding:0px 10px 10px 10px ;
-    background: linear-gradient(to left,#9485D8,40%,#AECCEA);
+    background: linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234));
     content: "〉";
     color: #fff;
     margin-top: 115px;
 }
-
                 /* first page main photo */
 .intro{
     flex-direction: column;
@@ -269,6 +279,8 @@ button:active{
     outline: none;
     border: none;
 }
+
+
 /* second page main photo */
 .main_block{
     padding-top: 100px;
@@ -589,8 +601,7 @@ textarea{
 .register_form{   
     border-radius: 75px;
     padding: 30px 30px;
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fblue_gradient_for_block.jpeg?alt=media&token=f78f9984-1773-41c4-9573-98eecc3228dc) no-repeat;
-    background-size: cover;
+    background: linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234));
     margin-top: 150px;
     margin-left: auto;
     margin-right: auto;
@@ -928,16 +939,142 @@ textarea{
     border-radius: 10px;
 }          
     /* Body for gettingdata */
+#getting_body{
+    background-color: #d2bcd6;
+}
  #tbody1{
-     padding-right: 50px;
+
+     margin-top: 40px;
      align-items: center;
      justify-content: center;
-     margin-top: 60px;
-     padding-bottom: 60px; 
-     min-height: 100vh; 
-     background-color: rgb(211, 219, 216);
      display: grid;
      grid-template-columns: auto auto auto;
- }             
+ }      
+ .search_box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 60px;
+    width: 100%;
+    height: 10vh;
+    padding-top: 10px;
+    background: linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234));
+    padding-right: 100px;
+    padding-left: 100px;
+ } 
+ .search_box_wrapper{
+    background: rgba(216, 216, 216, 0.51);
+     display: grid;
+     width: 300px;
+     height: 50px;
+     border-radius: 10px;
+ }  
+ .search_box_wrapper input{
+     background:none ;
+     border: none;
+     border-bottom-left-radius: 10px;
+     border-bottom-right-radius: 10px;
+     padding-left: 20px;
+     padding-right: 20px;
+     color: #fff;
+     margin-top: -10px;
+     z-index: 5;
+     font-size: 17px;
+}
+.dropdown_btn_search{
+    display: none;
+    position: absolute;
+    background: rgba(216, 216, 216, 0.51);
+    min-width: 160px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+#price_label_search{
+    font-size: 23px;
+    margin-top: -15px;
+    margin-left: -7px;
+}
+.dropdown_btn_search a {
+    font-size: 20px;
+    color: white;
+    padding: 12px 10px;
+    text-decoration: none;
+    display: block;
+    z-index: 100;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+.show{
+    display:block;
+}
+.wrap{
+    display: flex;
+    margin-top: -10px;
+}
+input[type=range]{
+    -webkit-appearance: none;
+    width: 200px;
+    margin-left: 20px;
+}
+ .search_box_wrapper label{
+     color: #fff;
+     padding-left: 10px; 
+     font-size: 17px;
+     z-index: 10;
+ }   
+.search_box_btn{
+    width: 300px;
+    height: 50px;
+    border: none;
+    outline: none;
+    background: rgba(216, 216, 216, 0.51);
+    color: white;
+    font-size: 25px;
+    border-radius: 10px;
+}
+.search_box_btn:focus{
+    border: none;
+    outline: none;
+    text-decoration: none;
+}
+.search_box_btn:active{
+    transform: scale(1);  
+}
+.h_line{
+    margin-left: 20px;
+    margin-top: -6px;
+    width:85%;
+    height:2px; 
+    background: #fff 
+}
+  input[type=range]:focus {
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 70%;
+    height: 4px;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    background: #ffffff;
+    border-radius: 25px;
+    border: 0px solid #000101;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    border: 0px solid #000000;
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    background: #ffffff;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -8px;
+  }
+ 
+ 
      
  

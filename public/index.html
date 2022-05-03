@@ -28,9 +28,9 @@
     <div class="header_inner">
         <img class="header_logo"  src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">
             <nav class="nav">
-              <a href="getting_data.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_advert.png?alt=media&token=39c603f8-9ac7-4435-9377-ecf18f76f3f4" alt=""> Оголошення</a>
+              <a href="getting_data.html"> <img id="advert_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheader_icon_adverts.png?alt=media&token=d5a55fa8-ae4d-4620-b98e-3cce4b8a8f96" alt=""> Оголошення</a>
                 <div class="dropdown_profile" >
-                  <a href="#"  id='userlink'>Username</a>
+                  <img id="profile_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_profile.png?alt=media&token=e0468b24-9d9d-4dae-b17e-762f68502fe0" alt=""><a href="#"  id='userlink'>Username</a>
                     <div class="dropdown_content" id="profile_content">
                         <div class="row" >
                             <div class="column" id="column_left">
@@ -55,7 +55,7 @@
                         </div>
                     </div>     
                  </div>
-              <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""> Вийти</a>
+                 <img id="exit_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""><a id="signoutlink" href="#">Вийти</a>
          </nav>
     </div>
 </header>
@@ -411,12 +411,10 @@
             if(advertisements[randomed[i]].volunteering)
             {
               mores[i].style.color="#60CFD2";
-              backgrounds[i].style.background='url("https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fgreen_background.png?alt=media&token=7ce381f6-9286-4ad9-8c39-88856fcf922d")no-repeat';
-              backgrounds[i].style.backgroundSize="cover";
+              backgrounds[i].style.background="linear-gradient(45deg, rgb(96, 207, 210), rgb(151, 231, 195) 70%)";
             }else{
               mores[i].style.color="#9485D8";
-              backgrounds[i].style.background='url("https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fblue_gradient_for_block.jpeg?alt=media&token=f78f9984-1773-41c4-9573-98eecc3228dc")no-repeat';
-              backgrounds[i].style.backgroundSize="cover";
+              backgrounds[i].style.background="linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234))";
             }
             if(flag){
               if(advertisements[randomed[i]].volunteering)
