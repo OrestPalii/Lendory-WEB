@@ -29,85 +29,119 @@
   href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
 />
 </head>
-<body id="advert">
+<body id="advert_body">
     <header class="header">
         <div class="header_inner">
-            <a href="index.html"> <img class="header_logo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt=""></a>      
+           <a href="index.html"><img class="header_logo"  src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt=""></a>
                 <nav class="nav">
+                  <a href="getting_data.html"> <img id="advert_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheader_icon_adverts.png?alt=media&token=d5a55fa8-ae4d-4620-b98e-3cce4b8a8f96" alt=""> Оголошення</a>
                     <div class="dropdown_profile" >
-                        <a href=""  id='userlink'>Username</a>
-                            <div class="dropdown_content" id="profile_content">
-                                <div class="row" >
-                                    <div class="column" id="column_left">
-                                        <h3>Оголошення</h3>
-                                        <a href="#" id="created_btn">Мої</a>
-                                        <a href="advert.html" >Створити</a>
-                                        <a href="" id="liked_btn">Вподобані</a><br>
-                                        <h3>Інше</h3>
-                                        <a href="#">Підтримка ЗСУ</a>
-                                    </div>
-                                    <div class="column" id="column_right">
-                                        <div class="wrapper">
-                                            <div class="your_image">
-                                                <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_white.png?alt=media&token=fc7d2425-6de9-49f7-99d0-db5a31fd6b31" alt="">
-                                            </div>
-                                            <h6 id="user_name_box"></h6>
-                                            <h6 id="user_phone_box"></h6>
-                                            <button>Служба підримки</button> 
-                                        </div>
-                                    </div>
+                      <img id="profile_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_profile.png?alt=media&token=e0468b24-9d9d-4dae-b17e-762f68502fe0" alt=""><a href="#"  id='userlink'>Username</a>
+                        <div class="dropdown_content" id="profile_content">
+                            <div class="row" >
+                                <div class="column" id="column_left">
+                                  <h3>Оголошення</h3>
+                                    <a href="#" id="created_btn">Мої</a>
+                                    <a href="advert.html" >Створити</a>
+                                    <a href="" id="liked_btn">Вподобані</a>
+                                    <br>
+                                  <h3>Інше</h3>
+                                    <a href="#">Підтримка ЗСУ</a>
+                                </div>
+                                  <div class="column" id="column_right">
+                                    <div class="wrapper">
+                                      <div class="your_image">
+                                        <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_blue.png?alt=media&token=9fb21e3c-c4d8-4d47-a459-055b20be60e4" alt="">
+                                      </div>
+                                        <h6 id="user_name_box"></h6>
+                                        <h6 id="user_phone_box"></h6>
+                                        <button>Служба підримки</button> 
+                                  </div>
                                 </div>
                             </div>
-                    </div>
-                <a href="getting_data.html"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_advert.png?alt=media&token=39c603f8-9ac7-4435-9377-ecf18f76f3f4" alt=""> Оголошення</a>
-                <a id="signoutlink" href="#"> <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""> Вийти</a>
-            </nav>
+                        </div>     
+                     </div>
+                     <img id="exit_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""><a id="signoutlink" href="#">Вийти</a>
+             </nav>
         </div>
     </header>
    
-    <section class="addpphoto">
+   <section class="advert_main_block">
+       <div class="left_block_photos">
+            <img id="second" class="_photo"src= "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fadd_photo_advert_page.jpeg?alt=media&token=0e574d18-9552-4e63-89c8-aec113a7b21f"
+            alt="" onclick="second_img_upload()" >
+            <img id="third" class="_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fadd_photo_advert_page.jpeg?alt=media&token=0e574d18-9552-4e63-89c8-aec113a7b21f"
+            alt="" onclick="third_img_upload()">
+            <img id="fourth" class="_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fadd_photo_advert_page.jpeg?alt=media&token=0e574d18-9552-4e63-89c8-aec113a7b21f"
+            alt="" onclick="fourth_img_upload()">
+            <img id="fifth" class="_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fadd_photo_advert_page.jpeg?alt=media&token=0e574d18-9552-4e63-89c8-aec113a7b21f"
+            alt="" onclick="fifth_img_upload()">
+       </div>
+        <div class="right_block_info">
+                <h2 class="title" >Загальна інформація</h2>
                 <div>
-                    <h2 class="title" id="pic">Додати фотографії</h2>
-                    <img id="second" class="_photo"src= "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fadd_photo_advert_page.jpeg?alt=media&token=0e574d18-9552-4e63-89c8-aec113a7b21f"
-                         alt="" onclick="second_img_upload()" >
-                    <img id="third" class="_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fadd_photo_advert_page.jpeg?alt=media&token=0e574d18-9552-4e63-89c8-aec113a7b21f"
-                         alt="" onclick="third_img_upload()">
-                    <img id="fourth" class="_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fadd_photo_advert_page.jpeg?alt=media&token=0e574d18-9552-4e63-89c8-aec113a7b21f"
-                         alt="" onclick="fourth_img_upload()">
-                    <img id="fifth" class="_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fadd_photo_advert_page.jpeg?alt=media&token=0e574d18-9552-4e63-89c8-aec113a7b21f"
-                        alt="" onclick="fifth_img_upload()">
+                    <label for="">Місце розташування</label>
+                    <input type="text" name="name" id="location_box" maxlength="70" placeholder="">               
                 </div>
-                    <div class="description_box">
-                        <h2 class="title" >Додаткова інформація</h2>
-                        <textarea name="" id="description_box" maxlength="500" cols="40" rows="5" placeholder="Additional information"></textarea>
-                        <button class="create" id="create">Cтворити</button> 
-                    </div>  
+                <div>
+                    <label for="">Орендна плата</label> 
+                    <input type="number" min="0" name="name" max="10000000" id="rent_box" placeholder="" style="width: 90px;">                         
+                    <select name="currency" id="currency" >
+                        <option value="$">₴</option>
+                        <option value="€">€</option>
+                        <option value="₴">$</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="">Площа</label>
+                    <input type="number" min="0" max="10000" name="name" id="area_box"  placeholder="" style="width: 90px;">
+                    <label for="">Поверх</label>
+                    <input type="number" name="name" min="0" max="1000" id="floor_box"  placeholder=""style="width: 90px;">
+                    <label for="">Кількіть кімнат</label>
+                    <input type="number" name="name" min="0" max="100"  id="rooms_box"  placeholder=""style="width: 90px;"> 
+                </div>
+                <h2 class="title" >Оголошення</h2>
+                <div>
+                    <label for="">Назва</label>
+                    <input type="text" name="name" id="name_box" maxlength="70" placeholder="" >
+                </div>
+                <div>
+                    <label for="">Допомога біженцям?</label>
+                    <select name="yes|no" id="option" > 
+                        <option value=0>Ні</option>                                          
+                        <option value=1>Так</option>  
+                    </select>   
+                </div>
+                <div>
+                    <label for="">Особливості</label>
+                </div>
+                <div class="description">
+                    <label for="">Опис</label>
+                    <textarea name="" id="description_box" maxlength="500" cols="35" rows="6" placeholder=""></textarea>
+                </div>
+        </div>
+       
+   </section>
+        <button class="create" id="create">
+            <span class="createspan">Створити</span>
+        </button>
+               
+         
+                      
+                        
+                
                     
-    </section>
+    
   
-    <section class="advert_">    
-            <h2 class="title" >Назва oголошення</h2>
-            <input type="text" name="name" id="name_box" maxlength="70" placeholder="Назва..." >
-                <h2 class="title"  >Місто,вулиця,номер будинка</h2>
-                <input type="text" name="name" id="location_box" maxlength="70" placeholder="Розташування...">               
-                        <h2 class="title" >Поверх, к-сть кімнат</h2>                       
-                            <input type="number" name="name" min="0" max="1000" id="floor_box"  placeholder="Поверх...">
-                            <input type="number" name="name" min="0" max="100"  id="rooms_box"  placeholder="Кількіть кімнат..."> 
-                            <h2 class="title" >Загальна площа (кв.м)</h2>                           
-                            <input type="number" min="0" max="10000" name="name" id="area_box"  placeholder="Площа..."> 
-                                <h2 class="title" >Орендна плата за місяць</h2>
-                                <input type="number" min="0" name="name" max="10000000" id="rent_box" placeholder="Орендна плата...">                     
-                                <select name="currency" id="currency" >
-                                    <option value="$">₴</option>
-                                    <option value="€">€</option>
-                                    <option value="₴">$</option>
-                                </select>
-                                        <h2 class="title" >Житло для біженців</h2>
-                                        <select name="yes|no" id="option" >                                           
-                                            <option value=1>Так</option>
-                                            <option value=0>Ні</option>
-                                            </select>                                                                          
-    </section>
+      
+           
+           
+                
+                                          
+                           
+                                    
+                                                                                                         
+
         
     
                
