@@ -464,7 +464,7 @@ button:focus{
     background-attachment:fixed;
 }
 .advert_main_block{
-    padding-top: 3%;
+    padding-top: 4%;
     width: 100%;
     height: 90vh;
     align-items: center;
@@ -482,23 +482,22 @@ button:focus{
     margin-left: 3%;
 }
 ._photo{
-    width: 290px;
+    width: 300px;
     height: 260px;
     border-radius: 20px;
     object-fit: cover;
     min-width: 40%;
 }
 ._photo:hover{
-    transform: scale(0.98);
-    transition: all 0.7s ease 0s;  
+    animation: createrotate 1s ease-in-out both; 
 }
 .right_block_info{
     float: right;
     width: 135%;
     height: 550px;
-    background: rgba(170, 196, 230, 1);
+    background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
     padding-left: 40px;
-    padding-top: 10px;
+    padding-top: 20px;
     border-radius: 30px;
     overflow: hidden;
     margin-right: 3%;
@@ -519,13 +518,15 @@ button:focus{
     line-height: 30px;
     letter-spacing: 0.1em;
     color: #FFFFFF;
-    margin-right: 20px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 .right_block_info input{
     border:none;
+    outline:none;
     width: 250px;
     height: 30px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     border-radius: 20px;
     position: relative;
     z-index: 2;
@@ -537,39 +538,55 @@ button:focus{
     height: 30px;
     border-radius: 20px;
     width: 50px;
-    background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
+    background-color: #fff;
     padding-left: 10px;
     font-size: 20px;
+    border: none;
+    outline: none;
 }
 #option{
     height: 30px;
     border-radius: 20px;
     width: 70px;
-    background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
+    background-color: #fff;
+    padding-left: 15px;
     font-size: 20px;
+    border: none;
+    outline: none;
 }
-.description{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.description p{
+    margin-top: -30px;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 30px;
 }
 #description_box{
+    border: none;
     margin-top: -20px;
     border-radius: 20px;
     color: #7a6daf;
     padding-left: 10px;
+    width: 700px;
+    height: 160px;
+    outline: none;
 }
 .create {
+    margin-top: -0.5%;
     margin-left: 40%;
     position: relative;
     outline: none;
-    border-radius: 50px;
+    border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     text-transform: uppercase;
-    height: 45px;
+    height: 60px;
     width: 250px;
     background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
     border: none;
@@ -795,7 +812,6 @@ button:focus{
     margin-left: 55px;
 }            
           /* _______ADVERTREVIEW__________ */   
-
 #container_review{
     margin-left: 20px;
     margin-right: 30px;
@@ -863,7 +879,7 @@ button:focus{
     font-size: 20px;
 }
 .description{
-    width: 50%;
+    width: 60%;
     margin-top: 30px;
     margin-right: 5px;
     word-break: break-all;
@@ -993,29 +1009,34 @@ button:focus{
 }          
     /* Body for gettingdata */
 #getting_body{
-   background-color: lightcyan;
+    max-height: 100vh;
+    min-height: 100vh;
+    background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%) no-repeat;
     background-attachment: fixed;
+    background-size: cover;
 }
  #tbody1{
-     margin-top: 40px;
+     padding-top: 50px;
+     min-height: 100vh;
+     background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fwaves.png?alt=media&token=36281331-ddca-4ad5-8e62-127feccd6504) no-repeat;
+     background-size: cover;
+     background-attachment: fixed;
      align-items: center;
      justify-content: center;
      display: grid;
      grid-template-columns: auto auto auto;
      gap: 50px;
-
  }  
  .wrapper_box{
      display: block;
      width: 100%;
-     height: 22vh;
-    background-color: #fff;
-     border-bottom-left-radius: 45px;
-     border-bottom-right-radius: 45px;
+     height: 23vh;
+     background: #f1eaea;
+     border-bottom-left-radius: 60px;
+     border-bottom-right-radius: 60px;
 }    
  .search_box{
     display: flex;
-    justify-content:space-around;
     margin-top: 60px;
     width: 100%;
     height: 10vh;
@@ -1029,22 +1050,22 @@ button:focus{
      width: 250px;
      height: 50px;
      border-radius: 10px;
- } 
-#search_box_little_wrapper{
-    width: 100px;
+     margin-right: 30px;
+     overflow: hidden;
 } 
-#search_box_little_wrapper input{
-     width: 100px;
+.search_box_wrapper_little{
+    width: 200px;
 }
 .search_box_wrapper input{
      background:none ;
      border: none;
+     outline: none;
      border-bottom-left-radius: 10px;
      border-bottom-right-radius: 10px;
      padding-left: 20px;
      padding-right: 20px;
      color: #fff;
-     margin-top: -10px;
+     margin-top: 5px;
      z-index: 5;
      font-size: 17px;
 }
@@ -1055,16 +1076,15 @@ button:focus{
     z-index: 10;
     margin-bottom: 0px;
 }  
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+::placeholder{
+    color: #FFFFFF;
 }
 .dropdown_btn_search{  /* Dropdown button "НАЙНОВІШІ" */
     display: none;
     position: absolute;
-    background: #D8D8D8;
+    background: rgba(216, 216, 216,0.8);
     min-width: 160px;
-    width: 300px;
+    width: 200px;
     border-radius: 10px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 100;
@@ -1089,7 +1109,7 @@ input::-webkit-inner-spin-button {
     display:block;
 } 
 .search_box_btn{
-    width: 300px;
+    width: 200px;
     height: 50px;
     border: none;
     outline: none;
@@ -1097,51 +1117,52 @@ input::-webkit-inner-spin-button {
     color: white;
     font-size: 25px;
     border-radius: 10px;
+    text-align: left;
+    padding-left: 15px;
+}
+.search_box_btn i{
+    float: right;
+    padding-right: 15px;
+    padding-top: 5px;
 }
 .search_box_btn:active{
     transform: scale(1);  
 }
+#search_box_title_label{
+    font-size: 18px;
+}
+.option_block label{
+    margin-top: -30px;
+    margin-left: -15px;
+}
+.first_input{
+    margin-left: 45px;
+}
+.second_input{
+    margin-left: 10px;
+}
+.option_block input{
+    width: 15px;
+    height: 15px;
+}
 .h_line{             /* horizontal line */
     margin-left: 20px;
     margin-top: -6px;
-    width:85%;
+    width:73%;
     height:2px; 
     background: #fff 
 }
-#h_line_for_price{
-    width:60%;
-}
-#search_box_title_label{
-    margin-bottom: 5px;
-}
 .search_box_second_row{
-    margin-top: 20px;
     float: right;
-    display: flex;
-}
-.search_box_help{
-    height: 50px;
-    margin-right: 50px;
-}
-.search_box_help label{
-    color: #fff;
-    font-size: 20px;
-    margin-top: -5px;
-    margin-left: -14px;
-}
-.search_box_help input{
-    margin-top: -5px;
-    width: 20px;
-    height: 20px;
-    color: #7d6bc5;
-    margin-left: 10px;
+    margin-top: 20px;
+    margin-right: 9%;
 }
 .event_btn_search_box{
     width: 170px;
-    height: 40px;
+    height: 50px;
     border: none;
     outline: none;
-    margin-right: 40px;
+    margin-left: 20px;
     background-color: white;
     border-radius: 10px;
     color: rgb(148, 133, 216);

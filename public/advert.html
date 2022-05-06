@@ -68,42 +68,24 @@
    
    <section class="advert_main_block">
        <div class="left_block_photos">
-            <img id="second" class="_photo"src= "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fadd_photo_advert_page.jpeg?alt=media&token=0e574d18-9552-4e63-89c8-aec113a7b21f"
+            <img id="second" class="_photo"src= "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2FaddImageButton.png?alt=media&token=3712529d-8398-47d5-a2e9-305cc87ea44d"
             alt="" onclick="second_img_upload()" >
-            <img id="third" class="_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fadd_photo_advert_page.jpeg?alt=media&token=0e574d18-9552-4e63-89c8-aec113a7b21f"
+            <img id="third" class="_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2FaddImageButton.png?alt=media&token=3712529d-8398-47d5-a2e9-305cc87ea44d"
             alt="" onclick="third_img_upload()">
-            <img id="fourth" class="_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fadd_photo_advert_page.jpeg?alt=media&token=0e574d18-9552-4e63-89c8-aec113a7b21f"
+            <img id="fourth" class="_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2FaddImageButton.png?alt=media&token=3712529d-8398-47d5-a2e9-305cc87ea44d"
             alt="" onclick="fourth_img_upload()">
-            <img id="fifth" class="_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fadd_photo_advert_page.jpeg?alt=media&token=0e574d18-9552-4e63-89c8-aec113a7b21f"
+            <img id="fifth" class="_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2FaddImageButton.png?alt=media&token=3712529d-8398-47d5-a2e9-305cc87ea44d"
             alt="" onclick="fifth_img_upload()">
        </div>
         <div class="right_block_info">
-                <h2 class="title" >Загальна інформація</h2>
-                <div>
-                    <label for="">Місце розташування</label>
-                    <input type="text" name="name" id="location_box" maxlength="70" placeholder="">               
-                </div>
-                <div>
-                    <label for="">Орендна плата</label> 
-                    <input type="number" min="0" name="name" max="10000000" id="rent_box" placeholder="" style="width: 90px;">                         
-                    <select name="currency" id="currency" >
-                        <option value="$">₴</option>
-                        <option value="€">€</option>
-                        <option value="₴">$</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="">Площа</label>
-                    <input type="number" min="0" max="10000" name="name" id="area_box"  placeholder="" style="width: 90px;">
-                    <label for="">Поверх</label>
-                    <input type="number" name="name" min="0" max="1000" id="floor_box"  placeholder=""style="width: 90px;">
-                    <label for="">Кількіть кімнат</label>
-                    <input type="number" name="name" min="0" max="100"  id="rooms_box"  placeholder=""style="width: 90px;"> 
-                </div>
-                <h2 class="title" >Оголошення</h2>
+                <h2 class="title">Інформація про оголошення</h2>
                 <div>
                     <label for="">Назва</label>
                     <input type="text" name="name" id="name_box" maxlength="70" placeholder="" >
+                </div>
+                <div>
+                    <label for="">Місце розташування</label>
+                    <input type="text" name="name" id="location_box" maxlength="70" placeholder="">               
                 </div>
                 <div>
                     <label for="">Допомога біженцям?</label>
@@ -113,11 +95,29 @@
                     </select>   
                 </div>
                 <div>
-                    <label for="">Особливості</label>
+                    <label for="">Орендна плата</label> 
+                    <input type="number" min="0" name="name" max="10000000" id="rent_box" placeholder="" style="width: 90px;">                         
+                        <select name="currency" id="currency" >
+                            <option value="$">₴</option>
+                            <option value="€">€</option>
+                            <option value="₴">$</option>
+                        </select>
                 </div>
+                <div>
+                    <label for="">Поверх</label>
+                    <input type="number" name="name" min="0" max="1000" id="floor_box"  placeholder=""style="width: 90px;">
+                    <label for="">Площа</label>
+                    <input type="number" min="0" max="10000" name="name" id="area_box"  placeholder="" style="width: 90px;">
+                    <label for="">Кількіть кімнат</label>
+                    <input type="number" name="name" min="0" max="100"  id="rooms_box"  placeholder=""style="width: 90px;"> 
+                </div>
+                <div>
+                    
+                </div>
+                
                 <div class="description">
-                    <label for="">Опис</label>
-                    <textarea name="" id="description_box" maxlength="500" cols="35" rows="6" placeholder=""></textarea>
+                     <p>Опис</p>
+                    <textarea name="" id="description_box" maxlength="500"  placeholder=""></textarea>
                 </div>
         </div>
        
@@ -125,28 +125,7 @@
         <button class="create" id="create">
             <span class="createspan">Створити</span>
         </button>
-               
-         
                       
-                        
-                
-                    
-    
-  
-      
-           
-           
-                
-                                          
-                           
-                                    
-                                                                                                         
-
-        
-    
-               
-            
-             
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
     const firebaseConfig = {

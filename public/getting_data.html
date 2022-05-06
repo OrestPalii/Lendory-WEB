@@ -54,47 +54,41 @@
         <div class="wrapper_box">
             <div class="search_box">
                 <div class="search_box_wrapper">
-                    <label  id="name_label_search" for="">Назва</label>
-                    <Input><div class="h_line"></div></Input>
+                    <Input placeholder="Назва"><div class="h_line"></div></Input>
                 </div>
                 <div class="search_box_wrapper">
-                    <label id="sity_label_search" for="">Локація</label>
-                    <Input><div class="h_line"></div></Input>
+                    <Input placeholder="Локація"><div class="h_line"></div></Input>
                 </div>
-            <div class="search_box_wrapper"id="search_box_little_wrapper">
-                    <label id="min_price_label" for="">Від</label>
-                    <Input type="number"><div class="h_line" id="h_line_for_price"></div></Input>
-            </div>
-            <div class="search_box_wrapper" id="search_box_little_wrapper">
-                    <label id="man_price_label" for="">До</label>
-                    <Input type="number"><div class="h_line" id="h_line_for_price"></div></Input>
-            </div>
-            <div class="dropdown">
-                <button onclick="myFunction()" class="search_box_btn" >Найновіші <i class="fa fa-caret-down"></i></button>
-                    <div id="Dropdown" class="dropdown_btn_search">
-                        <a href="#">Найстарші</a>
-                        <a href="#">Найдешевші</a>
-                        <a href="#">Найдорожчі</a>
+                <div class="search_box_wrapper search_box_wrapper_little" >
+                        <Input type="number" placeholder="Мінімальна"><div class="h_line" style="width:55%;"></div></Input >
+                </div>
+                <div class="search_box_wrapper search_box_wrapper_little">
+                        <Input type="number" placeholder="Максимальна"><div class="h_line" style="width:55%;"></div></Input>
+                </div>
+                <div class="search_box_wrapper">
+                    <label id="search_box_title_label" for="">Допомога біженцям?</label>
+                    <div class="option_block">
+                        <input type="checkbox" class="first_input" name="" id="Yes" value="1" checked>
+                        <label for="Yes">Так</label>
+                        <input type="checkbox"  class="second_input" name="" id="No" value="0" checked>
+                        <label for="No">Ні</label>
                     </div>
-            </div>
-            
-        </div>
-        <div class="search_box_second_row">
-            <div class="search_box_wrapper search_box_help">
-                <label id="search_box_title_label" for="">Допомога біженцям?</label>
-                <div>
-                    <input type="checkbox" class="custom-checkbox" name="" id="Yes" value="1" checked>
-                    <label for="Yes">Так</label>
-                    <input type="checkbox" class="custom-checkbox" name="" id="No" value="0" checked>
-                    <label for="No">Ні</label>
                 </div>
-               
-            </div>
-            <button class="event_btn_search_box">Очистити</button>
-            <button class="event_btn_search_box">Застосувати</button>
+                <div class="dropdown">
+                        <button onclick="myFunction()" class="search_box_btn" >Найновіші <i class="fa fa-caret-down"></i></button>
+                            <div id="Dropdown" class="dropdown_btn_search">
+                                <a href="#">Найстаріші</a>
+                                <a href="#">Найдешевші</a>
+                                <a href="#">Найдорожчі</a>
+                            </div>
+                    </div>
         </div>
-    </div> 
+            <div class="search_box_second_row">
+                <button class="event_btn_search_box">Очистити</button>
+                <button class="event_btn_search_box">Застосувати</button>
+        </div> 
     </section>
+   
     <div id="tbody1">
         
     </div>
