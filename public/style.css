@@ -128,24 +128,27 @@
     height: 80px;
     background-color: #fff; 
     border-radius: 40px;
+    margin-bottom: 10px;
 }
 .your_image img{
     width: 70px;
     height: 70px;
-    border-radius: 35px;
     object-fit: cover;
     margin-top: 5px;
-    padding: 7px 7px;
-    
+    padding: 7px 7px; 
 }
 .wrapper button{
     margin-top: 25%;
+    outline: none;
+    border: none;
     width: 90%;
-    text-align: left;
     font-size: 14px;
-    color: #7d6bc5;
     background-color: #fff;
     border-radius: 10px;
+    color: #7a6daf;
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 0.1em;
 }
 .row:after {
     content: "";
@@ -209,17 +212,26 @@
 }     
 #but_advert{   
     margin-top: 50px;
-    margin-right: 260px;
+    margin-left: 70px;
     padding: 10px 10px;
     border: none;
     background: linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234));
-    border-radius: 30px;
+    border-radius: 20px;
     color: #fff;
+    text-transform: uppercase;
     font-size: 22px;
     letter-spacing: 0.1em;
     font-weight: 500; 
     outline: none;      
 } 
+#but_advert a{
+    text-decoration: none;
+    color: #fff;
+}
+#but_advert a:hover{
+    text-decoration: none;
+    color: #fff;
+}
 /* SWIPER-SLIDER (for scroll info about us,LENDORY , etc) */
 .info-slider .swiper-button-prev:after{
     border-radius: 10px;
@@ -247,7 +259,7 @@
     -webkit-background-size: cover;
     background-size: cover; 
     object-fit: contain;
-    
+   
 }
         @keyframes jump {          /*animation jump for bnt*/ 
             0%, 20%, 60%, 100% {
@@ -278,7 +290,7 @@ button:focus{
 .main_block{
     padding-top: 30px;
     height: 100vh; 
-    background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
+   
 }
 /* SLICK-SLIDER second-page (recomamdation adverts) */
 .slick-slider{
@@ -288,6 +300,9 @@ button:focus{
     overflow: hidden;
     margin-left: -12%;
     width: 124%;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fbackground_slider.png?alt=media&token=cbceac01-b271-4626-977d-1c13faa6f53b) no-repeat;
+    background-size: cover;
+    border-radius: 60px;
 }
 .slick-track{
     display: flex;
@@ -315,12 +330,12 @@ button:focus{
 }
 .slick-prev:before {
     content: "〈";
-    color: #7d6bc5;
-    font-size: 70px;     
+    color: #ffffff;
+    font-size: 70px; 
 }
 .slick-next:before {
     content: "〉";
-    color: #7d6bc5;
+    color: #ffffff;
     font-size: 70px;
 }
 .slider .slick-arrow.slick-next{
@@ -456,6 +471,31 @@ button:focus{
     font-weight: 500;
     font-size: 19px;
     letter-spacing: 0.1em;
+}
+footer{
+    background-color: #000;
+    height: 10vh;
+    width: 100%;
+    bottom: 0;
+
+}
+.footer_info {
+    padding-top: 25px;
+    text-align: center;
+    justify-content: center;
+    float: right;
+    margin-right: 4%;
+    font-size: 20px;
+}
+.footer_info a{
+    text-decoration: none;
+    margin-right: 20px;
+    color: #FFFFFF;
+    transition: .3s linear;
+}
+.footer_info a:hover{
+    text-decoration: none;
+    color: #7a6daf;
 }
         /* __________ADVERT.HTML__________ */
 #advert_body{
@@ -829,7 +869,7 @@ button:focus{
 .recomend_for_you{
     font-size: 40px;
     padding-left: 3%;
-    color: #fff;
+    color: #7a6daf;
 }
 .review_main{
     margin-top: 40px;
@@ -938,9 +978,8 @@ button:focus{
     bottom: 230px;
     border-radius: 10px;
 }
-
             /* Popups(for review all photos)*/        
- .popup{
+.popup{
     position: fixed;
     width: 100%;
     height: 100%;
@@ -1016,89 +1055,95 @@ button:focus{
     background-size: cover;
 }
  #tbody1{
-     padding-top: 50px;
-     min-height: 100vh;
-     background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fwaves.png?alt=media&token=36281331-ddca-4ad5-8e62-127feccd6504) no-repeat;
-     background-size: cover;
-     background-attachment: fixed;
-     align-items: center;
-     justify-content: center;
-     display: grid;
-     grid-template-columns: auto auto auto;
-     gap: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    min-height: 100vh;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fwaves.png?alt=media&token=36281331-ddca-4ad5-8e62-127feccd6504) no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 50px;
  }  
  .wrapper_box{
-     display: block;
-     width: 100%;
-     height: 23vh;
-     background: #f1eaea;
-     border-bottom-left-radius: 60px;
-     border-bottom-right-radius: 60px;
+    display: block;
+    width: 100%;
+    height: 23vh;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: black;
 }    
  .search_box{
     display: flex;
+    justify-content: space-evenly;
     margin-top: 60px;
     width: 100%;
     height: 10vh;
     padding-top: 20px;
     padding-right: 100px;
     padding-left: 100px;  
+
 } 
 .search_box_wrapper{
-     background: rgba(216, 216, 216, 0.51);
-     display: grid;
-     width: 250px;
-     height: 50px;
-     border-radius: 10px;
-     margin-right: 30px;
-     overflow: hidden;
-} 
-.search_box_wrapper_little{
-    width: 200px;
+    background: rgba(255, 255, 255, 0.94);
+    display: grid;
+    width: 250px;
+    height: 50px;
+    border-radius: 10px;
+    margin-right: 30px;
+    overflow: hidden;
+    margin-bottom: 20px;
 }
+.search_box_wrapper_long{
+    height:120px ;
+} 
 .search_box_wrapper input{
-     background:none ;
-     border: none;
-     outline: none;
-     border-bottom-left-radius: 10px;
-     border-bottom-right-radius: 10px;
-     padding-left: 20px;
-     padding-right: 20px;
-     color: #fff;
-     margin-top: 5px;
-     z-index: 5;
-     font-size: 17px;
+    width: 220px;
+    background:none ;
+    border: none;
+    outline: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-left: 20px;
+    color: #7a6daf;
+    margin-top: 5px;
+    z-index: 5;
+    font-size: 17px;
 }
 .search_box_wrapper label{
-    color: #fff;
+    color: #7a6daf;
     padding-left: 20px; 
     font-size: 20px;
     z-index: 10;
-    margin-bottom: 0px;
+    margin-top: 10px;
 }  
 ::placeholder{
-    color: #FFFFFF;
+    color: #7a6daf;
 }
-.dropdown_btn_search{  /* Dropdown button "НАЙНОВІШІ" */
+.dropdown_btn_search{  /* Dropdown button "ÐÐÐ™ÐÐžÐ’Ð†Ð¨Ð†" */
     display: none;
     position: absolute;
-    background: rgba(216, 216, 216,0.8);
+    background-color: white;
     min-width: 160px;
-    width: 200px;
+    width: 370px;
+    margin-left: 15px;
     border-radius: 10px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 100;
 }
 .dropdown_btn_search a {
     font-size: 20px;
-    color: white;
+    color: #7a6daf;
     padding: 12px 10px;
     text-decoration: none;
     display: block;
     z-index: 100;
 }
 .dropdown_btn_search a:hover{
-    color: #7d6bc5;
+    background-color:#A3BBD8 ;
+    border-radius: 10px;
     transition-duration: 1s;
 }
 .dropdown {
@@ -1109,12 +1154,13 @@ button:focus{
     display:block;
 } 
 .search_box_btn{
-    width: 200px;
+    margin-left: 17px;
+    width: 370px;
     height: 50px;
     border: none;
     outline: none;
-    background: rgba(216, 216, 216, 0.51);
-    color: white;
+    background: rgba(255, 255, 255, 0.94);
+    color: #7a6daf;
     font-size: 25px;
     border-radius: 10px;
     text-align: left;
@@ -1129,11 +1175,13 @@ button:focus{
     transform: scale(1);  
 }
 #search_box_title_label{
-    font-size: 18px;
+    font-size: 20px;
+    margin-bottom: -5px;
 }
 .option_block label{
     margin-top: -30px;
     margin-left: -15px;
+    font-size: 25px;
 }
 .first_input{
     margin-left: 45px;
@@ -1142,33 +1190,42 @@ button:focus{
     margin-left: 10px;
 }
 .option_block input{
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
 }
 .h_line{             /* horizontal line */
     margin-left: 20px;
     margin-top: -6px;
-    width:73%;
-    height:2px; 
-    background: #fff 
-}
-.search_box_second_row{
-    float: right;
-    margin-top: 20px;
-    margin-right: 9%;
+    width:78%;
+    height:1.5px; 
+    background: #7a6daf; 
 }
 .event_btn_search_box{
+    margin-top: 20px;
     width: 170px;
     height: 50px;
     border: none;
     outline: none;
     margin-left: 20px;
-    background-color: white;
+    background: rgba(255, 255, 255, 0.94);
     border-radius: 10px;
     color: rgb(148, 133, 216);
     font-size: 25px;
-    text-align: center;  
+    text-align: center; 
+    transition: .3s linear;
 }
+.event_btn_search_box:hover {
+    transform: rotateY(20deg);
+    box-shadow: 0 0 20px  rgb(255, 255, 255);
+}
+.btn_2:hover {
+    transform: rotateY(-20deg);
+    box-shadow: 0 0 20px  rgb(255, 255, 255);
+}
+
+
+
+
 
 
 

@@ -24,10 +24,7 @@
     <script src="script.js"></script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link
-  rel="stylesheet"
-  href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
-/>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
 </head>
 <body id="advert_body">
     <header class="header">
@@ -36,7 +33,7 @@
                 <nav class="nav">
                   <a href="getting_data.html"> <img id="advert_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheader_icon_adverts.png?alt=media&token=d5a55fa8-ae4d-4620-b98e-3cce4b8a8f96" alt=""> Оголошення</a>
                     <div class="dropdown_profile" >
-                      <img id="profile_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_profile.png?alt=media&token=e0468b24-9d9d-4dae-b17e-762f68502fe0" alt=""><a href="#"  id='userlink'>Username</a>
+                        <img id="profile_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_blue.png?alt=media&token=9fb21e3c-c4d8-4d47-a459-055b20be60e4" alt=""><a href="#"  id='userlink'>Username</a>
                         <div class="dropdown_content" id="profile_content">
                             <div class="row" >
                                 <div class="column" id="column_left">
@@ -46,7 +43,7 @@
                                     <a href="" id="liked_btn">Вподобані</a>
                                     <br>
                                   <h3>Інше</h3>
-                                    <a href="#">Підтримка ЗСУ</a>
+                                  <a href="https://bank.gov.ua/ua/news/all/natsionalniy-bank-vidkriv-spetsrahunok-dlya-zboru-koshtiv-na-potrebi-armiyi" target="_blank">Підтримка ЗСУ</a>
                                 </div>
                                   <div class="column" id="column_right">
                                     <div class="wrapper">
@@ -125,7 +122,7 @@
         <button class="create" id="create">
             <span class="createspan">Створити</span>
         </button>
-                      
+        
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
     const firebaseConfig = {
@@ -267,7 +264,7 @@
     myInterval = setInterval(showAllGoodDialog,100);
         
     setdata(name_box.value, description_box.value, location_box.value, floor_box.value,
-        rooms_box.value, area_box.value, rent_box.value, currency.value, option.value,  numb);
+        rooms_box.value, area_box.value, rent_box.value, currency.value, option.value,  numb, false);
     set(ref(db, "needToBeeApproved/" + numb + "/"),
         numb 
     );
@@ -279,6 +276,7 @@
                 buttons: "Гаразд",
             });
     }
+    document.getElementById("create").disabled = true;
     }
     let userlink = document.getElementById('userlink');
     let signoutlink = document.getElementById('signoutlink');

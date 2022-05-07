@@ -21,7 +21,7 @@
                 <nav class="nav">
                   <a href="getting_data.html"> <img id="advert_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheader_icon_adverts.png?alt=media&token=d5a55fa8-ae4d-4620-b98e-3cce4b8a8f96" alt=""> Оголошення</a>
                     <div class="dropdown_profile" >
-                      <img id="profile_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_profile.png?alt=media&token=e0468b24-9d9d-4dae-b17e-762f68502fe0" alt=""><a href="#"  id='userlink'>Username</a>
+                        <img id="profile_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_blue.png?alt=media&token=9fb21e3c-c4d8-4d47-a459-055b20be60e4" alt=""><a href="#"  id='userlink'>Username</a>
                         <div class="dropdown_content" id="profile_content">
                             <div class="row" >
                                 <div class="column" id="column_left">
@@ -31,7 +31,7 @@
                                     <a href="" id="liked_btn">Вподобані</a>
                                     <br>
                                   <h3>Інше</h3>
-                                    <a href="#">Підтримка ЗСУ</a>
+                                    <a href="https://bank.gov.ua/ua/news/all/natsionalniy-bank-vidkriv-spetsrahunok-dlya-zboru-koshtiv-na-potrebi-armiyi" target="_blank">Підтримка ЗСУ</a>
                                 </div>
                                   <div class="column" id="column_right">
                                     <div class="wrapper">
@@ -53,19 +53,23 @@
     <section>
         <div class="wrapper_box">
             <div class="search_box">
-                <div class="search_box_wrapper">
-                    <Input placeholder="Назва"><div class="h_line"></div></Input>
+                <div style="display:block;">
+                    <div class="search_box_wrapper">
+                        <Input id="name_box_search" placeholder="Назва" maxlength="50"><div class="h_line"></div></Input>
+                    </div>
+                    <div class="search_box_wrapper">
+                        <Input id="loc_box_search" placeholder="Локація" maxlength="60"><div class="h_line"></div></Input>
+                    </div>
                 </div>
-                <div class="search_box_wrapper">
-                    <Input placeholder="Локація"><div class="h_line"></div></Input>
+                <div style="display:block ;">
+                    <div class="search_box_wrapper " >
+                        <Input id="min_price_box_search" type="number" placeholder="Мінамальна ціна" min="1" max="999999999" maxlength="9" oninput="maxLengthCheck(this)"><div class="h_line"></div></Input >
+                    </div>
+                    <div class="search_box_wrapper ">
+                        <Input id="max_price_box_search" type="number" placeholder="Максимальна ціна" min="2" max="999999999" maxlength="9" oninput="maxLengthCheck(this)"><div class="h_line"></div></Input>
+                    </div>
                 </div>
-                <div class="search_box_wrapper search_box_wrapper_little" >
-                        <Input type="number" placeholder="Мінімальна"><div class="h_line" style="width:55%;"></div></Input >
-                </div>
-                <div class="search_box_wrapper search_box_wrapper_little">
-                        <Input type="number" placeholder="Максимальна"><div class="h_line" style="width:55%;"></div></Input>
-                </div>
-                <div class="search_box_wrapper">
+                <div class="search_box_wrapper search_box_wrapper_long">
                     <label id="search_box_title_label" for="">Допомога біженцям?</label>
                     <div class="option_block">
                         <input type="checkbox" class="first_input" name="" id="Yes" value="1" checked>
@@ -74,21 +78,24 @@
                         <label for="No">Ні</label>
                     </div>
                 </div>
-                <div class="dropdown">
-                        <button onclick="myFunction()" class="search_box_btn" >Найновіші <i class="fa fa-caret-down"></i></button>
+                <div>
+                    <div class="dropdown">
+                        <button id="droptitle" onclick="myFunction()" class="search_box_btn" >Найновіші <i class="fa fa-caret-down"></i></button>
                             <div id="Dropdown" class="dropdown_btn_search">
-                                <a href="#">Найстаріші</a>
-                                <a href="#">Найдешевші</a>
-                                <a href="#">Найдорожчі</a>
+                                <a id="newest" href="#">Найновіші</a>
+                                <a id="oldest" href="#">Найстаріші</a>
+                                <a id="cheepest" href="#">Найдешевші</a>
+                                <a id="mostexp" href="#">Найдорожчі</a>
                             </div>
                     </div>
+                     <div>
+                        <button class="event_btn_search_box" id="clean_button"><span>Очистити</span></button>
+                        <button class="event_btn_search_box btn_2" id="search_button"><span>Застосувати</span></button>
+                    </div> 
+                </div>  
+            </div>
         </div>
-            <div class="search_box_second_row">
-                <button class="event_btn_search_box">Очистити</button>
-                <button class="event_btn_search_box">Застосувати</button>
-        </div> 
     </section>
-   
     <div id="tbody1">
         
     </div>
@@ -108,9 +115,217 @@
             }
         }
         }
+        function maxLengthCheck(object)
+        {
+            if (object.value.length > object.maxLength)
+            object.value = object.value.slice(0, object.maxLength)
+        }
     </script>
-    
     <script type="module">
+        var showingitems = [];
+        var advertisements = [];
+        var name_box_search = document.getElementById('name_box_search');
+        var loc_box_search = document.getElementById('loc_box_search');
+        var min_price_box_search = document.getElementById('min_price_box_search');
+        var max_price_box_search = document.getElementById('max_price_box_search');
+        var vol_true = document.getElementById('Yes');
+        var vol_false = document.getElementById('No');
+        var clean = document.getElementById('clean_button');
+        var droptitle = document.getElementById('droptitle');
+        var newest = document.getElementById('newest');
+        var oldest = document.getElementById('oldest');
+        var cheepest = document.getElementById('cheepest');
+        var mostexp = document.getElementById('mostexp');
+
+        newest.onclick = function(){
+            droptitle.innerText = newest.innerText;
+        }
+        oldest.onclick = function(){
+            droptitle.innerText = oldest.innerText;
+        }
+        cheepest.onclick = function(){
+            droptitle.innerText = cheepest.innerText;
+        }
+        mostexp.onclick = function(){
+            droptitle.innerText = mostexp.innerText;
+        }
+
+        clean.onclick = function(){
+            setdefault(advertisements)
+        }
+        var search = document.getElementById('search_button');
+        search.onclick = function(){
+            search_adv(advertisements)
+        }
+        
+        function setdefault(){
+            name_box_search.value = "";
+            loc_box_search.value = "";
+            min_price_box_search.value = "";
+            max_price_box_search.value = "";
+            vol_true.checked = true;
+            vol_false.checked = true;
+
+            for(var i = 0; i < showingitems.length; i++){
+                showingitems[i].remove();
+            }
+            if(currentUser != null){
+                    AddAllItemsToTable(advertisements, true); 
+            }
+            else{
+                AddAllItemsToTable(advertisements, false);
+            }    
+        }
+        
+        function search_adv(downloaded){
+            var sorted = [];
+            if (name_box_search.value != ''){
+                for(let i = 0; i<downloaded.length; i++){
+                    if(downloaded[i].name.includes(name_box_search.value)){
+                        sorted.push(downloaded[i])
+                        
+                    }
+                }
+            }else{
+                for (let i = 0; i < downloaded.length; i++) {
+                    sorted[i] = downloaded[i];
+                    
+                }  
+            }
+
+            var preSorted = [];
+            if(vol_true.checked){
+                for(let i = 0; i<sorted.length; i++){
+                    if(sorted[i].volunteering){
+                        preSorted.push(sorted[i]);
+                    }
+                }
+            }
+
+            if(vol_false.checked){
+                for(let i = 0; i<sorted.length; i++){
+                    if(!sorted[i].volunteering){
+                        preSorted.push(sorted[i]);
+                    }
+                }
+            }
+            sorted = [];
+            for (let i = 0; i < preSorted.length; i++) {
+                    sorted[i] = preSorted[i];
+                    
+                }
+            var preSorted = []; 
+            if (loc_box_search.value != ''){
+                for(let i = 0; i<sorted.length; i++){
+                    if(sorted[i].location.includes(loc_box_search.value)){
+                        preSorted.push(sorted[i])
+                        
+                    }
+                }
+            }else{
+                for (let i = 0; i < sorted.length; i++) {
+                    preSorted[i] = sorted[i];    
+                }  
+            }
+            sorted = [];
+            for (let i = 0; i < preSorted.length; i++) {
+                    sorted[i] = preSorted[i];  
+                }
+
+            var preSorted = [];
+            var min = 0;
+            var max = 99999999999999;
+
+            if(min_price_box_search.value !=''){
+                try{
+                    min = parseInt(min_price_box_search.value);
+                }catch(error){
+                
+                }
+            }
+            if(max_price_box_search.value !=''){
+                try{
+                    max = parseInt(max_price_box_search.value);
+                }catch(error){
+                
+                }
+            }
+
+            var currprice = 0;
+            for(let i = 0; i< sorted.length; i++){
+                if(sorted[i].currency == "$")
+                    currprice = sorted[i].price*30;
+                    
+                if(sorted[i].currency == "€")
+                    currprice = sorted[i].price*33;
+
+                if(sorted[i].currency == "₴")
+                    currprice = sorted[i].price;
+                if(currprice >= min && currprice <= max)
+                    preSorted.push(sorted[i])    
+            }
+
+            for(var i = 0; i < showingitems.length; i++){
+                showingitems[i].remove();
+            }
+
+            switch(droptitle.innerText){
+                case "Найновіші":
+                    preSorted.sort((a, b) => a.time - b.time);
+                    preSorted.reverse();
+                    break;
+                case "Найстаріші":
+                    preSorted.sort((a, b) => a.time - b.time);
+                    break; 
+                case "Найдешевші":
+                    preSorted.sort(function(a,b){
+                        var aprice, bprice;
+                        if(a.currency == "$")
+                            aprice = a.price * 30;
+                        if(a.currency == "€")
+                            aprice = a.price * 33;
+                        if(a.currency == "₴")   
+                            aprice = a.price; 
+
+                        if(b.currency == "$")
+                            bprice = b.price * 30;
+                        if(b.currency == "€")
+                            bprice = b.price * 33;
+                        if(b.currency == "₴")   
+                            bprice = b.price;  
+                        return aprice - bprice;
+                    });
+                    break;  
+                case "Найдорожчі":
+                    preSorted.sort(function(a,b){
+                            var aprice, bprice;
+                            if(a.currency == "$")
+                                aprice = a.price * 30;
+                            if(a.currency == "€")
+                                aprice = a.price * 33;
+                            if(a.currency == "₴")   
+                                aprice = a.price; 
+
+                            if(b.currency == "$")
+                                bprice = b.price * 30;
+                            if(b.currency == "€")
+                                bprice = b.price * 33;
+                            if(b.currency == "₴")   
+                                bprice = b.price;  
+                            return aprice - bprice;
+                    });
+                    preSorted.reverse();
+                    break; 
+            }
+            
+            if(currentUser != null){
+                    AddAllItemsToTable(preSorted, true); 
+            }
+            else{
+                AddAllItemsToTable(preSorted, false);
+            }
+        }
+
         var tbody = document.getElementById("tbody1");
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
         const firebaseConfig = {
@@ -148,7 +363,7 @@
         
         big_div.setAttribute(
             'style',
-            'position: relative; text-align: center; margin-top: 50px; width: 400px; height: 453px; background-color: rgb(255, 255, 255); border-radius: 35px; z-index:10;'
+            'position: relative; text-align: center; width: 400px; height: 453px; background-color: rgb(255, 255, 255); border-radius: 35px; z-index:10;'
         )
         left_description.setAttribute(
             'style', 
@@ -265,9 +480,12 @@
         big_div.appendChild(left_description);
         big_div.appendChild(right_description);
         big_div.appendChild(more);
+        showingitems.push(big_div);
         tbody.appendChild(big_div);
     }
+    
     function AddAllItemsToTable(TheAdvertisement, display_likes){
+        showingitems = [];
         tbody.innerHTML="";
         var position = 0;
         TheAdvertisement.forEach(element => {
@@ -275,6 +493,8 @@
             position++;
         });
     }
+
+
     var likedByU = [];
     function GetAllDataOnce(){
         logged_in_check();
@@ -282,11 +502,14 @@
         
         get(child(dbRef, "advertisement"))
         .then((snapshot)=>{
-            var advertisements = [];
+            
             snapshot.forEach(childSnapshot =>{
                 if(childSnapshot.val().approved)
                     advertisements.push(childSnapshot.val());
             });
+            
+            advertisements.sort((a, b) => a.time - b.time);
+            advertisements.reverse();
 
             getUsername();
             if(currentUser != null){

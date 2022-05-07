@@ -21,15 +21,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="sign_in_out_logic.js"></script>
     <script src="serverlogic.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
 </head>
-<body id="advert">
+<body id="advert_body">
     <header class="header">
         <div class="header_inner">
            <a href="index.html"><img class="header_logo"  src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt=""></a>
                 <nav class="nav">
                   <a href="getting_data.html"> <img id="advert_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheader_icon_adverts.png?alt=media&token=d5a55fa8-ae4d-4620-b98e-3cce4b8a8f96" alt=""> Оголошення</a>
                     <div class="dropdown_profile" >
-                      <img id="profile_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_profile.png?alt=media&token=e0468b24-9d9d-4dae-b17e-762f68502fe0" alt=""><a href="#"  id='userlink'>Username</a>
+                        <img id="profile_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_blue.png?alt=media&token=9fb21e3c-c4d8-4d47-a459-055b20be60e4" alt=""><a href="#"  id='userlink'>Username</a>
                         <div class="dropdown_content" id="profile_content">
                             <div class="row" >
                                 <div class="column" id="column_left">
@@ -39,7 +42,7 @@
                                     <a href="" id="liked_btn">Вподобані</a>
                                     <br>
                                   <h3>Інше</h3>
-                                    <a href="#">Підтримка ЗСУ</a>
+                                  <a href="https://bank.gov.ua/ua/news/all/natsionalniy-bank-vidkriv-spetsrahunok-dlya-zboru-koshtiv-na-potrebi-armiyi" target="_blank">Підтримка ЗСУ</a>
                                 </div>
                                   <div class="column" id="column_right">
                                     <div class="wrapper">
@@ -59,50 +62,66 @@
         </div>
     </header>
    
-    <section class="addpphoto">
+   <section class="advert_main_block">
+       <div class="left_block_photos">
+            <img id="second" class="_photo"src= "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2FaddImageButton.png?alt=media&token=3712529d-8398-47d5-a2e9-305cc87ea44d"
+            alt="" onclick="second_img_upload()" >
+            <img id="third" class="_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2FaddImageButton.png?alt=media&token=3712529d-8398-47d5-a2e9-305cc87ea44d"
+            alt="" onclick="third_img_upload()">
+            <img id="fourth" class="_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2FaddImageButton.png?alt=media&token=3712529d-8398-47d5-a2e9-305cc87ea44d"
+            alt="" onclick="fourth_img_upload()">
+            <img id="fifth" class="_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2FaddImageButton.png?alt=media&token=3712529d-8398-47d5-a2e9-305cc87ea44d"
+            alt="" onclick="fifth_img_upload()">
+       </div>
+        <div class="right_block_info">
+                <h2 class="title">Інформація про оголошення</h2>
                 <div>
-                    <h2 class="title" id="pic">Додати фотографії</h2>
-                    <img id="second" class="_photo"src= "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fadd_photo_advert_page.jpeg?alt=media&token=0e574d18-9552-4e63-89c8-aec113a7b21f"
-                         alt="" onclick="second_img_upload()" >
-                    <img id="third" class="_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fadd_photo_advert_page.jpeg?alt=media&token=0e574d18-9552-4e63-89c8-aec113a7b21f"
-                         alt="" onclick="third_img_upload()">
-                    <img id="fourth" class="_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fadd_photo_advert_page.jpeg?alt=media&token=0e574d18-9552-4e63-89c8-aec113a7b21f"
-                         alt="" onclick="fourth_img_upload()">
-                    <img id="fifth" class="_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fadd_photo_advert_page.jpeg?alt=media&token=0e574d18-9552-4e63-89c8-aec113a7b21f"
-                        alt="" onclick="fifth_img_upload()">
+                    <label for="">Назва</label>
+                    <input type="text" name="name" id="name_box" maxlength="70" placeholder="" >
                 </div>
-                    <div class="description_box">
-                        <h2 class="title" >Додаткова інформація</h2>
-                        <textarea name="" id="description_box" maxlength="500" cols="40" rows="5" placeholder="Additional information"></textarea>
-                        <button class="create" id="create">Зберегти зміни</button> 
-                    </div>  
+                <div>
+                    <label for="">Місце розташування</label>
+                    <input type="text" name="name" id="location_box" maxlength="70" placeholder="">               
+                </div>
+                <div>
+                    <label for="">Допомога біженцям?</label>
+                    <select name="yes|no" id="option" > 
+                        <option value=0>Ні</option>                                          
+                        <option value=1>Так</option>  
+                    </select>   
+                </div>
+                <div>
+                    <label for="">Орендна плата</label> 
+                    <input type="number" min="0" name="name" max="10000000" id="rent_box" placeholder="" style="width: 90px;">                         
+                        <select name="currency" id="currency" >
+                            <option value="$">₴</option>
+                            <option value="€">€</option>
+                            <option value="₴">$</option>
+                        </select>
+                </div>
+                <div>
+                    <label for="">Поверх</label>
+                    <input type="number" name="name" min="0" max="1000" id="floor_box"  placeholder=""style="width: 90px;">
+                    <label for="">Площа</label>
+                    <input type="number" min="0" max="10000" name="name" id="area_box"  placeholder="" style="width: 90px;">
+                    <label for="">Кількіть кімнат</label>
+                    <input type="number" name="name" min="0" max="100"  id="rooms_box"  placeholder=""style="width: 90px;"> 
+                </div>
+                <div>
                     
-    </section>
-  
-        <section class="advert_">    
-                <h2 class="title" >Назва oголошення</h2>
-                <input type="text" name="name" id="name_box" maxlength="70" placeholder="Назва..." >
-                    <h2 class="title"  >Місто,вулиця,номер будинка</h2>
-                    <input type="text" name="name" id="location_box" maxlength="70" placeholder="Розташування...">               
-                            <h2 class="title" >Поверх, к-сть кімнат</h2>                       
-                             <input type="number" name="name" min="0" max="1000" id="floor_box"  placeholder="Поверх...">
-                             <input type="number" name="name" min="0" max="100"  id="rooms_box"  placeholder="Кількіть кімнат..."> 
-                                <h2 class="title" >Загальна площа (кв.м)</h2>                           
-                                <input type="number" min="0" max="10000" name="name" id="area_box"  placeholder="Площа..."> 
-                                    <h2 class="title" >Орендна плата за місяць</h2>
-                                    <input type="number" name="name" max="10000000" id="rent_box" placeholder="Орендна плата...">                     
-                                    <select name="currency" id="currency" >
-                                        <option value="$">₴</option>
-                                        <option value="€">€</option>
-                                        <option value="₴">$</option>
-                                    </select>
-                                           <h2 class="title" >Житло для біженців</h2>
-                                           <select name="yes|no" id="option" >                                           
-                                             <option value=1>Так</option>
-                                              <option value=0>Ні</option>
-                                              </select>                                                                          
-             </section>
-    
+                </div>
+                
+                <div class="description">
+                     <p>Опис</p>
+                    <textarea name="" id="description_box" maxlength="500"  placeholder=""></textarea>
+                </div>
+        </div>
+       
+   </section>
+        <button class="create" id="create">
+            <span class="createspan">Зберегти зміни</span>
+        </button>
+
                
             
              
@@ -139,7 +158,6 @@
     var fourth_photo= document.getElementById('fifth');
     var create  = document.getElementById("create");
     function create_adv(){
-        var numb = Math.floor(Math.random() * (1000000000 - 1 + 1) + 1); //advertisement hashnumber
         var isempty = false;
         if(name_box.value == ""){isempty = true}
         if(description_box.value == ""){isempty = true}
@@ -167,7 +185,7 @@
         },
         ()=>{
             getDownloadURL(UploadTask2.snapshot.ref).then((downloadURL)=>{
-                firebase.database().ref("/").child("advertisement/" + numb + "/images/").update({
+                firebase.database().ref("/").child("advertisement/" + url + "/images/").update({
                     0: downloadURL
                 })
             });
@@ -189,7 +207,7 @@
         },
         ()=>{
             getDownloadURL(UploadTask3.snapshot.ref).then((downloadURL)=>{
-                firebase.database().ref("/").child("advertisement/" + numb + "/images/").update({
+                firebase.database().ref("/").child("advertisement/" + url + "/images/").update({
                     1: downloadURL
                 })
             });
@@ -211,7 +229,7 @@
         },
         ()=>{
             getDownloadURL(UploadTask4.snapshot.ref).then((downloadURL)=>{
-                firebase.database().ref("/").child("advertisement/" + numb + "/images/").update({
+                firebase.database().ref("/").child("advertisement/" + url + "/images/").update({
                     2: downloadURL
                 })
             });
@@ -233,7 +251,7 @@
         },
         ()=>{
             getDownloadURL(UploadTask5.snapshot.ref).then((downloadURL)=>{
-                firebase.database().ref("/").child("advertisement/" + numb + "/images/").update({
+                firebase.database().ref("/").child("advertisement/" + url + "/images/").update({
                     3: downloadURL
                 })
             });
@@ -241,15 +259,28 @@
         );
     }
     setdata(name_box.value, description_box.value, location_box.value, floor_box.value,
-        rooms_box.value, area_box.value, rent_box.value, currency.value, option.value,  url);
+        rooms_box.value, area_box.value, rent_box.value, currency.value, option.value,  url, true);
+        swal({
+                text: "Оголошення успішно відредаговане!",
+                icon: "success",
+                buttons: "Гаразд",
+            }).then(function(){
+                window.location = 'created_adv.html';
+            });
     }else{
-        alert("Заповніть всі поля!");
-    }}
+        swal({
+                text: "Заповніть спочатку всі поля!",
+                icon: "warning",
+                buttons: "Гаразд",
+            });
+    }
+    }
     create.onclick = create_adv;
     window.onload = getURL;
     var url = window.location.href;
-    //url = url.replace("https://lendory-b5d8b.firebaseapp.com/edit_adv.html#", "");
+    url = url.replace("https://lendory-b5d8b.firebaseapp.com/edit_adv.html#", "");
     url = url.replace("file:///D:/Lendory-WEB/public/edit_adv.html#", "");
+    url = url.replace("file:///C:/lendory_web/public/edit_adv.html#", "");
     function getURL(){
         logged_in_check()
         getAdvInfo(url, name, location, floor, rooms, area, rent, currency, vol, descript, main_photo, second_photo, third_photo, fourth_photo);   

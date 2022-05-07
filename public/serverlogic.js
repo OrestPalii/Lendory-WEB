@@ -111,7 +111,7 @@ function fifth_img_upload(){
 }
 
 //data inserting function
-function setdata(name, description, location, floor, rooms, area, rent, currency, vol, numb){
+function setdata(name, description, location, floor, rooms, area, rent, currency, vol, numb, appr){
    
   var d = new Date();
   var millisecondsSince1970 = d.valueOf();
@@ -132,7 +132,7 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
             price: parseInt(rent),
             volunteering: vol,
             time:   millisecondsSince1970,
-            approved: false
+            approved: appr
         })
 
         getUsername();
@@ -140,25 +140,6 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
             name: currentUser.name,
             phoneNumber: currentUser.phonenumber
         })
-
-        //inserting images numbers
-        // firebase.database().ref("/").child("advertisementtest/" + numb + "/images/").update({
-        //     0: imgarray[0],
-        //     1: imgarray[1],
-        //     2: imgarray[2],
-        //     3: imgarray[3],
-        // })
-
-        //fields cleaning
-         name_box.value ='';
-         description_box.value = '';
-         location_box.value = ''; 
-         floor_box.value = ''; 
-         rooms_box.value = ''; 
-         area_box.value = ''; 
-         rent_box.value = ''; 
-         currency.value = ''; 
-         option.value = '';
     } 
 
   allAdv = []; 
@@ -282,17 +263,20 @@ function getAdvInfo(code, adv_name, adv_loc, adv_floor, adv_rooms, adv_area, adv
       adv_area.value = currentAdv.area;
       adv_price.value = currentAdv.price;
       adv_currency.value = currentAdv.currency;
-      adv_vol.value = currentAdv.volunteering;
+      if(currentAdv.volunteering)
+        adv_vol.selectedIndex = 1;
+      else
+        adv_vol.selectedIndex = 0;
       adv_description.value = currentAdv.description;
       main_photo.src = currentAdv.images[0];
       if(currentAdv.images[1]){
         second_photo.src = currentAdv.images[1]   
       }
         if(currentAdv.images[2]){
-          third_photo.src = currentAdv.images[1]   
+          third_photo.src = currentAdv.images[2]   
       }
         if(currentAdv.images[3]){
-          fourth_photo.src = currentAdv.images[1]   
+          fourth_photo.src = currentAdv.images[3]   
       }
     }   
   })
