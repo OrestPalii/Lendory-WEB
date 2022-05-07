@@ -24,6 +24,23 @@
 .nav{
     margin-right: 100px;
     position: relative;
+    flex-wrap: nowrap;
+}
+
+#advert_icon{
+    margin-top: -5px;
+}
+#profile_icon{
+    margin-top: -2px;
+    margin-right: -15px;
+    width: 17px;
+    height: 17px;
+}
+#exit_icon{
+    width: 17px;
+    height: 17px;
+    margin-top: 6px;
+    margin-right: -15px;
 }
 .nav a{
     font-size: 18px;
@@ -79,10 +96,9 @@
 }
 .wrapper{
     padding-top: 20px;
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fblue_gradient_for_block.jpeg?alt=media&token=f78f9984-1773-41c4-9573-98eecc3228dc) no-repeat;
-    background-size: cover;
+    background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
     height: 90%;
-    width: 90%;
+    width: 95%;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
@@ -98,21 +114,32 @@
     font-size: 18px;
     letter-spacing: 0.1em;
     color: #FFFFFF;
-    margin-bottom: 2px;
+    margin-bottom: 2px;  
 }
 #column_right #user_phone_box{
     font-size: 15px;
     color: rgba(255, 255, 255, 0.75);
+}
+.your_image{
+    align-items: center;
+    justify-content: center;
+    margin-left: 72px;
+    width: 80px;
+    height: 80px;
+    background-color: #fff; 
+    border-radius: 40px;
 }
 .your_image img{
     width: 70px;
     height: 70px;
     border-radius: 35px;
     object-fit: cover;
-    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 7px 7px;
+    
 }
 .wrapper button{
-    margin-top: 60px;
+    margin-top: 25%;
     width: 90%;
     text-align: left;
     font-size: 14px;
@@ -129,32 +156,10 @@
     display: flex;
     position: relative;
 }
-        /* search_box*/
-.text-field__btn {
-    width: 56px;
-    height: 36px;
-    color: #fff;
-    background-color:  #9485D8;
-    border: none;
-    border-radius: 20px;
-    transition: background-color .15s ease-in-out;
-    z-index: 10;
-}
-.text-field__group .text-field__input {
-    border:none;
-    width: 300px;
-    height: 36px;
-    margin-bottom: 5px;
-    border-radius: 20px;
-    margin-left: -40px;
-    position: relative;
-    z-index: 2;
-    padding-left: 45px;
-}
     /* right-sideblock with information*/
 .sideblock{
     padding-top: 20px;
-    margin-top: 157px;
+    margin-top: 10%;
     background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fwhite_rectangle_right_sideblock_main_page.png?alt=media&token=35d53d69-2050-4de9-8016-53fb55c86167) no-repeat;
     background-size:cover ;
     float: right;
@@ -185,8 +190,7 @@
     letter-spacing: 0.2em;
     margin-top: 15px;
     margin-bottom: 20px;
-    color: #A3BBD8;
-          
+    color: #A3BBD8;         
 }
 .lendory_title:before{
     content: "01";
@@ -208,35 +212,31 @@
     margin-right: 260px;
     padding: 10px 10px;
     border: none;
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fblue_gradient_for_block.jpeg?alt=media&token=f78f9984-1773-41c4-9573-98eecc3228dc) no-repeat;
-    background-size: cover;
+    background: linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234));
     border-radius: 30px;
     color: #fff;
     font-size: 22px;
     letter-spacing: 0.1em;
     font-weight: 500; 
-      
+    outline: none;      
 } 
 /* SWIPER-SLIDER (for scroll info about us,LENDORY , etc) */
 .info-slider .swiper-button-prev:after{
-  
     border-radius: 10px;
     padding:0px 10px 10px 10px ;
-    background: linear-gradient(to right,#9485D8,40%,#AECCEA);
+    background: linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234));
     content: "〈";
     color: #fff;
     margin-top: 115px;
-
 }
 .info-slider .swiper-button-next:after{
     border-radius: 10px;
     padding:0px 10px 10px 10px ;
-    background: linear-gradient(to left,#9485D8,40%,#AECCEA);
+    background: linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234));
     content: "〉";
     color: #fff;
     margin-top: 115px;
 }
-
                 /* first page main photo */
 .intro{
     flex-direction: column;
@@ -269,11 +269,16 @@ button:active{
     outline: none;
     border: none;
 }
+button:focus{
+    border: none;
+    outline: none;
+    text-decoration: none;
+}
 /* second page main photo */
 .main_block{
-    padding-top: 100px;
+    padding-top: 30px;
     height: 100vh; 
-    background-color: aliceblue;
+    background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
 }
 /* SLICK-SLIDER second-page (recomamdation adverts) */
 .slick-slider{
@@ -453,133 +458,177 @@ button:active{
     letter-spacing: 0.1em;
 }
         /* __________ADVERT.HTML__________ */
-#advert{
-    background-color: #ead8eb;
-}
-.advert_{
-    padding-right: 650px;
-    float: right;
-    margin-top: 90px;
-    margin-left: auto;      
-    margin-right: auto;
-    width: 20em;   
-}
-.title{
-    padding: 10px 10px;
-    color: #FFFFFF;
-    margin: 3px ;
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6) no-repeat;
+#advert_body{
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Falladvback.jpg?alt=media&token=93b19d53-2e84-412c-ab6e-5c43366feca8) no-repeat;
     background-size: cover;
-    width: 320px;
-    border-radius: 20px;  
-    padding-left: 15px; 
-    font-family: 'Poppins', sans-serif; 
-    font-size: 19px;
-    letter-spacing: 0.05em;
+    background-attachment:fixed;
 }
-#currency{   
-    margin-left: 300px;     
-    margin-top: -38px;                        
-    background-color: #cd88db;
-    border-radius: 30px;
-    border: 0;
-    font-size: 20px;
-    color: #fff;
-    padding: 2px 2px;
-    position: absolute;   
+.advert_main_block{
+    padding-top: 3%;
+    width: 100%;
+    height: 90vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
-#option{
-    margin: 3px;
-    border-radius: 30px;
-    width: 290px;
-    height: 30px;
-    border: 0px;
-    font-size: 20px;
-    border: 1px solid;  
-    border-color: #7a6daf;
-}
-.advert_ input{
-    border-radius: 15px;
-    padding-left: 10px;
-    height: 30px;
-    width: 280px;
-    border: 0;
-    margin: 6px;
-    font-size: 18px;
-    letter-spacing: 2px;
-    border: 1px solid;  
-    border-color: #7a6daf;  
-}
-:active, :hover, :focus {
-    outline: 0;
-    outline-offset: 0;
-}
-::placeholder{
-    padding: 5px;
-    font-size: 16px;
-    letter-spacing: 0.2em;
-}
-textarea{
-    padding: 5px;
-    overflow: auto;
-    background-size: 100% 1.5em;
-    text-indent: 0;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    resize: vertical;
-    border-color: #7a6daf;
-    border-radius: 10px;
-}
-.create{
-    margin-top: 6px;
-    margin-left: 100px;
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6) no-repeat;
-    background-size: cover;
-    border: none;
-    border-radius: 20px;
-    padding: 5px 10px 5px 10px;
-    width: fit-content;
-    height: fit-content;
-    font-size: 19px;
-    letter-spacing: 0.05em;
-    color: #fff;  
-}
-.addpphoto{
-    margin-left: 280px;
-    margin-top: 90px;
+.left_block_photos{
     float: left;
-    width: 500px;
-    height: 1000px;    
+    width: 40%;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 20px;
+    margin-left: 3%;
 }
 ._photo{
+    width: 290px;
+    height: 260px;
     border-radius: 20px;
-    width: 220px;
-    height: 140px;
-    margin: 10px;
     object-fit: cover;
+    min-width: 40%;
 }
 ._photo:hover{
-    transform: translateY(5px);
-    transform: translateX(5px);
-    transition: .4s ease;
-    width: 210px;
-    height: 130px;
+    transform: scale(0.98);
+    transition: all 0.7s ease 0s;  
 }
-.description_box{
-    margin-left: 70px;
+.right_block_info{
+    float: right;
+    width: 135%;
+    height: 550px;
+    background: rgba(170, 196, 230, 1);
+    padding-left: 40px;
+    padding-top: 10px;
+    border-radius: 30px;
+    overflow: hidden;
+    margin-right: 3%;
+    margin-left: 3%;
+    overflow: auto;
 }
-#pic{
-    margin-left: 71px;
+.title{
+    margin: 10px 0px 10px -10px ;
+    font-weight: 300;
+    font-size: 29px;
+    line-height: 44px;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
 }
-#add{ 
-    background-color: #7d6bc5;
+.right_block_info label{
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+    margin-right: 20px;
+}
+.right_block_info input{
+    border:none;
+    width: 250px;
+    height: 30px;
+    margin-bottom: 5px;
     border-radius: 20px;
-    color: aliceblue;
-    width: 29.24px;
-    height: 28.28px;
-    font-size: 20px; 
-    border: none;
+    position: relative;
+    z-index: 2;
+    padding-left: 5px;
+    color: #7a6daf;
+    font-size: 18px;  
 }
+#currency{
+    height: 30px;
+    border-radius: 20px;
+    width: 50px;
+    background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
+    padding-left: 10px;
+    font-size: 20px;
+}
+#option{
+    height: 30px;
+    border-radius: 20px;
+    width: 70px;
+    background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
+    font-size: 20px;
+}
+.description{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#description_box{
+    margin-top: -20px;
+    border-radius: 20px;
+    color: #7a6daf;
+    padding-left: 10px;
+}
+.create {
+    margin-left: 40%;
+    position: relative;
+    outline: none;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    height: 45px;
+    width: 250px;
+    background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
+    border: none;
+    color: #FFFFFF;
+    min-width: 10%;
+    min-height: 10%;
+}
+.create:focus{
+    border: none;
+    outline: none;
+}
+.create .createspan {
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.7px;
+}
+.create:hover {
+    animation: createrotate 1s ease-in-out both;
+}
+.create:hover .createspan {
+    animation: createstorm 1s ease-in-out both;
+    animation-delay: 0.06s;
+}
+    @keyframes createrotate {
+        0% {
+        transform: rotate(0deg) translate3d(0, 0, 0);
+        }
+        25% {
+        transform: rotate(3deg) translate3d(0, 0, 0);
+        }
+        50% {
+        transform: rotate(-3deg) translate3d(0, 0, 0);
+        }
+        75% {
+        transform: rotate(1deg) translate3d(0, 0, 0);
+        }
+        100% {
+        transform: rotate(0deg) translate3d(0, 0, 0);
+        }
+    }
+    
+    @keyframes createstorm {
+        0% {
+        transform: translate3d(0, 0, 0) translateZ(0);
+        }
+        25% {
+        transform: translate3d(4px, 0, 0) translateZ(0);
+        }
+        50% {
+        transform: translate3d(-3px, 0, 0) translateZ(0);
+        }
+        75% {
+        transform: translate3d(2px, 0, 0) translateZ(0);
+        }
+        100% {
+        transform: translate3d(0, 0, 0) translateZ(0);
+        }
+    }
                 /* __________SIGNIN__________ */
 /* background image for SignIn and SignUp pages */
 .sign_{
@@ -589,13 +638,12 @@ textarea{
 .register_form{   
     border-radius: 75px;
     padding: 30px 30px;
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fblue_gradient_for_block.jpeg?alt=media&token=f78f9984-1773-41c4-9573-98eecc3228dc) no-repeat;
-    background-size: cover;
-    margin-top: 150px;
+    background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
+    margin-top: 10%;
     margin-left: auto;
     margin-right: auto;
     width: 492px;
-    height: 542px;   
+    height: 542px; 
 }
 .img_circle{
     margin-top: -100px;
@@ -656,6 +704,7 @@ textarea{
     border-radius: 20px;
     border: none;
     padding-left: 10px;
+    color: #7a6daf;
 }
 .label_field{
     margin-top: 10px;
@@ -683,6 +732,11 @@ textarea{
     height: 40px;
     border-radius:32px ;   
 }
+#signIn_button:focus{
+    border: none;
+    outline: none;
+    text-decoration: none;
+}
 .signin_btn_block a{
     margin-top: 10px;
     color: #FFFFFF;
@@ -696,7 +750,7 @@ textarea{
     font-weight: 600;
 }           
                   /* ______________SIGNUP_________________ */
- #signUP_btn{
+#signUP_btn{
     width: 136px;
     height: 39px;   
     color: #9484D8;
@@ -728,6 +782,11 @@ textarea{
     height: 40px;
     border-radius:32px ;   
 }
+#signUp_button:focus{
+    border: none;
+    outline: none;
+    text-decoration: none;
+}
 #label_field_signup{           
      margin-top: 5px;
      margin-bottom: 5px;
@@ -752,8 +811,9 @@ textarea{
     float: right;  
 }
 .recomend_for_you{
+    font-size: 40px;
     padding-left: 3%;
-    color: #9484D8;
+    color: #fff;
 }
 .review_main{
     margin-top: 40px;
@@ -762,7 +822,7 @@ textarea{
     width: 450px;
     height: 370px;
     border-radius: 35px;
-    object-fit: cover;
+    object-fit:cover;
     z-index: 1;               
 }
 .other_photo_review_block{
@@ -794,6 +854,7 @@ textarea{
     padding-top: 10px;
     width: 100%;   
     margin-bottom: 35px;
+    word-break: break-all;
 }
 #isvol{
     opacity: 0;
@@ -802,8 +863,10 @@ textarea{
     font-size: 20px;
 }
 .description{
+    width: 50%;
     margin-top: 30px;
     margin-right: 5px;
+    word-break: break-all;
 }
 .adv_information span{
     font-size: 20px;
@@ -909,8 +972,9 @@ textarea{
     padding: 30px;    
 }
 .popup_img{
-    width: 100%;
-    height: 100%;
+    margin-top: 2%;
+    width: 90%;
+    height: 70%;
     border-radius: 25px;
 }
 .popup_nav_a{
@@ -928,16 +992,166 @@ textarea{
     border-radius: 10px;
 }          
     /* Body for gettingdata */
+#getting_body{
+   background-color: lightcyan;
+    background-attachment: fixed;
+}
  #tbody1{
-     padding-right: 50px;
+     margin-top: 40px;
      align-items: center;
      justify-content: center;
-     margin-top: 60px;
-     padding-bottom: 60px; 
-     min-height: 100vh; 
-     background-color: rgb(211, 219, 216);
      display: grid;
      grid-template-columns: auto auto auto;
- }             
+     gap: 50px;
+
+ }  
+ .wrapper_box{
+     display: block;
+     width: 100%;
+     height: 22vh;
+    background-color: #fff;
+     border-bottom-left-radius: 45px;
+     border-bottom-right-radius: 45px;
+}    
+ .search_box{
+    display: flex;
+    justify-content:space-around;
+    margin-top: 60px;
+    width: 100%;
+    height: 10vh;
+    padding-top: 20px;
+    padding-right: 100px;
+    padding-left: 100px;  
+} 
+.search_box_wrapper{
+     background: rgba(216, 216, 216, 0.51);
+     display: grid;
+     width: 250px;
+     height: 50px;
+     border-radius: 10px;
+ } 
+#search_box_little_wrapper{
+    width: 100px;
+} 
+#search_box_little_wrapper input{
+     width: 100px;
+}
+.search_box_wrapper input{
+     background:none ;
+     border: none;
+     border-bottom-left-radius: 10px;
+     border-bottom-right-radius: 10px;
+     padding-left: 20px;
+     padding-right: 20px;
+     color: #fff;
+     margin-top: -10px;
+     z-index: 5;
+     font-size: 17px;
+}
+.search_box_wrapper label{
+    color: #fff;
+    padding-left: 20px; 
+    font-size: 20px;
+    z-index: 10;
+    margin-bottom: 0px;
+}  
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+.dropdown_btn_search{  /* Dropdown button "НАЙНОВІШІ" */
+    display: none;
+    position: absolute;
+    background: #D8D8D8;
+    min-width: 160px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+.dropdown_btn_search a {
+    font-size: 20px;
+    color: white;
+    padding: 12px 10px;
+    text-decoration: none;
+    display: block;
+    z-index: 100;
+}
+.dropdown_btn_search a:hover{
+    color: #7d6bc5;
+    transition-duration: 1s;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.show{
+    display:block;
+} 
+.search_box_btn{
+    width: 300px;
+    height: 50px;
+    border: none;
+    outline: none;
+    background: rgba(216, 216, 216, 0.51);
+    color: white;
+    font-size: 25px;
+    border-radius: 10px;
+}
+.search_box_btn:active{
+    transform: scale(1);  
+}
+.h_line{             /* horizontal line */
+    margin-left: 20px;
+    margin-top: -6px;
+    width:85%;
+    height:2px; 
+    background: #fff 
+}
+#h_line_for_price{
+    width:60%;
+}
+#search_box_title_label{
+    margin-bottom: 5px;
+}
+.search_box_second_row{
+    margin-top: 20px;
+    float: right;
+    display: flex;
+}
+.search_box_help{
+    height: 50px;
+    margin-right: 50px;
+}
+.search_box_help label{
+    color: #fff;
+    font-size: 20px;
+    margin-top: -5px;
+    margin-left: -14px;
+}
+.search_box_help input{
+    margin-top: -5px;
+    width: 20px;
+    height: 20px;
+    color: #7d6bc5;
+    margin-left: 10px;
+}
+.event_btn_search_box{
+    width: 170px;
+    height: 40px;
+    border: none;
+    outline: none;
+    margin-right: 40px;
+    background-color: white;
+    border-radius: 10px;
+    color: rgb(148, 133, 216);
+    font-size: 25px;
+    text-align: center;  
+}
+
+
+
+ 
+ 
      
  

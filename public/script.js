@@ -9,7 +9,7 @@ $(document).ready(function(){
 		waitForAnimate:true,
 		autoplay:true,
 		autoplaySpeed:3000,
-		// fade: true,
+	
 	});
 })
 
@@ -22,7 +22,6 @@ new Swiper('.info-slider',{
 	keyboard: {
 		enabled: true,
 	  },
-	  mousewheel: true,
 	simulateTouch:false,
 	speed:2000,
 	effect:'cube',

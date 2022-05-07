@@ -135,18 +135,21 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
             approved: false
         })
 
-        
-        
-
         getUsername();
         firebase.database().ref("/").child("advertisement/" + numb + "/creator/").update({
             name: currentUser.name,
             phoneNumber: currentUser.phonenumber
         })
-          
-       
 
-        
+        //inserting images numbers
+        // firebase.database().ref("/").child("advertisementtest/" + numb + "/images/").update({
+        //     0: imgarray[0],
+        //     1: imgarray[1],
+        //     2: imgarray[2],
+        //     3: imgarray[3],
+        // })
+
+        //fields cleaning
          name_box.value ='';
          description_box.value = '';
          location_box.value = ''; 
@@ -194,10 +197,9 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
             // CHANGE STYLES
       if(currentAdv.volunteering){ //for free adverts
         adv_price.innerText= "Безкоштовно";
-        background.style.background='url("https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fgreen_background.png?alt=media&token=7ce381f6-9286-4ad9-8c39-88856fcf922d") no-repeat';
-        advertreview_body.style.background='url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fbackground_for_free_advert_advertreview_page.png?alt=media&token=f10f575f-b15b-4e66-a9b0-cba08bfd3cd1)no-repeat'
+        background.style.background="linear-gradient(45deg, rgb(96, 207, 210), rgb(151, 231, 195) 70%)";
+        advertreview_body.style.background='url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fbackground_for_free_advert_advertreview_page.png?alt=media&token=d769d0e5-e883-4c6f-a187-cfac8ba4a48b)no-repeat'
         advertreview_body.style.backgroundSize="cover";
-        background.style.backgroundSize="cover";
         adv_price.style.color='#60CFD2';
         adv_area.style.color='#60CFD2';
         adv_numberofrooms.style.color='#60CFD2';
@@ -207,8 +209,7 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
         phoneNumber.style.color='#60CFD2';
         your_img.style.borderColor='#60CFD2'
           }else{        //for paid adverts
-            background.style.background='url("https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fblue_gradient_for_block.jpeg?alt=media&token=f78f9984-1773-41c4-9573-98eecc3228dc") no-repeat ';
-            background.style.backgroundSize="cover";
+            background.style.background="linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234))";
             advertreview_body.style.background='url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fbackground_for_advertreview.jpg?alt=media&token=02ee92e6-7dcb-4f4f-95dc-a48ecfc8eced)no-repeat'
             advertreview_body.style.backgroundSize="cover";
             adv_price.style.color='#7d6bc5';
@@ -307,5 +308,6 @@ function getAdvInfo(code, adv_name, adv_loc, adv_floor, adv_rooms, adv_area, adv
   // })
   
  }
+
 
 
