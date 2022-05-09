@@ -52,13 +52,13 @@
                                       </div>
                                         <h6 id="user_name_box"></h6>
                                         <h6 id="user_phone_box"></h6>
-                                        <button>Служба підримки</button> 
+                                        <button id="support_btn">Служба підримки</button> 
                                   </div>
                                 </div>
                             </div>
                         </div>     
                      </div>
-                     <img id="exit_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""><a id="signoutlink" href="#">Вийти</a>
+                  <img id="exit_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""><a id="signoutlink" href="#">Вийти</a>
              </nav>
         </div>
     </header>
@@ -78,11 +78,11 @@
                 <h2 class="title">Інформація про оголошення</h2>
                 <div>
                     <label for="">Назва</label>
-                    <input type="text" name="name" id="name_box" maxlength="70" placeholder="" >
+                    <input type="text" name="name" id="name_box" maxlength="70" placeholder="" style="width:40% ;" >
                 </div>
                 <div>
                     <label for="">Місце розташування</label>
-                    <input type="text" name="name" id="location_box" maxlength="70" placeholder="">               
+                    <input type="text" name="name" id="location_box" maxlength="75" placeholder="" style="width: 40%;">               
                 </div>
                 <div>
                     <label for="">Допомога біженцям?</label>
@@ -92,8 +92,8 @@
                     </select>   
                 </div>
                 <div>
-                    <label for="">Орендна плата</label> 
-                    <input type="number" min="0" name="name" max="10000000" id="rent_box" placeholder="" style="width: 90px;">                         
+                    <label for="">Орендна плата за місяць</label> 
+                    <input type="number" min="0" name="name" max="10000000" maxlength="8" oninput="maxLengthCheck(this)"  id="rent_box" placeholder="" style="width: 90px;">                         
                         <select name="currency" id="currency" >
                             <option value="$">₴</option>
                             <option value="€">€</option>
@@ -102,17 +102,17 @@
                 </div>
                 <div>
                     <label for="">Поверх</label>
-                    <input type="number" name="name" min="0" max="1000" id="floor_box"  placeholder=""style="width: 90px;">
-                    <label for="">Площа</label>
-                    <input type="number" min="0" max="10000" name="name" id="area_box"  placeholder="" style="width: 90px;">
+                    <input type="number" name="name" min="0" max="1000" maxlength="4" id="floor_box" oninput="maxLengthCheck(this)"  style="width: 90px;">
+                    <label for="">Площа (м²)</label>
+                    <input type="number" min="1" max="10000" maxlength="5" name="name" id="area_box" oninput="maxLengthCheck(this)"  style="width: 90px;">
                     <label for="">Кількіть кімнат</label>
-                    <input type="number" name="name" min="0" max="100"  id="rooms_box"  placeholder=""style="width: 90px;"> 
+                    <input type="number" name="name" min="1" maxlength="3" max="100"  id="rooms_box" oninput="maxLengthCheck(this)"  style="width: 90px;"> 
                 </div>
                 <div>
                     
                 </div>
                 
-                <div class="description">
+                <div class="description_">
                      <p>Опис</p>
                     <textarea name="" id="description_box" maxlength="500"  placeholder=""></textarea>
                 </div>
@@ -122,6 +122,18 @@
         <button class="create" id="create">
             <span class="createspan">Створити</span>
         </button>
+
+        <script>
+             support_btn.onclick = function(){
+            window.open('mailto:lendory.support@gmail.com'); 
+        }
+        
+            function maxLengthCheck(object)
+        {
+            if (object.value.length > object.maxLength)
+            object.value = object.value.slice(0, object.maxLength)
+        }
+        </script>
         
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
@@ -268,7 +280,6 @@
     set(ref(db, "needToBeeApproved/" + numb + "/"),
         numb 
     );
-
     }else{
         swal({
                 text: "Заповніть спочатку всі поля!",
@@ -276,7 +287,6 @@
                 buttons: "Гаразд",
             });
     }
-    document.getElementById("create").disabled = true;
     }
     let userlink = document.getElementById('userlink');
     let signoutlink = document.getElementById('signoutlink');
@@ -289,7 +299,13 @@
     function logged_in_check(){
         getUsername();
         if(currentUser == null){
-            window.location = "SignIn.html"
+            swal({
+                text: "Зареєструйтесь або увійдіть у вже створений акаунт , щоб створити оголошення",
+                icon: "info",
+                buttons: "Гаразд",
+            }).then(function(){
+                window.location = 'SignIn.html';
+            });
         }
         else{
         created_adv.href = "created_adv.html";
@@ -300,7 +316,6 @@
         signoutlink.href = "javascript:Signout()";
         }
     }
-
     function showAllGoodDialog(){
         if(canClose){
             window.clearInterval(myInterval); 
@@ -313,7 +328,6 @@
             });
         }
     }
-
 </script>
 </body>
 </html>

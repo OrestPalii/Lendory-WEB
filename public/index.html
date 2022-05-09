@@ -25,7 +25,7 @@
     <div class="header_inner">
         <img class="header_logo"  src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">
             <nav class="nav">
-              <a href="getting_data.html"> <img id="advert_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheader_icon_adverts.png?alt=media&token=d5a55fa8-ae4d-4620-b98e-3cce4b8a8f96" alt=""> Оголошення</a>
+              <a href="getting_data.html"> <img id="advert_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheader_icon_adverts.png?alt=media&token=d5a55fa8-ae4d-4620-b98e-3cce4b8a8f96" alt="">  Усі оголошення</a>
                 <div class="dropdown_profile" >
                   <img id="profile_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_blue.png?alt=media&token=9fb21e3c-c4d8-4d47-a459-055b20be60e4" alt=""><a href="#"  id='userlink'>Username</a>
                     <div class="dropdown_content" id="profile_content">
@@ -46,52 +46,58 @@
                                   </div>
                                     <h6 id="user_name_box"></h6>
                                     <h6 id="user_phone_box"></h6>
-                                    <button>Служба підримки</button> 
+                                    <button id="support_btn">Служба підримки</button> 
                               </div>
                             </div>
                         </div>
                     </div>     
                  </div>
-                 <img id="exit_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""><a id="signoutlink" href="#">Вийти</a>
+              <img id="exit_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""><a id="signoutlink" href="#">Вийти</a>
          </nav>
     </div>
 </header>
                   <!-- right-sideblock with information , swiper-slider -->
      <div class="intro">
-      <div class="sideblock">
-        <div class="info-slider swiper-container">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <div class="lend_descr">
-                <h3 class="lendory_title">Lendory</h3>
-                   <p id="about_lend">knsjdfnsdanlnlfdasnnfdasnfdsanfd
-                     sanjlfdsajnfdanjSjsdfng
-                     klsfndgkfsgdnknfsgnskfgnlkknsfg.</p>
-             </div>
-            </div>
-              <div class="swiper-slide">
-                <div class="lend_descr">
-                  <h3 class="lendory_title" id="about_us_title">About Us</h3>
-                      <p id="about_lend">Lorem ipsum dolor sit amet.</p>
-                      
-                </div>
-                </div>
+        <div class="sideblock">
+            <div class="info-slider swiper-container">
+                <div class="swiper-wrapper">
+                   <div class="swiper-slide">
+                       <div class="lend_descr">
+                            <h3 class="lendory_title">Lendory</h3>
+                              <p id="about_lend">Шукаєш будиночок мрії для тимчасового проживання?
+                                Універсальний сайт LENDORY саме те , що вам потрібно! <br>
+                                Натискай на кнопку ,та створи своє перше оголошення.
+                              </p>
+                      </div>
+                  </div>
                   <div class="swiper-slide">
-                    <div class="lend_descr">
-                      <h3 class="lendory_title" id="services_title">Services</h3>
-                          <p id="about_lend">Lorem ipsum dolor sit amet.</p>            
+                      <div class="lend_descr">
+                          <h3 class="lendory_title" id="about_us_title">Про нас</h3>
+                              <p id="about_lend">
+                                <ul>
+                                  <li>Безкоштовні оголошення для потребуючих </li>
+                                  <li>Швидке та просте створення оголошення</li>
+                                  <li>Швидка реєстрація</li>
+                                  <li>Система перевірки оголошень від шахраїв при створенні</li>
+                                </ul>
+                              </p>
+                      </div>
                     </div>
-                    </div>
-          </div>
-              <div class="swiper-button-next"></div>
-              <div class="swiper-button-prev"></div>
-              
-        </div>
-        <div style="display:flex ;">
-          <button id="but_advert" onclick="adv_create_user_check()">Нове оголошення</button>
-          <button id="but_advert"><a href="getting_data.html">Усі оголошення</a></button>
-        </div>
-       
+                  <div class="swiper-slide">
+                      <div class="lend_descr">
+                          <h3 class="lendory_title" id="services_title">Безпека</h3>
+                              <p id="about_lend">
+                                Якщо ви забули пароль до акаунту,ваш акаунт видалено чи щось сталось
+                                із вашим оголошенням , пишіть на нашу <a href="mailto:lendory.support@gmail.com">пошту</a>.
+                              </p>            
+                      </div>
+                 </div>
+              </div>
+                  <div class="swiper-button-next"></div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-pagination"></div>
+              </div>
+          <button id="but_advert" onclick="to_advert()">Нове оголошення</button>
       </div> 
     </div> 
                    <!-- SLick-slider of recommended adverts -->
@@ -264,17 +270,26 @@
         <script src="script.js"></script>              
 </section> 
 <footer>
+  <div class="footer_smth">
+    © Lendory 2022 Сopyright Developed by the QUAICE, усі права захищені
+  </div>
   <div class="footer_info">
-    <a href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCHrjmdMJXNWlGxLptPQQCjcsJLtlWrmcWCSPGJWnCtkHsXggQDsCkLjZsdstKvzXmXLjbVB" target="_blank">Служба підтримки</a>
-    <a href="https://bank.gov.ua/ua/news/all/natsionalniy-bank-vidkriv-spetsrahunok-dlya-zboru-koshtiv-na-potrebi-armiyi" target="_blank">Підтримка ЗСУ</a>
+    <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fenvelope-icon.png?alt=media&token=ceb1f3be-3afc-49c3-ae94-fa1bfaf8c5ec" alt=""> <a href="mailto:lendory.support@gmail.com" target="_blank">Служба підтримки</a>
+    <img style="width:18px ; height:18px; margin-top:-6px;" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fflag-icon.png?alt=media&token=45d16f46-3253-4bb1-b7e8-87a7259d821e" alt=""> <a href="https://bank.gov.ua/ua/news/all/natsionalniy-bank-vidkriv-spetsrahunok-dlya-zboru-koshtiv-na-potrebi-armiyi" target="_blank">Підтримка ЗСУ</a>
   </div>
 </footer>          
      <script>
+       support_btn.onclick = function(){
+            window.open('mailto:lendory.support@gmail.com'); 
+        }
        function get_data_page(){
         window.location = "getting_data.html";
        }
       function change_bnt() {
           document.getElementById("like_btn").style.color = "#7d6bc5"; 
+      }
+      function to_advert(){
+        window.location = "advert.html";
       }
       </script>   
     <script type="module">
@@ -348,7 +363,6 @@
             count_photo.push(document.getElementById("count_photo_" + i))
             likes.push(document.getElementById("like_"+ i));
             mores.push(document.getElementById("more_"+ i));
-            
           }
          GetAllDataOnce();
         }

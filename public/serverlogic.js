@@ -188,6 +188,7 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
         adv_location.style.color='#60CFD2';
         user_name.style.color='#60CFD2';
         phoneNumber.style.color='#60CFD2';
+        your_img.src='https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_green.png?alt=media&token=d6f0505f-effe-423f-a767-266311c48bde';
         your_img.style.borderColor='#60CFD2'
           }else{        //for paid adverts
             background.style.background="linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234))";
@@ -200,7 +201,8 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
             adv_location.style.color='#7d6bc5';
             user_name.style.color='#7d6bc5';
             phoneNumber.style.color='#7d6bc5';
-            your_img.style.borderColor='#7d6bc5'
+            your_img.src='https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_blue.png?alt=media&token=9fb21e3c-c4d8-4d47-a459-055b20be60e4'
+            your_img.style.borderColor='#9484D8'
           }
       if(currentAdv.images[1]){
           adv_second_photo.src = currentAdv.images[1]
@@ -283,14 +285,15 @@ function getAdvInfo(code, adv_name, adv_loc, adv_floor, adv_rooms, adv_area, adv
  } 
  
  function get_user_info( user_name, user_phone){
-  getUsername();
-  //firebase.database().ref("profiles/" + phonenumber).on('value', function(snapshot){
-    
+  getUsername();  
     user_name.innerText = currentUser.name;
     user_phone.innerText = currentUser.phonenumber;
-   
-  // })
-  
  }
+ function Signout(){
+  sessionStorage.removeItem('user');
+  localStorage.removeItem('user');
+  localStorage.removeItem('keepLoggedIn');
+  window.location = 'index.html'
+}
 
 

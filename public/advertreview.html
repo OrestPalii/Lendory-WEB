@@ -44,13 +44,13 @@
                                       </div>
                                         <h6 id="user_name_box"></h6>
                                         <h6 id="user_phone_box"></h6>
-                                        <button>Служба підримки</button> 
+                                        <button id="support_btn">Служба підримки</button> 
                                   </div>
                                 </div>
                             </div>
                         </div>     
                      </div>
-                     <img id="exit_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""><a id="signoutlink" href="#">Вийти</a>
+                 <img id="exit_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""><a id="signoutlink" href="#">Вийти</a>
              </nav>
         </div>
     </header>
@@ -61,6 +61,9 @@
                 <a href="#popup"> 
                     <img class="review_main"  id="main_photo" alt="">
                 </a>
+                <div class="like_image_back_review_body">
+                    <img  class="like_image" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71" alt="">
+               </div>
             </div>
                 <div class="other_photo_review_block">
                     <a href="#popup1"> <img class="review_other"  id="second_img" alt=""></a>
@@ -70,7 +73,8 @@
                     <div class="text_review_block">
                          <div class="name_price"> <h3 id="name"></h3> </div>
                             <div class="adv_information">
-                                <span id="price"></span>  <span id="location"></span> <br><br>
+                                <span id="location"></span> <br><br>
+                                <span id="price"></span>  
                                 <span id="area"></span>
                                 <span id="numberofrooms"></span>
                                 <span id="floor"></span> 
@@ -79,23 +83,25 @@
                              <div class="description"> <p id="description"></p>  </div>                                               
                     </div>
         </div> 
+      
             <div class="info_about_seller">
                 <div class="info_block">
-                    <img id="your_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_black_icon.png?alt=media&token=15da83c6-54a1-4aa0-8c90-15caf92f7783" alt="">
+                    <img id="your_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_white_icon.png?alt=media&token=745a0b59-e7aa-492c-89e1-de72ab740430" alt="">
                         <div class="info_">
                             <span id="user_name"></span>
                             <span id="phoneNumber"></span>
                         </div>  
                 </div>
-            </div>   
+            </div>  
+            
                         <!-- Popups for review all photos -->
     <div id="popup" class="popup">
         <a href="#"class="popup_area" id="popup_area"></a>
             <div class="popup_body">
                 <div class="popup_text">
-                    <a class="popup_nav_a" id='main_prev' href="#popup3"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-left-icon-font.png?alt=media&token=ee782e1a-a6f8-4852-af41-942d3cf75ced" alt=""></a>  
+                    <a class="popup_nav_a" id='left_arrow_1' href="#popup3"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-left-icon-font.png?alt=media&token=ee782e1a-a6f8-4852-af41-942d3cf75ced" alt=""></a>  
                     <img class="popup_img" id='main' alt="">
-                    <a class="popup_nav_a" id='main_next' href="#popup1"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-right-icon-font.png?alt=media&token=7f169940-40ba-4e9e-84e2-e50a8d6acf58" alt=""></a>
+                    <a class="popup_nav_a" id='right_arrow_1' href="#popup1"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-right-icon-font.png?alt=media&token=7f169940-40ba-4e9e-84e2-e50a8d6acf58" alt=""></a>
                 </div>
             </div>              
     </div>
@@ -103,9 +109,9 @@
         <a href="#header" class="popup_area" id="popup_area_1"></a>
             <div class="popup_body">
                 <div class="popup_text">
-                    <a class="popup_nav_a"  href="#popup"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-left-icon-font.png?alt=media&token=ee782e1a-a6f8-4852-af41-942d3cf75ced" alt=""></a>
+                    <a class="popup_nav_a" id="left_arrow_2"  href="#popup"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-left-icon-font.png?alt=media&token=ee782e1a-a6f8-4852-af41-942d3cf75ced" alt=""></a>
                     <img class="popup_img" id="popup_1" alt="">
-                    <a class="popup_nav_a" id="popup_1_next" href="#popup2"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-right-icon-font.png?alt=media&token=7f169940-40ba-4e9e-84e2-e50a8d6acf58" alt=""></a>
+                    <a class="popup_nav_a" id="right_arrow_2" href="#popup2"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-right-icon-font.png?alt=media&token=7f169940-40ba-4e9e-84e2-e50a8d6acf58" alt=""></a>
                 </div>
             </div>              
     </div>
@@ -113,9 +119,9 @@
         <a href="#header" class="popup_area" id="popup_area_2"></a>
             <div class="popup_body">
                 <div class="popup_text">
-                    <a class="popup_nav_a"  href="#popup1"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-left-icon-font.png?alt=media&token=ee782e1a-a6f8-4852-af41-942d3cf75ced" alt=""></a>
+                    <a class="popup_nav_a" id="left_arrow_3" href="#popup1"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-left-icon-font.png?alt=media&token=ee782e1a-a6f8-4852-af41-942d3cf75ced" alt=""></a>
                     <img class="popup_img" id="popup_2" alt="">
-                    <a class="popup_nav_a" id="popup_2_next" href="#popup3"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-right-icon-font.png?alt=media&token=7f169940-40ba-4e9e-84e2-e50a8d6acf58" alt=""></a>
+                    <a class="popup_nav_a" id="right_arrow_3" href="#popup3"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-right-icon-font.png?alt=media&token=7f169940-40ba-4e9e-84e2-e50a8d6acf58" alt=""></a>
                 </div>
             </div>              
     </div>
@@ -123,16 +129,17 @@
         <a href="#header" class="popup_area" id="popup_area_3"></a>
             <div class="popup_body">
                 <div class="popup_text">
-                    <a class="popup_nav_a"  href="#popup2"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-left-icon-font.png?alt=media&token=ee782e1a-a6f8-4852-af41-942d3cf75ced" alt=""></a>
+                    <a class="popup_nav_a" id="left_arrow_4"  href="#popup2"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-left-icon-font.png?alt=media&token=ee782e1a-a6f8-4852-af41-942d3cf75ced" alt=""></a>
                     <img class="popup_img" id="popup_3" alt="">
-                    <a class="popup_nav_a"  href="#popup"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-right-icon-font.png?alt=media&token=7f169940-40ba-4e9e-84e2-e50a8d6acf58" alt=""></a>
+                    <a class="popup_nav_a" id="right_arrow_4"  href="#popup"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-right-icon-font.png?alt=media&token=7f169940-40ba-4e9e-84e2-e50a8d6acf58" alt=""></a>
                 </div>
             </div>              
     </div>
 </section>
-
-    
     <script>
+         support_btn.onclick = function(){
+            window.open('mailto:lendory.support@gmail.com'); 
+        }
         var url = window.location.href;
         url = url.replace("https://lendory-b5d8b.firebaseapp.com/advertreview.html#", "");
         url = url.replace("file:///D:/Lendory-WEB/public/advertreview.html#", "");
@@ -173,11 +180,11 @@
             var popup_2 = document.getElementById('popup_2')
             var popup_3 = document.getElementById('popup_3')
 
-            var main_prev = document.getElementById('main_prev')
-            var main_next = document.getElementById('main_next')
+            var main_prev = document.getElementById('left_arrow_1')
+            var main_next = document.getElementById('right_arrow_1')
         
-            var popup_1_next = document.getElementById('popup_1_next')
-            var popup_2_next = document.getElementById('popup_2_next')
+            var popup_1_next = document.getElementById('right_arrow_2')
+            var popup_2_next = document.getElementById('right_arrow_3')
 
             var background=document.getElementById('container_review');
             var advertreview_body=document.getElementById('advertreview_body');
@@ -219,6 +226,9 @@
                 userlink.href = "file:///D:/Lendory-WEB/public/advertreview.html#" + url;
                 signoutlink.innerHTML="Вийти";         
                 signoutlink.href = "javascript:Signout()";
+                support_btn.onclick = function(){
+                window.open('mailto:lendory.support@gmail.com'); 
+                }
                 } 
             }
     </script>

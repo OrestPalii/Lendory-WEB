@@ -22,34 +22,31 @@
 <body class="sign_">
     <header class="header">
         <div class="header_inner">
-          <a href="index.html">
-            <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">                  
-           </a>
-                      
+            <a href="index.html">
+                <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">                  
+           </a>        
        </div>
     </header>
        <div id="reg_form" class="register_form">
-        <div class="img_circle">
-            <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_blue.png?alt=media&token=9fb21e3c-c4d8-4d47-a459-055b20be60e4" alt="">
-        </div>
+            <div class="img_circle">
+                <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_blue.png?alt=media&token=9fb21e3c-c4d8-4d47-a459-055b20be60e4" alt="">
+            </div>
                 <div class="SignIn_field">
                     <button id="signUP_btn"><a href="SignIn.html">Увійти</a></button>
                     <button id="regUP_btn">Зареєструватись</button>
                 </div>
-                <label class="label_field" id="label_field_signup" for=" ">Прізвище Ім'я</label>
-                <input class="input_field" type="tel" name="" id="namebox" maxlength="25" >  
-                <label class="label_field" id="label_field_signup" for="">Номер телефону</label>
-                <input class="input_field" type="tel" name="" id="telnumbox" maxlength="15">
-                <label class="label_field" id="label_field_signup" for="">Пароль</label>                   
-                <input class="input_field" type="password" name="" id="passbox">
-
-                
-                    <div class="signin_btn_block">
-                        <button id="signUp_button">Зареєструватись</button>
-                        <a id="link"href="SignIn.html">Уже маєте акаунт?</a>
-                    </div>
+                    <label class="label_field" id="label_field_signup" for=" ">Прізвище Ім'я</label>
+                    <input class="input_field" type="tel" name="" id="namebox" maxlength="25" >  
+                    <label class="label_field" id="label_field_signup" for="">Номер телефону</label>
+                    <input class="input_field" type="tel" name="" id="telnumbox" maxlength="15">
+                    <label class="label_field" id="label_field_signup" for="">Пароль</label>                   
+                    <input class="input_field" type="password" name="" id="passbox">
+                <div class="signin_btn_block">
+                    <button id="signUp_button">Зареєструватись</button>
+                    <a id="link"href="SignIn.html">Уже маєте акаунт?</a>
+                </div>
                     
-   </div>
+      </div>
        <script type="module">
         // ------------------------------Importing the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
@@ -69,14 +66,11 @@
         from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"
         
         const db = getDatabase();
-
         const name = document.getElementById('namebox');
         const phoneNumber = document.getElementById('telnumbox');
         const password = document.getElementById('passbox');
         const submit = document.getElementById('signUp_button');
-
         function RegisterUser(){
-            
             const  dbRef = ref(db);
             get(child(dbRef, "profiles/" + phoneNumber.value)).then((snapshot)=>{
                 if(snapshot.exists()){
@@ -105,9 +99,9 @@
                     )
                     .then(()=>{
                         swal({
-                                text: "Реєстрація успішно пройдена",
-                                icon: "success",
-                                buttons: "Гаразд",
+                            text: "Реєстрація успішно пройдена",
+                            icon: "success",
+                            buttons: "Гаразд",
                             }).then(function(){
                                 window.location="SignIn.html";
                             });
@@ -115,7 +109,6 @@
                     .catch((error)=>{
                         alert("error" + error);
                     })
-                    
                 }
             });
         }

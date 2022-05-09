@@ -41,7 +41,7 @@
                                       </div>
                                         <h6 id="user_name_box"></h6>
                                         <h6 id="user_phone_box"></h6>
-                                        <button>Служба підримки</button> 
+                                        <button id="support_btn">Служба підримки</button> 
                                   </div>
                                 </div>
                             </div>
@@ -56,9 +56,7 @@
     </div>
     
    
-    <script>
-        
-    </script>
+   
     <script type="module">
         var tbody = document.getElementById("tbody1");
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
@@ -332,6 +330,9 @@
             userlink.innerHTML= "Мій профіль";        
             signoutlink.innerHTML="Вийти";         
             signoutlink.href = "javascript:Signout()";
+            support_btn.onclick = function(){
+            window.open('mailto:lendory.support@gmail.com'); 
+            }
             }
         }
     </script>

@@ -40,13 +40,13 @@
                                       </div>
                                         <h6 id="user_name_box"></h6>
                                         <h6 id="user_phone_box"></h6>
-                                        <button>Служба підримки</button> 
+                                        <button id="support_btn">Служба підримки</button> 
                                   </div>
                                 </div>
                             </div>
                         </div>     
                      </div>
-                     <img id="exit_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""><a id="signoutlink" href="#">Вийти</a>
+                 <img id="exit_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""><a id="signoutlink" href="#">Вийти</a>
              </nav>
         </div>
     </header>
@@ -63,7 +63,7 @@
                 </div>
                 <div style="display:block ;">
                     <div class="search_box_wrapper " >
-                        <Input id="min_price_box_search" type="number" placeholder="Мінамальна ціна" min="1" max="999999999" maxlength="9" oninput="maxLengthCheck(this)"><div class="h_line"></div></Input >
+                        <Input id="min_price_box_search" type="number" placeholder="Мінімальна ціна" min="1" max="999999999" maxlength="9" oninput="maxLengthCheck(this)"><div class="h_line"></div></Input >
                     </div>
                     <div class="search_box_wrapper ">
                         <Input id="max_price_box_search" type="number" placeholder="Максимальна ціна" min="2" max="999999999" maxlength="9" oninput="maxLengthCheck(this)"><div class="h_line"></div></Input>
@@ -80,7 +80,7 @@
                 </div>
                 <div>
                     <div class="dropdown">
-                        <button id="droptitle" onclick="myFunction()" class="search_box_btn" >Найновіші <i class="fa fa-caret-down"></i></button>
+                        <button id="droptitle" onclick="dropbtn()" class="search_box_btn" >Найновіші <i class="fa fa-caret-down"></i></button>
                             <div id="Dropdown" class="dropdown_btn_search">
                                 <a id="newest" href="#">Найновіші</a>
                                 <a id="oldest" href="#">Найстаріші</a>
@@ -100,7 +100,7 @@
         
     </div>
     <script>
-        function myFunction() {
+        function dropbtn() {
             document.getElementById("Dropdown").classList.toggle("show");
         }
         window.onclick = function(event) {
@@ -596,8 +596,12 @@
                         userlink.innerHTML= "Мій профіль";    
                         signoutlink.innerHTML="Вийти";         
                         signoutlink.href = "javascript:Signout()";
+                        get_user_info(user_name, user_phone)
+                        support_btn.onclick = function(){
+                        window.open('mailto:lendory.support@gmail.com'); 
+                        }
                     }
-                    get_user_info(user_name, user_phone)
+                   
                 }
     </script>
 </body>

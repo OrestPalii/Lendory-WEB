@@ -40,7 +40,7 @@
                                       </div>
                                         <h6 id="user_name_box"></h6>
                                         <h6 id="user_phone_box"></h6>
-                                        <button>Служба підримки</button> 
+                                        <button id="support_btn">Служба підримки</button> 
                                   </div>
                                 </div>
                             </div>
@@ -321,6 +321,9 @@
                 userlink.innerHTML= "Мій профіль";        
                 signoutlink.innerHTML="Вийти";         
                 signoutlink.href = "javascript:Signout()";
+                support_btn.onclick = function(){
+                window.open('mailto:lendory.support@gmail.com'); 
+                }
                 }
             }
     </script>

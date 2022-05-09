@@ -22,39 +22,36 @@
 <body class="sign_">
     <header class="header">
     <div class="header_inner">
-      <a href="index.html">
+        <a href="index.html">
           <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">                    
-       </a>
-                
+       </a>    
    </div>
 </header>
                                 
-       <div class="register_form">
-            <div class="img_circle">
-                <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_blue.png?alt=media&token=9fb21e3c-c4d8-4d47-a459-055b20be60e4" alt="">                                                                                      
+    <div class="register_form">
+        <div class="img_circle">
+            <img class="header_logo"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_blue.png?alt=media&token=9fb21e3c-c4d8-4d47-a459-055b20be60e4" alt="">                                                                                      
+        </div>
+            <div class="SignIn_field">
+                <button id="sign_btn">Увійти</button>
+                <button id="reg_btn"><a href="SignUp.html">Зареєструватись</a></button>
             </div>
-                    <div class="SignIn_field">
-                        <button id="sign_btn">Увійти</button>
-                        <button id="reg_btn"><a href="SignUp.html">Зареєструватись</a></button>
-                    </div>
- 
-                    <label class="label_field" for=" ">Номер телефону</label>
-                    <input class="input_field" type="tel" name="" id="telnumbox" >  
-                    <label class="label_field" for="">Пароль</label>                   
-                    <input class="input_field" type="password" name="" id="passbox"  >
-    
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" checked class="custom-control-input" id="customSwitch1">
-                        <label class="custom-control-label" for="customSwitch1">Запам'ятати мене</label>
-                    </div>
-                        <div class="signin_btn_block">
-                            <button id="signIn_button">Увійти</button>
-                            <a href="#">Забули пароль?</a>
-                        </div>
-                        
-       </div>
+                <label class="label_field" for=" ">Номер телефону</label>
+                <input class="input_field" type="tel" maxlength="15" name="" id="telnumbox" >  
+                <label class="label_field" for="">Пароль</label>                   
+                <input class="input_field" type="password" name="" id="passbox"  >
+            <div class="custom-control custom-switch">
+                <input type="checkbox" checked class="custom-control-input" id="customSwitch1">
+                <label class="custom-control-label" for="customSwitch1">Запам'ятати мене</label>
+            </div>
+                <div class="signin_btn_block">
+                    <button id="signIn_button">Увійти</button>
+                    <a href="#">Забули пароль?</a>
+                </div>
+                    
+    </div>
 
-       <script type="module">
+    <script type="module">
         // ------------------------------Importing the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
         // -------------------------------- web app's Firebase configuration
@@ -71,59 +68,51 @@
         const app = initializeApp(firebaseConfig);
         import {getDatabase, ref, get, set, child, update, remove}
         from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"
-        
         const db = getDatabase();
-
-        //var switch_b = document.getElementById('customSwitch1');
-        
         const phoneNumber = document.getElementById('telnumbox');
         const password = document.getElementById('passbox');
         const submit = document.getElementById('signIn_button');
 
         function AuthenticateUser(){
-
-                const  dbref = ref(db);
-                get(child(dbref, "profiles/" + phoneNumber.value)).then((snapshot)=>{
-                    if(snapshot.exists()){
-                        let dbpass = snapshot.val().password;
-                            if(dbpass == password.value){
-                                login(snapshot.val());
-                            }           
-                            else{
-                                swal({
-                                    title: "Увага!",
-                                    text: "Хибний номер телефону або пароль!",
-                                    icon: "error",
-                                    button: "Зрозуміло!",
-                                    });
-
-                            }
-                    }
-                    else{
-                        swal({
-                            title: "Увага!",
-                            text: "Користувача з таким номером телефону не існує!",
-                            icon: "error",
-                            button: "Зрозуміло!",
-                            });
-                    }
-                });
+            const  dbref = ref(db);
+            get(child(dbref, "profiles/" + phoneNumber.value)).then((snapshot)=>{
+                if(snapshot.exists()){
+                    let dbpass = snapshot.val().password;
+                        if(dbpass == password.value){
+                            login(snapshot.val());
+                        }           
+                        else{
+                            swal({
+                                title: "Увага!",
+                                text: "Хибний номер телефону або пароль!",
+                                icon: "error",
+                                button: "Зрозуміло!",
+                                });
+                        }
                 }
-               
-                function login(user){
-                    let keepLoggedIn = document.getElementById('customSwitch1').checked;
-                    if(!keepLoggedIn){
-                        sessionStorage.setItem('user', JSON.stringify(user));
-                        window.location="index.html";
-                    }
-
-                    else{
-                        localStorage.setItem('keepLoggedIn', 'yes');
-                        localStorage.setItem('user', JSON.stringify(user));
-                        window.location="index.html";
-                    }
+                else{
+                    swal({
+                        title: "Увага!",
+                        text: "Користувача з таким номером телефону не існує!",
+                        icon: "error",
+                        button: "Зрозуміло!",
+                        });
                 }
-                submit.addEventListener('click', AuthenticateUser)
+            });
+            }
+            function login(user){
+                let keepLoggedIn = document.getElementById('customSwitch1').checked;
+                if(!keepLoggedIn){
+                    sessionStorage.setItem('user', JSON.stringify(user));
+                    window.location="index.html";
+                }
+                else{
+                    localStorage.setItem('keepLoggedIn', 'yes');
+                    localStorage.setItem('user', JSON.stringify(user));
+                    window.location="index.html";
+                }
+            }
+            submit.addEventListener('click', AuthenticateUser)
     </script>
 </body>
 </html>

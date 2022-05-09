@@ -51,7 +51,7 @@
                                       </div>
                                         <h6 id="user_name_box"></h6>
                                         <h6 id="user_phone_box"></h6>
-                                        <button>Служба підримки</button> 
+                                        <button id="support_btn">Служба підримки</button> 
                                   </div>
                                 </div>
                             </div>
@@ -297,18 +297,21 @@
                 localStorage.removeItem('keepLoggedIn');
                 window.location = 'index.html'}
         function logged_in_check(){
-        getUsername();
-        if(currentUser == null){
-            window.location = "SignIn.html"
-        }else{
-        created_adv.href = "created_adv.html";
-        liked_adv.href = "liked_adv.html";
-        get_user_info( user_name, user_phone)
-        userlink.innerHTML= "Мій профіль";   
-        userlink.href= "file:///D:/Lendory-WEB/public/edit_adv.html#" + url;      
-        signoutlink.innerHTML="Вийти";         
-        signoutlink.href = "javascript:Signout()";
-        }}
+            getUsername();
+            if(currentUser == null){
+                window.location = "SignIn.html"
+            }else{
+            created_adv.href = "created_adv.html";
+            liked_adv.href = "liked_adv.html";
+            get_user_info( user_name, user_phone)
+            userlink.innerHTML= "Мій профіль";   
+            userlink.href= "file:///D:/Lendory-WEB/public/edit_adv.html#" + url;      
+            signoutlink.innerHTML="Вийти";         
+            signoutlink.href = "javascript:Signout()";
+            support_btn.onclick = function(){
+            window.open('mailto:lendory.support@gmail.com'); 
+            }
+            }}
     </script>
 </body>
 </html>
