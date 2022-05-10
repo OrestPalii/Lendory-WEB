@@ -22,7 +22,7 @@
     <script src="sign_in_out_logic.js"></script>
     <script src="serverlogic.js"></script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
 </head>
 <body id="advert_body">
@@ -111,7 +111,7 @@
                     
                 </div>
                 
-                <div class="description">
+                <div class="description_">
                      <p>Опис</p>
                     <textarea name="" id="description_box" maxlength="500"  placeholder=""></textarea>
                 </div>
@@ -260,18 +260,20 @@
     }
     setdata(name_box.value, description_box.value, location_box.value, floor_box.value,
         rooms_box.value, area_box.value, rent_box.value, currency.value, option.value,  url, true);
-        swal({
+        Swal.fire({
+            timer: 2000,
                 text: "Оголошення успішно відредаговане!",
                 icon: "success",
-                buttons: "Гаразд",
+                confirmButtonText: "Гаразд",
             }).then(function(){
                 window.location = 'created_adv.html';
             });
     }else{
-        swal({
+        Swal.fire({
+                timer: 2000,
                 text: "Заповніть спочатку всі поля!",
                 icon: "warning",
-                buttons: "Гаразд",
+                confirmButtonText: "Гаразд",
             });
     }
     }

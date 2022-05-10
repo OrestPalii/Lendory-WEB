@@ -23,8 +23,7 @@
     <script src="serverlogic.js"></script>
     <script src="script.js"></script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
 </head>
 <body id="advert_body">
     <header class="header">
@@ -93,7 +92,7 @@
                 </div>
                 <div>
                     <label for="">Орендна плата за місяць</label> 
-                    <input type="number" min="0" name="name" max="10000000" maxlength="8" oninput="maxLengthCheck(this)"  id="rent_box" placeholder="" style="width: 90px;">                         
+                    <input type="number" min="0" name="name" max="10000000" maxlength="8" oninput="maxLengthCheck(this)" pattern="[0-9]" id="rent_box" placeholder="" style="width: 90px;" type="number"  onkeypress="return event.charCode >= 48 && event.charCode <= 57" >                         
                         <select name="currency" id="currency" >
                             <option value="$">₴</option>
                             <option value="€">€</option>
@@ -102,11 +101,11 @@
                 </div>
                 <div>
                     <label for="">Поверх</label>
-                    <input type="number" name="name" min="0" max="1000" maxlength="4" id="floor_box" oninput="maxLengthCheck(this)"  style="width: 90px;">
+                    <input type="number" name="name" min="0" max="1000" maxlength="4" id="floor_box" oninput="maxLengthCheck(this)"  style="width: 90px;" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                     <label for="">Площа (м²)</label>
-                    <input type="number" min="1" max="10000" maxlength="5" name="name" id="area_box" oninput="maxLengthCheck(this)"  style="width: 90px;">
+                    <input type="number" min="1" max="10000" maxlength="5" name="name" id="area_box" oninput="maxLengthCheck(this)"  style="width: 90px;" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                     <label for="">Кількіть кімнат</label>
-                    <input type="number" name="name" min="1" maxlength="3" max="100"  id="rooms_box" oninput="maxLengthCheck(this)"  style="width: 90px;"> 
+                    <input type="number" name="name" min="1" maxlength="3" max="100"  id="rooms_box" oninput="maxLengthCheck(this)"  style="width: 90px;" onkeypress="return event.charCode >= 48 && event.charCode <= 57"> 
                 </div>
                 <div>
                     
@@ -281,11 +280,12 @@
         numb 
     );
     }else{
-        swal({
-                text: "Заповніть спочатку всі поля!",
-                icon: "warning",
-                buttons: "Гаразд",
-            });
+        Swal.fire({
+            timer: 2500,
+            icon: 'warning',
+            title: 'Увага',
+            text: 'Заповніть всі поля!',
+            })
     }
     }
     let userlink = document.getElementById('userlink');
@@ -299,10 +299,10 @@
     function logged_in_check(){
         getUsername();
         if(currentUser == null){
-            swal({
+            Swal.fire({
+                title: 'Увага',
                 text: "Зареєструйтесь або увійдіть у вже створений акаунт , щоб створити оголошення",
                 icon: "info",
-                buttons: "Гаразд",
             }).then(function(){
                 window.location = 'SignIn.html';
             });
@@ -319,10 +319,10 @@
     function showAllGoodDialog(){
         if(canClose){
             window.clearInterval(myInterval); 
-            swal({
+            Swal.fire({
                 text: "Оголошення успішно створене й відправлене на перевірку. Очікуйте дзвінка від адміністрації!",
                 icon: "success",
-                buttons: "Гаразд",
+                confirmButtonText: 'Гаразд',
             }).then(function(){
                 window.location = 'index.html';
             });
