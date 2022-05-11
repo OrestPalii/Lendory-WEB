@@ -317,9 +317,11 @@
         }
     }
     function showAllGoodDialog(){
+        create.disabled=true;
         if(canClose){
             window.clearInterval(myInterval); 
             Swal.fire({
+                timer:5000,
                 text: "Оголошення успішно створене й відправлене на перевірку. Очікуйте дзвінка від адміністрації!",
                 icon: "success",
                 confirmButtonText: 'Гаразд',

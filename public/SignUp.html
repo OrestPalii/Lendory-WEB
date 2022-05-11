@@ -75,6 +75,7 @@
             get(child(dbRef, "profiles/" + phoneNumber.value)).then((snapshot)=>{
                 if(snapshot.exists()){
                     Swal.fire({
+                            timer:3000,
                             title: "Увага!",
                             text: "Користувача з таким номером телефону вже існує!",
                             icon: "error",
@@ -99,6 +100,7 @@
                     )
                     .then(()=>{
                         Swal.fire({
+                            timer:3000,
                             text: "Реєстрація успішно пройдена",
                             icon: "success",
                             confirmButtonText: "Гаразд",
