@@ -116,6 +116,9 @@
     color: #FFFFFF;
     margin-bottom: 2px;  
 }
+#column_right #user_name_box{
+    font-size:100%;
+}
 #column_right #user_phone_box{
     font-size: 15px;
     color: rgba(255, 255, 255, 0.75);
@@ -123,29 +126,32 @@
 .your_image{
     align-items: center;
     justify-content: center;
-    margin-left: 72px;
+    margin-left: 77px;
     width: 80px;
     height: 80px;
     background-color: #fff; 
     border-radius: 40px;
+    margin-bottom: 10px;
 }
 .your_image img{
     width: 70px;
     height: 70px;
-    border-radius: 35px;
     object-fit: cover;
     margin-top: 5px;
-    padding: 7px 7px;
-    
+    padding: 7px 7px; 
 }
-.wrapper button{
+#support_btn{
     margin-top: 25%;
+    outline: none;
+    border: none;
     width: 90%;
-    text-align: left;
     font-size: 14px;
-    color: #7d6bc5;
     background-color: #fff;
     border-radius: 10px;
+    color: #7a6daf;
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 0.1em;
 }
 .row:after {
     content: "";
@@ -203,23 +209,22 @@
 }
 #services_title:before{
     content: "03";  
-}
-#about_lend{
-    margin: 3px; 
-}     
-#but_advert{   
+}  
+#but_advert{  
+    margin-left: -230px; 
     margin-top: 50px;
-    margin-right: 260px;
     padding: 10px 10px;
     border: none;
     background: linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234));
-    border-radius: 30px;
+    border-radius: 20px;
     color: #fff;
+    text-transform: uppercase;
     font-size: 22px;
     letter-spacing: 0.1em;
     font-weight: 500; 
     outline: none;      
 } 
+
 /* SWIPER-SLIDER (for scroll info about us,LENDORY , etc) */
 .info-slider .swiper-button-prev:after{
     border-radius: 10px;
@@ -237,6 +242,23 @@
     color: #fff;
     margin-top: 115px;
 }
+.info-slider .swiper-pagination{
+    margin-bottom: -100px;
+    margin-left: 300px;
+}
+.info-slider .swiper-pagination-bullet {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    opacity: 1;
+    background: #C4C4C4;
+}
+.info-slider .swiper-pagination-bullet-active{
+    background: #A3BBD8;
+}
+
                 /* first page main photo */
 .intro{
     flex-direction: column;
@@ -247,7 +269,7 @@
     -webkit-background-size: cover;
     background-size: cover; 
     object-fit: contain;
-    
+   
 }
         @keyframes jump {          /*animation jump for bnt*/ 
             0%, 20%, 60%, 100% {
@@ -263,22 +285,19 @@
                 transform: translateY(-10px);
             }
         }
-        
 button:active{
     transform: scale(0.9);  
     outline: none;
     border: none;
 }
 button:focus{
-    border: none;
     outline: none;
-    text-decoration: none;
+    border: none;
 }
 /* second page main photo */
 .main_block{
     padding-top: 30px;
-    height: 100vh; 
-    background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
+    height: 100vh;  
 }
 /* SLICK-SLIDER second-page (recomamdation adverts) */
 .slick-slider{
@@ -288,6 +307,9 @@ button:focus{
     overflow: hidden;
     margin-left: -12%;
     width: 124%;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fbackground_slider.png?alt=media&token=cbceac01-b271-4626-977d-1c13faa6f53b) no-repeat;
+    background-size: cover;
+    border-radius: 60px;
 }
 .slick-track{
     display: flex;
@@ -315,12 +337,12 @@ button:focus{
 }
 .slick-prev:before {
     content: "〈";
-    color: #7d6bc5;
-    font-size: 70px;     
+    color: #7a6daf;
+    font-size: 70px; 
 }
 .slick-next:before {
     content: "〉";
-    color: #7d6bc5;
+    color: #7a6daf;
     font-size: 70px;
 }
 .slider .slick-arrow.slick-next{
@@ -358,7 +380,12 @@ button:focus{
 }
 .slider__item img{
     max-width: 100%;
-}    
+}   
+.recomend_for_you{
+    font-size: 40px;
+    padding-left: 3%;
+    color: #7a6daf;
+} 
 .ad_main_photo{
     margin-top: 50px;
     display: grid;
@@ -457,14 +484,46 @@ button:focus{
     font-size: 19px;
     letter-spacing: 0.1em;
 }
+footer{
+    background-color: #000;
+    height: 8vh;
+    width: 100%;
+    bottom: 0;
+}
+.footer_info {
+    padding-top: 20px;
+    text-align: center;
+    justify-content: center;
+    float: right;
+    margin-right: 4%;
+    font-size: 20px;
+}
+.footer_info a{
+    text-decoration: none;
+    margin-right: 20px;
+    color: #FFFFFF;
+    transition: .3s linear;
+}
+.footer_info a:hover{
+    text-decoration: none;
+    color: #7a6daf;
+}
+.footer_smth{
+    padding-top: 20px;
+    float: left;
+    text-align: center;
+    justify-content: center;
+    width: 40%;
+    color: #FFFFFF;
+}
         /* __________ADVERT.HTML__________ */
 #advert_body{
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Falladvback.jpg?alt=media&token=93b19d53-2e84-412c-ab6e-5c43366feca8) no-repeat;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fbackground_advert.png?alt=media&token=217d7f29-96ab-4fe8-8976-8efe45f52ac4) no-repeat;
     background-size: cover;
     background-attachment:fixed;
 }
 .advert_main_block{
-    padding-top: 3%;
+    padding-top: 4%;
     width: 100%;
     height: 90vh;
     align-items: center;
@@ -482,28 +541,27 @@ button:focus{
     margin-left: 3%;
 }
 ._photo{
-    width: 290px;
+    width: 300px;
     height: 260px;
     border-radius: 20px;
     object-fit: cover;
     min-width: 40%;
 }
 ._photo:hover{
-    transform: scale(0.98);
-    transition: all 0.7s ease 0s;  
+    animation: createrotate 1s ease-in-out both; 
 }
 .right_block_info{
     float: right;
     width: 135%;
     height: 550px;
-    background: rgba(170, 196, 230, 1);
+    background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
     padding-left: 40px;
-    padding-top: 10px;
+    padding-top: 20px;
     border-radius: 30px;
     overflow: hidden;
     margin-right: 3%;
     margin-left: 3%;
-    overflow: auto;
+    overflow: hidden;
 }
 .title{
     margin: 10px 0px 10px -10px ;
@@ -519,13 +577,15 @@ button:focus{
     line-height: 30px;
     letter-spacing: 0.1em;
     color: #FFFFFF;
-    margin-right: 20px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 .right_block_info input{
     border:none;
+    outline:none;
     width: 250px;
     height: 30px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     border-radius: 20px;
     position: relative;
     z-index: 2;
@@ -537,39 +597,57 @@ button:focus{
     height: 30px;
     border-radius: 20px;
     width: 50px;
-    background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
+    background-color: #fff;
+    color: #7a6daf;
     padding-left: 10px;
     font-size: 20px;
+    border: none;
+    outline: none;
 }
 #option{
     height: 30px;
     border-radius: 20px;
     width: 70px;
-    background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
+    background-color: #fff;
+    color: #7a6daf;
+    padding-left: 15px;
     font-size: 20px;
+    border: none;
+    outline: none;
 }
-.description{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.description_ p{
+    margin-top: -10px;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0.1em;
+    color: #FFFFFF;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 30px;
 }
 #description_box{
-    margin-top: -20px;
+    border: none;
+    margin-top: -30px;
     border-radius: 20px;
     color: #7a6daf;
     padding-left: 10px;
+    width: 700px;
+    height: 160px;
+    outline: none;
 }
 .create {
+    margin-top: -0.5%;
     margin-left: 40%;
     position: relative;
     outline: none;
-    border-radius: 50px;
+    border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     text-transform: uppercase;
-    height: 45px;
+    height: 60px;
     width: 250px;
     background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
     border: none;
@@ -632,13 +710,14 @@ button:focus{
                 /* __________SIGNIN__________ */
 /* background image for SignIn and SignUp pages */
 .sign_{
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fbackground_first_page.jpg?alt=media&token=78c01da2-0851-4842-a827-b73630d54d1b) no-repeat;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fbackground_signIn.jpg?alt=media&token=8259e8b5-dffa-49f2-b7dd-e75845f52a1a) no-repeat;
     background-size: cover;
 }
-.register_form{   
+.register_form{  
+    border: 3px solid white; 
     border-radius: 75px;
     padding: 30px 30px;
-    background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
+    background: none;
     margin-top: 10%;
     margin-left: auto;
     margin-right: auto;
@@ -679,6 +758,7 @@ button:focus{
     height: 39px;   
     background: #9484D8;
     border-radius: 20px; 
+    outline: none;
     border: none;
     z-index: 5;
     color: #FFFFFF;
@@ -690,6 +770,7 @@ button:focus{
     background: #FFFFFF;
     border-radius: 20px;
     border: none;
+    outline: none;
     margin-left: -30px;
     padding-left: 30px;
     z-index: 3;
@@ -703,6 +784,7 @@ button:focus{
     height: 37px;
     border-radius: 20px;
     border: none;
+    outline: none;
     padding-left: 10px;
     color: #7a6daf;
 }
@@ -730,12 +812,8 @@ button:focus{
     color: #9485D8;
     width: 140px;
     height: 40px;
-    border-radius:32px ;   
-}
-#signIn_button:focus{
-    border: none;
-    outline: none;
-    text-decoration: none;
+    border-radius:32px;  
+    outline: none; 
 }
 .signin_btn_block a{
     margin-top: 10px;
@@ -756,6 +834,7 @@ button:focus{
     color: #9484D8;
     border-radius: 20px; 
     border: none;
+    outline: none;
     z-index: 5;
     background: #FFFFFF;
     letter-spacing: 0.05em;         
@@ -771,6 +850,7 @@ button:focus{
      background: #9484D8;
      letter-spacing: 0.05em;
      z-index: 10;
+     outline: none;
 }
 #signUp_button{ 
     border: none;
@@ -780,12 +860,8 @@ button:focus{
     color: #9485D8;
     width: 262px;
     height: 40px;
-    border-radius:32px ;   
-}
-#signUp_button:focus{
-    border: none;
-    outline: none;
-    text-decoration: none;
+    border-radius:32px ;  
+    outline: none; 
 }
 #label_field_signup{           
      margin-top: 5px;
@@ -795,42 +871,38 @@ button:focus{
     margin-left: 55px;
 }            
           /* _______ADVERTREVIEW__________ */   
-
 #container_review{
-    margin-left: 20px;
-    margin-right: 30px;
+    margin-left: 1.5%;
     margin-top: 120px;
     left: 0;
     width: 97%;
-    height: 60vh;
+    height: 65vh;
     background-size: cover;
     border-radius: 60px;
     overflow:auto;
- }
+}
+#container_review::-webkit-scrollbar{
+    width: 10px;
+}
 .main_photo_review_block{
     float: right;  
 }
-.recomend_for_you{
-    font-size: 40px;
-    padding-left: 3%;
-    color: #fff;
-}
 .review_main{
-    margin-top: 40px;
+    margin-top: 45px;
     margin-left: 40px;
     margin-right: 40px;
-    width: 450px;
-    height: 370px;
+    width: 470px;
+    height: 390px;
     border-radius: 35px;
     object-fit:cover;
-    z-index: 1;               
+    z-index: 1;             
 }
 .other_photo_review_block{
     float: right; 
     display: grid;  
 }
 .review_other{
-    margin-top: 23px;
+    margin-top: 20%;
     width: 150px;
     height: 120px;
     border-radius: 20px;
@@ -862,22 +934,20 @@ button:focus{
 #price{
     font-size: 20px;
 }
-.description{
+#description{
     width: 50%;
-    margin-top: 30px;
+    margin-top: 40px;
     margin-right: 5px;
-    word-break: break-all;
+    font-size: 18px;
+    letter-spacing: 0em;
 }
 .adv_information span{
     font-size: 20px;
-     margin-right: 10px;
-     font-weight: 300; 
-     background-color: #fff;
-     border-radius: 10PX;
-     padding-left: 10px;
-     padding-right: 10px;
-     padding-top: 5px;
-     padding-bottom: 5px;
+    margin-right: 10px;
+    font-weight: 300; 
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 5px 10px 5px 10px;
 }
 .info_about_seller{
     float: right;
@@ -897,6 +967,8 @@ button:focus{
 }
 .info_{
     display: grid;
+    align-items: center;
+    justify-content: center;
 }
 #your_img{
     width: 40px;
@@ -907,24 +979,23 @@ button:focus{
     border: 3px solid ;
     border-color: white;
     object-fit: cover;              
- }
- .info_block span{
+}
+.info_block span{
     margin-right: 20px;
     font-size: 18px;
 }
-.like_image_back_review_body{
+.like_image_back_review_body{   /* Like btn on main photo */
     height: 46px;
     width: 46px;
     background-color: #fff;
     z-index: 100;
-    position: absolute;
-    margin-left: 420px;
-    bottom: 230px;
+    position: relative;
+    margin-left: 440px;
+    bottom: 65px;
     border-radius: 10px;
 }
-
             /* Popups(for review all photos)*/        
- .popup{
+.popup{
     position: fixed;
     width: 100%;
     height: 100%;
@@ -940,7 +1011,7 @@ button:focus{
     visibility: visible;
 }
 .popup:target .popup_text{
-    transform: perspective(600px) translate(0px,0%) rotateX(0deg);
+    transform: perspective(750px) translate(0px,0px) rotateX(0deg);
     opacity: 1;
 }
 .popup_area{
@@ -967,55 +1038,66 @@ button:focus{
     height: 50%;
     transition: all 0.5s ease 0s;
     opacity: 0;
-    transform: perspective(600px) translate(-100%,0px) rotateX(45deg);
+    transform:perspective(750px)translate3d(0px, 0px, -250px)rotateX(27deg);
     max-width: 800px;
     padding: 30px;    
 }
 .popup_img{
-    margin-top: 2%;
-    width: 90%;
-    height: 70%;
-    border-radius: 25px;
+    margin-top: 5%;
+    width: 550px;
+    height: 550px;
+    object-fit: contain;
+    transition: all 0.5s ease 0s;
+}
+.popup_img:hover{
+    transform: scale(1.1);
 }
 .popup_nav_a{
     font-size: 50px;
-    justify-content: center;
+    justify-content: center;   
 }
 .popup_nav_img{
-    margin: 0px 40px;
+    margin: 0px 60px;
     width: 40px;
     height: 50px;
 }
 .popup_nav_img:hover{
     padding: 5px 5px;
-    background-color: #7d6bc5;
+    background: linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234));
     border-radius: 10px;
 }          
-    /* Body for gettingdata */
+            /* GETTING_DATA*/
 #getting_body{
-   background-color: lightcyan;
+    max-height: 100vh;
+    min-height: 100vh;
+    background: linear-gradient(180deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%) no-repeat;
     background-attachment: fixed;
+    background-size: cover;
 }
- #tbody1{
-     margin-top: 40px;
-     align-items: center;
-     justify-content: center;
-     display: grid;
-     grid-template-columns: auto auto auto;
-     gap: 50px;
-
- }  
- .wrapper_box{
-     display: block;
-     width: 100%;
-     height: 22vh;
-    background-color: #fff;
-     border-bottom-left-radius: 45px;
-     border-bottom-right-radius: 45px;
+ #tbody1{     /* Div where ads are created */
+    padding-top: 50px;
+    padding-bottom: 50px;
+    min-height: 100vh;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fwaves.png?alt=media&token=36281331-ddca-4ad5-8e62-127feccd6504) no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 50px;
+ } 
+ .wrapper_box{     /*wrapper for search elements*/    
+    display: block;
+    width: 100%;
+    height: 23vh;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: black;
 }    
  .search_box{
     display: flex;
-    justify-content:space-around;
+    justify-content: space-evenly;
     margin-top: 60px;
     width: 100%;
     height: 10vh;
@@ -1023,62 +1105,65 @@ button:focus{
     padding-right: 100px;
     padding-left: 100px;  
 } 
-.search_box_wrapper{
-     background: rgba(216, 216, 216, 0.51);
-     display: grid;
-     width: 250px;
-     height: 50px;
-     border-radius: 10px;
- } 
-#search_box_little_wrapper{
-    width: 100px;
-} 
-#search_box_little_wrapper input{
-     width: 100px;
+.search_box_wrapper{     /*wrapper for element*/ 
+    background: rgba(255, 255, 255, 0.94);
+    display: grid;
+    width: 250px;
+    height: 50px;
+    border-radius: 10px;
+    margin-right: 30px;
+    overflow: hidden;
+    margin-bottom: 20px;
 }
+.search_box_wrapper_long{
+    height:120px ;
+} 
 .search_box_wrapper input{
-     background:none ;
-     border: none;
-     border-bottom-left-radius: 10px;
-     border-bottom-right-radius: 10px;
-     padding-left: 20px;
-     padding-right: 20px;
-     color: #fff;
-     margin-top: -10px;
-     z-index: 5;
-     font-size: 17px;
+    width: 220px;
+    background:none ;
+    border: none;
+    outline: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-left: 20px;
+    color: #7a6daf;
+    margin-top: 5px;
+    z-index: 5;
+    font-size: 17px;
 }
 .search_box_wrapper label{
-    color: #fff;
+    color: #7a6daf;
     padding-left: 20px; 
     font-size: 20px;
     z-index: 10;
-    margin-bottom: 0px;
+    margin-top: 10px;
 }  
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+::placeholder{
+    color: #7a6daf;
+    font-size: 20px;
 }
-.dropdown_btn_search{  /* Dropdown button "НАЙНОВІШІ" */
+.dropdown_btn_search{  /* content of dropdown button */
     display: none;
     position: absolute;
-    background: #D8D8D8;
+    background-color: white;
     min-width: 160px;
-    width: 300px;
+    width: 370px;
+    margin-left: 15px;
     border-radius: 10px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 100;
 }
 .dropdown_btn_search a {
     font-size: 20px;
-    color: white;
+    color: #7a6daf;
     padding: 12px 10px;
     text-decoration: none;
     display: block;
     z-index: 100;
 }
 .dropdown_btn_search a:hover{
-    color: #7d6bc5;
+    background-color:#A3BBD8 ;
+    border-radius: 10px;
     transition-duration: 1s;
 }
 .dropdown {
@@ -1088,66 +1173,79 @@ input::-webkit-inner-spin-button {
 .show{
     display:block;
 } 
-.search_box_btn{
-    width: 300px;
+.search_box_btn{   /* Dropdown button */
+    margin-left: 17px;
+    width: 370px;
     height: 50px;
     border: none;
     outline: none;
-    background: rgba(216, 216, 216, 0.51);
-    color: white;
+    background: rgba(255, 255, 255, 0.94);
+    color: #7a6daf;
     font-size: 25px;
     border-radius: 10px;
+    text-align: left;
+    padding-left: 15px;
+}
+.search_box_btn i{
+    float: right;
+    padding-right: 15px;
+    padding-top: 5px;
 }
 .search_box_btn:active{
     transform: scale(1);  
 }
+#search_box_title_label{
+    font-size: 20px;
+    margin-bottom: -5px;
+}
+.option_block label{
+    margin-top: -30px;
+    margin-left: -15px;
+    font-size: 25px;
+}
+.first_input{
+    margin-left: 45px;
+}
+.second_input{
+    margin-left: 10px;
+}
+.option_block input{
+    width: 20px;
+    height: 20px;
+}
 .h_line{             /* horizontal line */
     margin-left: 20px;
     margin-top: -6px;
-    width:85%;
-    height:2px; 
-    background: #fff 
+    width:78%;
+    height:1.5px; 
+    background: #7a6daf; 
 }
-#h_line_for_price{
-    width:60%;
-}
-#search_box_title_label{
-    margin-bottom: 5px;
-}
-.search_box_second_row{
+.event_btn_search_box{   /* Button CLEAN and SEARCH */
     margin-top: 20px;
-    float: right;
-    display: flex;
-}
-.search_box_help{
-    height: 50px;
-    margin-right: 50px;
-}
-.search_box_help label{
-    color: #fff;
-    font-size: 20px;
-    margin-top: -5px;
-    margin-left: -14px;
-}
-.search_box_help input{
-    margin-top: -5px;
-    width: 20px;
-    height: 20px;
-    color: #7d6bc5;
-    margin-left: 10px;
-}
-.event_btn_search_box{
     width: 170px;
-    height: 40px;
+    height: 50px;
     border: none;
     outline: none;
-    margin-right: 40px;
-    background-color: white;
+    margin-left: 20px;
+    background: rgba(255, 255, 255, 0.94);
     border-radius: 10px;
     color: rgb(148, 133, 216);
     font-size: 25px;
-    text-align: center;  
+    text-align: center; 
+    transition: .3s linear;
 }
+.event_btn_search_box:hover {
+    transform: rotateY(20deg);
+    box-shadow: 0 0 20px  rgb(255, 255, 255);
+}
+.btn_2:hover {
+    transform: rotateY(-20deg);
+    box-shadow: 0 0 20px  rgb(255, 255, 255);
+}
+
+
+
+
 
 
 

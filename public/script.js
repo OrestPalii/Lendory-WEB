@@ -8,30 +8,33 @@ $(document).ready(function(){
 		infinite:false,
 		waitForAnimate:true,
 		autoplay:true,
-		autoplaySpeed:3000,
-	
+		autoplaySpeed:3000,	
 	});
 })
-
-
 new Swiper('.info-slider',{
 	navigation:{
 		nextEl:'.swiper-button-next',
 		prevEl:'.swiper-button-prev'
 	},
-	keyboard: {
-		enabled: true,
+	pagination: {
+		el: ".swiper-pagination",
+		clickable: true,
+		dynamicBullets: true,
 	  },
-	simulateTouch:false,
+	  autoplay: {
+        delay: 8000,
+		autoplayDisableOnInteraction:false,
+        },
 	speed:2000,
 	effect:'cube',
 	cubeEffect:{
 		slideShadows:false,
 		shadow:false,
-		
-	
 	},
-
-	
+});
+$(".swiper-container").hover(function() {
+    (this).swiper.autoplay.stop();
+}, function() {
+    (this).swiper.autoplay.start();
 });
 

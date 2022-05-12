@@ -111,7 +111,7 @@ function fifth_img_upload(){
 }
 
 //data inserting function
-function setdata(name, description, location, floor, rooms, area, rent, currency, vol, numb){
+function setdata(name, description, location, floor, rooms, area, rent, currency, vol, numb, appr){
    
   var d = new Date();
   var millisecondsSince1970 = d.valueOf();
@@ -132,7 +132,7 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
             price: parseInt(rent),
             volunteering: vol,
             time:   millisecondsSince1970,
-            approved: false
+            approved: appr
         })
 
         getUsername();
@@ -140,25 +140,6 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
             name: currentUser.name,
             phoneNumber: currentUser.phonenumber
         })
-
-        //inserting images numbers
-        // firebase.database().ref("/").child("advertisementtest/" + numb + "/images/").update({
-        //     0: imgarray[0],
-        //     1: imgarray[1],
-        //     2: imgarray[2],
-        //     3: imgarray[3],
-        // })
-
-        //fields cleaning
-         name_box.value ='';
-         description_box.value = '';
-         location_box.value = ''; 
-         floor_box.value = ''; 
-         rooms_box.value = ''; 
-         area_box.value = ''; 
-         rent_box.value = ''; 
-         currency.value = ''; 
-         option.value = '';
     } 
 
   allAdv = []; 
@@ -207,6 +188,7 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
         adv_location.style.color='#60CFD2';
         user_name.style.color='#60CFD2';
         phoneNumber.style.color='#60CFD2';
+        your_img.src='https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_green.png?alt=media&token=d6f0505f-effe-423f-a767-266311c48bde';
         your_img.style.borderColor='#60CFD2'
           }else{        //for paid adverts
             background.style.background="linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234))";
@@ -219,7 +201,8 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
             adv_location.style.color='#7d6bc5';
             user_name.style.color='#7d6bc5';
             phoneNumber.style.color='#7d6bc5';
-            your_img.style.borderColor='#7d6bc5'
+            your_img.src='https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_blue.png?alt=media&token=9fb21e3c-c4d8-4d47-a459-055b20be60e4'
+            your_img.style.borderColor='#9484D8'
           }
       if(currentAdv.images[1]){
           adv_second_photo.src = currentAdv.images[1]
@@ -282,32 +265,35 @@ function getAdvInfo(code, adv_name, adv_loc, adv_floor, adv_rooms, adv_area, adv
       adv_area.value = currentAdv.area;
       adv_price.value = currentAdv.price;
       adv_currency.value = currentAdv.currency;
-      adv_vol.value = currentAdv.volunteering;
+      if(currentAdv.volunteering)
+        adv_vol.selectedIndex = 1;
+      else
+        adv_vol.selectedIndex = 0;
       adv_description.value = currentAdv.description;
       main_photo.src = currentAdv.images[0];
       if(currentAdv.images[1]){
         second_photo.src = currentAdv.images[1]   
       }
         if(currentAdv.images[2]){
-          third_photo.src = currentAdv.images[1]   
+          third_photo.src = currentAdv.images[2]   
       }
         if(currentAdv.images[3]){
-          fourth_photo.src = currentAdv.images[1]   
+          fourth_photo.src = currentAdv.images[3]   
       }
     }   
   })
  } 
  
  function get_user_info( user_name, user_phone){
-  getUsername();
-  //firebase.database().ref("profiles/" + phonenumber).on('value', function(snapshot){
-    
+  getUsername();  
     user_name.innerText = currentUser.name;
     user_phone.innerText = currentUser.phonenumber;
-   
-  // })
-  
  }
-
+ function Signout(){
+  sessionStorage.removeItem('user');
+  localStorage.removeItem('user');
+  localStorage.removeItem('keepLoggedIn');
+  window.location = 'index.html'
+}
 
 

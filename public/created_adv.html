@@ -11,7 +11,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
     <script src="serverlogic.js"></script>
     <script src="sign_in_out_logic.js"></script>
 </head>
@@ -22,7 +22,7 @@
                 <nav class="nav">
                   <a href="getting_data.html"> <img id="advert_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheader_icon_adverts.png?alt=media&token=d5a55fa8-ae4d-4620-b98e-3cce4b8a8f96" alt=""> Оголошення</a>
                     <div class="dropdown_profile" >
-                      <img id="profile_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_profile.png?alt=media&token=e0468b24-9d9d-4dae-b17e-762f68502fe0" alt=""><a href="#"  id='userlink'>Username</a>
+                        <img id="profile_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_blue.png?alt=media&token=9fb21e3c-c4d8-4d47-a459-055b20be60e4" alt=""><a href="#"  id='userlink'>Username</a>
                         <div class="dropdown_content" id="profile_content">
                             <div class="row" >
                                 <div class="column" id="column_left">
@@ -41,7 +41,7 @@
                                       </div>
                                         <h6 id="user_name_box"></h6>
                                         <h6 id="user_phone_box"></h6>
-                                        <button>Служба підримки</button> 
+                                        <button id="support_btn">Служба підримки</button> 
                                   </div>
                                 </div>
                             </div>
@@ -56,9 +56,7 @@
     </div>
     
    
-    <script>
-        
-    </script>
+   
     <script type="module">
         var tbody = document.getElementById("tbody1");
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
@@ -228,10 +226,11 @@
             ).then(()=>{
                 remove(ref(db, "advertisement/" + hashnumber))
                 .then(()=>{            
-                    swal({
+                    Swal.fire({
                         text: "Оголошення успішно видалене!",
                         icon: "success",
-                        buttons: "Гаразд",
+                        confirmButtonText: "Гаразд",
+                        timer: 2500
                     }).then(function(){
                         window.location.reload();
                     });
@@ -332,6 +331,9 @@
             userlink.innerHTML= "Мій профіль";        
             signoutlink.innerHTML="Вийти";         
             signoutlink.href = "javascript:Signout()";
+            support_btn.onclick = function(){
+            window.open('mailto:lendory.support@gmail.com'); 
+            }
             }
         }
     </script>
