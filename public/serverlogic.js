@@ -169,7 +169,11 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
         adv_numberofrooms.innerText="Кімнат: "+currentAdv.numberOfRooms;
         adv_floor.innerText = "Поверх: " + currentAdv.floor;
         user_name.innerText = currentAdv.creator.name;
-        phoneNumber.innerText=currentAdv.creator.phoneNumber;
+        if(currentUser==null){
+          phoneNumber.innerText="+380....";
+        }else{
+          phoneNumber.innerText=currentAdv.creator.phoneNumber;
+        }
         adv_description.innerText=currentAdv.description;
         adv_location.innerText = currentAdv.location;
         adv_isvol.innerText =currentAdv.volunteering;
@@ -179,8 +183,7 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
       if(currentAdv.volunteering){ //for free adverts
         adv_price.innerText= "Безкоштовно";
         background.style.background="linear-gradient(45deg, rgb(96, 207, 210), rgb(151, 231, 195) 70%)";
-        advertreview_body.style.background='url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fbackground_for_free_advert_advertreview_page.png?alt=media&token=d769d0e5-e883-4c6f-a187-cfac8ba4a48b)no-repeat'
-        advertreview_body.style.backgroundSize="cover";
+        advertreview_body.style.background="linear-gradient(45deg, rgb(96, 207, 210), rgb(151, 231, 195) 70%)";
         adv_price.style.color='#60CFD2';
         adv_area.style.color='#60CFD2';
         adv_numberofrooms.style.color='#60CFD2';
@@ -192,8 +195,7 @@ function setdata(name, description, location, floor, rooms, area, rent, currency
         your_img.style.borderColor='#60CFD2'
           }else{        //for paid adverts
             background.style.background="linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234))";
-            advertreview_body.style.background='url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fbackground_for_advertreview.jpg?alt=media&token=02ee92e6-7dcb-4f4f-95dc-a48ecfc8eced)no-repeat'
-            advertreview_body.style.backgroundSize="cover";
+            advertreview_body.style.background="linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234))";
             adv_price.style.color='#7d6bc5';
             adv_area.style.color='#7d6bc5';
             adv_numberofrooms.style.color='#7d6bc5';

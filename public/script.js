@@ -11,6 +11,20 @@ $(document).ready(function(){
 		autoplaySpeed:3000,	
 	});
 })
+$(document).ready(function(){
+	$('.slider_2').slick({
+		arrows:true,
+		dots:false,
+		slidesToShow:3,
+		adaptiveHeigth:true,
+		speed:1000,
+		infinite:false,
+		waitForAnimate:true,
+		autoplay:true,
+		autoplaySpeed:2000,	
+	});
+})
+
 new Swiper('.info-slider',{
 	navigation:{
 		nextEl:'.swiper-button-next',

@@ -5,23 +5,24 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lendory</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fwebsite_icon.png?alt=media&token=51e55c71-a2d4-4704-a934-fea262c5cbef">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-  <script src="serverlogic.js"></script>
-  <script src="sign_in_out_logic.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
   <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="slick.min.js"></script>
+  <script src="serverlogic.js"></script>
 </head>
 <body>
-  
                           <!-- Header(logo,search-box,navigation,dropdown page profile) -->
-<header class="header">
+<header class="header"> 
     <div class="header_inner">
         <img class="header_logo"  src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt="">
             <nav class="nav">
@@ -57,55 +58,55 @@
     </div>
 </header>
                   <!-- right-sideblock with information , swiper-slider -->
-     <div class="intro">
-        <div class="sideblock">
-            <div class="info-slider swiper-container">
-                <div class="swiper-wrapper">
-                   <div class="swiper-slide">
-                       <div class="lend_descr">
-                            <h3 class="lendory_title">Lendory</h3>
-                              <p id="about_lend">Шукаєш житло мрії для тимчасового проживання?
-                                Універсальний сайт LENDORY саме те, що вам потрібно!<br> 
-                               Натискай на кнопку та створи своє перше оголошення.
-                              </p>
-                      </div>
-                  </div>
-                  <div class="swiper-slide">
-                      <div class="lend_descr">
-                          <h3 class="lendory_title" id="about_us_title">Про нас</h3>
-                              <p id="about_lend">
-                                <ul>
-                                  <li>Безкоштовні оголошення для потребуючих </li>
-                                  <li>Швидке та легке створення оголошення</li>
-                                  <li>Миттєва реєстрація</li>
-                                  <li>Система перевірки оголошень від шахраїв</li>
-                                </ul>
-                              </p>
-                      </div>
+<section class="intro">
+    <div class="sideblock">
+        <div class="info-slider swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="lend_descr">
+                        <h3 class="lendory_title">Lendory</h3>
+                          <p id="about_lend">Шукаєш житло мрії для тимчасового проживання?
+                            Універсальний сайт LENDORY саме те, що вам потрібно!<br> 
+                            Натискай на кнопку та створи своє перше оголошення.
+                          </p>
                     </div>
-                  <div class="swiper-slide">
-                      <div class="lend_descr">
-                          <h3 class="lendory_title" id="services_title">Безпека</h3>
-                              <p id="about_lend">
-                                Якщо ви забули пароль до акаунту,ваш акаунт видалено чи щось сталось
-                                із вашим оголошенням , пишіть на нашу <a href="mailto:lendory.support@gmail.com" style="color:#A3BBD8;">пошту</a>.
-                              </p>            
-                      </div>
-                 </div>
-              </div>
-                  <div class="swiper-button-next"></div>
-                  <div class="swiper-button-prev"></div>
-                  <div class="swiper-pagination"></div>
-              </div>
-          <button id="but_advert" onclick="to_advert()">Нове оголошення</button>
-      </div> 
+                </div>
+                <div class="swiper-slide">
+                    <div class="lend_descr">
+                        <h3 class="lendory_title" id="about_us_title">Про нас</h3>
+                            <p id="about_lend">
+                              <ul>
+                                <li>Безкоштовні оголошення для потребуючих </li>
+                                <li>Швидке та легке створення оголошення</li>
+                                <li>Миттєва реєстрація</li>
+                                <li>Система перевірки оголошень від шахраїв</li>
+                              </ul>
+                            </p>
+                    </div>
+                  </div>
+                <div class="swiper-slide">
+                    <div class="lend_descr">
+                        <h3 class="lendory_title" id="services_title">Безпека</h3>
+                            <p id="about_lend">
+                              Якщо ви забули пароль до акаунту,ваш акаунт видалено чи щось сталось
+                              із вашим оголошенням , пишіть на нашу <a href="mailto:lendory.support@gmail.com" style="color:#A3BBD8;">пошту</a>.
+                            </p>            
+                    </div>
+                </div>
+            </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        <button id="but_advert" onclick="to_advert()">Нове оголошення</button>
     </div> 
+</section> 
                    <!-- SLick-slider of recommended adverts -->
 <section class="main_block">  
+  <script src="script.js"></script>     <!-- file with scripts -->  
     <div>
-        <p class="recomend_for_you">Рекомендовані оголошення для вас:</p>
+        <p class="recomend_for_you">Рекомендовані оголошення</p>
     </div> 
-
     <div class="slider">
       <div class="slider__item">
         <div class="ad_main_photo">
@@ -261,17 +262,53 @@
             </div> 
         </div> 
       </div>                       
-    </div>   
-        <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <!-- Slider Slick -->
-        <script src="slick.min.js"></script>
-        <!--  файл скриптiв -->
-        <script src="script.js"></script>              
-</section> 
+    </div>            
+</section>
+  <section class="experts_recommends">
+    <div>
+      <p class="advices_for_you">Поради від експертів</p>
+  </div> 
+
+    <div class="advice_wrapper">
+        <div class="left_adv_block">
+          <p>Шось від Ореста з любов’ю для Вас</p>
+            <div class="place_info">
+                <p>Безпечно зняти квартиру на тривалий термін можна і без допомоги фахівців, але при цьому врахуйте, що вам доведеться самостійно: шукати нерухомість, яка підходить під ваші параметри; домовлятися з власниками про перегляди; перевіряти документи; вирішувати дрібні організаційні питання.</p>
+            </div>
+        </div>
+        <div class="right_adv_block">
+          <img class="advice_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ffirst_photo_advices.png?alt=media&token=9c8238be-01de-4597-8042-38ecf7a17bb6" alt="">
+        </div>
+    </div>
+
+    <div class="advice_wrapper">
+        <div class="left_block_img">
+          <img class="advice_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fsecond_photo_advices.png?alt=media&token=9eec16f1-4524-4911-b8f1-76730093146e" alt="">
+        </div>
+        <div class="right_block">
+            <p>Як уникнути шахрайства при оренді квартири?</p>
+            <div class="place_info_right">
+                <p>Будьте уважні при перегляді. Намагайтеся помітити деталі, стан меблів, сантехніки та побутових приладів. Це необхідно, щоб згодом власник не зміг звинуватити вас у псуванні майна. Звірте всі документи. Дуже важливо, щоб перед вами був одноосібний власник житла. А якщо в документах є ще власники, щоб вони написали згоду або довіреність. Ще один спосіб перевірки – пошук квартири за реєстром нерухомості. Так ви зможете самостійно дізнатися, чи відповідають дані, надані власником, істині.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="advice_wrapper">
+      <div class="left_adv_block">
+        <p>Як правильно зняти квартиру, щоб Вас не обдурили?</p>
+          <div class="place_info">
+              <p>Я не лох!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
+          </div>
+      </div>
+      <div class="right_adv_block">
+        <img class="advice_photo" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fthird_photo_advices.png?alt=media&token=8214e043-32ad-499c-ad0c-769b18b020e8" alt="">
+      </div>
+  </div>
+
+  </section>
 <footer>
   <div class="footer_smth">
-    © Lendory 2022 Сopyright Developed by the QUAICE, усі права захищені
+      <p>© Lendory 2022 Developed by the QUAICE</p> 
   </div>
   <div class="footer_info">
     <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fenvelope-icon.png?alt=media&token=ceb1f3be-3afc-49c3-ae94-fa1bfaf8c5ec" alt=""> <a href="mailto:lendory.support@gmail.com" target="_blank">Служба підтримки</a>
