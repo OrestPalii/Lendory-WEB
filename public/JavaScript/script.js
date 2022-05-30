@@ -8,7 +8,8 @@ $(document).ready(function(){
 		infinite:false,
 		waitForAnimate:true,
 		autoplay:true,
-		autoplaySpeed:3000,	
+		autoplaySpeed:3000,
+		cssEase: 'ease-out',	
 	});
 })
 $(document).ready(function(){
@@ -22,6 +23,7 @@ $(document).ready(function(){
 		waitForAnimate:true,
 		autoplay:true,
 		autoplaySpeed:2000,	
+		cssEase: 'ease-out',
 	});
 })
 

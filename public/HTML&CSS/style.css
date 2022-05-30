@@ -1,4 +1,8 @@
-/* Header and all its elements(logo,search_box,and navigation) */
+/* Header and all its elements(logo and navigation) */
+*{  
+    font-family: 'Montserrat', sans-serif;
+
+}
 .header{
     padding: 5px 0px;
     justify-content: center;
@@ -10,7 +14,7 @@
     right: 0;
     background-color: black;
     z-index: 1000; 
-} 
+}
 .header_inner{
     display: flex;
     justify-content: space-between;
@@ -26,7 +30,6 @@
     position: relative;
     flex-wrap: nowrap;
 }
-
 #advert_icon{
     margin-top: -5px;
 }
@@ -55,6 +58,7 @@
     color:#7a6daf;
     text-decoration: none;
 }
+/* Dropdown profile button */
 .dropdown_profile button{
     font-size: 18px;
     color: azure;
@@ -126,7 +130,8 @@
 .your_image{
     align-items: center;
     justify-content: center;
-    margin-left: 77px;
+    margin-left: auto;
+    margin-right: auto;
     width: 80px;
     height: 80px;
     background-color: #fff; 
@@ -151,7 +156,6 @@
     color: #7a6daf;
     text-align: center;
     font-weight: 400;
-    letter-spacing: 0.1em;
 }
 .row:after {
     content: "";
@@ -185,30 +189,31 @@
     font-weight: 300;
     font-size: 20px;
     line-height: 30px;
-    letter-spacing: 0.1em;
     color: #9485D8;  
 }
 .lendory_title{
+    width: 120%;
     text-transform: uppercase;
     font-weight: 300;
-    font-size: 32px;
+    font-size: 26px;
     line-height: 45px;
     letter-spacing: 0.2em;
     margin-top: 15px;
     margin-bottom: 20px;
-    color: #A3BBD8;         
+    color: #A3BBD8;        
 }
 .lendory_title:before{
     content: "01";
     margin-right: 10px;
     font-size: 82px;
-    color: #9484D8;  
+    color: #9484D8;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 #about_us_title:before{
-    content: "02";  
+    content: "02"; 
 }
-#services_title:before{
-    content: "03";  
+#QR_title:before{
+    content: "03"; 
 }  
 #but_advert{  
     margin-left: -230px; 
@@ -222,9 +227,21 @@
     font-size: 22px;
     letter-spacing: 0.1em;
     font-weight: 500; 
-    outline: none;      
-} 
-/* SWIPER-SLIDER (for scroll info about us,LENDORY , etc) */
+    outline: none;  
+    transition: 1s all ease;    
+}
+#but_advert:hover{  
+    transform: scale(0.95);
+    background: linear-gradient(180deg, rgb(148, 133, 216), rgb(174, 204, 234));
+}
+#QR{
+    cursor: pointer;
+    margin-right: 4%;
+    width: 150px;
+    height: 150px;
+    border-radius:15px ;
+}
+/* SWIPER-SLIDER (for scroll LENDORY,About Us, etc) */
 .info-slider .swiper-button-prev:after{
     border-radius: 10px;
     padding:0px 10px 10px 10px ;
@@ -257,8 +274,7 @@
 .info-slider .swiper-pagination-bullet-active{
     background: #A3BBD8;
 }
-
-                /* first page main photo */
+                /* first page index.html */
 .intro{
     flex-direction: column;
     justify-content: center;
@@ -281,7 +297,7 @@
                 transform: translateY(-10px);
             }
         }
-button:active{
+button:active{  /* Styles for all btns */
     transform: scale(0.9);  
     outline: none;
     border: none;
@@ -290,10 +306,10 @@ button:focus{
     outline: none;
     border: none;
 }
-/* second page main photo */
+        /* second page index.html */
 .main_block{
     padding-top: 30px;
-    height: 100vh; 
+    height:fit-content; 
     overflow: hidden; 
 }
 /* SLICK-SLIDER second-page (recomamdation adverts) */
@@ -304,9 +320,11 @@ button:focus{
     overflow: hidden;
     margin-left: -12%;
     width: 124%;
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fbackground_slider.png?alt=media&token=124e0e63-c9c0-47b0-a628-ba8c1333516a)no-repeat;
+    padding-top: 35px;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fbackground_slider.png?alt=media&token=7a0aa68e-d05a-448a-8265-99a058194633)no-repeat;
     background-size: cover;
     border-radius: 60px;
+    margin-bottom: 100px;
 }
 .slider_2 .slick-list {
     overflow: hidden;
@@ -321,7 +339,7 @@ button:focus{
     align-items: flex-start;
     width: 100%;
 }
-.slider {/* Slider on mane page */
+.slider {/* Slider on main page */
     position: relative;
     padding: 0px 150px;
 }
@@ -342,7 +360,7 @@ button:focus{
 .slick-arrow{
     position: absolute;
     top: 50%;
-    margin: -50px 0px 0px 0px;
+    margin: -30px 0px 0px 0px;
     z-index: 100;
     font-size: 0;
     outline: none;
@@ -351,14 +369,19 @@ button:focus{
 }
 .slick-prev:before {
     content: "❮";
-    color: #000000;
-    font-size: 70px; 
+    color: #fff;
+    background-color: rgb(0, 0, 0,0.5);
+    font-size: 30px; 
+    border-radius: 15px;
+    padding: 5px 12px 5px 12px;
 }
 .slick-next:before {
     content: "❯";
-    color: #000000;
-    font-size: 70px;
-    
+    color: #fff;
+    background-color: rgb(0, 0, 0,0.5);
+    font-size: 30px;
+    border-radius: 15px;
+    padding: 5px 12px 5px 12px; 
 }
 .slick-arrow.slick-next{
     right: 0px;  
@@ -387,6 +410,7 @@ button:focus{
     width: 15px;
     height: 15px;
     background-color: #7d6bc5;
+    border: none;
     border-radius: 50%;
 }
 .slick-dots li.slick-active button{
@@ -407,6 +431,7 @@ button:focus{
     text-align: center;
     color: #7a6daf;
 } 
+            /* Advert unit stylization */
 .ad_main_photo{
     margin-top: 50px;
     display: grid;
@@ -414,6 +439,7 @@ button:focus{
     margin-right: auto;
     width: 420px;
     height: 542px;  
+    filter:drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.2));
 }
 .like_image_back{
     height: 46px;
@@ -440,6 +466,7 @@ button:focus{
     position: relative;
     object-fit: cover;
     z-index: 10;
+    filter:drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.2));
 }
 .description_block{
     position: relative;
@@ -460,24 +487,29 @@ button:focus{
     position: relative;
 }
 .other_photo{
-    margin-left: -9px;
+    margin-left: -12px;
     margin-top: 2px;
-    width: 122.18px;
-    height: 107.09px;
+    width: 132.18px;
+    height: 117.09px;
     object-fit: cover;
     border-radius: 20px;
     filter: grayscale(100%);
 }
 .count_photo{ 
     position: absolute;
-    margin-top: -92px;
+    margin-top: -99px;
     margin-left: 14px;
-    font-size: 50px;
+    font-size: 60px;
     color: #fff;  
 }
 .advert_name{
-    text-overflow: ellipsis;
+    display: -webkit-box;
+    max-width: 400px;
+    height: 72px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 .advert_location{
     text-overflow: ellipsis;
@@ -505,23 +537,26 @@ button:focus{
     font-size: 19px;
     letter-spacing: 0.1em;
 }
-        /* page with advices */
+        /* third page index.html (page with advices) */
 .experts_recommends{
-    height: 230vh;
+    height:fit-content;
     background: linear-gradient(90deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
     background-attachment: fixed;
     background-size: cover;
+    overflow: hidden;
 }
 .advices_for_you{
+    margin-top: 3%;
     text-transform: uppercase;
     padding-top: 30px;
     color: white;
     text-align: center;
-    font-size: 40px;
+    font-size: 45px;
 }
 .advice_wrapper{
+    justify-content: center;
     margin-top: 40px;
-    width: 100%;
+    width: 90%;
     padding-left: 10%;
     height: 500px;
     display: flex;
@@ -544,11 +579,12 @@ button:focus{
     background-color: white;
     box-sizing: border-box;
     color: #7a6daf;
-    font-size: 20px;
+    font-size: 19px;
     overflow: hidden;
     text-align: right;
     padding-right: 30px;
-    padding-left: 10px;
+    padding-left: 30px;
+    line-height: 28px;
 }
 /* second-advice */
 .right_block{       /* right block with title and advices */
@@ -584,17 +620,24 @@ button:focus{
     /* FOOTER (END OF PAGE) */
 footer{
     background-color: #000;
-    height: 8vh;
+    height: 70px;
+    max-height: 100px;
     width: 100%;
     bottom: 0;
 }
 .footer_info {
-    padding-top: 20px;
+    width: 87%;
+    display: flex;
+    justify-content: space-between;
     text-align: center;
-    top: 50%; 
-    float: right;
-    margin-right: 4%;
+    padding-top: 20px;
     font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.footer_info p{
+    color: #fff;
+    font-size: 18px;
 }
 .footer_info a{
     text-decoration: none;
@@ -606,17 +649,10 @@ footer{
     text-decoration: none;
     color: #7a6daf;
 }
-.footer_smth{
-    padding-top: 20px;
-    float: left;
-    text-align: center;
-    top: 50%; 
-    width: 40%;
-    color: #FFFFFF;
-}
+
         /* __________ADVERT.HTML__________ */
 #advert_body{
-    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fbackground_advert.png?alt=media&token=217d7f29-96ab-4fe8-8976-8efe45f52ac4) no-repeat;
+    background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Falladvback.jpg?alt=media&token=93b19d53-2e84-412c-ab6e-5c43366feca8) no-repeat;
     background-size: cover;
     background-attachment:fixed;
 }
@@ -628,7 +664,7 @@ footer{
     justify-content: center;
     display: flex;
 }
-.left_block_photos{
+.left_block_photos{   /* Unit with upload photos */
     float: left;
     width: 40%;
     align-items: center;
@@ -648,10 +684,10 @@ footer{
 ._photo:hover{
     animation: createrotate 1s ease-in-out both; 
 }
-.right_block_info{
+.right_block_info{   /* Unit with upload information */
     float: right;
     width: 1000px;
-    max-width: 100%;
+    max-width:fit-content;
     height: 550px;
     background: linear-gradient(90deg, rgba(148,130,216,1) 0%, rgba(174,204,234,1) 100%);
     padding-left: 40px;
@@ -667,7 +703,6 @@ footer{
     font-weight: 300;
     font-size: 29px;
     line-height: 44px;
-    letter-spacing: 0.1em;
     color: #FFFFFF;
     margin-right: 31%;
 }
@@ -741,11 +776,12 @@ footer{
     border-radius: 20px;
     color: #7a6daf;
     padding-left: 10px;
-    width: 700px;
+    margin-right: 40px;
+    width: 720px;
     height: 160px;
     outline: none;
 }
-.create {
+.create {       /* button for creating advert */
     margin-top: -0.5%;
     margin-left: auto;
     margin-right: auto;
@@ -993,7 +1029,7 @@ footer{
     margin-top: 120px;
     left: 0;
     width: 97%;
-    height: 65vh;
+    height:65vh;
     background-size: cover;
     border-radius: 60px;
     overflow:auto;
@@ -1005,21 +1041,21 @@ footer{
     float: right;  
 }
 .review_main{
-    margin-top: 45px;
+    margin-top: 6vh;
     margin-left: 40px;
     margin-right: 40px;
     width: 470px;
     height: 390px;
     border-radius: 35px;
     object-fit:cover;
-    z-index: 1;             
+    z-index: 1;           
 }
 .other_photo_review_block{
     float: right; 
     display: grid;  
 }
 .review_other{
-    margin-top: 20%;
+    margin-top: 4vh;
     width: 150px;
     height: 120px;
     border-radius: 20px;
@@ -1077,9 +1113,8 @@ footer{
     background-color: #fff;
     border-radius: 20px;
     padding-left: 20px;
-    width: 300px;
-    height: 20%;
-    margin-bottom: 20px;
+    width:360px;
+    height: 70px;
 }
 .info_{
     display: grid;
@@ -1141,16 +1176,16 @@ footer{
     align-items: center;
     justify-content: center;
     display: flex;
-    width: 50%;
+    width: 70%;
     height: 50%;
     transition: all 0.5s ease 0s;
     opacity: 0;
     transform:perspective(750px)translate3d(0px, 0px, -250px)rotateX(27deg);
-    max-width: 800px;
+    max-width: 900px;
     padding: 30px;   
 }
 .popup_text_advert{
-    margin-top: 50px;
+    margin-top: 40px;
     background: linear-gradient(90deg, rgb(148, 133, 216), rgb(174, 204, 234));
     display: block;
     color: white;
@@ -1180,6 +1215,15 @@ footer{
     border-radius: 10px;
 }          
             /* GETTING_DATA*/
+#black_wrapper{
+    width: 100%;
+    height: 100vh;
+}
+#no_liked{
+    width: 120%;
+    opacity: 0;
+    margin-left: 5%;
+}
 #getting_body{
     max-height: 100vh;
     min-height: 100vh;
@@ -1187,35 +1231,45 @@ footer{
     background-attachment: fixed;
     background-size: cover;
 }
- #tbody1{     /* Div where ads are created */
-    padding-bottom: 50px;
-    min-height: 100vh;
+.main_wrapper{
+    width: 100%;
+    height: fit-content;
     background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fwaves.png?alt=media&token=36281331-ddca-4ad5-8e62-127feccd6504) no-repeat;
     background-size: cover;
     background-attachment: fixed;
+}
+#tbody1{     /* Div where ads are created */
+    width: 100%;
+    padding-bottom: 50px;
+    min-height: 100vh;
     align-items: center;
     justify-content: center;
     display: grid;
+    padding-top: 20px;
     grid-template-columns: auto auto auto;
     gap: 50px;
- } 
- .wrapper_box{     /*wrapper for search elements*/    
+}
+.wrapper_box{     /*wrapper for search elements*/    
     display: block;
-    width: 100%;
-    height: 23vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    max-width: 1400px;
+    max-height: 300px;
+    height:21vh;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     background: rgba(0, 0, 0, 0.6);
 }    
- .search_box{
+.search_box{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     margin-top: 60px;
     width: 100%;
-    height: 10vh;
+    height:fit-content;
     padding-top: 20px;
-    padding-right: 100px;
-    padding-left: 100px;  
+    padding-left: 50px;
+    padding-right: 50px;
 } 
 .search_box_wrapper{     /*wrapper for element*/ 
     background: rgba(255, 255, 255, 0.94);
@@ -1231,7 +1285,7 @@ footer{
     height:120px ;
 } 
 .search_box_wrapper input{
-    width: 220px;
+    width: 210px;
     background:none ;
     border: none;
     outline: none;
@@ -1252,14 +1306,14 @@ footer{
 }  
 ::placeholder{
     color: #7a6daf;
-    font-size: 20px;
+    font-size: 18px;
 }
 .dropdown_btn_search{  /* content of dropdown button */
     display: none;
     position: absolute;
     background-color: white;
     min-width: 160px;
-    width: 370px;
+    width: 330px;
     margin-left: 15px;
     border-radius: 10px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -1287,7 +1341,7 @@ footer{
 } 
 .search_box_btn{   /* Dropdown button */
     margin-left: 17px;
-    width: 370px;
+    width: 330px;
     height: 50px;
     border: none;
     outline: none;
@@ -1307,8 +1361,8 @@ footer{
     transform: scale(1);  
 }
 #search_box_title_label{
-    font-size: 22px;
-    padding-top: 10px;
+    font-size: 20px;
+    margin-bottom: -5px;
 }
 .option_block label{
     margin-top: -30px;
@@ -1318,7 +1372,6 @@ footer{
 .option_block input{
     width: 20px;
     height: 20px;
-    margin-top: 10px;
     margin-left: 17px;
 }
 .h_line{             /* horizontal line */
@@ -1330,7 +1383,7 @@ footer{
 }
 .event_btn_search_box{   /* Button CLEAN and SEARCH */
     margin-top: 20px;
-    width: 170px;
+    width: 150px;
     height: 50px;
     border: none;
     outline: none;
@@ -1338,18 +1391,15 @@ footer{
     background: rgba(255, 255, 255, 0.94);
     border-radius: 10px;
     color: rgb(148, 133, 216);
-    font-size: 25px;
+    font-size: 22px;
     text-align: center; 
     transition: .3s linear;
 }
 .event_btn_search_box:hover {
-    transform: rotateY(20deg);
-    box-shadow: 0 0 20px  rgb(255, 255, 255);
+    transform: scale(0.95);
+    box-shadow: 0 0 20px  rgb(255, 255, 255,0.2);
 }
-.btn_2:hover {
-    transform: rotateY(-20deg);
-    box-shadow: 0 0 20px  rgb(255, 255, 255);
-}
+
 
 
 
