@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мої оголошення</title>
+     <!--Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+     
+    <link rel="icon" href="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fwebsite_icon.png?alt=media&token=51e55c71-a2d4-4704-a934-fea262c5cbef">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+    <script src="serverlogic.js"></script>
+</head>
+<body id="getting_body" >
+    <div class="main_wrapper">
+        <header class="header">
+            <div class="header_inner">
+                 <a href="index.html"><img class="header_logo"  src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt=""></a>
+                    <nav class="nav">
+                        <a href="getting_data.html"> <img id="advert_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheader_icon_adverts.png?alt=media&token=d5a55fa8-ae4d-4620-b98e-3cce4b8a8f96" alt="">Усі оголошення</a>
+                            <div class="dropdown_profile" >
+                                <img id="profile_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_blue.png?alt=media&token=9fb21e3c-c4d8-4d47-a459-055b20be60e4" alt=""><a href="#"  id='userlink'>Username</a>
+                                    <div class="dropdown_content" id="profile_content">
+                                        <div class="row" >
+                                            <div class="column" id="column_left">
+                                                <h3>Oголошення</h3>
+                                                    <a href="#" id="created_btn">Мої</a>
+                                                    <a href="advert.html" >Створити</a>
+                                                    <a href="" id="liked_btn">Вподобані</a>
+                                                    <br>
+                                                <h3>Інше</h3>
+                                                    <a href="#">Підтримка ЗСУ</a>
+                                            </div>
+                                            <div class="column" id="column_right">
+                                                <div class="wrapper">
+                                                    <div class="your_image">
+                                                        <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_blue.png?alt=media&token=9fb21e3c-c4d8-4d47-a459-055b20be60e4" alt="">
+                                                    </div>
+                                                        <h6 id="user_name_box"></h6>
+                                                        <h6 id="user_phone_box"></h6>
+                                                        <button id="support_btn">Служба підримки</button> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>     
+                            </div>
+                      <img id="exit_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""><a id="signoutlink" href="#">Вийти</a>
+                 </nav>
+            </div>
+        </header>
+        <!-- Black background which message when you dont have created adv -->
+        <div id="black_wrapper">
+            <div id="tbody1">
+                <h1 id="no_liked" style="color:white;"> Ви ще не cтворили жодного оголошення</h1>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module">
+        var tbody = document.getElementById("tbody1");
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+
+    const firebaseConfig = {
+    apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
+    authDomain: "lendory-b5d8b.firebaseapp.com",
+    databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
+    projectId: "lendory-b5d8b",
+    storageBucket: "lendory-b5d8b.appspot.com",
+    messagingSenderId: "759222136421",
+    appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
+    };
+
+    const app = initializeApp(firebaseConfig);
+
+    import {getDatabase, ref, get, set, child, update, remove}
+        from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+    import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} 
+        from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
+        
+    const db = getDatabase();
+    window.onload = GetAllDataOnce; 
+        function AddItemToTable(position, name, loc, price, currency, img_num, other_img_num, hashnumber,isvol,approved){
+            let wrapper_div = document.createElement("div");
+            let big_div = document.createElement("div");
+            let check_div = document.createElement("div");
+            let check_p = document.createElement("p");
+            let left_description = document.createElement("div");
+            let right_description = document.createElement("div");
+            let image = document.createElement("img");
+            let delete_image_back = document.createElement("img");
+            let delete_image = document.createElement("img");
+            let edit_image_back = document.createElement("img");
+            let edit_image = document.createElement("img");
+            let other_image = document.createElement("img");
+            let other_image_back = document.createElement("img");
+            let count_photo = document.createElement("p");
+            let td1 = document.createElement("p");
+            let td2 = document.createElement("p");
+            let td3 = document.createElement("p");
+
+            wrapper_div.setAttribute(
+                'style',
+                'visibility:hidden;position: relative; text-align: center;  width: 400px; height: 453px; background-color: rgb(0,0,0,0.7); border-radius: 35px; z-index:20;'
+            )
+            big_div.setAttribute(
+                'style',
+                'position: relative; text-align: center; margin-top: 50px; width: 400px; height: 453px; background-color: rgb(255, 255, 255); border-radius: 35px; z-index:10;'
+            )
+            check_div.setAttribute(
+                'style',
+                'width:95%; height:13%; z-index:50; position:absolute;margin-top:210px;margin-left:10px; border-radius:20px;align-items: center;justify-content:center; visibility: hidden;'
+            )
+            check_p.setAttribute(
+                'style',
+                'color:white;text-transform: uppercase;margin-top:16px;font-size:18px;'
+            )
+            
+            left_description.setAttribute(
+                'style', 
+                'text-align: center; margin-left: 28px; padding: 10px; margin-top: 10px; float: left; position: relative;'
+            )
+            right_description.setAttribute(
+                'style', 
+                'text-align: left; margin-top: -55px; position: relative;padding-top: 70px;padding-left: 15px;float: right;color: #fff;background: url(https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/gradient1.jpg?alt=media&token=903b7447-ad43-44d3-b559-4a66f7c958e6) no-repeat;background-size: cover;width: 230.73px;height: 232.41px;border-radius: 35px;z-index: 1;'
+            )
+            image.setAttribute(
+                'style',
+                'float: right;border-radius: 30px;width: 400.17px;height: 276.57px;position: relative;object-fit: cover;z-index: 10; '
+            )
+            edit_image.setAttribute(
+                'style',
+                'right: 0; margin-top: 225px; margin-right: 20.6px; width: 30px;height: 30px;position: absolute;z-index: 15;'
+            )
+            edit_image_back.setAttribute(
+                'style',
+                'right: 0; margin-top: 217px; border-radius: 10px; background-color: white; margin-right: 13px; width: 46px;height: 46px;position: absolute;z-index: 15;'
+            )
+            delete_image.setAttribute(
+                'style',
+                'right: 0; margin-top: 225px; margin-right: 70.6px; width: 30px;height: 30px;position: absolute;z-index: 15;'
+            )
+            delete_image_back.setAttribute(
+                'style',
+                'right: 0; margin-top: 217px; border-radius: 10px; background-color: white; margin-right: 63px; width: 46px;height: 46px;position: absolute;z-index: 15;'
+            )
+            other_image.setAttribute(
+                'style',
+                'margin-left: -15px;margin-top: 2px; width: 122.18px;height: 117.09px;object-fit: cover;border-radius: 20px;filter: grayscale(100%);'
+            )
+            other_image_back.setAttribute(
+                'style',
+                'margin-left: -122px;margin-top: 2px; width: 122.18px;height: 117.09px;object-fit: cover;border-radius: 20px; background-color:black; opacity: 0.5;outline:none;'
+            )
+            td1.setAttribute(
+            'style',
+            'text-overflow: ellipsis;overflow: hidden;white-space: nowrap;'
+            )
+            td2.setAttribute(
+                'style',
+                'text-overflow: ellipsis;overflow: hidden;white-space: nowrap;'
+            )
+            count_photo.setAttribute(
+                'style',
+                'position: absolute;margin-top: -97px;margin-left: 10px;font-size: 50px;color: #fff;  '
+            )   
+            right_description.onclick = function(){
+                window.open('advertreview.html#' + hashnumber,'_blank');  
+            }
+            left_description.onclick = function(){
+                window.open('advertreview.html#' + hashnumber,'_blank'); 
+            }
+            image.onclick = function(){
+                window.open('advertreview.html#' + hashnumber,'_blank');    
+            }
+            var img_count = 0;
+            get_adv_img_count(hashnumber, count_photo)
+            td1.innerHTML = name;
+            td2.innerHTML = loc;
+            if(price==0){
+            td3.innerHTML = "Безкоштовно";
+            }else
+                td3.innerHTML = price + currency;
+            image.src = img_num;
+            check_p.innerHTML = 'Ваше оголошення перевіряється';
+            if(!approved){
+                check_div.style.visibility = "visible";
+                wrapper_div.style.visibility = 'visible';
+                if(isvol){
+                    check_div.style.background="linear-gradient(45deg, rgb(96, 207, 210), rgb(151, 231, 195) 70%)";
+                }else{
+                    check_div.style.background="linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234))";
+                }
+            }
+            if(isvol){
+                right_description.style.background="linear-gradient(45deg, rgb(96, 207, 210), rgb(151, 231, 195) 70%)";
+                delete_image.src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ftrash_icon_green.png?alt=media&token=168cbca3-4249-4d18-ba33-9c69ef3be3bd";
+                edit_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fedit_icon_green.png?alt=media&token=d6ade061-02f1-4a68-8b24-f3d2a9602d89";
+            }else{
+                right_description.style.background="linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234))";
+                delete_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ftrash_icon.png?alt=media&token=80c5a10d-c1b7-4c38-82ee-8da9ff24962e";
+                edit_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fedit_icon.png?alt=media&token=590838a1-1e37-4b52-88db-24ff00a552bb";
+            }
+            if(other_img_num != null){
+                other_image.src = other_img_num
+            }else{
+                other_image.src = 'https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05';
+            }
+           
+            edit_image.onclick = function(){
+            window.location = 'edit_adv.html#' + hashnumber;  
+            }
+            delete_image.onclick = function(){
+            var createdByU = [];
+            var createdByU_new  = []
+            const dbRef = ref(db);
+            get(child(dbRef, "profiles/" + currentUser.phonenumber + "/created"))
+                .then((snapshot)=>{
+                    snapshot.forEach(childSnapshot =>{
+                        createdByU.push(childSnapshot.val());   
+            });
+            for(var i = 0; i < createdByU.length; i++){
+                if(createdByU[i] != hashnumber){
+                    createdByU_new.push(createdByU[i]);
+                }
+            }
+            set(ref(db, "profiles/" + currentUser.phonenumber + "/created/"),
+                    createdByU_new 
+            ).then(()=>{
+                remove(ref(db, "advertisement/" + hashnumber))
+                .then(()=>{            
+                    Swal.fire({
+                        text: "Оголошення успішно видалене!",
+                        icon: "success",
+                        confirmButtonText: "Гаразд",
+                        timer: 2500
+                    }).then(function(){
+                        window.location.reload();
+                    });
+                })
+                .catch((error)=>{
+                })          
+            });   
+        })        
+        }
+        big_div.appendChild(image);
+        big_div.appendChild(edit_image_back);
+        big_div.appendChild(edit_image);
+        big_div.appendChild(delete_image_back);
+        big_div.appendChild(delete_image);
+        big_div.appendChild(check_div);
+        check_div.appendChild(check_p);
+        left_description.appendChild(other_image);
+        left_description.appendChild(other_image_back);
+        left_description.appendChild(count_photo);
+        right_description.appendChild(td1);
+        right_description.appendChild(td2);
+        right_description.appendChild(td3);
+        big_div.appendChild(left_description);
+        big_div.appendChild(right_description);
+        tbody.appendChild(big_div);
+        big_div.appendChild(wrapper_div);
+     
+        }
+        function AddAllItemsToTable(TheAdvertisement){
+            tbody.innerHTML="";
+            var position = 0;
+            TheAdvertisement.forEach(element => {
+                AddItemToTable(position, element.name, element.location, element.price, element.currency, element.images[0], element.images[1], element.hashnumber,element.volunteering, element.approved);
+                position++;
+            });
+        }
+        var createdbyU = [];
+        function GetAllDataOnce(){
+            logged_in_check();          
+            const dbRef = ref(db);
+            get(child(dbRef, "advertisement"))
+            .then((snapshot)=>{
+                var advertisements = [];
+                snapshot.forEach(childSnapshot =>{
+                    advertisements.push(childSnapshot.val());
+                });
+                getUsername();
+                if(currentUser != null){
+                get(child(dbRef, "profiles/" + currentUser.phonenumber + "/created"))
+                    .then((snapshot)=>{
+                    snapshot.forEach(childSnapshot =>{
+                        createdbyU.push(childSnapshot.val());
+                    });
+                    var created_advertisements = [];
+                    for(var i = 0; i < advertisements.length; i++){
+                        for(var j = 0; j < createdbyU.length; j++){  
+                            if(advertisements[i].hashnumber == createdbyU[j]){
+                                created_advertisements.push(advertisements[i]);    
+                            }
+                        }
+                    }
+                    if(created_advertisements.length == 0){
+                        document.getElementById('black_wrapper').style.backgroundColor='rgb(0, 0, 0,0.5)';
+                        document.getElementById('no_liked').style.opacity=1;
+                    }else{
+                        AddAllItemsToTable(created_advertisements);
+                    }
+                }) 
+                }
+            else{
+                //Виводити тескст що ти анлогін
+                //AddAllItemsToTable(advertisements, false);
+            }
+            })
+        }
+        function get_adv_img_count(hashnumber, count_photo){
+            const dbRef = ref(db);
+            get(child(dbRef, "advertisement/" + hashnumber + "/images/"))
+                    .then((snapshot)=>{
+                        var adv_images = []
+                        var img_count = 0;
+                    snapshot.forEach(childSnapshot =>{
+                        adv_images.push(childSnapshot.val());
+                        img_count++;
+                    });
+                    count_photo.innerHTML = '+' + String(img_count-1)
+                })
+        }
+        let userlink = document.getElementById('userlink');
+        let signoutlink = document.getElementById('signoutlink');
+        let user_name = document.getElementById('user_name_box');
+        let user_phone = document.getElementById('user_phone_box');   
+        var created_adv = document.getElementById('created_btn');
+        var liked_adv = document.getElementById('liked_btn');
+
+        function logged_in_check(){
+            getUsername();
+            if(currentUser == null){
+            window.location = "SignIn.html"
+            }else{
+            created_adv.href = "created_adv.html";
+            liked_adv.href = "liked_adv.html";
+            get_user_info( user_name, user_phone)
+            userlink.innerHTML= "Мій профіль";        
+            signoutlink.innerHTML="Вийти";         
+            signoutlink.href = "javascript:Signout()";
+            support_btn.onclick = function(){
+            window.open('mailto:lendory.support@gmail.com'); 
+            }
+            }
+        }
+    </script>
+</body>
+</html>

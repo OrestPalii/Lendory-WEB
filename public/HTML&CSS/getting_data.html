@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Усі оголошення</title>
+     <!--Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+     
+    <link rel="icon" href="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fwebsite_icon.png?alt=media&token=51e55c71-a2d4-4704-a934-fea262c5cbef">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <script src="serverlogic.js"></script>
+</head>
+<body id="getting_body" >
+    <div class="main_wrapper">
+        <header class="header">
+            <div class="header_inner">
+                <a href="index.html"><img class="header_logo"  src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt=""></a>
+                    <nav class="nav">
+                        <a href="getting_data.html"> <img id="advert_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheader_icon_adverts.png?alt=media&token=d5a55fa8-ae4d-4620-b98e-3cce4b8a8f96" alt=""> Усі оголошення</a>
+                            <div class="dropdown_profile" >
+                                <img id="profile_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_blue.png?alt=media&token=9fb21e3c-c4d8-4d47-a459-055b20be60e4" alt=""><a href="#"  id='userlink'>Username</a>
+                                    <div class="dropdown_content" id="profile_content">
+                                        <div class="row" >
+                                            <div class="column" id="column_left">
+                                                <h3>Оголошення</h3>
+                                                <a href="#" id="created_btn">Мої</a>
+                                                <a href="advert.html" >Створити</a>
+                                                <a href="" id="liked_btn">Вподобані</a>
+                                                <br>
+                                                <h3>Інше</h3>
+                                                <a href="https://bank.gov.ua/ua/news/all/natsionalniy-bank-vidkriv-spetsrahunok-dlya-zboru-koshtiv-na-potrebi-armiyi" target="_blank">Підтримка ЗСУ</a>
+                                            </div>
+                                            <div class="column" id="column_right">
+                                                <div class="wrapper">
+                                                    <div class="your_image">
+                                                    <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_blue.png?alt=media&token=9fb21e3c-c4d8-4d47-a459-055b20be60e4" alt="">
+                                                    </div>
+                                                    <h6 id="user_name_box"></h6>
+                                                    <h6 id="user_phone_box"></h6>
+                                                    <button id="support_btn">Служба підримки</button> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>     
+                            </div>
+                        <img id="exit_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""><a id="signoutlink" href="#">Вийти</a>
+                    </nav>
+            </div>
+    </header>
+    <!-- Filter for searching adverts -->
+    <section>
+        <div class="wrapper_box">
+            <div class="search_box">
+                <div style="display:block;">
+                    <div class="search_box_wrapper">
+                        <Input id="name_box_search" placeholder="Назва" maxlength="50"><div class="h_line"></div></Input>
+                    </div>
+                    <div class="search_box_wrapper">
+                        <Input id="loc_box_search" placeholder="Локація" maxlength="60"><div class="h_line"></div></Input>
+                    </div>
+                </div>
+                <div style="display:block ;">
+                    <div class="search_box_wrapper" style="width:210px ;" >
+                        <Input id="min_price_box_search" type="number" placeholder="Мінімальна ціна" min="1" max="999999999" maxlength="9" oninput="maxLengthCheck(this)"onkeypress="return event.charCode >= 48 && event.charCode <= 57"><div class="h_line"></div></Input >
+                    </div>
+                    <div class="search_box_wrapper" style="width:210px ;">
+                        <Input id="max_price_box_search" type="number" placeholder="Максимальна ціна" min="2" max="999999999" maxlength="9" oninput="maxLengthCheck(this)"onkeypress="return event.charCode >= 48 && event.charCode <= 57"><div class="h_line"></div></Input>
+                    </div>
+                </div>
+                <div class="search_box_wrapper search_box_wrapper_long">
+                    <label id="search_box_title_label" for="">Допомога біженцям?</label>
+                    <div style="width:85% ;" class="h_line"></div>
+                    <div class="option_block">
+                        <input type="checkbox" class="first_input" name="" id="Yes" value="1" checked>
+                        <label for="Yes">Так</label>
+                        <input type="checkbox"  class="second_input" name="" id="No" value="0" checked>
+                        <label for="No">Ні</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="dropdown">
+                        <button id="droptitle" onclick="dropbtn()" class="search_box_btn" >Найновіші<i class="fa fa-caret-down"></i></button>
+                            <div id="Dropdown" class="dropdown_btn_search">
+                                <a id="newest" href="#">Найновіші</a>
+                                <a id="oldest" href="#">Найстаріші</a>
+                                <a id="cheepest" href="#">Найдешевші</a>
+                                <a id="mostexp" href="#">Найдорожчі</a>
+                            </div>
+                    </div>
+                        <div>
+                        <button class="event_btn_search_box" id="clean_button"><span>Очистити</span></button>
+                        <button class="event_btn_search_box btn_2" id="search_button"><span>Застосувати</span></button>
+                    </div> 
+                </div>  
+            </div>
+        </div>
+    </section>
+            <!-- div where all adverts appear -->
+        <div id="tbody1">
+            
+        </div>
+    </div>
+
+<script>
+    function dropbtn() {
+        document.getElementById("Dropdown").classList.toggle("show");
+    }
+    window.onclick = function(event) {
+    if (!event.target.matches('.search_box_btn')) {
+        var dropdowns = document.getElementsByClassName("dropdown_btn_search");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+        }
+        }
+    }
+    }
+    function maxLengthCheck(object)
+    {
+        if (object.value.length > object.maxLength)
+        object.value = object.value.slice(0, object.maxLength)
+    }
+</script>
+<script type="module">
+    var showingitems = [];
+    var advertisements = [];
+    var name_box_search = document.getElementById('name_box_search');
+    var loc_box_search = document.getElementById('loc_box_search');
+    var min_price_box_search = document.getElementById('min_price_box_search');
+    var max_price_box_search = document.getElementById('max_price_box_search');
+    var vol_true = document.getElementById('Yes');
+    var vol_false = document.getElementById('No');
+    var clean = document.getElementById('clean_button');
+    var droptitle = document.getElementById('droptitle');
+    var newest = document.getElementById('newest');
+    var oldest = document.getElementById('oldest');
+    var cheepest = document.getElementById('cheepest');
+    var mostexp = document.getElementById('mostexp');
+
+    newest.onclick = function(){
+        droptitle.innerText = newest.innerText;
+    }
+    oldest.onclick = function(){
+        droptitle.innerText = oldest.innerText;
+    }
+    cheepest.onclick = function(){
+        droptitle.innerText = cheepest.innerText;
+    }
+    mostexp.onclick = function(){
+        droptitle.innerText = mostexp.innerText;
+    }
+
+    clean.onclick = function(){
+        setdefault(advertisements)
+    }
+    var search = document.getElementById('search_button');
+    search.onclick = function(){
+        search_adv(advertisements)
+    }
+    
+    function setdefault(){
+        name_box_search.value = "";
+        loc_box_search.value = "";
+        min_price_box_search.value = "";
+        max_price_box_search.value = "";
+        vol_true.checked = true;
+        vol_false.checked = true;
+
+        for(var i = 0; i < showingitems.length; i++){
+            showingitems[i].remove();
+        }
+        if(currentUser != null){
+                AddAllItemsToTable(advertisements, true); 
+        }
+        else{
+            AddAllItemsToTable(advertisements, false);
+        }    
+    }
+    
+    function search_adv(downloaded){
+        var sorted = [];
+        if (name_box_search.value != ''){
+            for(let i = 0; i<downloaded.length; i++){
+                if(downloaded[i].name.includes(name_box_search.value)){
+                    sorted.push(downloaded[i])
+                    
+                }
+            }
+        }else{
+            for (let i = 0; i < downloaded.length; i++) {
+                sorted[i] = downloaded[i];
+                
+            }  
+        }
+
+        var preSorted = [];
+        if(vol_true.checked){
+            for(let i = 0; i<sorted.length; i++){
+                if(sorted[i].volunteering){
+                    preSorted.push(sorted[i]);
+                }
+            }
+        }
+
+        if(vol_false.checked){
+            for(let i = 0; i<sorted.length; i++){
+                if(!sorted[i].volunteering){
+                    preSorted.push(sorted[i]);
+                }
+            }
+        }
+        sorted = [];
+        for (let i = 0; i < preSorted.length; i++) {
+                sorted[i] = preSorted[i];
+                
+            }
+        var preSorted = []; 
+        if (loc_box_search.value != ''){
+            for(let i = 0; i<sorted.length; i++){
+                if(sorted[i].location.includes(loc_box_search.value)){
+                    preSorted.push(sorted[i])
+                    
+                }
+            }
+        }else{
+            for (let i = 0; i < sorted.length; i++) {
+                preSorted[i] = sorted[i];    
+            }  
+        }
+        sorted = [];
+        for (let i = 0; i < preSorted.length; i++) {
+                sorted[i] = preSorted[i];  
+            }
+
+        var preSorted = [];
+        var min = 0;
+        var max = 99999999999999;
+
+        if(min_price_box_search.value !=''){
+            try{
+                min = parseInt(min_price_box_search.value);
+            }catch(error){
+            
+            }
+        }
+        if(max_price_box_search.value !=''){
+            try{
+                max = parseInt(max_price_box_search.value);
+            }catch(error){
+            
+            }
+        }
+        var currprice = 0;
+        for(let i = 0; i< sorted.length; i++){
+            if(sorted[i].currency == "$")
+                currprice = sorted[i].price*30;
+                
+            if(sorted[i].currency == "€")
+                currprice = sorted[i].price*33;
+
+            if(sorted[i].currency == "₴")
+                currprice = sorted[i].price;
+            if(currprice >= min && currprice <= max)
+                preSorted.push(sorted[i])    
+        }
+
+        for(var i = 0; i < showingitems.length; i++){
+            showingitems[i].remove();
+        }
+
+        switch(droptitle.innerText){
+            case "Найновіші":
+                preSorted.sort((a, b) => a.time - b.time);
+                preSorted.reverse();
+                break;
+            case "Найстаріші":
+                preSorted.sort((a, b) => a.time - b.time);
+                break; 
+            case "Найдешевші":
+                preSorted.sort(function(a,b){
+                    var aprice, bprice;
+                    if(a.currency == "$")
+                        aprice = a.price * 30;
+                    if(a.currency == "€")
+                        aprice = a.price * 33;
+                    if(a.currency == "₴")   
+                        aprice = a.price; 
+
+                    if(b.currency == "$")
+                        bprice = b.price * 30;
+                    if(b.currency == "€")
+                        bprice = b.price * 33;
+                    if(b.currency == "₴")   
+                        bprice = b.price;  
+                    return aprice - bprice;
+                });
+                break;  
+            case "Найдорожчі":
+                preSorted.sort(function(a,b){
+                        var aprice, bprice;
+                        if(a.currency == "$")
+                            aprice = a.price * 30;
+                        if(a.currency == "€")
+                            aprice = a.price * 33;
+                        if(a.currency == "₴")   
+                            aprice = a.price; 
+
+                        if(b.currency == "$")
+                            bprice = b.price * 30;
+                        if(b.currency == "€")
+                            bprice = b.price * 33;
+                        if(b.currency == "₴")   
+                            bprice = b.price;  
+                        return aprice - bprice;
+                });
+                preSorted.reverse();
+                break; 
+        }
+        
+        if(currentUser != null){
+                AddAllItemsToTable(preSorted, true); 
+        }
+        else{
+            AddAllItemsToTable(preSorted, false);
+        }
+    }
+
+    var tbody = document.getElementById("tbody1");
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    const firebaseConfig = {
+    apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
+    authDomain: "lendory-b5d8b.firebaseapp.com",
+    databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
+    projectId: "lendory-b5d8b",
+    storageBucket: "lendory-b5d8b.appspot.com",
+    messagingSenderId: "759222136421",
+    appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
+    };
+const app = initializeApp(firebaseConfig);
+import {getDatabase, ref, get, set, child, update, remove}
+    from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} 
+    from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
+    
+const db = getDatabase();
+window.onload = GetAllDataOnce; 
+function AddItemToTable(display_likes, position, name, loc, price,currency, img_num, other_img_num, hashnumber,isvol){
+    let big_div = document.createElement("div");
+    let left_description = document.createElement("div");
+    let right_description = document.createElement("div");
+    let image = document.createElement("img");
+    let like_image_back = document.createElement("img");
+    let like_image = document.createElement("img");
+    let other_image = document.createElement("img");
+    let other_image_back = document.createElement("img");
+    let count_photo = document.createElement("p");
+    let td1 = document.createElement("p");
+    let td2 = document.createElement("p");
+    let td3 = document.createElement("p");
+    let more = document.createElement("a");
+
+    
+    big_div.setAttribute(
+        'style',
+        'position: relative; text-align: center; width: 400px; height: 453px; background-color: rgb(255, 255, 255); border-radius: 35px; z-index:10;filter:drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.2));'
+    )
+    left_description.setAttribute(
+        'style', 
+        'text-align: center; margin-left: 28px; padding: 10px; margin-top: 10px; float: left; position: relative;'
+    )
+    right_description.setAttribute(
+        'style', 
+        'text-align: left; margin-top: -55px; position: relative;padding-top: 70px;padding-left: 15px;float: right;color: #fff;background-size: cover;width: 230.73px;height: 232.41px;border-radius: 35px;z-index: 1;'
+    )
+    image.setAttribute(
+        'style',
+        'float: right;border-radius: 30px;width: 400.17px;height: 276.57px;position: relative;object-fit: cover;z-index: 10; '
+    )
+    like_image.setAttribute(
+        'style',
+        'right: 0; margin-top: 225px; margin-right: 20.6px; width: 30px;height: 30px;position: absolute;z-index: 15;'
+    )
+    like_image_back.setAttribute(
+        'style',
+        'right: 0; margin-top: 217px; border-radius: 10px; background-color: white; margin-right: 13px; width: 46px;height: 46px;position: absolute;z-index: 15;'
+    )
+    other_image.setAttribute(
+        'style',
+        'margin-left: -15px;margin-top: 2px; width: 122.18px;height: 117.09px;object-fit: cover;border-radius: 20px;filter: grayscale(100%);'
+    )
+    other_image_back.setAttribute(
+        'style',
+        'margin-left: -122px;margin-top: 2px; width: 122.18px;height: 117.09px;object-fit: cover;border-radius: 20px; background-color:black; opacity: 0.5'
+    )
+    count_photo.setAttribute(
+        'style',
+        'position: absolute;margin-top: -97px;margin-left: 10px;font-size: 50px;color: #fff;  '
+    )
+    td1.setAttribute(
+        'style',
+        'text-overflow: ellipsis;overflow: hidden;white-space: nowrap;'
+    )
+    td2.setAttribute(
+        'style',
+        'text-overflow: ellipsis;overflow: hidden;white-space: nowrap;'
+    )
+    more.setAttribute(
+        'style',
+        'padding-left: 5px;text-transform: uppercase;margin-bottom: 140px; color: #CF89DB;font-weight: 500;font-size: 19px;letter-spacing: 0.1em;  '
+    )
+
+    var img_count = 0;
+    get_adv_img_count(hashnumber, count_photo)
+    td1.innerHTML = name;
+    td2.innerHTML = loc;
+    if(price==0){
+        td3.innerHTML = "Безкоштовно";
+    }else{td3.innerHTML = price + currency;}
+    more.innerHTML = 'Більше'
+    image.src = img_num;
+    if(isvol){
+        right_description.style.background="linear-gradient(45deg, rgb(96, 207, 210), rgb(151, 231, 195) 70%)";
+        more.style.color="#60CFD2"
+    }else{
+        right_description.style.background="linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234))";
+        more.style.color="#9485D8"
+    }
+    
+
+    right_description.onclick = function(){
+        window.open('advertreview.html#' + hashnumber,'_blank'); 
+    }
+    left_description.onclick = function(){
+        window.open('advertreview.html#' + hashnumber,'_blank'); 
+    }
+    image.onclick = function(){
+        window.open('advertreview.html#' + hashnumber,'_blank'); 
+    }
+    if(other_img_num != null){
+        other_image.src = other_img_num
+    }else{
+        other_image.src = 'https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05';
+    }
+
+    var flag = false;
+    for(let i = 0; i < likedByU.length; i++){
+        if(likedByU[i] == hashnumber)  
+            flag = true;      
+    }
+    if(flag){
+        if(isvol)
+            like_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliker_heart_green.png?alt=media&token=ac11ccb7-8163-4b5d-95c9-fd44b5e90e64"
+        else
+            like_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliked_heart.png?alt=media&token=2dc5e75e-6dc6-4fd6-89ed-99ad95be0ba8"
+    }else{
+        if(isvol)
+            like_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart_green.png?alt=media&token=6131d4da-0a50-47b7-ad9c-28a736f0e806"
+        else
+            like_image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71"
+            
+        more.href = 'advertreview.html#' + hashnumber; 
+        more.target='_blank';
+    }
+
+    if(display_likes){
+    big_div.appendChild(like_image_back);
+    big_div.appendChild(like_image);
+    }
+    big_div.appendChild(image);
+    like_image.onclick = function(){
+        addLiked(like_image, hashnumber, flag, isvol);
+    }
+    left_description.appendChild(other_image);
+    left_description.appendChild(other_image_back);
+    left_description.appendChild(count_photo);
+    right_description.appendChild(td1);
+    right_description.appendChild(td2);
+    right_description.appendChild(td3);
+    big_div.appendChild(left_description);
+    big_div.appendChild(right_description);
+    big_div.appendChild(more);
+    showingitems.push(big_div);
+    tbody.appendChild(big_div);
+    }
+
+    function AddAllItemsToTable(TheAdvertisement, display_likes){
+        showingitems = [];
+        tbody.innerHTML="";
+        var position = 0;
+        TheAdvertisement.forEach(element => {
+            AddItemToTable(display_likes,position, element.name, element.location, element.price, element.currency, element.images[0], element.images[1], element.hashnumber, element.volunteering);
+            position++;
+        });
+    }
+    var likedByU = [];
+    function GetAllDataOnce(){
+        logged_in_check();
+        const dbRef = ref(db);
+        
+        get(child(dbRef, "advertisement"))
+        .then((snapshot)=>{
+            
+            snapshot.forEach(childSnapshot =>{
+                if(childSnapshot.val().approved)
+                    advertisements.push(childSnapshot.val());
+            });
+            
+            advertisements.sort((a, b) => a.time - b.time);
+            advertisements.reverse();
+
+            getUsername();
+            if(currentUser != null){
+            get(child(dbRef, "profiles/" + currentUser.phonenumber + "/liked"))
+                .then((snapshot)=>{
+                snapshot.forEach(childSnapshot =>{
+                    likedByU.push(childSnapshot.val());
+                });
+                AddAllItemsToTable(advertisements, true); 
+            }) 
+        }
+        else{
+            AddAllItemsToTable(advertisements, false);
+        }
+        })
+    }
+    function addLiked(image, numb, flag, isvol){
+        getUsername();
+        const dbRef = ref(db);
+        var curpos = 1230102301230;
+        likedByU = [];
+        get(child(dbRef, "profiles/" + currentUser.phonenumber + "/liked"))
+        .then((snapshot)=>{
+            snapshot.forEach(childSnapshot =>{
+                if(childSnapshot.val() == numb){
+                    curpos = likedByU.length-1;
+                }else{
+                    likedByU.push(childSnapshot.val());
+                }
+            });
+            if(curpos == 1230102301230){
+                likedByU.push(numb);
+                set(ref(db, "profiles/" + currentUser.phonenumber + "/liked/"),
+                    likedByU 
+                ); 
+                if(isvol)
+                    image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliker_heart_green.png?alt=media&token=ac11ccb7-8163-4b5d-95c9-fd44b5e90e64";
+                else
+                    image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliked_heart.png?alt=media&token=2dc5e75e-6dc6-4fd6-89ed-99ad95be0ba8"    
+            }else{
+                set(ref(db, "profiles/" + currentUser.phonenumber + "/liked/"),
+                    likedByU   
+                );  
+                if(isvol)
+                    image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart_green.png?alt=media&token=6131d4da-0a50-47b7-ad9c-28a736f0e806"
+                else
+                    image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71"
+            }                
+        })      
+    }
+    function get_adv_img_count(hashnumber, count_photo){
+        const dbRef = ref(db);
+        get(child(dbRef, "advertisement/" + hashnumber + "/images/"))
+                .then((snapshot)=>{
+                    var adv_images = []
+                    var img_count = 0;
+                snapshot.forEach(childSnapshot =>{
+                    adv_images.push(childSnapshot.val());
+                    img_count++;
+                });
+                count_photo.innerHTML = '+' + String(img_count-1)
+            })
+    }
+    let userlink = document.getElementById('userlink');
+    let signoutlink = document.getElementById('signoutlink');
+    var profile = document.getElementById('profile_content');
+    var created_adv = document.getElementById('created_btn');
+    var liked_adv = document.getElementById('liked_btn');
+    let user_name = document.getElementById('user_name_box');
+    let user_phone = document.getElementById('user_phone_box');
+        function logged_in_check(){
+            getUsername();
+            if(currentUser == null){
+                profile.remove();
+                userlink.innerHTML="Створити акаунт";        
+                userlink.href = "SignUp.html";
+                signoutlink.innerHTML="Увійти";       
+                signoutlink.href = "SignIn.html";
+            }else{
+                created_adv.href = "created_adv.html";
+                liked_adv.href = "liked_adv.html";
+                userlink.innerHTML= "Мій профіль";    
+                signoutlink.innerHTML="Вийти";         
+                signoutlink.href = "javascript:Signout()";
+                get_user_info(user_name, user_phone)
+                support_btn.onclick = function(){
+                window.open('mailto:lendory.support@gmail.com'); 
+                }
+            }
+        }
+</script>
+</body>
+</html>

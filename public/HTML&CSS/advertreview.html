@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Огляд оголошення</title>
+     <!--Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+     
+    <link rel="icon" href="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fwebsite_icon.png?alt=media&token=51e55c71-a2d4-4704-a934-fea262c5cbef">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="serverlogic.js"></script>
+</head>
+<body id="advertreview_body">
+<header class="header">
+    <div class="header_inner">
+        <a href="index.html"><img class="header_logo"  src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Flogo.svg?alt=media&token=16431337-1af7-4f47-bdd9-95098cb111ea" alt=""></a>
+            <nav class="nav">
+              <a href="getting_data.html"> <img id="advert_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheader_icon_adverts.png?alt=media&token=d5a55fa8-ae4d-4620-b98e-3cce4b8a8f96" alt=""> Усі оголошення</a>
+                <div class="dropdown_profile" >
+                  <img id="profile_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_blue.png?alt=media&token=9fb21e3c-c4d8-4d47-a459-055b20be60e4" alt=""><a href="#"  id='userlink'>Username</a>
+                    <div class="dropdown_content" id="profile_content">
+                        <div class="row" >
+                            <div class="column" id="column_left">
+                              <h3>Оголошення</h3>
+                                <a href="#" id="created_btn">Мої</a>
+                                <a href="advert.html" >Створити</a>
+                                <a href="" id="liked_btn">Вподобані</a>
+                                <br>
+                              <h3>Інше</h3>
+                              <a href="https://bank.gov.ua/ua/news/all/natsionalniy-bank-vidkriv-spetsrahunok-dlya-zboru-koshtiv-na-potrebi-armiyi" target="_blank">Підтримка ЗСУ</a>
+                            </div>
+                              <div class="column" id="column_right">
+                                <div class="wrapper">
+                                  <div class="your_image">
+                                    <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_icon_blue.png?alt=media&token=9fb21e3c-c4d8-4d47-a459-055b20be60e4" alt="">
+                                  </div>
+                                    <h6 id="user_name_box"></h6>
+                                    <h6 id="user_phone_box"></h6>
+                                    <button id="support_btn">Служба підримки</button> 
+                              </div>
+                            </div>
+                        </div>
+                    </div>     
+                  </div>
+              <img id="exit_icon" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Ficon_header_exit.png?alt=media&token=182c9a6c-69e1-4862-af43-6553be0f47f4" alt=""><a id="signoutlink" href="#">Вийти</a>
+          </nav>
+    </div>
+</header>
+
+<section class="review">
+        <div  id="container_review" >
+            <div class="main_photo_review_block">
+                <a href="#popup"> 
+                    <img class="review_main"  id="main_photo" alt="">
+                </a>
+            </div>
+                <div class="other_photo_review_block">
+                    <a href="#popup1"> <img class="review_other"  id="second_img" alt=""></a>
+                    <a href="#popup2"> <img class="review_other"  id="third_img" alt=""></a>
+                    <a href="#popup3"> <img class="review_other"  id="fourth_img" alt=""></a>
+                </div>
+                    <div class="text_review_block">
+                         <div class="name_price"> <h3 id="name"></h3> </div>
+                            <div class="adv_information">
+                                <span id="location"></span> <br><br>
+                                <span id="price"></span>  
+                                <span id="area"></span>
+                                <span id="numberofrooms"></span>
+                                <span id="floor"></span> 
+                                <span id="isvol"></span> 
+                            </div> 
+                            <div class="description"> <p id="description"></p>  </div>                                               
+                    </div>
+        </div> 
+        <div class="info_about_seller">
+            <div class="info_block">
+                <img id="your_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fuser_white_icon.png?alt=media&token=745a0b59-e7aa-492c-89e1-de72ab740430" alt="">
+                    <div class="info_">
+                        <span id="user_name"></span>
+                        <span id="phoneNumber"></span>
+                    </div>  
+            </div>
+        </div>  
+                        <!-- Popups for review all photos -->
+    <div id="popup" class="popup">
+        <a href="#"class="popup_area" id="popup_area"></a>
+            <div class="popup_body">
+                <div class="popup_text">
+                    <a class="popup_nav_a" id='left_arrow_1' href="#popup3"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-left-icon-font.png?alt=media&token=ee782e1a-a6f8-4852-af41-942d3cf75ced" alt=""></a>  
+                    <img class="popup_img" id='main' alt="">
+                    <a class="popup_nav_a" id='right_arrow_1' href="#popup1"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-right-icon-font.png?alt=media&token=7f169940-40ba-4e9e-84e2-e50a8d6acf58" alt=""></a>
+                </div>
+            </div>              
+    </div>
+    <div id="popup1" class="popup">
+        <a href="#header" class="popup_area" id="popup_area_1"></a>
+            <div class="popup_body">
+                <div class="popup_text">
+                    <a class="popup_nav_a" id="left_arrow_2"  href="#popup"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-left-icon-font.png?alt=media&token=ee782e1a-a6f8-4852-af41-942d3cf75ced" alt=""></a>
+                    <img class="popup_img" id="popup_1" alt="">
+                    <a class="popup_nav_a" id="right_arrow_2" href="#popup2"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-right-icon-font.png?alt=media&token=7f169940-40ba-4e9e-84e2-e50a8d6acf58" alt=""></a>
+                </div>
+            </div>              
+    </div>
+    <div id="popup2" class="popup">
+        <a href="#header" class="popup_area" id="popup_area_2"></a>
+            <div class="popup_body">
+                <div class="popup_text">
+                    <a class="popup_nav_a" id="left_arrow_3" href="#popup1"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-left-icon-font.png?alt=media&token=ee782e1a-a6f8-4852-af41-942d3cf75ced" alt=""></a>
+                    <img class="popup_img" id="popup_2" alt="">
+                    <a class="popup_nav_a" id="right_arrow_3" href="#popup3"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-right-icon-font.png?alt=media&token=7f169940-40ba-4e9e-84e2-e50a8d6acf58" alt=""></a>
+                </div>
+            </div>              
+    </div>
+     <div id="popup3" class="popup">
+        <a href="#header" class="popup_area" id="popup_area_3"></a>
+            <div class="popup_body">
+                <div class="popup_text">
+                    <a class="popup_nav_a" id="left_arrow_4"  href="#popup2"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-left-icon-font.png?alt=media&token=ee782e1a-a6f8-4852-af41-942d3cf75ced" alt=""></a>
+                    <img class="popup_img" id="popup_3" alt="">
+                    <a class="popup_nav_a" id="right_arrow_4"  href="#popup"><img  class="popup_nav_img" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fangle-right-icon-font.png?alt=media&token=7f169940-40ba-4e9e-84e2-e50a8d6acf58" alt=""></a>
+                </div>
+            </div>              
+    </div>
+</section>
+<section class="main_block adver_slider_block">  
+    <div class="slider_2">
+      <div class="slider__item">
+        <div class="ad_main_photo">
+          <a id="a_1"  target = '_blank'>
+            <img class="main_photo" id="main_photo_1" src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">
+          </a>
+          <div class="description_block">
+              <div class="left_description">                       
+                <img class="other_photo" id="other_photo_1" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">         
+                <p class="count_photo" id="count_photo_1"></p>                                 
+              </div>
+                  <div class="right_description" id="right_description_1">
+                      <h5 class="advert_name" id="name1"></h5>
+                      <h6 class="advert_location" id="location1"></h6>
+                      <h6 id="price1"></h6>                                    
+                  </div>
+                      <p class="learn_more" id="more_1">Більше</p>
+          </div> 
+            <div class="like_image_back">
+              <img  class="like_image" id="like_1"src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71" alt="">
+            </div>
+        </div> 
+      </div>
+      <div class="slider__item">
+        <div class="ad_main_photo">
+          <a id="a_2"  target = '_blank'>
+            <img class="main_photo" id="main_photo_2" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">
+          </a>
+            <div class="like_image_back">
+              <img  class="like_image" id="like_2" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71" alt="">
+            </div>
+              <div class="description_block">
+                <div class="left_description">                       
+                  <img class="other_photo" id="other_photo_2" src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">         
+                  <p class="count_photo" id="count_photo_2" ></p>                                 
+                </div>
+                  <div class="right_description"  id="right_description_2">
+                          <h5  class="advert_name" id="name2"></h5>
+                          <h6  class="advert_location" id="location2"></h6>
+                          <h6 id="price2"></h6>                                    
+                  </div>
+                     <p class="learn_more" id="more_2">Більше</p>
+              </div> 
+        </div> 
+      </div>
+      <div class="slider__item">
+        <div class="ad_main_photo">
+          <a id="a_3" target = '_blank'>
+            <img class = "main_photo" id = "main_photo_3" src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt = "">
+          </a>
+            <div class="like_image_back">
+              <img  class="like_image" id="like_3" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71" alt="">
+            </div>
+                <div class="description_block">
+                  <div class="left_description">                       
+                    <img class="other_photo" id="other_photo_3" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">         
+                    <p class="count_photo" id="count_photo_3" ></p>                                 
+                  </div>
+                      <div class="right_description" id="right_description_3">
+                              <h5 class="advert_name" id="name3"></h5>
+                              <h6 class="advert_location" id="location3"></h6>
+                              <h6 id="price3"></h6>                                    
+                      </div>
+                          <p class="learn_more" id="more_3">Більше</p>
+                </div> 
+        </div> 
+      </div>
+      <div class="slider__item">
+        <div class="ad_main_photo">
+          <a id="a_4" target = '_blank'>
+            <img class="main_photo" id="main_photo_4" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">
+          </a>
+            <div class="like_image_back">
+              <img  class="like_image" id="like_4" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71" alt="">
+            </div>
+              <div class="description_block">
+                <div class="left_description">                       
+                  <img class="other_photo" id="other_photo_4" src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">         
+                  <p class="count_photo" id="count_photo_4" ></p>                                 
+                </div>
+                  <div class="right_description" id="right_description_4">
+                          <h5 class="advert_name" id="name4"></h5>
+                          <h6 class="advert_location" id="location4"></h6>
+                          <h6 id="price4"></h6>                                    
+                  </div>
+                      <p class="learn_more" id="more_4">Більше</p>
+              </div> 
+        </div> 
+      </div>
+      <div class="slider__item">
+        <div class="ad_main_photo">
+          <a id="a_5" target = '_blank' >
+            <img class="main_photo" id="main_photo_5" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">
+          </a>
+            <div class="like_image_back">
+              <img  class="like_image" id="like_5" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71" alt="">
+            </div>
+              <div class="description_block">
+                <div class="left_description">                       
+                  <img class="other_photo" id="other_photo_5" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">         
+                  <p class="count_photo" id="count_photo_5"></p>                                 
+                </div>
+                  <div class="right_description" id="right_description_5">
+                          <h5 class="advert_name" id="name5"></h5>
+                          <h6 class="advert_location" id="location5"></h6>
+                          <h6 id="price5"></h6>                                    
+                  </div>
+                     <p class="learn_more" id="more_5">Більше</p>
+              </div> 
+        </div> 
+      </div>      
+      <div class="slider__item">
+        <div class="ad_main_photo">
+          <a id="a_6" target = '_blank' >
+            <img class="main_photo" id="main_photo_6" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">
+          </a>
+            <div class="like_image_back">
+              <img  class="like_image" id="like_6" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71" alt="">
+            </div>
+              <div class="description_block">
+                <div class="left_description">                       
+                  <img class="other_photo" id="other_photo_6" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">         
+                  <p class="count_photo" id="count_photo_6"></p>                                 
+                </div>
+                  <div class="right_description" id="right_description_6">
+                          <h5 class="advert_name" id="name6"></h5>
+                          <h6 class="advert_location" id="location6"></h6>
+                          <h6 id="price6"></h6>                                    
+                  </div>
+                     <p class="learn_more" id="more_6">Більше</p>
+              </div> 
+        </div> 
+      </div>     
+      <div class="slider__item">
+        <div class="ad_main_photo">
+          <a id="a_7" target = '_blank' >
+            <img class="main_photo" id="main_photo_7" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">
+          </a>
+          <div class="like_image_back">
+            <img  class="like_image" id="like_7" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71" alt="">
+          </div>
+            <div class="description_block">
+                <div class="left_description">                       
+                  <img class="other_photo" id="other_photo_7" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05" alt="">         
+                  <p class="count_photo" id="count_photo_7"></p>                                 
+                </div>
+                    <div class="right_description" id="right_description_7">
+                            <h5 class="advert_name" id="name7"></h5>
+                            <h6 class="advert_location" id="location7"></h6>
+                            <h6 id="price7"></h6>                                    
+                    </div>
+                        <p class="learn_more" id="more_7">Більше</p>
+            </div> 
+        </div> 
+      </div>                       
+    </div>   
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <!-- Slider Slick -->
+        <script src="slick.min.js"></script>
+        <!--  файл скриптiв -->
+        <script src="script.js"></script>              
+</section> 
+<footer>
+  <div class="footer_info">
+      <p> Lendory Developed by the QUAICE</p> 
+        <div>
+          <img src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fenvelope-icon.png?alt=media&token=ceb1f3be-3afc-49c3-ae94-fa1bfaf8c5ec" alt=""> <a href="mailto:lendory.support@gmail.com" target="_blank">Служба підтримки</a>
+          <img style="width:18px ; height:18px; margin-top:-6px;" src="https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fflag-icon.png?alt=media&token=45d16f46-3253-4bb1-b7e8-87a7259d821e" alt=""> <a href="https://bank.gov.ua/ua/news/all/natsionalniy-bank-vidkriv-spetsrahunok-dlya-zboru-koshtiv-na-potrebi-armiyi" target="_blank">Підтримка ЗСУ</a>
+        </div>
+  </div>
+</footer>  
+<script>
+      support_btn.onclick = function(){
+        window.open('mailto:lendory.support@gmail.com'); 
+    }
+    var url = window.location.href;
+    url = url.replace("https://lendory-b5d8b.firebaseapp.com/advertreview.html#", "");
+    url = url.replace("file:///D:/Lendory-WEB/public/advertreview.html#", "");
+    url = url.replace("file:///C:/lendory_web/public/advertreview.html#", "");
+    let signoutlink = document.getElementById('signoutlink');
+    let userlink = document.getElementById('userlink');
+    let create_acc_img = document.getElementById('create_acc_img');
+    window.onload = getURL();
+    function getURL() {
+        var main_back_url = document.getElementById('popup_area')
+        var popup_area_1 = document.getElementById('popup_area_1')
+        var popup_area_2 = document.getElementById('popup_area_2')
+        var popup_area_3 = document.getElementById('popup_area_3')
+        main_back_url.href = window.location.href;
+        popup_area_1.href = window.location.href;
+        popup_area_2.href = window.location.href;
+        popup_area_3.href = window.location.href;
+        logged_in_check();
+        var adv_name = document.getElementById('name');
+        var adv_price = document.getElementById('price');
+        var adv_area = document.getElementById('area');
+        var adv_numberofrooms=document.getElementById('numberofrooms')
+        var adv_floor=document.getElementById('floor')
+        var user_name=document.getElementById("user_name")
+        var phoneNumber=document.getElementById("phoneNumber")
+        var adv_description=document.getElementById("description")
+        var adv_location = document.getElementById('location')
+        var adv_isvol=document.getElementById('isvol');
+    
+        var url = window.location.href;
+        var adv_main_photo = document.getElementById("main_photo")
+        var adv_second_photo = document.getElementById("second_img")
+        var adv_third_photo = document.getElementById("third_img")
+        var adv_fourth_photo = document.getElementById("fourth_img")
+
+        var popup_main = document.getElementById('main')
+        var popup_1 = document.getElementById('popup_1')
+        var popup_2 = document.getElementById('popup_2')
+        var popup_3 = document.getElementById('popup_3')
+
+        var main_prev = document.getElementById('left_arrow_1')
+        var main_next = document.getElementById('right_arrow_1')
+    
+        var popup_1_next = document.getElementById('right_arrow_2')
+        var popup_2_next = document.getElementById('right_arrow_3')
+
+        var background=document.getElementById('container_review');
+        var advertreview_body=document.getElementById('advertreview_body');
+        var your_img=document.getElementById('your_img');
+    
+        //локально з пк/ при деплої міняти силку на https://lendory-b5d8b.firebaseapp.com/advertreview.html
+        url = url.replace("https://lendory-b5d8b.firebaseapp.com/advertreview.html#", "");
+        url = url.replace("file:///D:/Lendory-WEB/public/advertreview.html#", "");
+        
+        getCurrentAdv(url, adv_name,adv_price, adv_area,adv_numberofrooms,adv_floor,user_name,phoneNumber,adv_description, adv_location,adv_isvol,
+        adv_main_photo, adv_second_photo, adv_third_photo, adv_fourth_photo, popup_main, popup_1, popup_2, popup_3, main_prev, main_next,
+            popup_1_next, popup_2_next,background,advertreview_body,your_img);     
+    }
+    function Signout(){
+        sessionStorage.removeItem('user');
+        localStorage.removeItem('user');
+        localStorage.removeItem('keepLoggedIn');
+        window.location.reload();
+    }
+    function logged_in_check(){
+        var profile = document.getElementById('profile_content');
+        var created_adv = document.getElementById('created_btn');
+        var liked_adv = document.getElementById('liked_btn');
+        let user_name = document.getElementById('user_name_box');
+        let user_phone = document.getElementById('user_phone_box');
+        getUsername();
+        if(currentUser == null){
+            profile.remove();
+            userlink.innerHTML="Створити акаунт";        
+            userlink.href = "SignUp.html";
+            signoutlink.innerHTML="Увійти";       
+            signoutlink.href = "SignIn.html";
+        }else{
+            created_adv.href = "created_adv.html";
+            liked_adv.href = "liked_adv.html";
+            userlink.innerHTML= "Мій профіль";        
+            userlink.href = "file:///D:/Lendory-WEB/public/advertreview.html#" + url;
+            signoutlink.innerHTML="Вийти";         
+            signoutlink.href = "javascript:Signout()";
+            get_user_info(user_name, user_phone)
+            support_btn.onclick = function(){
+              window.open('mailto:lendory.support@gmail.com'); 
+            }
+      } 
+    }
+</script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+  const firebaseConfig = {
+  apiKey: "AIzaSyCPf1_9AlKYGFEF0nHn3c1IGH8BecVSeig",
+  authDomain: "lendory-b5d8b.firebaseapp.com",
+  databaseURL: "https://lendory-b5d8b-default-rtdb.firebaseio.com",
+  projectId: "lendory-b5d8b",
+  storageBucket: "lendory-b5d8b.appspot.com",
+  messagingSenderId: "759222136421",
+  appId: "1:759222136421:web:8c38d800bca06e1e6ce08c"
+  };
+  const app = initializeApp(firebaseConfig);
+  import {getDatabase, ref, get, set, child, update, remove}
+    from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js";
+  import {getStorage, ref as sRef, uploadBytesResumable, getDownloadURL} 
+    from "https://www.gstatic.com/firebasejs/9.6.10/firebase-storage.js";
+  const db = getDatabase();
+  window.onload = function(){
+  IdBinder();
+  }
+    var names=[];
+    var locations=[];
+    var prices=[];
+    var main_photos=[];
+    var next_photos=[];
+    var count_photo=[];
+    var a=[];
+    var likes=[]
+    var backgrounds=[];
+    var mores=[];
+    function IdBinder(){
+      for(var i = 1; i <= 7; i++){   
+        backgrounds.push(document.getElementById("right_description_"+i));
+        a.push(document.getElementById("a_" + i));
+        names.push(document.getElementById("name" + i));  
+        locations.push(document.getElementById("location" + i));
+        prices.push(document.getElementById("price" + i));
+        main_photos.push(document.getElementById("main_photo_"+ i));
+        next_photos.push(document.getElementById("other_photo_" + i));
+        count_photo.push(document.getElementById("count_photo_" + i))
+        likes.push(document.getElementById("like_"+ i));
+        mores.push(document.getElementById("more_"+ i));
+      }
+      GetAllDataOnce();
+    }
+    var advertisements = [];
+    var likedByU = [];
+    function GetAllDataOnce(){
+        const dbRef = ref(db);
+        get(child(dbRef, "advertisement"))
+        .then((snapshot)=>{
+            snapshot.forEach(childSnapshot =>{
+              if(childSnapshot.val().approved)
+                advertisements.push(childSnapshot.val());
+            });
+            getUsername();
+            if(currentUser != null){
+            get(child(dbRef, "profiles/" + currentUser.phonenumber + "/liked"))
+                .then((snapshot)=>{
+                  snapshot.forEach(childSnapshot =>{
+                  likedByU.push(childSnapshot.val());
+                  });
+                  randomer();
+              }) 
+            }else{
+              randomer();
+            }
+        })
+    }
+    var randomed = [];
+    function randomer(){
+      for(var i = 0; i < 7; i++)
+        checkifalreadyhave();
+      contentfiller();            
+    }
+    function checkifalreadyhave(){
+      var number = randomIntFromInterval(0,advertisements.length-1);
+        if(randomed.includes(number)){
+          checkifalreadyhave();
+        }else{
+          randomed.push(number); 
+        }
+    }
+    function contentfiller(){
+      for(var i = 0; i < 7; i++){
+        names[i].innerText = advertisements[randomed[i]].name;
+        locations[i].innerText = advertisements[randomed[i]].location;
+        if(advertisements[randomed[i]].price==0){
+            prices[i].innerText="Безкоштовно";
+        }else
+            prices[i].innerText = advertisements[randomed[i]].price + " " + advertisements[randomed[i]].currency;
+        main_photos[i].src = advertisements[randomed[i]].images[0];
+        a[i].href = "https://lendory-b5d8b.firebaseapp.com/advertreview.html#" + advertisements[randomed[i]].hashnumber;
+        if(advertisements[randomed[i]].images.length > 1)
+          next_photos[i].src = advertisements[randomed[i]].images[1];
+        else
+          next_photos[i].src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fnoimage.jpg?alt=media&token=7d2cf01c-a6c5-42c5-8bf3-58ed41b2ce05";
+        var imgcount = advertisements[randomed[i]].images.length-1;
+        count_photo[i].innerText = "+" + imgcount;
+        var flag = false;
+        for(var j = 0; j < likedByU.length; j++){
+            if(likedByU[j] == advertisements[randomed[i]].hashnumber)  
+                flag = true;      
+        }
+        if(advertisements[randomed[i]].volunteering)
+        {
+          mores[i].style.color="#60CFD2";
+          backgrounds[i].style.background="linear-gradient(45deg, rgb(96, 207, 210), rgb(151, 231, 195) 70%)";
+        }else{
+          mores[i].style.color="#9485D8";
+          backgrounds[i].style.background="linear-gradient(45deg, rgb(148, 133, 216), rgb(174, 204, 234))";
+        }
+        if(flag){
+          if(advertisements[randomed[i]].volunteering)
+            likes[i].src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliker_heart_green.png?alt=media&token=ac11ccb7-8163-4b5d-95c9-fd44b5e90e64"
+          else
+            likes[i].src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliked_heart.png?alt=media&token=2dc5e75e-6dc6-4fd6-89ed-99ad95be0ba8"
+        }else{
+          if(advertisements[randomed[i]].volunteering)
+            likes[i].src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart_green.png?alt=media&token=6131d4da-0a50-47b7-ad9c-28a736f0e806"
+          else
+            likes[i].src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71"   
+        }
+      }
+      likes[0].onclick = function(){addLiked(likes[0], advertisements[randomed[0]].hashnumber, checkifliked(0), advertisements[randomed[0]].volunteering);};
+      likes[1].onclick = function(){addLiked(likes[1], advertisements[randomed[1]].hashnumber, checkifliked(1), advertisements[randomed[1]].volunteering);};
+      likes[2].onclick = function(){addLiked(likes[2], advertisements[randomed[2]].hashnumber, checkifliked(2), advertisements[randomed[2]].volunteering);};
+      likes[3].onclick = function(){addLiked(likes[3], advertisements[randomed[3]].hashnumber, checkifliked(3), advertisements[randomed[3]].volunteering);};
+      likes[4].onclick = function(){addLiked(likes[4], advertisements[randomed[4]].hashnumber, checkifliked(4), advertisements[randomed[4]].volunteering);};
+      likes[5].onclick = function(){addLiked(likes[5], advertisements[randomed[5]].hashnumber, checkifliked(5), advertisements[randomed[5]].volunteering);};
+      likes[6].onclick = function(){addLiked(likes[6], advertisements[randomed[6]].hashnumber, checkifliked(6), advertisements[randomed[6]].volunteering);};
+    }
+    function checkifliked(position){
+      var flag = false;
+        for(var j = 0; j < likedByU.length; j++){
+            if(likedByU[j] == advertisements[randomed[position]].hashnumber)  
+                flag = true;      
+        }  
+        return flag;
+    }
+    function addLiked(image, numb, flag, isvol){
+        getUsername();
+        const dbRef = ref(db);
+        var curpos = 1230102301230;
+        likedByU = [];
+        get(child(dbRef, "profiles/" + currentUser.phonenumber + "/liked"))
+        .then((snapshot)=>{
+            snapshot.forEach(childSnapshot =>{
+                if(childSnapshot.val() == numb){
+                    curpos = likedByU.length-1;
+                }else{
+                    likedByU.push(childSnapshot.val());
+                }
+            });
+            if(curpos == 1230102301230){
+                likedByU.push(numb);
+                set(ref(db, "profiles/" + currentUser.phonenumber + "/liked/"),
+                    likedByU 
+                ); 
+                if(isvol)
+                    image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliker_heart_green.png?alt=media&token=ac11ccb7-8163-4b5d-95c9-fd44b5e90e64";
+                else
+                    image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fliked_heart.png?alt=media&token=2dc5e75e-6dc6-4fd6-89ed-99ad95be0ba8"    
+            }else{
+                set(ref(db, "profiles/" + currentUser.phonenumber + "/liked/"),
+                    likedByU   
+                );  
+                if(isvol)
+                    image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart_green.png?alt=media&token=6131d4da-0a50-47b7-ad9c-28a736f0e806"
+                else
+                    image.src = "https://firebasestorage.googleapis.com/v0/b/lendory-b5d8b.appspot.com/o/ui%2Fheart.png?alt=media&token=2a218368-583a-4a48-b60e-4e93fc3e6d71"
+            }                
+        })      
+    }
+    function randomIntFromInterval(min, max){
+      return Math.floor(Math.random() * (max - min + 1) + min)
+    }
+</script>
+</body>
+</html>
